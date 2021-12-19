@@ -15,10 +15,10 @@ class CreateProductCategoryTable extends Migration
     {
         Schema::create('product_category', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_category_id')->constrained('product_category');
+            $table->foreignId('product_category_id')->nullable()->constrained('product_category');
             $table->string("title");
             $table->longText("desc")->nullable();
-            $table->boolean("sub_category");
+            $table->boolean("sub_category")->nullable();
 
             //SEO
             $table->longText("seo_desc")->nullable();

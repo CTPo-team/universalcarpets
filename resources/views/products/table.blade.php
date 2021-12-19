@@ -2,30 +2,18 @@
     <table class="table" id="products-table">
         <thead>
             <tr>
-                <th>Product Category Id</th>
-        <th>Title</th>
-        <th>Path Image</th>
-        <th>Desc</th>
-        <th>Status</th>
-        <th>Seo Desc</th>
-        <th>Seo Category</th>
-        <th>Seo Keyword</th>
-        <th>Seo Url</th>
+                <th>Product Category</th>
+                <th>Title</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($products as $product)
             <tr>
-                       <td>{{ $product->product_category_id }}</td>
-            <td>{{ $product->title }}</td>
-            <td>{{ $product->path_image }}</td>
-            <td>{{ $product->desc }}</td>
-            <td>{{ $product->status }}</td>
-            <td>{{ $product->seo_desc }}</td>
-            <td>{{ $product->seo_category }}</td>
-            <td>{{ $product->seo_keyword }}</td>
-            <td>{{ $product->seo_url }}</td>
+                       <td>{{ $product->productCategory->title ?? ""}}</td>
+                        <td>{{ $product->title }}</td>
+                        <td>{!! $product->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                            <div class='btn-group'>

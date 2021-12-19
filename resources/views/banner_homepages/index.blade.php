@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title')
-    Banner Homepages 
+    Banner Homepage 
 @endsection
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Banner Homepages</h1>
+            <h1>Banner Homepage</h1>
             <div class="section-header-breadcrumb">
                 <a href="{{ route('bannerHomepages.create')}}" class="btn btn-primary form-btn">Banner Homepage <i class="fas fa-plus"></i></a>
             </div>

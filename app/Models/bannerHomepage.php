@@ -61,7 +61,6 @@ class bannerHomepage extends Model
      * @var array
      */
     public static $rules = [
-        'path_image' => 'required|string',
         'title' => 'nullable|string|max:255',
         'desc' => 'nullable|string',
         'button_url' => 'nullable|string|max:255',

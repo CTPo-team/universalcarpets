@@ -19,6 +19,7 @@
     <link href="{{ asset('css/datatable/select.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/krajee-fileinput/fileinput.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/krajee-fileinput/fileinput-rtl.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/chocolat.css') }}" rel="stylesheet" type="text/css"/>
 
 @yield('page_css')
 <!-- Template CSS -->
@@ -71,6 +72,8 @@
 <script src="{{ asset('js/krajee-fileinput/fileinput.min.js') }}"></script>
 <script src="{{ asset('js/krajee-fileinput/themes/fas/theme.min.js') }}"></script>
 <script src="{{ asset('js/krajee-fileinput/locales/LANG.js') }}"></script>
+<script src="{{ asset('js/tooltip.js') }}"></script>
+<script src="{{ asset('js/chocolat.min.js') }}"></script>
 
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>

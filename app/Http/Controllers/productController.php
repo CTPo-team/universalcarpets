@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateproductRequest;
 use App\Repositories\productRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\product;
+use App\Models\productCategory;
+use App\Models\imageProduct;
 use Flash;
 use Response;
 
@@ -14,6 +17,8 @@ class productController extends AppBaseController
 {
     /** @var  productRepository */
     private $productRepository;
+
+    const seo_category = 'product';
 
     public function __construct(productRepository $productRepo)
     {
@@ -29,7 +34,7 @@ class productController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $products = $this->productRepository->all();
+        $products = product::with("productCategory")->orderByDesc('updated_at')->get();
 
         return view('products.index')
             ->with('products', $products);
@@ -41,8 +46,9 @@ class productController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
-        return view('products.create');
+    {   
+        $this->data["productCategory"] = productCategory::pluck("title","id");
+        return view('products.create',$this->data);
     }
 
     /**
@@ -56,8 +62,14 @@ class productController extends AppBaseController
     {
         $input = $request->all();
 
+        //Set SEO
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        unset($input["path_image"]);
         $product = $this->productRepository->create($input);
 
+        //upload image
+        $this->uploadImageProduct($product->id,$request);
+        
         Flash::success('Product saved successfully.');
 
         return redirect(route('products.index'));
@@ -72,14 +84,14 @@ class productController extends AppBaseController
      */
     public function show($id)
     {
-        $product = $this->productRepository->find($id);
+        $product = product::where("id",$id)->with(["imageProduct","productCategory"])->first();
 
         if (empty($product)) {
             Flash::error('Product not found');
 
             return redirect(route('products.index'));
         }
-
+        
         return view('products.show')->with('product', $product);
     }
 
@@ -92,15 +104,15 @@ class productController extends AppBaseController
      */
     public function edit($id)
     {
-        $product = $this->productRepository->find($id);
+        $this->data["product"] = $this->productRepository->find($id);
 
-        if (empty($product)) {
+        if (empty($this->data["product"])) {
             Flash::error('Product not found');
 
             return redirect(route('products.index'));
         }
-
-        return view('products.edit')->with('product', $product);
+        $this->data["productCategory"] = productCategory::pluck("title","id");
+        return view('products.edit')->with('product', $this->data);
     }
 
     /**
@@ -120,8 +132,19 @@ class productController extends AppBaseController
 
             return redirect(route('products.index'));
         }
+        //Set SEO
+        $input = $request->all();
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $product = $this->productRepository->update($input, $id);
 
-        $product = $this->productRepository->update($request->all(), $id);
+        //File Upload
+        if($request->hasFile('path_image')){ 
+            //delete image
+            $this->deleteImageProduct($id);
+
+            //upload image
+            $this->uploadImageProduct($id,$request);
+        }
 
         Flash::success('Product updated successfully.');
 
@@ -147,10 +170,39 @@ class productController extends AppBaseController
             return redirect(route('products.index'));
         }
 
+        //delete image
+        $this->deleteImageProduct($id);
+
         $this->productRepository->delete($id);
 
         Flash::success('Product deleted successfully.');
 
         return redirect(route('products.index'));
+    }
+
+    public function uploadImageProduct($productId,$request)
+    {
+        if($request->hasfile('path_image'))
+         {
+            foreach($request->file('path_image') as $file)
+            {
+                //File Upload
+                $filename = $this->uploadFile($file,'img/product');
+
+                imageProduct::create([
+                    "product_id" => $productId,
+                    "path_image" => $filename
+                ]);
+            }
+         }
+    }
+
+    public function deleteImageProduct($productId)
+    {
+        $image = imageProduct::where("product_id",$productId)->get();
+        foreach ($image as $key => $value) {
+            $this->deleteFile($value["path_image"],"img/product");
+        }
+        imageProduct::where("product_id",$productId)->delete();
     }
 }

@@ -14,6 +14,8 @@ class productCategoryController extends AppBaseController
 {
     /** @var  productCategoryRepository */
     private $productCategoryRepository;
+    
+    const seo_category = 'product category';
 
     public function __construct(productCategoryRepository $productCategoryRepo)
     {
@@ -56,6 +58,7 @@ class productCategoryController extends AppBaseController
     {
         $input = $request->all();
 
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
         $productCategory = $this->productCategoryRepository->create($input);
 
         Flash::success('Product Category saved successfully.');
@@ -121,7 +124,10 @@ class productCategoryController extends AppBaseController
             return redirect(route('productCategories.index'));
         }
 
-        $productCategory = $this->productCategoryRepository->update($request->all(), $id);
+        $input=$request->all();
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        
+        $productCategory = $this->productCategoryRepository->update($input, $id);
 
         Flash::success('Product Category updated successfully.');
 

@@ -71,10 +71,8 @@ class productCategory extends Model
      * @var array
      */
     public static $rules = [
-        'product_category_id' => 'required',
         'title' => 'required|string|max:255',
         'desc' => 'nullable|string',
-        'sub_category' => 'required|boolean',
         'seo_desc' => 'nullable|string',
         'seo_category' => 'nullable|string',
         'seo_keyword' => 'nullable|string',

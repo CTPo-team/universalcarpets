@@ -625,4 +625,12 @@ $(function() {
     maxFileSize: 2000,
     allowedFileExtensions: ["jpg", "jpeg", "png", "gif"],
   });
+
+  $(".fileinput-image-multiple").fileinput({
+    theme: "fas",
+    showUpload: false,
+    maxFileSize: 2000,
+    maxFileCount: 10,
+    allowedFileExtensions: ["jpg", "jpeg", "png", "gif"],
+  });
 });

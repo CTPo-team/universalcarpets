@@ -17,7 +17,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-body ">
-                                    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch']) !!}
+                                    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch','enctype' => 'multipart/form-data']) !!}
                                         <div class="row">
                                             @include('products.fields')
                                         </div>

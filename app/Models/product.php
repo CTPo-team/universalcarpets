@@ -59,7 +59,6 @@ class product extends Model
         'id' => 'integer',
         'product_category_id' => 'integer',
         'title' => 'string',
-        'path_image' => 'string',
         'desc' => 'string',
         'status' => 'boolean',
         'seo_desc' => 'string',
@@ -76,7 +75,7 @@ class product extends Model
     public static $rules = [
         'product_category_id' => 'required',
         'title' => 'required|string|max:255',
-        'path_image' => 'nullable|string',
+        'path_image.*' => 'nullable|max:2048',
         'desc' => 'nullable|string',
         'status' => 'required|boolean',
         'seo_desc' => 'nullable|string',
@@ -93,6 +92,11 @@ class product extends Model
      **/
     public function productCategory()
     {
-        return $this->belongsTo(\App\Models\ProductCategory::class, 'product_category_id');
+        return $this->belongsTo(\App\Models\productCategory::class, 'product_category_id');
+    }
+
+    public function imageProduct()
+    {
+        return $this->hasMany(\App\Models\imageProduct::class, 'product_id', 'id');
     }
 }

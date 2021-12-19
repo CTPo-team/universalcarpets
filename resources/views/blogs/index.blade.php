@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title')
-    Blogs 
+    Blog 
 @endsection
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Blogs</h1>
+            <h1>Blog</h1>
             <div class="section-header-breadcrumb">
                 <a href="{{ route('blogs.create')}}" class="btn btn-primary form-btn">Blog <i class="fas fa-plus"></i></a>
             </div>

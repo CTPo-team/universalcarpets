@@ -1,7 +1,7 @@
 <!-- Product Category Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('product_category_id', 'Product Category Id:') !!}
-    {!! Form::number('product_category_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('product_category_id', 'Product Category:') !!}
+    {!! Form::select('product_category_id', $productCategory, null,['class' => 'form-control select2','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Title Field -->
@@ -12,49 +12,23 @@
 
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('path_image', 'Path Image:') !!}
-    {!! Form::textarea('path_image', null, ['class' => 'form-control']) !!}
+    {!! Form::label('path_image', 'Image:') !!}
+    <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" multiple>
 </div>
 
 <!-- Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('desc', 'Desc:') !!}
-    {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
+    {!! Form::label('desc', 'Description:') !!}
+    {!! Form::textarea('desc', null, ['class' => 'form-control summernote']) !!}
 </div>
 
 <!-- Status Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('status', 'Status:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('status', 0) !!}
-        {!! Form::checkbox('status', '1', null) !!}
-    </label>
+    {!! Form::select('status', [1 => "Active", 0 => "Inactive"], null,['class' => 'form-control select2','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
-
-<!-- Seo Desc Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_desc', 'Seo Desc:') !!}
-    {!! Form::textarea('seo_desc', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Seo Category Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_category', 'Seo Category:') !!}
-    {!! Form::textarea('seo_category', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Seo Keyword Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_keyword', 'Seo Keyword:') !!}
-    {!! Form::textarea('seo_keyword', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Seo Url Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_url', 'Seo Url:') !!}
-    {!! Form::textarea('seo_url', null, ['class' => 'form-control']) !!}
-</div>
+@include('layouts.seo')
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -37,7 +37,7 @@ class AppBaseController extends Controller
     }
 
     public function uploadFile($inputFile, $dir){
-        $filename = auth()->id() . '_' . time() . '.'. $inputFile->extension();  
+        $filename = auth()->id() . '_' . microtime(true) . '.'. $inputFile->extension();  
         $inputFile->move(public_path($dir), $filename);
 
         return $filename;
@@ -45,5 +45,17 @@ class AppBaseController extends Controller
 
     public function deleteFile($filename, $dir){
         unlink(public_path($dir."/".$filename));
+    }
+
+    public function setSeo($input,$desc,$title,$category = "",$path = ""){
+        if(empty($input["seo_desc"])){
+            $input["seo_desc"] = strip_tags($desc);
+        }
+        if(empty($input["seo_keyword"])){
+            $input["seo_keyword"] = $title;
+        }
+        $input["seo_category"] = $category;
+        $input["seo_url"] = url()->to($path);
+        return $input;
     }
 }
