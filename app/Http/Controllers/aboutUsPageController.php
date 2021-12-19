@@ -58,7 +58,7 @@ class aboutUsPageController extends AppBaseController
 
         $aboutUsPage = $this->aboutUsPageRepository->create($input);
 
-        Flash::success('About Us Page saved successfully.');
+        Flash::success('About Us saved successfully.');
 
         return redirect(route('aboutUsPages.index'));
     }
@@ -75,7 +75,7 @@ class aboutUsPageController extends AppBaseController
         $aboutUsPage = $this->aboutUsPageRepository->find($id);
 
         if (empty($aboutUsPage)) {
-            Flash::error('About Us Page not found');
+            Flash::error('About Us not found');
 
             return redirect(route('aboutUsPages.index'));
         }
@@ -95,7 +95,7 @@ class aboutUsPageController extends AppBaseController
         $aboutUsPage = $this->aboutUsPageRepository->find($id);
 
         if (empty($aboutUsPage)) {
-            Flash::error('About Us Page not found');
+            Flash::error('About Us not found');
 
             return redirect(route('aboutUsPages.index'));
         }
@@ -116,14 +116,14 @@ class aboutUsPageController extends AppBaseController
         $aboutUsPage = $this->aboutUsPageRepository->find($id);
 
         if (empty($aboutUsPage)) {
-            Flash::error('About Us Page not found');
+            Flash::error('About Us not found');
 
             return redirect(route('aboutUsPages.index'));
         }
 
         $aboutUsPage = $this->aboutUsPageRepository->update($request->all(), $id);
 
-        Flash::success('About Us Page updated successfully.');
+        Flash::success('About Us updated successfully.');
 
         return redirect(route('aboutUsPages.index'));
     }
@@ -142,14 +142,14 @@ class aboutUsPageController extends AppBaseController
         $aboutUsPage = $this->aboutUsPageRepository->find($id);
 
         if (empty($aboutUsPage)) {
-            Flash::error('About Us Page not found');
+            Flash::error('About Us not found');
 
             return redirect(route('aboutUsPages.index'));
         }
 
         $this->aboutUsPageRepository->delete($id);
 
-        Flash::success('About Us Page deleted successfully.');
+        Flash::success('About Us deleted successfully.');
 
         return redirect(route('aboutUsPages.index'));
     }

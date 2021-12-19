@@ -17,7 +17,7 @@
                    <div class="col-lg-12">
                        <div class="card">
                            <div class="card-body ">
-                                {!! Form::open(['route' => 'bannerHomepages.store']) !!}
+                                {!! Form::open(['route' => 'bannerHomepages.store','enctype' => 'multipart/form-data']) !!}
                                     <div class="row">
                                         @include('banner_homepages.fields')
                                     </div>

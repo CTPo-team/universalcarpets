@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title')
-    About Us Page Details 
+    About Us Details 
 @endsection
 @section('content')
     <section class="section">
         <div class="section-header">
-        <h1>About Us Page Details</h1>
+        <h1>About Us Details</h1>
         <div class="section-header-breadcrumb">
             <a href="{{ route('aboutUsPages.index') }}"
                  class="btn btn-primary form-btn float-right">Back</a>

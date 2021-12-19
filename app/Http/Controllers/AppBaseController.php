@@ -35,4 +35,15 @@ class AppBaseController extends Controller
             'message' => $message
         ], 200);
     }
+
+    public function uploadFile($inputFile, $dir){
+        $filename = auth()->id() . '_' . time() . '.'. $inputFile->extension();  
+        $inputFile->move(public_path($dir), $filename);
+
+        return $filename;
+    }
+
+    public function deleteFile($filename, $dir){
+        unlink(public_path($dir."/".$filename));
+    }
 }

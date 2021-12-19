@@ -17,7 +17,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-body ">
-                                    {!! Form::model($bannerHomepage, ['route' => ['bannerHomepages.update', $bannerHomepage->id], 'method' => 'patch']) !!}
+                                    {!! Form::model($bannerHomepage, ['route' => ['bannerHomepages.update', $bannerHomepage->id], 'method' => 'patch','enctype' => 'multipart/form-data']) !!}
                                         <div class="row">
                                             @include('banner_homepages.fields')
                                         </div>

@@ -68,7 +68,8 @@ class bannerHomepage extends Model
         'status' => 'required|boolean',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
+        'deleted_at' => 'nullable',
+        'path_image' => 'nullable|max:2048',
     ];
 
     

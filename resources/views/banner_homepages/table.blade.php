@@ -2,22 +2,20 @@
     <table class="table" id="bannerHomepages-table">
         <thead>
             <tr>
-                <th>Path Image</th>
-        <th>Title</th>
-        <th>Desc</th>
-        <th>Button Url</th>
-        <th>Status</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Button Url</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($bannerHomepages as $bannerHomepage)
             <tr>
-                       <td>{{ $bannerHomepage->path_image }}</td>
-            <td>{{ $bannerHomepage->title }}</td>
-            <td>{{ $bannerHomepage->desc }}</td>
-            <td>{{ $bannerHomepage->button_url }}</td>
-            <td>{{ $bannerHomepage->status }}</td>
+                    <td><img src="{{asset('img/banner/'.$bannerHomepage->path_image)}}" style="max-width:100px"></td>
+                    <td>{{ $bannerHomepage->title }}</td>
+                    <td><a href="{{ $bannerHomepage->button_url }}">{{ $bannerHomepage->button_url }}</a></td>
+                    <td>{!! $bannerHomepage->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['bannerHomepages.destroy', $bannerHomepage->id], 'method' => 'delete']) !!}
                            <div class='btn-group'>

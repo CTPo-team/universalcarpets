@@ -56,6 +56,9 @@ class bannerHomepageController extends AppBaseController
     {
         $input = $request->all();
 
+        //File Upload
+        $input["path_image"] = $this->uploadFile($request->path_image,'img/banner');
+
         $bannerHomepage = $this->bannerHomepageRepository->create($input);
 
         Flash::success('Banner Homepage saved successfully.');
@@ -121,7 +124,16 @@ class bannerHomepageController extends AppBaseController
             return redirect(route('bannerHomepages.index'));
         }
 
-        $bannerHomepage = $this->bannerHomepageRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        //File Upload
+        if($request->hasFile('path_image')){ 
+            $this->deleteFile($bannerHomepage->path_image,"img/banner");
+            $input["path_image"] = $this->uploadFile($request->path_image,'img/banner');
+        }
+
+
+        $bannerHomepage = $this->bannerHomepageRepository->update($input, $id);
 
         Flash::success('Banner Homepage updated successfully.');
 
@@ -145,6 +157,10 @@ class bannerHomepageController extends AppBaseController
             Flash::error('Banner Homepage not found');
 
             return redirect(route('bannerHomepages.index'));
+        }
+
+        if(!empty($bannerHomepage->path_image)){
+            $this->deleteFile($bannerHomepage->path_image,"img/banner");
         }
 
         $this->bannerHomepageRepository->delete($id);
