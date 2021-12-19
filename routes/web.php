@@ -28,3 +28,39 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+
+
+Route::resource('roles', App\Http\Controllers\rolesController::class);
+
+
+Route::resource('users', App\Http\Controllers\usersController::class);
+
+
+Route::resource('bannerHomepages', App\Http\Controllers\bannerHomePageController::class);
+
+
+Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class);
+
+
+Route::resource('productCategories', App\Http\Controllers\productCategoryController::class);
+
+
+Route::resource('products', App\Http\Controllers\productController::class);
+
+
+Route::resource('blogCategories', App\Http\Controllers\blogCategoryController::class);
+
+
+Route::resource('blogs', App\Http\Controllers\blogController::class);
+
+
+Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class);
+
+
+Route::resource('bannerHomepages', App\Http\Controllers\bannerHomepageController::class);
+
+
+Route::resource('blogCategories', App\Http\Controllers\blogCategoryController::class);
+
+
+Route::resource('productCategories', App\Http\Controllers\productCategoryController::class);
