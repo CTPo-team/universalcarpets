@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => NULL,
                 'password' => '$2y$10$5lX1Rk3qE2A1.U0TNNaMf.RT.bHi/Dy7ubo0IUzHW8qfGSywHGj/S',
                 'remember_token' => NULL,
+                'roles' => 'admin',
                 'created_at' => '2021-12-15 09:47:42',
                 'updated_at' => '2021-12-15 09:47:42',
             ),

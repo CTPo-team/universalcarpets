@@ -9,6 +9,8 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Hash;
+use App\Models\roles;
 
 class usersController extends AppBaseController
 {
@@ -41,8 +43,9 @@ class usersController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
-        return view('users.create');
+    {   
+        $this->data["roles"] = roles::pluck("name","name");
+        return view('users.create',$this->data);
     }
 
     /**
@@ -55,7 +58,8 @@ class usersController extends AppBaseController
     public function store(CreateusersRequest $request)
     {
         $input = $request->all();
-
+        //Set Paswword
+        $input["password"] = Hash::make($input["password"]);
         $users = $this->usersRepository->create($input);
 
         Flash::success('Users saved successfully.');
@@ -92,15 +96,16 @@ class usersController extends AppBaseController
      */
     public function edit($id)
     {
-        $users = $this->usersRepository->find($id);
+        $this->data["users"] = $this->usersRepository->find($id);
 
-        if (empty($users)) {
+        if (empty($this->data["users"])) {
             Flash::error('Users not found');
 
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('users', $users);
+        $this->data["roles"] = roles::pluck("name","name");
+        return view('users.edit',$this->data);
     }
 
     /**
@@ -120,8 +125,10 @@ class usersController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
-        $users = $this->usersRepository->update($request->all(), $id);
+        $input = $request->all();
+        //Set Paswword
+        $input["password"] = Hash::make($input["password"]);
+        $users = $this->usersRepository->update($input, $id);
 
         Flash::success('Users updated successfully.');
 

@@ -11,7 +11,7 @@
         <th>Seo Category</th>
         <th>Seo Keyword</th>
         <th>Seo Url</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

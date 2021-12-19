@@ -7,7 +7,7 @@
         <th>Desc</th>
         <th>Button Url</th>
         <th>Status</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

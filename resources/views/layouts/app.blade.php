@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/summernote.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/datatable/datatable.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/datatable/datatable.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/datatable/select.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/krajee-fileinput/fileinput.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/krajee-fileinput/fileinput-rtl.min.css') }}" rel="stylesheet" type="text/css"/>
 
 @yield('page_css')
 <!-- Template CSS -->
@@ -56,6 +62,15 @@
 <script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+<script src="{{ asset('js/summernote.js') }}"></script>
+<script src="{{ asset('js/datatable/datatable.js') }}"></script>
+<script src="{{ asset('js/datatable/datatable.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/datatable/datatable.select.min.js') }}"></script>
+<script src="{{ asset('js/krajee-fileinput/plugins/piexif.min.js') }}"></script>
+<script src="{{ asset('js/krajee-fileinput/plugins/sortable.min.js') }}"></script>
+<script src="{{ asset('js/krajee-fileinput/fileinput.min.js') }}"></script>
+<script src="{{ asset('js/krajee-fileinput/themes/fas/theme.min.js') }}"></script>
+<script src="{{ asset('js/krajee-fileinput/locales/LANG.js') }}"></script>
 
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>

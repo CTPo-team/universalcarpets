@@ -614,4 +614,15 @@ $(function() {
       }
     });
   }
+
+  // Datatable
+  $("table").dataTable();
+
+  //Krajee File Input
+  $(".fileinput-image").fileinput({
+    theme: "fas",
+    showUpload: false,
+    maxFileSize: 2000,
+    allowedFileExtensions: ["jpg", "jpeg", "png", "gif"],
+  });
 });

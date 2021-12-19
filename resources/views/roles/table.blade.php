@@ -4,7 +4,7 @@
             <tr>
                 <th>Name</th>
         <th>Guard Name</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
