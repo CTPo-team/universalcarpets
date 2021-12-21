@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\bannerHomepage;
 use App\Models\product;
+use App\Models\blog;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,7 @@ class HomeController extends Controller
     {
         $this->data["banner"] = bannerHomepage::where("status",1)->orderByDesc("created_at")->get();
         $this->data["product"] = product::where("status",1)->with(["imageProduct","productCategory"])->orderByDesc("created_at")->get();
+        $this->data["blog"] = blog::where("status",1)->with("blogCategory")->orderByDesc("created_at")->get();
         return view('frontend.home',$this->data);
     }
 }
