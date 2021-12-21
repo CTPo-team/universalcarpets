@@ -79,7 +79,7 @@ class blog extends Model
     public static $rules = [
         'blog_category_id' => 'required',
         'title' => 'required|string|max:255',
-        'path_image' => 'nullable|string',
+        'path_image' => 'nullable|max:2048',
         'desc' => 'nullable|string',
         'short_desc' => 'nullable|string',
         'status' => 'required|boolean',

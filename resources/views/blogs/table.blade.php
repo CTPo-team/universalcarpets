@@ -2,32 +2,20 @@
     <table class="table" id="blogs-table">
         <thead>
             <tr>
-                <th>Blog Category Id</th>
-        <th>Title</th>
-        <th>Path Image</th>
-        <th>Desc</th>
-        <th>Short Desc</th>
-        <th>Status</th>
-        <th>Seo Desc</th>
-        <th>Seo Category</th>
-        <th>Seo Keyword</th>
-        <th>Seo Url</th>
+                <th>Blog Category</th>
+                <th>Title</th>
+                <th>Banner Image</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($blogs as $blog)
             <tr>
-                       <td>{{ $blog->blog_category_id }}</td>
+                       <td>{{ $blog->blogCategory->title ?? "" }}</td>
             <td>{{ $blog->title }}</td>
-            <td>{{ $blog->path_image }}</td>
-            <td>{{ $blog->desc }}</td>
-            <td>{{ $blog->short_desc }}</td>
-            <td>{{ $blog->status }}</td>
-            <td>{{ $blog->seo_desc }}</td>
-            <td>{{ $blog->seo_category }}</td>
-            <td>{{ $blog->seo_keyword }}</td>
-            <td>{{ $blog->seo_url }}</td>
+            <td><img src="{{asset('img/blog/'.$blog->path_image)}}" style="max-width:100px"></td>
+            <td>{!! $blog->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['blogs.destroy', $blog->id], 'method' => 'delete']) !!}
                            <div class='btn-group'>

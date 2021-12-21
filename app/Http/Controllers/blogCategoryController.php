@@ -15,6 +15,8 @@ class blogCategoryController extends AppBaseController
     /** @var  blogCategoryRepository */
     private $blogCategoryRepository;
 
+    const seo_category = 'blog category';
+
     public function __construct(blogCategoryRepository $blogCategoryRepo)
     {
         $this->blogCategoryRepository = $blogCategoryRepo;
@@ -55,7 +57,8 @@ class blogCategoryController extends AppBaseController
     public function store(CreateblogCategoryRequest $request)
     {
         $input = $request->all();
-
+        
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
         $blogCategory = $this->blogCategoryRepository->create($input);
 
         Flash::success('Blog Category saved successfully.');
@@ -121,7 +124,10 @@ class blogCategoryController extends AppBaseController
             return redirect(route('blogCategories.index'));
         }
 
-        $blogCategory = $this->blogCategoryRepository->update($request->all(), $id);
+        $input=$request->all();
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+
+        $blogCategory = $this->blogCategoryRepository->update($input, $id);
 
         Flash::success('Blog Category updated successfully.');
 
