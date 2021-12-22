@@ -15,8 +15,13 @@
         margin-left: 7%;
     }
 
-    .card-bg {
+    .card-bgabout {
         background: linear-gradient(to left, rgba(255, 0, 0, 0), #F1F3F5);
+        border: none;
+    }
+
+    .card-bgnewcol {
+        background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 50%, #F1F3F5 74%);
         border: none;
     }
 
@@ -53,7 +58,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <p
-                                style="font-family: 'Playfair Display', serif;font-size: 26 !important;line-height:1;font-weight:bold;letter-spacing:10px;letter-spacing:5px;color:#D5AD6A">
+                                style="font-family: 'Playfair Display', serif;font-size: 26 !important;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
                                 FEATURED COLLECTION</p>
                             <p
                                 style="font-family: 'Playfair Display', serif;font-size: 129px !important;line-height:1;font-weight:bold;letter-spacing:10px;">
@@ -76,7 +81,7 @@
     <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row">
             <div class="col-md-12 ">
-                <div class="card card-bg">
+                <div class="card card-bgabout">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-12 pt-4 pb-4">
@@ -131,4 +136,62 @@
     </div>
 </div>
 <!-- end section about -->
+
+<!-- section collection-->
+<div class="section" style="padding-top:50px;padding-bottom:50px;">
+    <div class="container" style="padding-right:0px;padding-left:0px">
+        <div class="row">
+         
+            <div class="col-md-12">
+            <hr  style="border-top:1px solid black;margin-top:30px">
+            <div style="width:20%;margin-top:-27px;background:white;">
+            <p
+                                style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
+                                NEW COLLECTIONS</p>
+            </div>
+            
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 ">
+                <div class="card card-bgnewcol">
+                    <div class="card-body">
+                        <div class="row pl-4 pr-4">
+                             <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
+                             <img width="100%" height="305px" src="{{asset('images/newcol3.png')}}">
+                            </div>
+
+                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
+                             <img width="100%" height="305px" src="{{asset('images/newcol2.png')}}">
+                            </div>
+
+                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
+                             <img width="100%" height="305px" src="{{asset('images/newcol4.png')}}">
+                            </div>
+
+                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
+                             <img width="100%" height="305px" src="{{asset('images/newcol1.png')}}">
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-center pt-3 pb-3">
+
+                            <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;" href="#">Browse All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section collection -->
+
+<!-- section nice words-->
+<div class="section" style="padding-top:50px;padding-bottom:50px;">
+        <div class="row" style="margin-right:0px;margin-left:0px">
+         <div class="col-12" style="padding-left:0px;padding:right:0px"> <img width="100%" src="{{asset('images/nicewords.png')}}"></div>
+        </div>
+</div>
+<!-- end nice words -->
 @endsection
