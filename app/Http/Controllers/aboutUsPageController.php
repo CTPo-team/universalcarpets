@@ -15,6 +15,8 @@ class aboutUsPageController extends AppBaseController
     /** @var  aboutUsPageRepository */
     private $aboutUsPageRepository;
 
+    const seo_category = 'about_us';
+
     public function __construct(aboutUsPageRepository $aboutUsPageRepo)
     {
         $this->aboutUsPageRepository = $aboutUsPageRepo;
@@ -55,6 +57,9 @@ class aboutUsPageController extends AppBaseController
     public function store(CreateaboutUsPageRequest $request)
     {
         $input = $request->all();
+
+        //Set SEO
+        $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
 
         $aboutUsPage = $this->aboutUsPageRepository->create($input);
 
@@ -121,7 +126,10 @@ class aboutUsPageController extends AppBaseController
             return redirect(route('aboutUsPages.index'));
         }
 
-        $aboutUsPage = $this->aboutUsPageRepository->update($request->all(), $id);
+        //Set SEO
+        $input = $request->all();
+        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
 
         Flash::success('About Us updated successfully.');
 
