@@ -25,6 +25,23 @@
         border: none;
     }
 
+    .card-bgcontactus {
+        background: linear-gradient(to right, rgba(255, 0, 0, 0) 10%, #F1F3F5 84%);
+        border: none;
+    }
+
+    .inputcontactus {
+        border: none;
+        background: transparent;
+    }
+
+    .form-control:focus {
+        outline: none !important;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
     /* .overlay {
         position: absolute;
         background-color: black;
@@ -141,15 +158,15 @@
 <div class="section" style="padding-top:50px;padding-bottom:50px;">
     <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row">
-         
+
             <div class="col-md-12">
-            <hr  style="border-top:1px solid black;margin-top:30px">
-            <div style="width:20%;margin-top:-27px;background:white;">
-            <p
-                                style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
-                                NEW COLLECTIONS</p>
-            </div>
-            
+                <hr style="border-top:1px solid black;margin-top:30px">
+                <div style="width:20%;margin-top:-27px;background:white;">
+                    <p
+                        style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
+                        NEW COLLECTIONS</p>
+                </div>
+
             </div>
         </div>
         <div class="row mt-4">
@@ -157,26 +174,27 @@
                 <div class="card card-bgnewcol">
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
-                             <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                             <img width="100%" height="305px" src="{{asset('images/newcol3.png')}}">
+                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
+                                <img width="100%" height="305px" src="{{asset('images/newcol3.png')}}">
                             </div>
 
                             <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                             <img width="100%" height="305px" src="{{asset('images/newcol2.png')}}">
+                                <img width="100%" height="305px" src="{{asset('images/newcol2.png')}}">
                             </div>
 
                             <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                             <img width="100%" height="305px" src="{{asset('images/newcol4.png')}}">
+                                <img width="100%" height="305px" src="{{asset('images/newcol4.png')}}">
                             </div>
 
                             <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                             <img width="100%" height="305px" src="{{asset('images/newcol1.png')}}">
+                                <img width="100%" height="305px" src="{{asset('images/newcol1.png')}}">
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-12 text-center pt-3 pb-3">
 
-                            <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;" href="#">Browse All</a>
+                                <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
+                                    href="#">Browse All</a>
                             </div>
                         </div>
                     </div>
@@ -188,10 +206,240 @@
 <!-- end section collection -->
 
 <!-- section nice words-->
-<div class="section" style="padding-top:50px;padding-bottom:50px;">
-        <div class="row" style="margin-right:0px;margin-left:0px">
-         <div class="col-12" style="padding-left:0px;padding:right:0px"> <img width="100%" src="{{asset('images/nicewords.png')}}"></div>
-        </div>
+<div class="section" style="padding-top:90px;padding-bottom:90px;">
+    <div class="row" style="margin-right:0px;margin-left:0px">
+        <div class="col-12" style="padding-left:0px;padding-right:0px"> <img width="100%"
+                src="{{asset('images/nicewords.png')}}"></div>
+    </div>
 </div>
 <!-- end nice words -->
+
+<!-- section blog-->
+<div class="section" style="padding-top:50px;padding-bottom:50px;">
+    <div class="container" style="padding-right:0px;padding-left:0px">
+        <div class="row">
+
+            <div class="col-md-12">
+                <hr style="border-top:1px solid black;margin-top:30px">
+                <div style="width:20%;margin-top:-27px;background:white;">
+                    <p
+                        style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
+                        FROM OUR BLOG</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 ">
+                <div class="card card-bgnewcol">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-12 col-md-6" style="padding-right:3px;paddingleft:3px">
+                                        <div class="card" style="width: 100%;">
+                                            <img src="{{asset('images/blog1.png')}}" height="210px" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-9">
+                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                            INSPIRATION</h6>
+                                                        <h5 class="card-title" style="color:#C72C36;font-weight:600">
+                                                            Card title</h5>
+                                                        <p class="card-text" style="font-size:14px">Some quick example
+                                                            text to build on the
+                                                            card title
+                                                            and make up the
+                                                            bulk of the card's content.</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 text-center"
+                                                        style="padding-left:0px;padding-right:0px">
+                                                        <a href="#" class=""
+                                                            style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
+                                                            more >></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6" style="padding-right:3px;paddingleft:3px">
+                                        <div class="card" style="width: 100%;">
+                                            <img src="{{asset('images/blog2.png')}}" height="210px" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-9">
+                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                            INSPIRATION</h6>
+                                                        <h5 class="card-title" style="color:#C72C36;font-weight:600">
+                                                            Card title</h5>
+                                                        <p class="card-text" style="font-size:14px">Some quick example
+                                                            text to build on the
+                                                            card title
+                                                            and make up the
+                                                            bulk of the card's content.</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 text-center"
+                                                        style="padding-left:0px;padding-right:0px">
+                                                        <a href="#" class=""
+                                                            style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
+                                                            more >></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12" style="padding-right:3px;paddingleft:3px">
+                                        <div class="card" style="width: 100%;flex-direction:row !important">
+                                            <img src="{{asset('images/blog3.jpg')}}" class="card-img" style="width:46%"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <div class="row" style="height:100%">
+                                                    <div class="col-12 col-md-9">
+                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                            INSPIRATION</h6>
+                                                        <h5 class="card-title" style="color:#C72C36;font-weight:600">
+                                                            Card title</h5>
+                                                        <p class="card-text" style="font-size:14px">Some quick example
+                                                            text to build on the
+                                                            card title
+                                                            and make up the
+                                                            bulk of the card's content.</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 text-center"
+                                                        style="padding-left:0px;padding-right:0px">
+                                                        <a href="#" class=""
+                                                            style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
+                                                            more >></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card" style="width: 100%;">
+                                            <img src="{{asset('images/blog1.png')}}" class="card-img-top" alt="...">
+                                            <div class="card-body" style="height:355px">
+                                                <div class="row" style="height:100%">
+                                                    <div class="col-12 col-md-9">
+                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                            INSPIRATION</h6>
+                                                        <h5 class="card-title" style="color:#C72C36;font-weight:600">
+                                                            Card title</h5>
+                                                        <p class="card-text" style="font-size:14px">Some quick example
+                                                            text to build on the
+                                                            card title
+                                                            and make up the
+                                                            bulk of the card's content.</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 text-center"
+                                                        style="padding-left:0px;padding-right:0px">
+                                                        <a href="#" class=""
+                                                            style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:5px;width:fit-content">Read
+                                                            more >></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end blog -->
+
+<!-- section contact us-->
+<div class="section" style="padding-top:50px;padding-bottom:50px;">
+    <div class="container" style="padding-right:0px;padding-left:0px">
+        <div class="row mt-4">
+            <div class="col-md-12 ">
+                <div class="card card-bgcontactus">
+                    <div class="card-body">
+                        <div class="row p-5">
+                            <div class="col-12 col-md-6 align-self-center text-center">
+                                asdasd
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <form>
+                                    <div class="form-group row border-bottom" style="width:100%">
+                                        <label for="name" class="col-sm-3 col-form-label"
+                                            style="font-size:14px">Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="inputcontactus form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row border-bottom" style="width:100%">
+                                        <label for="email" class="col-sm-4 col-form-label"
+                                            style="font-size:14px">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="inputcontactus form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row border-bottom" style="width:100%">
+                                        <label for="phone" class="col-sm-3 col-form-label" style="font-size:14px">Phone
+                                            Number</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="inputcontactus form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row border-bottom" style="width:100%">
+                                        <label for="msg" class="col-sm-3 col-form-label"
+                                            style="font-size:14px">Message</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="inputcontactus form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 text-right pt-3">
+
+                                            <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
+                                                href="#">Submit</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end contact us -->
+
+<!-- section footer-->
+<div class="section" style="padding-top:50px;padding-bottom:10px;">
+    <div class="container" style="padding-right:0px;padding-left:0px">
+        <div class="row" style="border-top:2px solid black;font-size:13px">
+            <div class="col-6 text-left" style="padding-left:0px">
+                asdasdasd
+            </div>
+            <div class="col-6 text-right" style="padding-right:0px">
+                asdasdasd
+            </div>
+        </div>
+        <br>
+        <div class="row" style="font-size:13px">
+            <div class="col-12 text-center">
+            Copyright. Universal Carpets. 2021. All Rights Reserved
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
 @endsection
