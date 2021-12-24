@@ -14,24 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('sendcontactus', [App\Http\Controllers\HomeController::class, 'sendContactUs']);
 
 // Authentication Routes...
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
 Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
-// Route::group(['middleware' => ['role:superadmin|admin']], function () {
+Route::group(['middleware' => ['role:superadmin']], function () {
     Route::resource('roles', App\Http\Controllers\rolesController::class);
 
 
     Route::resource('users', App\Http\Controllers\usersController::class);
-// });
+});
 
-// Route::group(['middleware' => ['role:superadmin|admin|user']], function () {
+Route::group(['middleware' => ['role:superadmin|admin|user']], function () {
     Route::resource('bannerHomepages', App\Http\Controllers\bannerHomePageController::class);
 
 
-    Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class);
+    Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class,[
+        'only' => ['index', 'edit', 'update', 'show']
+    ]);
 
 
     Route::resource('productCategories', App\Http\Controllers\productCategoryController::class);
@@ -56,4 +59,10 @@ Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name(
 
 
     Route::resource('productCategories', App\Http\Controllers\productCategoryController::class);
-// });
+
+    Route::resource('settingWebs', App\Http\Controllers\settingWebController::class,[
+        'only' => ['index', 'update']
+    ]);
+});
+
+

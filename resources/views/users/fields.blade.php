@@ -1,7 +1,7 @@
 <!-- Name Roles -->
 <div class="form-group col-sm-6">
-    {!! Form::label('roles', 'Roles:') !!}
-    {!! Form::select('roles', $roles, null,['class' => 'form-control select2','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::label('roles_name', 'Roles:') !!}
+    {!! Form::select('roles_name', $roles, null,['class' => 'form-control select2','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Name Field -->

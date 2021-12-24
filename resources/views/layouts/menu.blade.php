@@ -29,18 +29,22 @@
         </li>
     </ul>
 </li>
+@role('superadmin')
+    <li class="dropdown {{ Request::is('roles*') ||  Request::is('users*') ? 'active' : '' }}">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Auth</span></a>
+        <ul class="dropdown-menu">
+            <li class="side-menus {{ Request::is('roles*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('roles.index') }}"><i class="fas fa-bars"></i><span>Roles</span></a>
+            </li>
 
-<li class="dropdown {{ Request::is('roles*') ||  Request::is('users*') ? 'active' : '' }}">
-    <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Auth</span></a>
-    <ul class="dropdown-menu">
-        <li class="side-menus {{ Request::is('roles*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('roles.index') }}"><i class="fas fa-bars"></i><span>Roles</span></a>
-        </li>
+            <li class="side-menus {{ Request::is('users*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-bars"></i><span>Users</span></a>
+            </li>
+        </ul>
+    </li>
+@endrole
 
-        <li class="side-menus {{ Request::is('users*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-bars"></i><span>Users</span></a>
-        </li>
-    </ul>
+<li class="side-menus {{ Request::is('settingWebs*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('settingWebs.index') }}"><i class="fas fa-cog"></i><span>Setting Web</span></a>
 </li>
-
 

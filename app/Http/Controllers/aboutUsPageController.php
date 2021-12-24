@@ -42,10 +42,10 @@ class aboutUsPageController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
-        return view('about_us_pages.create');
-    }
+    // public function create()
+    // {
+    //     return view('about_us_pages.create');
+    // }
 
     /**
      * Store a newly created aboutUsPage in storage.
@@ -54,19 +54,19 @@ class aboutUsPageController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateaboutUsPageRequest $request)
-    {
-        $input = $request->all();
+    // public function store(CreateaboutUsPageRequest $request)
+    // {
+    //     $input = $request->all();
 
-        //Set SEO
-        $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
+    //     //Set SEO
+    //     $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
 
-        $aboutUsPage = $this->aboutUsPageRepository->create($input);
+    //     $aboutUsPage = $this->aboutUsPageRepository->create($input);
 
-        Flash::success('About Us saved successfully.');
+    //     Flash::success('About Us saved successfully.');
 
-        return redirect(route('aboutUsPages.index'));
-    }
+    //     return redirect(route('aboutUsPages.index'));
+    // }
 
     /**
      * Display the specified aboutUsPage.
@@ -128,7 +128,7 @@ class aboutUsPageController extends AppBaseController
 
         //Set SEO
         $input = $request->all();
-        $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $input = $this->setSeo($input,$input["desc"],$aboutUsPage->title,self::seo_category,null);
         $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
 
         Flash::success('About Us updated successfully.');
@@ -145,20 +145,20 @@ class aboutUsPageController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
-        $aboutUsPage = $this->aboutUsPageRepository->find($id);
+    // public function destroy($id)
+    // {
+    //     $aboutUsPage = $this->aboutUsPageRepository->find($id);
 
-        if (empty($aboutUsPage)) {
-            Flash::error('About Us not found');
+    //     if (empty($aboutUsPage)) {
+    //         Flash::error('About Us not found');
 
-            return redirect(route('aboutUsPages.index'));
-        }
+    //         return redirect(route('aboutUsPages.index'));
+    //     }
 
-        $this->aboutUsPageRepository->delete($id);
+    //     $this->aboutUsPageRepository->delete($id);
 
-        Flash::success('About Us deleted successfully.');
+    //     Flash::success('About Us deleted successfully.');
 
-        return redirect(route('aboutUsPages.index'));
-    }
+    //     return redirect(route('aboutUsPages.index'));
+    // }
 }

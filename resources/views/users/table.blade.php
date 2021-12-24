@@ -13,7 +13,7 @@
             <tr>
                     <td>{{ $users->name }}</td>
                     <td>{{ $users->email }}</td>
-                    <td>{{ $users->roles }}</td>
+                    <td>{{ $users->roles_name }}</td>
                     <td class=" text-center">
                         {!! Form::open(['route' => ['users.destroy', $users->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

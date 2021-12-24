@@ -372,44 +372,38 @@
                             <div class="col-12 col-md-6 align-self-center text-center">
                                 asdasd
                             </div>
+                            
                             <div class="col-12 col-md-6">
-                                <form>
+                                @include('flash::message')
+                                {!! Form::open(['url' => 'sendcontactus']) !!}
                                     <div class="form-group row border-bottom" style="width:100%">
-                                        <label for="name" class="col-sm-3 col-form-label"
-                                            style="font-size:14px">Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="inputcontactus form-control">
+                                            <input type="text" name="name" class="inputcontactus form-control" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group row border-bottom" style="width:100%">
-                                        <label for="email" class="col-sm-4 col-form-label"
-                                            style="font-size:14px">Email</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="inputcontactus form-control">
+                                            <input type="text" name="email" class="inputcontactus form-control" placeholder="Email Adress" required>
                                         </div>
                                     </div>
                                     <div class="form-group row border-bottom" style="width:100%">
-                                        <label for="phone" class="col-sm-3 col-form-label" style="font-size:14px">Phone
-                                            Number</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="inputcontactus form-control">
+                                            <input type="number" name="phone" class="inputcontactus form-control" placeholder="Phone Number" required>
                                         </div>
                                     </div>
                                     <div class="form-group row border-bottom" style="width:100%">
-                                        <label for="msg" class="col-sm-3 col-form-label"
-                                            style="font-size:14px">Message</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="inputcontactus form-control">
+                                            <input type="text" name="message" class="inputcontactus form-control" placeholder="Message" required>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-12 text-right pt-3">
-
-                                            <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
-                                                href="#">Submit</a>
+                                            <button type="submit" class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;">
+                                                SUBMIT
+                                            </button>
                                         </div>
                                     </div>
-                                </form>
+                                {!! Form::close() !!}
                             </div>
                         </div>
 
@@ -422,24 +416,4 @@
 </div>
 <!-- end contact us -->
 
-<!-- section footer-->
-<div class="section" style="padding-top:50px;padding-bottom:10px;">
-    <div class="container" style="padding-right:0px;padding-left:0px">
-        <div class="row" style="border-top:2px solid black;font-size:13px">
-            <div class="col-6 text-left" style="padding-left:0px">
-                asdasdasd
-            </div>
-            <div class="col-6 text-right" style="padding-right:0px">
-                asdasdasd
-            </div>
-        </div>
-        <br>
-        <div class="row" style="font-size:13px">
-            <div class="col-12 text-center">
-            Copyright. Universal Carpets. 2021. All Rights Reserved
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end footer -->
 @endsection
