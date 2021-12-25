@@ -99,4 +99,9 @@ class product extends Model
     {
         return $this->hasMany(\App\Models\imageProduct::class, 'product_id', 'id');
     }
+
+    public function imageProductOne()
+    {
+        return $this->belongsTo(\App\Models\imageProduct::class, 'id')->oldest();
+    }
 }
