@@ -123,21 +123,11 @@
                                             </p>
                                         </diV>
                                         <div class="col-md-12">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac
-                                                massa sit amet
-                                                nulla semper volutpat cursus nec dolor. Nunc mollis tincidunt justo,
-                                                viverra
-                                                vehicula est laoreet vel. Donec ac pellentesque eros. In sit amet nisi
-                                                leo. Mauris
-                                                sit amet mauris a ligula sodales efficitur at ut tortor. Maecenas eu
-                                                purus cursus,
-                                                laoreet ante sed, ornare metus. Etiam sit amet maximus ante.
-                                            </p>
+                                            {!! $AboutUs->short_desc !!}
                                         </div>
 
                                     </div>
-                                    <div class="row" style="bottom:40px;position:absolute;right:40px">
+                                    <div class="row pt-5" style="bottom:40px;">
                                         <div class="col text-right">
                                             <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
                                                 href="">ABOUT US</a>
@@ -174,21 +164,11 @@
                 <div class="card card-bgnewcol">
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
+                        @foreach ($product as $newcol)
                             <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                                <img width="100%" height="305px" src="{{asset('images/newcol3.png')}}">
+                                <img width="100%" height="305px" src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}">
                             </div>
-
-                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                                <img width="100%" height="305px" src="{{asset('images/newcol2.png')}}">
-                            </div>
-
-                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                                <img width="100%" height="305px" src="{{asset('images/newcol4.png')}}">
-                            </div>
-
-                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                                <img width="100%" height="305px" src="{{asset('images/newcol1.png')}}">
-                            </div>
+                        @endforeach
                         </div>
                         <div class="row mt-4">
                             <div class="col-12 text-center pt-3 pb-3">
@@ -237,21 +217,18 @@
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-12 col-md-6" style="padding-right:3px;paddingleft:3px">
-                                        <div class="card" style="width: 100%;">
-                                            <img src="{{asset('images/blog1.png')}}" height="210px" class="card-img-top"
+                                        <div class="card" style="width: 100%;height:400px;">
+                                            <img src="{{asset('img/blog/'. $blog[0]->path_image )}}" height="210px" class="card-img-top"
                                                 alt="...">
                                             <div class="card-body">
-                                                <div class="row">
+                                                <div class="row" style="height:150px">
                                                     <div class="col-12 col-md-9">
-                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
-                                                            INSPIRATION</h6>
+                                                        <!-- <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                        {!! $blog[0]->blog_category_name !!}</h6> -->
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
-                                                            Card title</h5>
-                                                        <p class="card-text" style="font-size:14px">Some quick example
-                                                            text to build on the
-                                                            card title
-                                                            and make up the
-                                                            bulk of the card's content.</p>
+                                                            {!! $blog[0]->title !!}</h5>
+                                                        <p class="card-text" style="font-size:14px">
+                                                        {!! $blog[0]->desc !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -264,21 +241,18 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6" style="padding-right:3px;paddingleft:3px">
-                                        <div class="card" style="width: 100%;">
-                                            <img src="{{asset('images/blog2.png')}}" height="210px" class="card-img-top"
+                                        <div class="card" style="width: 100%;height:400px;">
+                                            <img src="{{asset('img/blog/'. $blog[1]->path_image )}}" height="210px" class="card-img-top"
                                                 alt="...">
                                             <div class="card-body">
-                                                <div class="row">
+                                                <div class="row" style="height:150px">
                                                     <div class="col-12 col-md-9">
-                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
-                                                            INSPIRATION</h6>
+                                                        <!-- <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                        {!! $blog[1]->blog_category_name !!}</h6> -->
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
-                                                            Card title</h5>
-                                                        <p class="card-text" style="font-size:14px">Some quick example
-                                                            text to build on the
-                                                            card title
-                                                            and make up the
-                                                            bulk of the card's content.</p>
+                                                        {!! $blog[1]->title !!}</h5>
+                                                        <p class="card-text" style="font-size:14px">
+                                                        {!! $blog[1]->desc !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -293,21 +267,18 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12" style="padding-right:3px;paddingleft:3px">
-                                        <div class="card" style="width: 100%;flex-direction:row !important">
-                                            <img src="{{asset('images/blog3.jpg')}}" class="card-img" style="width:46%"
+                                        <div class="card" style="width: 100%;flex-direction:row !important;height:240px">
+                                            <img src="{{asset('img/blog/'. $blog[2]->path_image )}}" class="card-img" style="width:46%"
                                                 alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:100%">
                                                     <div class="col-12 col-md-9">
-                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
-                                                            INSPIRATION</h6>
+                                                        <!-- <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                        {!! $blog[2]->blog_category_name !!}</h6> -->
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
-                                                            Card title</h5>
-                                                        <p class="card-text" style="font-size:14px">Some quick example
-                                                            text to build on the
-                                                            card title
-                                                            and make up the
-                                                            bulk of the card's content.</p>
+                                                        {!! $blog[2]->title !!}</h5>
+                                                        <p class="card-text" style="font-size:14px">
+                                                        {!! $blog[2]->desc !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -324,20 +295,17 @@
                             <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="card" style="width: 100%;">
-                                            <img src="{{asset('images/blog1.png')}}" class="card-img-top" alt="...">
-                                            <div class="card-body" style="height:355px">
+                                        <div class="card" style="width: 100%;height:655px">
+                                            <img src="{{asset('img/blog/'. $blog[3]->path_image )}}" class="card-img-top" alt="...">
+                                            <div class="card-body">
                                                 <div class="row" style="height:100%">
                                                     <div class="col-12 col-md-9">
-                                                        <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
-                                                            INSPIRATION</h6>
+                                                           <!-- <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
+                                                        {!! $blog[3]->blog_category_name !!}</h6> -->
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
-                                                            Card title</h5>
-                                                        <p class="card-text" style="font-size:14px">Some quick example
-                                                            text to build on the
-                                                            card title
-                                                            and make up the
-                                                            bulk of the card's content.</p>
+                                                        {!! $blog[3]->title !!}</h5>
+                                                        <p class="card-text" style="font-size:15px">
+                                                        {!! $blog[3]->desc !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -362,15 +330,26 @@
 <!-- end blog -->
 
 <!-- section contact us-->
-<div class="section" style="padding-top:50px;padding-bottom:50px;">
+<div class="section" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/linecontactus.png')}}); background-repeat: no-repeat;
+  background-size: cover;">
     <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row mt-4">
             <div class="col-md-12 ">
                 <div class="card card-bgcontactus">
                     <div class="card-body">
                         <div class="row p-5">
-                            <div class="col-12 col-md-6 align-self-center text-center">
-                                asdasd
+                            <div class="col-12 col-md-6 align-self-center">
+                                <div class="row justify-content-center">
+                                    <div class="col" style="max-width:53%;">
+                                        <p
+                                        style="font-family: 'Playfair Display', serif;font-size: 40px !important;font-weight:bold;color:#C72C36">
+                                        CONTACTS</p>
+                                        <p>
+                                        Submit your question and be the first to be notified to our latest collections
+                                        </p>
+                                    </div>
+                                </div>
+                                
                             </div>
                             
                             <div class="col-12 col-md-6">
