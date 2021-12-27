@@ -23,8 +23,8 @@
 
 <!-- section footer-->
 <div class="section" style="padding-top:50px;padding-bottom:10px;">
-    <div class="container" style="padding-right:0px;padding-left:0px">
-        <div class="row" style="border-top:2px solid black;font-size:13px">
+    <div class="container">
+        <div class="row" style="border-top:2px solid black;font-size:13px;margin-right:0px;margin-left:0px">
             <div class="col-8 col-md-6" style="padding-left:0px">
                 <div class="row float-left">
                     <div class="col">
