@@ -24,11 +24,11 @@
 <!-- section footer-->
 <div class="section" style="padding-top:50px;padding-bottom:10px;">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
                 <img src="{{asset('img/tuv.png')}}" class="float-right" height="70px" style="margin-bottom: 7px;">
             </div>
-        </div>
+        </div> -->
         <div class="row" style="border-top:2px solid black;font-size:13px;margin-right:0px;margin-left:0px">
             <div class="col-8 col-md-6" style="padding-left:0px">
                 <div class="row float-left">

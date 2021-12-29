@@ -65,6 +65,86 @@
         }
     }
 
+    @media only screen and (max-width: 1024px) {    
+        .img1abouthome{
+            height:12vh;
+        }
+        .img2abouthome{
+            height:12vh;
+        }
+        .img3abouthome{
+            height:25vh;
+        }
+        .tabnewcol{
+            height:auto ;
+        }
+        .texttabblog p{
+            font-size:12.4px;
+        }
+        .linktabblog{
+            left:0px !important;
+        }
+        .imgtabverticalblog{
+            height:210px;
+        }
+        .tulisancontact{
+            max-width:100% !important;
+        }
+    }
+
+    @media only screen and (max-width: 769px) and (max-height: 1025px){    
+        .img1abouthome{
+            height:15vh;
+        }
+        .img2abouthome{
+            height:15vh;
+        }
+        .img3abouthome{
+            height:31.7vh;
+        }
+        .tabnewcol{
+            height:auto ;
+        }
+        .texttabblog p{
+            font-size:12.4px;
+        }
+        .linktabblog{
+            left:0px !important;
+        }
+        .imgtabverticalblog{
+            height:210px;
+        }
+        .tulisancontact{
+            max-width:100% !important;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) and (max-height: 700px) {    
+        .img1abouthome{
+            height:25vh;
+        }
+        .img2abouthome{
+            height:25vh;
+        }
+        .img3abouthome{
+            height:52vh;
+        }
+        .tabnewcol{
+            height:auto ;
+        }
+        .texttabblog p{
+            font-size:12.4px;
+        }
+        .linktabblog{
+            left:0px !important;
+        }
+        .imgtabverticalblog{
+            height:210px;
+        }
+        .tulisancontact{
+            max-width:100% !important;
+        }
+    }
 </style>
 <!-- end style home -->
 
@@ -119,12 +199,12 @@
                             <div class="col-md-6 col-12 pt-4 pb-4 d-none d-sm-block">
                                 <div class="row">
                                     <div class="col-md-7 col-12 text-center">
-                                        <p><img width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
+                                        <p><img class="img1abouthome" width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
 
-                                        <p><img width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
+                                        <p><img class="img2abouthome" width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
                                     </div>
                                     <div class="col-md-5 col-12 text-center" style="padding-left:0px">
-                                        <img width="100%" height="405px" src="{{asset('images/abouthome.png')}}">
+                                        <img class="img3abouthome" width="100%" height="390px" src="{{asset('images/abouthome.png')}}">
                                     </div>
                                 </div>
                             </div>
@@ -181,8 +261,8 @@
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
                             @foreach ($product as $newcol)
-                            <div class="col-md-3 col-12" style="padding-right:3px;paddingleft:3px">
-                                <img width="100%" height="305px"
+                            <div class="col-md-3 col-12" style="padding-right:3px;padding-left:3px">
+                                <img width="100%" height="305px" class="tabnewcol"
                                     src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}">
                             </div>
                             @endforeach
@@ -283,7 +363,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="row">
-                                    <div class="col-12 col-md-6" style="padding-right:3px;paddingleft:3px">
+                                    <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
                                             <img src="{{asset('img/blog/'. $blog[0]->path_image )}}" height="210px"
                                                 class="card-img-top" alt="...">
@@ -294,12 +374,12 @@
                                                             {!! $blog[0]->blogCategory->title !!}</h6>
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[0]->title !!}</h5>
-                                                        <p class="card-text" style="font-size:14px">
-                                                            {!! $blog[0]->desc !!}</p>
+                                                        <div class="card-text texttabblog" style="font-size:14px">
+                                                            {!! $blog[0]->desc !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class=""
+                                                        <a href="#" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -307,7 +387,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6" style="padding-right:3px;paddingleft:3px">
+                                    <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
                                             <img src="{{asset('img/blog/'. $blog[1]->path_image )}}" height="210px"
                                                 class="card-img-top" alt="...">
@@ -318,12 +398,12 @@
                                                             {!! $blog[1]->blogCategory->title !!}</h6>
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[1]->title !!}</h5>
-                                                        <p class="card-text" style="font-size:14px">
-                                                            {!! $blog[1]->desc !!}</p>
+                                                        <div class="card-text texttabblog" style="font-size:14px">
+                                                            {!! $blog[1]->desc !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class=""
+                                                        <a href="#" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -333,7 +413,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12" style="padding-right:3px;paddingleft:3px">
+                                    <div class="col-md-12" style="padding-right:3px;padding-left:3px">
                                         <div class="card"
                                             style="width: 100%;flex-direction:row !important;height:240px">
                                             <img src="{{asset('img/blog/'. $blog[2]->path_image )}}" class="card-img"
@@ -345,12 +425,12 @@
                                                             {!! $blog[2]->blogCategory->title !!}</h6>
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[2]->title !!}</h5>
-                                                        <p class="card-text" style="font-size:14px">
+                                                        <p class="card-text texttabblog" style="font-size:14px">
                                                             {!! $blog[2]->desc !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class=""
+                                                        <a href="#" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -365,7 +445,7 @@
                                     <div class="col-md-12">
                                         <div class="card" style="width: 100%;height:655px">
                                             <img src="{{asset('img/blog/'. $blog[3]->path_image )}}"
-                                                class="card-img-top" alt="...">
+                                                class="card-img-top imgtabverticalblog" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:100%">
                                                     <div class="col-12 col-md-9">
@@ -378,7 +458,7 @@
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class=""
+                                                        <a href="#" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:5px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -401,7 +481,7 @@
             <div class="col-md-12 ">
                 <div class="card card-bgnewcol">
                     <div class="card-body">
-                        <div id="blogSlider" class="carousel slide" data-ride="carousel">
+                        <div id="blogSlidermob" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($blog as $key => $blogs)
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
@@ -430,11 +510,11 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <a class="carousel-control-prev" href="#productslider" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#blogSlidermob" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#productslider" role="button" data-slide="next">
+                            <a class="carousel-control-next" href="#blogSlidermob" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
