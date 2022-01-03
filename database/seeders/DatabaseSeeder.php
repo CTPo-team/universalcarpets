@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutUsPageTableSeeder::class);
         $this->call(ModelHasRolesTableSeeder::class);
         $this->call(SettingWebTableSeeder::class);
+        $this->call(BlogTableSeeder::class);
+        $this->call(BlogCategoryTableSeeder::class);
+        $this->call(ImageProductTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
+        $this->call(ProductCategoryTableSeeder::class);
     }
 }
