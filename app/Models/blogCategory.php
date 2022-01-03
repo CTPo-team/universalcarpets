@@ -81,6 +81,6 @@ class blogCategory extends Model
      **/
     public function blogs()
     {
-        return $this->hasMany(\App\Models\Blog::class, 'blog_category_id');
+        return $this->hasMany(\App\Models\blog::class, 'blog_category_id');
     }
 }

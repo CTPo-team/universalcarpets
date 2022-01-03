@@ -31,6 +31,6 @@ class imageProduct extends Model
      **/
     public function product()
     {
-        return $this->belongsTo(\App\Models\Product::class, 'product_id');
+        return $this->belongsTo(\App\Models\product::class, 'product_id');
     }
 }
