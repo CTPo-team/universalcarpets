@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Create About Us 
+    Create Contact Us 
 @endsection
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading m-0">New About Us</h3>
+            <h3 class="page__heading m-0">New Contact Us</h3>
             <div class="filter-container section-header-breadcrumb row justify-content-md-end">
-                <a href="{{ route('aboutUsPages.index') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('contactUsPages.index') }}" class="btn btn-primary">Back</a>
             </div>
         </div>
         <div class="content">
@@ -17,9 +17,9 @@
                    <div class="col-lg-12">
                        <div class="card">
                            <div class="card-body ">
-                                {!! Form::open(['route' => 'aboutUsPages.store','enctype' => 'multipart/form-data']) !!}
+                                {!! Form::open(['route' => 'contactUsPages.store']) !!}
                                     <div class="row">
-                                        @include('about_us_pages.fields')
+                                        @include('contact_us_pages.fields')
                                     </div>
                                 {!! Form::close() !!}
                            </div>

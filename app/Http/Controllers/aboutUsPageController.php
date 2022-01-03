@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateaboutUsPageRequest;
 use App\Http\Requests\UpdateaboutUsPageRequest;
 use App\Repositories\aboutUsPageRepository;
+use App\Models\aboutUsPage;
+use App\Models\aboutUsGallery;
 use App\Http\Controllers\AppBaseController;
+use Database\Factories\aboutUsPageFactory;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -77,7 +80,7 @@ class aboutUsPageController extends AppBaseController
      */
     public function show($id)
     {
-        $aboutUsPage = $this->aboutUsPageRepository->find($id);
+        $aboutUsPage = aboutUsPage::where("id",$id)->with("aboutUsGallery")->first();
 
         if (empty($aboutUsPage)) {
             Flash::error('About Us not found');
@@ -129,7 +132,17 @@ class aboutUsPageController extends AppBaseController
         //Set SEO
         $input = $request->all();
         $input = $this->setSeo($input,$input["desc"],$aboutUsPage->title,self::seo_category,null);
+        unset($input["path_image"]);
         $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
+
+         //File Upload
+         if($request->hasFile('path_image')){ 
+            //delete image
+            $this->deleteImageAboutUs($id);
+
+            //upload image
+            $this->uploadImageAboutUs($id,$request);
+        }
 
         Flash::success('About Us updated successfully.');
 
@@ -161,4 +174,31 @@ class aboutUsPageController extends AppBaseController
 
     //     return redirect(route('aboutUsPages.index'));
     // }
+
+    public function uploadImageAboutUs($aboutUsId,$request)
+    {
+        if($request->hasfile('path_image'))
+         {
+            foreach($request->file('path_image') as $file)
+            {
+                //File Upload
+                $filename = $this->uploadFile($file,'img/about');
+
+                aboutUsGallery::create([
+                    "about_us_id" => $aboutUsId,
+                    "path_image" => $filename
+                ]);
+            }
+         }
+    }
+
+    public function deleteImageAboutUs($aboutUsId)
+    {
+        $image = aboutUsGallery::where("about_us_id",$aboutUsId)->get();
+        foreach ($image as $key => $value) {
+            $this->deleteFile($value["path_image"],"img/about");
+        }
+        aboutUsGallery::where("about_us_id",$aboutUsId)->delete();
+    }
+
 }

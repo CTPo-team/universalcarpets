@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\aboutUsGallery;
 
 /**
  * Class aboutUsPage
@@ -79,5 +80,8 @@ class aboutUsPage extends Model
         'deleted_at' => 'nullable'
     ];
 
-    
+    public function aboutUsGallery()
+    {
+        return $this->hasMany(\App\Models\aboutUsGallery::class, 'about_us_id', 'id');
+    }
 }

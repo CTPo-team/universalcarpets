@@ -1,7 +1,7 @@
 <!-- Title Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
 </div>
 
 <!-- Desc Field -->

@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\productCategory;
+use App\Models\productBrand;
 use App\Models\imageProduct;
 use Flash;
 use Response;
@@ -34,7 +35,7 @@ class productController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $products = product::with("productCategory")->orderByDesc('updated_at')->get();
+        $products = product::with(["productCategory","productBrand"])->orderByDesc('updated_at')->get();
 
         return view('products.index')
             ->with('products', $products);
@@ -48,6 +49,7 @@ class productController extends AppBaseController
     public function create()
     {   
         $this->data["productCategory"] = productCategory::pluck("title","id");
+        $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.create',$this->data);
     }
 
@@ -84,7 +86,7 @@ class productController extends AppBaseController
      */
     public function show($id)
     {
-        $product = product::where("id",$id)->with(["imageProduct","productCategory"])->first();
+        $product = product::where("id",$id)->with(["imageProduct","productCategory","productBrand"])->first();
 
         if (empty($product)) {
             Flash::error('Product not found');
@@ -112,7 +114,8 @@ class productController extends AppBaseController
             return redirect(route('products.index'));
         }
         $this->data["productCategory"] = productCategory::pluck("title","id");
-        return view('products.edit')->with('product', $this->data);
+        $this->data["productBrand"] = productBrand::pluck("title","id");
+        return view('products.edit',$this->data);
     }
 
     /**
@@ -135,6 +138,7 @@ class productController extends AppBaseController
         //Set SEO
         $input = $request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        unset($input["path_image"]);
         $product = $this->productRepository->update($input, $id);
 
         //File Upload

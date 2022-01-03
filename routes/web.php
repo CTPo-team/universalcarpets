@@ -39,12 +39,14 @@ Route::group(['middleware' => ['role:superadmin|admin|user']], function () {
 
     Route::resource('productCategories', App\Http\Controllers\productCategoryController::class);
 
+    Route::resource('contactUsPages', App\Http\Controllers\contactUsPageController::class);
+
+    Route::resource('productBrands', App\Http\Controllers\productBrandController::class);
 
     Route::resource('products', App\Http\Controllers\productController::class);
 
 
     Route::resource('blogCategories', App\Http\Controllers\blogCategoryController::class);
-
 
     Route::resource('blogs', App\Http\Controllers\blogController::class);
 

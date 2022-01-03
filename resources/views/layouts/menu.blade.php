@@ -2,6 +2,10 @@
     <a class="nav-link" href="{{ route('aboutUsPages.index') }}"><i class="fas fa-book"></i><span>About Us</span></a>
 </li>
 
+<li class="side-menus {{ Request::is('contactUsPages*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('contactUsPages.index') }}"><i class="fas fa-phone"></i><span>Contact Us</span></a>
+</li>
+
 <li class="side-menus {{ Request::is('bannerHomepages*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('bannerHomepages.index') }}"><i class="fas fa-images"></i><span>Banner Homepage</span></a>
 </li>
@@ -11,6 +15,9 @@
     <ul class="dropdown-menu">
         <li class="side-menus {{ Request::is('productCategories*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('productCategories.index') }}"><i class="fas fa-bars"></i><span>Product Category</span></a>
+        </li>
+        <li class="side-menus {{ Request::is('productBrands*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('productBrands.index') }}"><i class="fas fa-bars"></i><span>Product Brand</span></a>
         </li>
         <li class="side-menus {{ Request::is('products*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('products.index') }}"><i class="fas fa-bars"></i><span>Product</span></a>
