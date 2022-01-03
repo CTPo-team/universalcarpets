@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Product Category</th>
+                <th>Product Brand</th>
                 <th>Title</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -12,6 +13,7 @@
         @foreach($products as $product)
             <tr>
                        <td>{{ $product->productCategory->title ?? ""}}</td>
+                       <td>{{ $product->productBrand->title ?? ""}}</td>
                         <td>{{ $product->title }}</td>
                         <td>{!! $product->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</td>
                        <td class=" text-center">

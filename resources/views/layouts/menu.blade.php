@@ -2,6 +2,10 @@
     <a class="nav-link" href="{{ route('aboutUsPages.index') }}"><i class="fas fa-book"></i><span>About Us</span></a>
 </li>
 
+<li class="side-menus {{ Request::is('contactUsPages*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('contactUsPages.index') }}"><i class="fas fa-phone"></i><span>Contact Us</span></a>
+</li>
+
 <li class="side-menus {{ Request::is('bannerHomepages*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('bannerHomepages.index') }}"><i class="fas fa-images"></i><span>Banner Homepage</span></a>
 </li>
@@ -11,6 +15,9 @@
     <ul class="dropdown-menu">
         <li class="side-menus {{ Request::is('productCategories*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('productCategories.index') }}"><i class="fas fa-bars"></i><span>Product Category</span></a>
+        </li>
+        <li class="side-menus {{ Request::is('productBrands*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('productBrands.index') }}"><i class="fas fa-bars"></i><span>Product Brand</span></a>
         </li>
         <li class="side-menus {{ Request::is('products*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('products.index') }}"><i class="fas fa-bars"></i><span>Product</span></a>
@@ -29,18 +36,22 @@
         </li>
     </ul>
 </li>
+@role('superadmin')
+    <li class="dropdown {{ Request::is('roles*') ||  Request::is('users*') ? 'active' : '' }}">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Auth</span></a>
+        <ul class="dropdown-menu">
+            <li class="side-menus {{ Request::is('roles*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('roles.index') }}"><i class="fas fa-bars"></i><span>Roles</span></a>
+            </li>
 
-<li class="dropdown {{ Request::is('roles*') ||  Request::is('users*') ? 'active' : '' }}">
-    <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Auth</span></a>
-    <ul class="dropdown-menu">
-        <li class="side-menus {{ Request::is('roles*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('roles.index') }}"><i class="fas fa-bars"></i><span>Roles</span></a>
-        </li>
+            <li class="side-menus {{ Request::is('users*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-bars"></i><span>Users</span></a>
+            </li>
+        </ul>
+    </li>
+@endrole
 
-        <li class="side-menus {{ Request::is('users*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-bars"></i><span>Users</span></a>
-        </li>
-    </ul>
+<li class="side-menus {{ Request::is('settingWebs*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('settingWebs.index') }}"><i class="fas fa-cog"></i><span>Setting Web</span></a>
 </li>
-
 

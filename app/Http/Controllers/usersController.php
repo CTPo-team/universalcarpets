@@ -11,6 +11,8 @@ use Flash;
 use Response;
 use Illuminate\Support\Facades\Hash;
 use App\Models\roles;
+use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class usersController extends AppBaseController
 {
@@ -61,7 +63,7 @@ class usersController extends AppBaseController
         //Set Paswword
         $input["password"] = Hash::make($input["password"]);
         $users = $this->usersRepository->create($input);
-
+        $this->assignRole($users->id,$users->roles_name);
         Flash::success('Users saved successfully.');
 
         return redirect(route('users.index'));
@@ -126,6 +128,7 @@ class usersController extends AppBaseController
             return redirect(route('users.index'));
         }
         $input = $request->all();
+        $this->assignRole($users->id,$request->roles_name);
         //Set Paswword
         $input["password"] = Hash::make($input["password"]);
         $users = $this->usersRepository->update($input, $id);
@@ -159,5 +162,11 @@ class usersController extends AppBaseController
         Flash::success('Users deleted successfully.');
 
         return redirect(route('users.index'));
+    }
+
+    public function assignRole($id,$role){
+        $users = User::find($id);
+        $users->roles()->detach();
+        $users->assignRole($role);
     }
 }

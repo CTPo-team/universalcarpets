@@ -7,36 +7,24 @@
 <!-- Desc Field -->
 <div class="form-group">
     {!! Form::label('desc', 'Desc:') !!}
-    <p>{{ $aboutUsPage->desc }}</p>
+    <p>{!! $aboutUsPage->desc !!}</p>
 </div>
 
 <!-- Short Desc Field -->
 <div class="form-group">
     {!! Form::label('short_desc', 'Short Desc:') !!}
-    <p>{{ $aboutUsPage->short_desc }}</p>
+    <p>{!! $aboutUsPage->short_desc !!}</p>
 </div>
 
-<!-- Seo Desc Field -->
+@if($aboutUsPage->id == 3)
+<!-- Path Image Field -->
 <div class="form-group">
-    {!! Form::label('seo_desc', 'Seo Desc:') !!}
-    <p>{{ $aboutUsPage->seo_desc }}</p>
+    {!! Form::label('path_image', 'Image:') !!}
+    <div class="gallery gallery-md">
+        @foreach ($aboutUsPage->aboutUsGallery as $key => $img)
+            <div class="gallery-item" data-image="{{asset('img/about/'.$img->path_image)}}" data-title="Image {{$key}}" href="{{asset('img/about/'.$img->path_image)}}" title="Image {{$key}}" style="background-image: url({{asset('img/about/'.$img->path_image)}});"></div>
+        @endforeach
+    </div>
 </div>
-
-<!-- Seo Category Field -->
-<div class="form-group">
-    {!! Form::label('seo_category', 'Seo Category:') !!}
-    <p>{{ $aboutUsPage->seo_category }}</p>
-</div>
-
-<!-- Seo Keyword Field -->
-<div class="form-group">
-    {!! Form::label('seo_keyword', 'Seo Keyword:') !!}
-    <p>{{ $aboutUsPage->seo_keyword }}</p>
-</div>
-
-<!-- Seo Url Field -->
-<div class="form-group">
-    {!! Form::label('seo_url', 'Seo Url:') !!}
-    <p>{{ $aboutUsPage->seo_url }}</p>
-</div>
+@endif
 

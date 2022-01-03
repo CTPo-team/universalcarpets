@@ -4,6 +4,13 @@
     <p>{{ $product->productCategory->title }}</p>
 </div>
 
+<!-- Product Brand Id Field -->
+<div class="form-group">
+    {!! Form::label('product_brand_id', 'Product Brand:') !!}
+    <p>{{ $product->productBrand->title }}</p>
+</div>
+
+
 <!-- Title Field -->
 <div class="form-group">
     {!! Form::label('title', 'Title:') !!}

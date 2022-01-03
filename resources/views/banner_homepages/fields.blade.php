@@ -3,13 +3,13 @@
 <!-- Title Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
 </div>
  
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('path_image', 'Image:') !!}
-    <input id="path_image" type="file" class="form-control fileinput-image"  name="path_image" data-preview-file-type="text">
+    <input id="path_image" type="file" class="form-control fileinput-image"  name="path_image" data-preview-file-type="text" required>
 </div>
 
 <!-- Desc Field -->

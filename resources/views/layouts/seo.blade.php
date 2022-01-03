@@ -1,4 +1,4 @@
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-12" style="margin-top:5%">
     <div class="card">
         <div class="card-header">
             <div class="section-title">SEO

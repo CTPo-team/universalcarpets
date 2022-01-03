@@ -17,7 +17,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-body ">
-                                    {!! Form::model($aboutUsPage, ['route' => ['aboutUsPages.update', $aboutUsPage->id], 'method' => 'patch']) !!}
+                                    {!! Form::model($aboutUsPage, ['route' => ['aboutUsPages.update', $aboutUsPage->id], 'method' => 'patch','enctype' => 'multipart/form-data']) !!}
                                         <div class="row">
                                             @include('about_us_pages.fields')
                                         </div>

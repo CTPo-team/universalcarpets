@@ -13,7 +13,7 @@
 <!-- Roles Field -->
 <div class="form-group">
     {!! Form::label('roles', 'Roles:') !!}
-    <p>{{ $users->roles }}</p>
+    <p>{{ $users->roles_name }}</p>
 </div>
 
 

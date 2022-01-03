@@ -17,7 +17,7 @@
                    <div class="col-lg-12">
                        <div class="card">
                            <div class="card-body ">
-                                {!! Form::open(['route' => 'aboutUsPages.store']) !!}
+                                {!! Form::open(['route' => 'aboutUsPages.store','enctype' => 'multipart/form-data']) !!}
                                     <div class="row">
                                         @include('about_us_pages.fields')
                                     </div>

@@ -40,6 +40,7 @@ class product extends Model
 
     public $fillable = [
         'product_category_id',
+        'product_brand_id',
         'title',
         'path_image',
         'desc',
@@ -58,6 +59,7 @@ class product extends Model
     protected $casts = [
         'id' => 'integer',
         'product_category_id' => 'integer',
+        'product_brand_id' => 'integer',
         'title' => 'string',
         'desc' => 'string',
         'status' => 'boolean',
@@ -74,6 +76,7 @@ class product extends Model
      */
     public static $rules = [
         'product_category_id' => 'required',
+        'product_brand_id' => 'required',
         'title' => 'required|string|max:255',
         'path_image.*' => 'nullable|max:2048',
         'desc' => 'nullable|string',
@@ -95,8 +98,18 @@ class product extends Model
         return $this->belongsTo(\App\Models\productCategory::class, 'product_category_id');
     }
 
+    public function productBrand()
+    {
+        return $this->belongsTo(\App\Models\productBrand::class, 'product_brand_id');
+    }
+
     public function imageProduct()
     {
         return $this->hasMany(\App\Models\imageProduct::class, 'product_id', 'id');
+    }
+
+    public function imageProductOne()
+    {
+        return $this->belongsTo(\App\Models\imageProduct::class, 'id')->oldest();
     }
 }

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateaboutUsPageRequest;
 use App\Http\Requests\UpdateaboutUsPageRequest;
 use App\Repositories\aboutUsPageRepository;
+use App\Models\aboutUsPage;
+use App\Models\aboutUsGallery;
 use App\Http\Controllers\AppBaseController;
+use Database\Factories\aboutUsPageFactory;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -14,6 +17,8 @@ class aboutUsPageController extends AppBaseController
 {
     /** @var  aboutUsPageRepository */
     private $aboutUsPageRepository;
+
+    const seo_category = 'about_us';
 
     public function __construct(aboutUsPageRepository $aboutUsPageRepo)
     {
@@ -40,10 +45,10 @@ class aboutUsPageController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
-        return view('about_us_pages.create');
-    }
+    // public function create()
+    // {
+    //     return view('about_us_pages.create');
+    // }
 
     /**
      * Store a newly created aboutUsPage in storage.
@@ -52,16 +57,19 @@ class aboutUsPageController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateaboutUsPageRequest $request)
-    {
-        $input = $request->all();
+    // public function store(CreateaboutUsPageRequest $request)
+    // {
+    //     $input = $request->all();
 
-        $aboutUsPage = $this->aboutUsPageRepository->create($input);
+    //     //Set SEO
+    //     $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
 
-        Flash::success('About Us saved successfully.');
+    //     $aboutUsPage = $this->aboutUsPageRepository->create($input);
 
-        return redirect(route('aboutUsPages.index'));
-    }
+    //     Flash::success('About Us saved successfully.');
+
+    //     return redirect(route('aboutUsPages.index'));
+    // }
 
     /**
      * Display the specified aboutUsPage.
@@ -72,7 +80,7 @@ class aboutUsPageController extends AppBaseController
      */
     public function show($id)
     {
-        $aboutUsPage = $this->aboutUsPageRepository->find($id);
+        $aboutUsPage = aboutUsPage::where("id",$id)->with("aboutUsGallery")->first();
 
         if (empty($aboutUsPage)) {
             Flash::error('About Us not found');
@@ -121,7 +129,20 @@ class aboutUsPageController extends AppBaseController
             return redirect(route('aboutUsPages.index'));
         }
 
-        $aboutUsPage = $this->aboutUsPageRepository->update($request->all(), $id);
+        //Set SEO
+        $input = $request->all();
+        $input = $this->setSeo($input,$input["desc"],$aboutUsPage->title,self::seo_category,null);
+        unset($input["path_image"]);
+        $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
+
+         //File Upload
+         if($request->hasFile('path_image')){ 
+            //delete image
+            $this->deleteImageAboutUs($id);
+
+            //upload image
+            $this->uploadImageAboutUs($id,$request);
+        }
 
         Flash::success('About Us updated successfully.');
 
@@ -137,20 +158,47 @@ class aboutUsPageController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    // public function destroy($id)
+    // {
+    //     $aboutUsPage = $this->aboutUsPageRepository->find($id);
+
+    //     if (empty($aboutUsPage)) {
+    //         Flash::error('About Us not found');
+
+    //         return redirect(route('aboutUsPages.index'));
+    //     }
+
+    //     $this->aboutUsPageRepository->delete($id);
+
+    //     Flash::success('About Us deleted successfully.');
+
+    //     return redirect(route('aboutUsPages.index'));
+    // }
+
+    public function uploadImageAboutUs($aboutUsId,$request)
     {
-        $aboutUsPage = $this->aboutUsPageRepository->find($id);
+        if($request->hasfile('path_image'))
+         {
+            foreach($request->file('path_image') as $file)
+            {
+                //File Upload
+                $filename = $this->uploadFile($file,'img/about');
 
-        if (empty($aboutUsPage)) {
-            Flash::error('About Us not found');
-
-            return redirect(route('aboutUsPages.index'));
-        }
-
-        $this->aboutUsPageRepository->delete($id);
-
-        Flash::success('About Us deleted successfully.');
-
-        return redirect(route('aboutUsPages.index'));
+                aboutUsGallery::create([
+                    "about_us_id" => $aboutUsId,
+                    "path_image" => $filename
+                ]);
+            }
+         }
     }
+
+    public function deleteImageAboutUs($aboutUsId)
+    {
+        $image = aboutUsGallery::where("about_us_id",$aboutUsId)->get();
+        foreach ($image as $key => $value) {
+            $this->deleteFile($value["path_image"],"img/about");
+        }
+        aboutUsGallery::where("about_us_id",$aboutUsId)->delete();
+    }
+
 }

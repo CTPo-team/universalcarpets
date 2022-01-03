@@ -3,11 +3,6 @@
         <thead>
             <tr>
                 <th>Title</th>
-        <th>Desc</th>
-        <th>Seo Desc</th>
-        <th>Seo Category</th>
-        <th>Seo Keyword</th>
-        <th>Seo Url</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -15,11 +10,6 @@
         @foreach($blogCategories as $blogCategory)
             <tr>
                        <td>{{ $blogCategory->title }}</td>
-            <td>{{ $blogCategory->desc }}</td>
-            <td>{{ $blogCategory->seo_desc }}</td>
-            <td>{{ $blogCategory->seo_category }}</td>
-            <td>{{ $blogCategory->seo_keyword }}</td>
-            <td>{{ $blogCategory->seo_url }}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['blogCategories.destroy', $blogCategory->id], 'method' => 'delete']) !!}
                            <div class='btn-group'>

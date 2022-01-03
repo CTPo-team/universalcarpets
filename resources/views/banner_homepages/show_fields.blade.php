@@ -1,7 +1,9 @@
 <!-- Path Image Field -->
 <div class="form-group">
     {!! Form::label('path_image', 'Path Image:') !!}
-    <p><img src="{{asset('img/banner/'.$bannerHomepage->path_image)}}" style="max-width:400px"></p>
+    <div class="gallery gallery-md">
+        <div class="gallery-item" data-image="{{asset('img/banner/'.$bannerHomepage->path_image)}}" data-title="Image 1" href="{{asset('img/banner/'.$bannerHomepage->path_image)}}" title="Image 1" style="background-image: url({{asset('img/banner/'.$bannerHomepage->path_image)}});"></div>
+    </div>
 </div>
 
 <!-- Title Field -->

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateblogRequest;
 use App\Http\Requests\UpdateblogRequest;
 use App\Repositories\blogRepository;
+use App\Models\blog;
+use App\Models\blogCategory;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -14,6 +16,8 @@ class blogController extends AppBaseController
 {
     /** @var  blogRepository */
     private $blogRepository;
+
+    const seo_category = 'blog';
 
     public function __construct(blogRepository $blogRepo)
     {
@@ -29,7 +33,7 @@ class blogController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $blogs = $this->blogRepository->all();
+        $blogs =blog::with("blogCategory")->orderByDesc("created_at")->get();
 
         return view('blogs.index')
             ->with('blogs', $blogs);
@@ -42,7 +46,8 @@ class blogController extends AppBaseController
      */
     public function create()
     {
-        return view('blogs.create');
+        $this->data["blogCategory"] = blogCategory::pluck("title","id");
+        return view('blogs.create',$this->data);
     }
 
     /**
@@ -55,6 +60,11 @@ class blogController extends AppBaseController
     public function store(CreateblogRequest $request)
     {
         $input = $request->all();
+
+        $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
+
+        //File Upload
+        $input["path_image"] = $this->uploadFile($request->path_image,'img/blog');
 
         $blog = $this->blogRepository->create($input);
 
@@ -72,7 +82,7 @@ class blogController extends AppBaseController
      */
     public function show($id)
     {
-        $blog = $this->blogRepository->find($id);
+        $blog = blog::with("blogCategory")->where("id",$id)->first();
 
         if (empty($blog)) {
             Flash::error('Blog not found');
@@ -92,15 +102,15 @@ class blogController extends AppBaseController
      */
     public function edit($id)
     {
-        $blog = $this->blogRepository->find($id);
+        $this->data["blog"] = $this->blogRepository->find($id);
 
-        if (empty($blog)) {
+        if (empty($this->data["blog"])) {
             Flash::error('Blog not found');
 
             return redirect(route('blogs.index'));
         }
-
-        return view('blogs.edit')->with('blog', $blog);
+        $this->data["blogCategory"] = blogCategory::pluck("title","id");
+        return view('blogs.edit',$this->data);
     }
 
     /**
@@ -121,7 +131,16 @@ class blogController extends AppBaseController
             return redirect(route('blogs.index'));
         }
 
-        $blog = $this->blogRepository->update($request->all(), $id);
+        $input=$request->all();
+        $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
+
+        //File Upload
+        if($request->hasFile('path_image')){ 
+            $this->deleteFile($blog->path_image,"img/blog");
+            $input["path_image"] = $this->uploadFile($request->path_image,'img/blog');
+        }
+
+        $blog = $this->blogRepository->update($input, $id);
 
         Flash::success('Blog updated successfully.');
 

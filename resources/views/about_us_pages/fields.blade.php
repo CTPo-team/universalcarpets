@@ -1,44 +1,30 @@
 <!-- Title Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'disabled' => 'disabled']) !!}
 </div>
 
 <!-- Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('desc', 'Desc:') !!}
-    {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('desc', null, ['class' => 'form-control summernote', 'required' => 'required']) !!}
 </div>
 
 <!-- Short Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('short_desc', 'Short Desc:') !!}
-    {!! Form::textarea('short_desc', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('short_desc', null, ['class' => 'form-control summernote-simple']) !!}
 </div>
 
-<!-- Seo Desc Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_desc', 'Seo Desc:') !!}
-    {!! Form::textarea('seo_desc', null, ['class' => 'form-control']) !!}
-</div>
+@if($aboutUsPage->id == 3)
+    <!-- Path Image Field -->
+    <div class="form-group col-sm-12 col-lg-12">
+        {!! Form::label('path_image', 'Image:') !!}
+        <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" required multiple>
+    </div>
+@endif
 
-<!-- Seo Category Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_category', 'Seo Category:') !!}
-    {!! Form::textarea('seo_category', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Seo Keyword Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_keyword', 'Seo Keyword:') !!}
-    {!! Form::textarea('seo_keyword', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Seo Url Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seo_url', 'Seo Url:') !!}
-    {!! Form::textarea('seo_url', null, ['class' => 'form-control']) !!}
-</div>
+@include('layouts.seo')
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

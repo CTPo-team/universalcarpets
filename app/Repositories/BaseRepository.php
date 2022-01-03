@@ -103,6 +103,7 @@ abstract class BaseRepository
             $query->limit($limit);
         }
 
+        $query->orderByDesc("created_at");
         return $query;
     }
 
