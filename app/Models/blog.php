@@ -97,6 +97,6 @@ class blog extends Model
      **/
     public function blogCategory()
     {
-        return $this->belongsTo(\App\Models\BlogCategory::class, 'blog_category_id');
+        return $this->belongsTo(\App\Models\blogCategory::class, 'blog_category_id');
     }
 }
