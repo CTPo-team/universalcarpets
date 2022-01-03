@@ -14,8 +14,8 @@
     }
     @media only screen and (max-width: 768px) {
         .ul-contact{
-            padding-left: 1.5em;
-            padding-right: 1.5em;
+            padding-left: 0em;
+            padding-right: 0em;
         }
 
     }
