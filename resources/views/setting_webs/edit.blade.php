@@ -13,6 +13,11 @@
   <div class="content">
               @include('stisla-templates::common.errors')
               <div class="section-body">
+                <div class="row">
+                    <div class="col-12">
+                        @include('flash::message')
+                    </div>
+                </div>
                  <div class="row">
                      <div class="col-lg-12">
                          <div class="card">
