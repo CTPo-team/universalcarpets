@@ -51,6 +51,65 @@
         color:black !important;
     }
 
+    .content .content-overlay {
+        background: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        height: 99%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s
+    }
+
+    .content:hover .content-overlay {
+        opacity: 1
+    }
+
+    .content-details {
+        position: absolute;
+        text-align: center;
+        padding-left: 1em;
+        padding-right: 1em;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        -moz-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s
+    }
+
+    .content:hover .content-details {
+        top: 50%;
+        left: 50%;
+        opacity: 1
+    }
+
+    .content-details h3 {
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5em;
+        text-transform: uppercase
+    }
+
+    .content-details p {
+        color: #fff;
+        font-size: 36px;
+    }
+
+    .fadeIn-bottom {
+        top: 80%
+    }
+
     @media only screen and (max-width: 600px) {
         .sectionAbout, .sectionCollection, .sectionContact{
             padding-top: 0px !important;
@@ -321,9 +380,14 @@
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
                             @foreach ($product as $newcol)
-                            <div class="col-md-3 col-12" style="padding-right:3px;padding-left:3px">
+                            <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
+                            <div class="content-overlay"></div>
+
                                 <img width="100%" height="305px" class="tabnewcol"
                                     src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}">
+                                <div class="content-details fadeIn-bottom">
+                                <p class="content-text"> {!! $newcol->title !!}</p>
+                                </div>
                             </div>
                             @endforeach
                         </div>
