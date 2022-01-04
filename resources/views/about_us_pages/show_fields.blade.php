@@ -4,15 +4,17 @@
     <p>{{ $aboutUsPage->title }}</p>
 </div>
 
+@if($aboutUsPage->id == 1 || $aboutUsPage->id == 2)
 <!-- Desc Field -->
 <div class="form-group">
-    {!! Form::label('desc', 'Desc:') !!}
+    {!! Form::label('desc', 'Description:') !!}
     <p>{!! $aboutUsPage->desc !!}</p>
 </div>
+@endif
 
 <!-- Short Desc Field -->
 <div class="form-group">
-    {!! Form::label('short_desc', 'Short Desc:') !!}
+    {!! Form::label('short_desc', 'Short Description:') !!}
     <p>{!! $aboutUsPage->short_desc !!}</p>
 </div>
 
@@ -28,3 +30,10 @@
 </div>
 @endif
 
+@if($aboutUsPage->id == 1)
+<!-- Our Strategy Desc Field -->
+<div class="form-group">
+    {!! Form::label('our_strategy_desc', 'Our Strategy Description:') !!}
+    <p>{!! $aboutUsPage->our_strategy_desc !!}</p>
+</div>
+@endif

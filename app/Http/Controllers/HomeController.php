@@ -39,6 +39,15 @@ class HomeController extends Controller
         return view('frontend.home',$this->data);
     }
 
+    public function aboutUs()
+    {
+        $this->data["ourStory"] = aboutUsPage::where("title",'OUR STORY')->first();
+        $this->data["network"] = aboutUsPage::where("title",'NETWORK')->first();
+        $this->data["technologies"] = aboutUsPage::where("title",'TECHNOLOGIES')->with("aboutUsGallery")->first();
+        $this->data["settingWeb"] = settingWeb::first();
+        return view('frontend.aboutus',$this->data);
+    }
+
     public function sendContactUs(Request $request)
     {   
         $input = $request->all();

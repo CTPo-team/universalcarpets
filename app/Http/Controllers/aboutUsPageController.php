@@ -131,7 +131,7 @@ class aboutUsPageController extends AppBaseController
 
         //Set SEO
         $input = $request->all();
-        $input = $this->setSeo($input,$input["desc"],$aboutUsPage->title,self::seo_category,null);
+        $input = $this->setSeo($input,$input["short_desc"],$aboutUsPage->title,self::seo_category,null);
         unset($input["path_image"]);
         $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
 

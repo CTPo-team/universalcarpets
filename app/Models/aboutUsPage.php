@@ -39,6 +39,7 @@ class aboutUsPage extends Model
     public $fillable = [
         'title',
         'desc',
+        'our_strategy_desc',
         'short_desc',
         'seo_desc',
         'seo_category',
@@ -55,6 +56,7 @@ class aboutUsPage extends Model
         'id' => 'integer',
         'title' => 'string',
         'desc' => 'string',
+        'our_strategy_desc' => 'string',
         'short_desc' => 'string',
         'seo_desc' => 'string',
         'seo_category' => 'string',
@@ -71,6 +73,7 @@ class aboutUsPage extends Model
         'title' => 'nullable|string|max:255',
         'desc' => 'nullable|string',
         'short_desc' => 'nullable|string',
+        'our_strategy_desc' => 'nullable|string',
         'seo_desc' => 'nullable|string',
         'seo_category' => 'nullable|string',
         'seo_keyword' => 'nullable|string',
