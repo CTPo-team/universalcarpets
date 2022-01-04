@@ -48,5 +48,10 @@
 <script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
-
+<script>
+           $(document).scroll(function () {
+            var $nav = $(".sticky-top");
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            });
+</script>
 </html>

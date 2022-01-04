@@ -42,6 +42,15 @@
         background: transparent;
     }
 
+    .sticky-top.scrolled {
+        background-color: #fff !important;
+        transition: background-color 200ms linear;
+    }
+
+    .sticky-top.scrolled .navbar-brand ,.sticky-top.scrolled .nav-link, .sticky-top.scrolled a.nav-link:active {
+        color:black !important;
+    }
+
     @media only screen and (max-width: 600px) {
         .sectionAbout, .sectionCollection, .sectionContact{
             padding-top: 0px !important;
@@ -62,6 +71,14 @@
 
         .fontbantitle{
             font-size:26px !important;
+        }
+
+        .nav-link{
+            color:black !important;
+        }
+
+        .bg-transparent{
+            background:white !important;
         }
     }
 
@@ -90,6 +107,12 @@
         .tulisancontact{
             max-width:100% !important;
         }
+        .nav-link{
+            color:black !important;
+        }
+        .bg-transparent{
+            background:white !important;
+        }
     }
 
     @media only screen and (max-width: 769px) and (max-height: 1025px){    
@@ -116,6 +139,12 @@
         }
         .tulisancontact{
             max-width:100% !important;
+        }
+        .nav-link{
+            color:black !important;
+        }
+        .bg-transparent{
+            background:white !important;
         }
     }
 
@@ -144,12 +173,43 @@
         .tulisancontact{
             max-width:100% !important;
         }
+        .nav-link{
+            color:black !important;
+        }
+        .bg-transparent{
+            background:white !important;
+        }
     }
 </style>
 <!-- end style home -->
 
+<!-- Section Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-transparent">
+<img src="{{asset('img/logo.png')}}" class="img-fluid p-2" width="150px" alt="Responsive image">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav  ml-auto">
+      <li class="nav-item active p-2">
+        <a class="nav-link homelink" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item p-2">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item p-2">
+        <a class="nav-link" href="#">Products</a>
+      </li>
+      <li class="nav-item p-2">
+        <a class="nav-link" href="#">Contacts</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- End Section Navbar -->
+
 <!-- section banner -->
-<div class="sectionBanner">
+<div class="sectionBanner" style="margin-top:-72px">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
         <ol class="carousel-indicators">
@@ -167,7 +227,7 @@
                     </div> -->
                 </div>
                 <div class="carousel-caption text-left">
-                    <div class="row">
+                    <div class="row pt-5">
                         <div class="col-md-8">
                             <p
                             class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
@@ -600,5 +660,5 @@
     </div>
 </div>
 <!-- end contact us -->
-
+ 
 @endsection
