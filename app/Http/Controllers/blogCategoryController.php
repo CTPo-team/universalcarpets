@@ -6,6 +6,7 @@ use App\Http\Requests\CreateblogCategoryRequest;
 use App\Http\Requests\UpdateblogCategoryRequest;
 use App\Repositories\blogCategoryRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\blogCategory;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -59,6 +60,7 @@ class blogCategoryController extends AppBaseController
         $input = $request->all();
         
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $input["slug"] = $this->setSlug($input["title"],(new blogCategory())->getTable());
         $blogCategory = $this->blogCategoryRepository->create($input);
 
         Flash::success('Blog Category saved successfully.');
@@ -126,7 +128,7 @@ class blogCategoryController extends AppBaseController
 
         $input=$request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
-
+        $input["slug"] = $this->setSlug($input["title"],(new blogCategory())->getTable(),$blogCategory->title);
         $blogCategory = $this->blogCategoryRepository->update($input, $id);
 
         Flash::success('Blog Category updated successfully.');

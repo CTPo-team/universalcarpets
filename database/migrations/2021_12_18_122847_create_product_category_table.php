@@ -17,6 +17,7 @@ class CreateProductCategoryTable extends Migration
             $table->id();
             $table->foreignId('product_category_id')->nullable()->constrained('product_category');
             $table->string("title");
+            $table->text("slug")->unique()->nullable();
             $table->longText("desc")->nullable();
             $table->boolean("sub_category")->nullable();
 

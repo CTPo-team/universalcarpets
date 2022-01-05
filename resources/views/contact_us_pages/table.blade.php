@@ -11,7 +11,7 @@
         @foreach($contactUsPages as $contactUsPage)
             <tr>
             <td>{{ $contactUsPage->title }}</td>
-            <td>{{ $contactUsPage->embed_maps_link }}</td>
+            <td>{!! $contactUsPage->embed_maps_link !!}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['contactUsPages.destroy', $contactUsPage->id], 'method' => 'delete']) !!}
                            <div class='btn-group'>

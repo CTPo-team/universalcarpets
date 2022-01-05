@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 /**
  * @SWG\Swagger(
@@ -63,5 +65,29 @@ class AppBaseController extends Controller
         $input["seo_category"] = $category;
         $input["seo_url"] = url()->to($path);
         return $input;
+    }
+    public function setSlug($text,$table,$old = ""){
+        if(isset($text) && !empty($text)){
+            $statusSame = false;
+
+            if(!empty($old)){
+                if($old==$text){
+                    $statusSame = true;
+                }
+            }
+
+            if(!$statusSame){
+                $increment = "";
+                $text=Str::slug($text, '-');     
+                $slugs = DB::table($table)->where("slug","like","%".$text."%")->get();
+                $lastId = DB::table($table)->latest()->first()->id;
+                if(count($slugs)>0){
+                    $increment = "-".$lastId+1;
+                }
+                $text=$text.$increment;
+            }
+            
+        }
+        return $text;
     }
 }
