@@ -4,15 +4,17 @@
     {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'disabled' => 'disabled']) !!}
 </div>
 
+@if($aboutUsPage->id == 1 || $aboutUsPage->id == 2)
 <!-- Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('desc', 'Desc:') !!}
+    {!! Form::label('desc', 'Description:') !!}
     {!! Form::textarea('desc', null, ['class' => 'form-control summernote', 'required' => 'required']) !!}
 </div>
+@endif
 
 <!-- Short Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('short_desc', 'Short Desc:') !!}
+    {!! Form::label('short_desc', 'Short Description:') !!}
     {!! Form::textarea('short_desc', null, ['class' => 'form-control summernote-simple']) !!}
 </div>
 
@@ -22,6 +24,14 @@
         {!! Form::label('path_image', 'Image:') !!}
         <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" required multiple>
     </div>
+@endif
+
+@if($aboutUsPage->id == 1)
+<!-- Our Strategy Desc Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('our_strategy_desc', 'Our Strategy Description:') !!}
+    {!! Form::textarea('our_strategy_desc', null, ['class' => 'form-control summernote', 'required' => 'required']) !!}
+</div>
 @endif
 
 @include('layouts.seo')

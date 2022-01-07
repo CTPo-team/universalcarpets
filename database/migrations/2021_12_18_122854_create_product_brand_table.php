@@ -16,6 +16,7 @@ class CreateProductBrandTable extends Migration
         Schema::create('product_brand', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->text("slug")->unique()->nullable();
             $table->timestamps();
         });
     }

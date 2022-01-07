@@ -48,7 +48,8 @@ class product extends Model
         'seo_desc',
         'seo_category',
         'seo_keyword',
-        'seo_url'
+        'seo_url',
+        'slug'
     ];
 
     /**

@@ -16,6 +16,7 @@ class CreateBlogCategoryTable extends Migration
         Schema::create('blog_category', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->text("slug")->unique()->nullable();
             $table->longText("desc")->nullable();
 
             //SEO

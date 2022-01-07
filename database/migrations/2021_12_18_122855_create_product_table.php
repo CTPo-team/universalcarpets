@@ -17,6 +17,7 @@ class CreateProductTable extends Migration
             $table->id();
             $table->foreignId('product_category_id')->constrained('product_category')->restrictOnDelete();
             $table->string("title");
+            $table->text("slug")->unique()->nullable();
             $table->longText("desc")->nullable();
             $table->boolean("status");
 

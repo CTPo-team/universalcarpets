@@ -17,6 +17,7 @@ class CreateBlogTable extends Migration
             $table->id();
             $table->foreignId('blog_category_id')->constrained('blog_category')->restrictOnDelete();
             $table->string("title");
+            $table->text("slug")->unique()->nullable();
             $table->longText("path_image")->nullable();
             $table->longText("desc")->nullable();
             $table->mediumText("short_desc")->nullable();

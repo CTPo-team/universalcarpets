@@ -66,6 +66,7 @@ class productController extends AppBaseController
 
         //Set SEO
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $input["slug"] = $this->setSlug($input["title"],(new product())->getTable());
         unset($input["path_image"]);
         $product = $this->productRepository->create($input);
 
@@ -138,6 +139,7 @@ class productController extends AppBaseController
         //Set SEO
         $input = $request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $input["slug"] = $this->setSlug($input["title"],(new product())->getTable(),$product->title);
         unset($input["path_image"]);
         $product = $this->productRepository->update($input, $id);
 

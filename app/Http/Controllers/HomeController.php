@@ -8,6 +8,7 @@ use App\Models\product;
 use App\Models\blog;
 use App\Models\aboutUsPage;
 use App\Models\settingWeb;
+use App\Models\contactUsPage;
 use Mail;
 use App\Mail\contactMail;
 use Flash;
@@ -37,6 +38,22 @@ class HomeController extends Controller
         $this->data["AboutUs"] = aboutUsPage::where("title",'OUR STORY')->first();
         $this->data["settingWeb"] = settingWeb::first();
         return view('frontend.home',$this->data);
+    }
+
+    public function aboutUs()
+    {
+        $this->data["ourStory"] = aboutUsPage::where("title",'OUR STORY')->first();
+        $this->data["network"] = aboutUsPage::where("title",'NETWORK')->first();
+        $this->data["technologies"] = aboutUsPage::where("title",'TECHNOLOGIES')->with("aboutUsGallery")->first();
+        $this->data["settingWeb"] = settingWeb::first();
+        return view('frontend.aboutus',$this->data);
+    }
+
+    public function contacts()
+    {
+        $this->data["contacts"] = contactUsPage::orderBy("created_at")->get();
+        $this->data["settingWeb"] = settingWeb::first();
+        return view('frontend.contacts',$this->data);
     }
 
     public function sendContactUs(Request $request)

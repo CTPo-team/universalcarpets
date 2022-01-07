@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateproductBrandRequest;
 use App\Repositories\productBrandRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\productBrand;
 use Flash;
 use Response;
 
@@ -56,6 +57,7 @@ class productBrandController extends AppBaseController
     {
         $input = $request->all();
 
+        $input["slug"] = $this->setSlug($input["title"],(new productBrand())->getTable());
         $productBrand = $this->productBrandRepository->create($input);
 
         Flash::success('Product Brand saved successfully.');
@@ -120,8 +122,9 @@ class productBrandController extends AppBaseController
 
             return redirect(route('productBrands.index'));
         }
-
-        $productBrand = $this->productBrandRepository->update($request->all(), $id);
+        $input = $request->all();
+        $input["slug"] = $this->setSlug($input["title"],(new productBrand())->getTable(),$productBrand->title);
+        $productBrand = $this->productBrandRepository->update($input, $id);
 
         Flash::success('Product Brand updated successfully.');
 
