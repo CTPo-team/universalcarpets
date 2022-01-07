@@ -22,6 +22,7 @@ class CreateBlogTable extends Migration
             $table->longText("desc")->nullable();
             $table->mediumText("short_desc")->nullable();
             $table->boolean("status");
+            $table->bigInteger("view_count")->default(0);
 
             //SEO
             $table->longText("seo_desc")->nullable();

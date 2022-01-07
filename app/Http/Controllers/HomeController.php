@@ -12,6 +12,7 @@ use App\Models\contactUsPage;
 use Mail;
 use App\Mail\contactMail;
 use Flash;
+use Response;
 
 class HomeController extends Controller
 {
@@ -68,5 +69,42 @@ class HomeController extends Controller
         }
         Flash::success('We Have Received Your Message, Thank You.');
         return back();
+    }
+
+    public function blog()
+    {
+        $this->data["new"] = blog::orderByDesc("created_at")->with("blogCategory")->first();
+        $this->data["mostViewed"] = blog::orderByDesc("view_count")->with("blogCategory")->limit(3)->get();
+        $this->data["settingWeb"] = settingWeb::first();
+        return view('frontend.blog',$this->data);
+    }
+
+    public function olderBlog(Request $request)
+    {
+        $this->data["new"] = blog::orderByDesc("created_at")->with("blogCategory")->first();
+        if(empty($this->data["new"])){
+            return Response::json([], 400);
+        }
+        $data = blog::where("id","!=",$this->data["new"]->id)->orderByDesc("created_at")->paginate(3);    
+        return Response::json($data, 200);
+    }
+    
+    public function detailBlog($slug)
+    {
+        if(empty(!$slug)){
+            $blog = blog::where([["slug","=",$slug],["status","=",1]]);
+            $this->data["blog"] = $blog->with("blogCategory")->first();
+
+            if(!$this->data["blog"]){
+                return abort(404);
+            }
+            
+            $blog->increment("view_count",1);
+            $this->data["settingWeb"] = settingWeb::first();
+            $this->data["relatedBlog"] = blog::where([['blog_category_id',"=",$this->data["blog"]->blog_category_id],['id','!=',$this->data["blog"]->id]])->orderByDesc("created_at")->limit(3)->get();
+            return view('frontend.detail_blog',$this->data);
+        }
+
+        return abort(404);
     }
 }

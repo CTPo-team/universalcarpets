@@ -85,6 +85,8 @@ class AppBaseController extends Controller
                     $increment = "-".$lastId+1;
                 }
                 $text=$text.$increment;
+            }else{
+                $text = null;
             }
             
         }

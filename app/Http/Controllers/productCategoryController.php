@@ -128,7 +128,11 @@ class productCategoryController extends AppBaseController
 
         $input=$request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
-        $input["slug"] = $this->setSlug($input["title"],(new productCategory())->getTable(),$productCategory->title);
+        
+        if(!empty($slug = $this->setSlug($input["title"],(new productCategory())->getTable(),$productCategory->title))){
+            $input["slug"] = $slug;
+        }
+        
         $productCategory = $this->productCategoryRepository->update($input, $id);
 
         Flash::success('Product Category updated successfully.');

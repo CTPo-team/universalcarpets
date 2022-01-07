@@ -128,7 +128,12 @@ class blogCategoryController extends AppBaseController
 
         $input=$request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
-        $input["slug"] = $this->setSlug($input["title"],(new blogCategory())->getTable(),$blogCategory->title);
+
+        if(!empty($slug = $this->setSlug($input["title"],(new blogCategory())->getTable(),$blogCategory->title))){
+            $input["slug"] = $slug;
+        }
+
+        
         $blogCategory = $this->blogCategoryRepository->update($input, $id);
 
         Flash::success('Blog Category updated successfully.');

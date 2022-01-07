@@ -337,7 +337,7 @@
                                             </p>
                                         </diV>
                                         <div class="col-md-12">
-                                            {!! $AboutUs->short_desc !!}
+                                            {!! strip_tags($AboutUs->short_desc) !!}
                                         </div>
 
                                     </div>
@@ -499,7 +499,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[0]->title !!}</h5>
                                                         <div class="card-text texttabblog" style="font-size:14px">
-                                                            {!! $blog[0]->desc !!}</div>
+                                                        {!! strlen(strip_tags($blog[0]->desc)) > 200 ? substr(strip_tags($blog[0]->desc),0,200).'...' : strip_tags($blog[0]->desc) !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -523,7 +523,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[1]->title !!}</h5>
                                                         <div class="card-text texttabblog" style="font-size:14px">
-                                                            {!! $blog[1]->desc !!}</div>
+                                                            {!! strlen(strip_tags($blog[1]->desc)) > 200 ? substr(strip_tags($blog[1]->desc),0,200).'...' : strip_tags($blog[1]->desc) !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -550,7 +550,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[2]->title !!}</h5>
                                                         <p class="card-text texttabblog" style="font-size:14px">
-                                                            {!! $blog[2]->desc !!}</p>
+                                                            {!! strlen(strip_tags($blog[2]->desc)) > 200 ? substr(strip_tags($blog[2]->desc),0,200).'...' : strip_tags($blog[2]->desc) !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -578,7 +578,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[3]->title !!}</h5>
                                                         <p class="card-text" style="font-size:15px">
-                                                            {!! $blog[3]->desc !!}</p>
+                                                            {!! strlen(strip_tags($blog[3]->desc)) > 200 ? substr(strip_tags($blog[3]->desc),0,200).'...' : strip_tags($blog[3]->desc) !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">

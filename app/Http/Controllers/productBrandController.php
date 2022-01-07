@@ -123,7 +123,11 @@ class productBrandController extends AppBaseController
             return redirect(route('productBrands.index'));
         }
         $input = $request->all();
-        $input["slug"] = $this->setSlug($input["title"],(new productBrand())->getTable(),$productBrand->title);
+
+        if(!empty($slug = $this->setSlug($input["title"],(new productBrand())->getTable(),$productBrand->title))){
+            $input["slug"] = $slug;
+        }
+       
         $productBrand = $this->productBrandRepository->update($input, $id);
 
         Flash::success('Product Brand updated successfully.');
