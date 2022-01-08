@@ -7,6 +7,7 @@
 <!-- Embed Maps Link Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('embed_maps_link', 'Embed Maps URL:') !!}
+    <a href="https://extension.umaine.edu/plugged-in/technology-marketing-communications/web/tips-for-web-managers/embed-map/" target="_blank"><small>How To Embed Google Map</small></a>
     {!! Form::text('embed_maps_link', null, ['class' => 'form-control', 'required' => 'required']) !!}
 </div>
 

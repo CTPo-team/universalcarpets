@@ -62,7 +62,8 @@ class blogController extends AppBaseController
         $input = $request->all();
 
         $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
-
+        $input["slug"] = $this->setSlug($input["title"],(new blog())->getTable());
+        
         //File Upload
         $input["path_image"] = $this->uploadFile($request->path_image,'img/blog');
 
@@ -134,6 +135,10 @@ class blogController extends AppBaseController
         $input=$request->all();
         $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
 
+        if(!empty($slug = $this->setSlug($input["title"],(new blog())->getTable()))){
+            $input["slug"] = $slug;
+        }
+        
         //File Upload
         if($request->hasFile('path_image')){ 
             $this->deleteFile($blog->path_image,"img/blog");

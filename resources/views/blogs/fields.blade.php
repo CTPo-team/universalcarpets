@@ -13,7 +13,7 @@
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('path_image', 'Banner Image:') !!}
-    <input id="path_image" type="file" class="form-control fileinput-image"  name="path_image" data-preview-file-type="text" required>
+    <input id="path_image" type="file" class="form-control fileinput-image"  name="path_image" data-preview-file-type="text" {{ !isset($blog->id) ? 'required' : ''}}>
 </div>
 
 <!-- Desc Field -->

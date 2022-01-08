@@ -28,7 +28,8 @@ class productBrand extends Model
 
 
     public $fillable = [
-        'title'
+        'title',
+        'slug'
     ];
 
     /**

@@ -17,10 +17,12 @@ class CreateBlogTable extends Migration
             $table->id();
             $table->foreignId('blog_category_id')->constrained('blog_category')->restrictOnDelete();
             $table->string("title");
+            $table->text("slug")->unique()->nullable();
             $table->longText("path_image")->nullable();
             $table->longText("desc")->nullable();
             $table->mediumText("short_desc")->nullable();
             $table->boolean("status");
+            $table->bigInteger("view_count")->default(0);
 
             //SEO
             $table->longText("seo_desc")->nullable();

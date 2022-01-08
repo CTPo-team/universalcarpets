@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateproductCategoryRequest;
 use App\Repositories\productCategoryRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\productCategory;
 use Flash;
 use Response;
 
@@ -59,6 +60,7 @@ class productCategoryController extends AppBaseController
         $input = $request->all();
 
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        $input["slug"] = $this->setSlug($input["title"],(new productCategory())->getTable());
         $productCategory = $this->productCategoryRepository->create($input);
 
         Flash::success('Product Category saved successfully.');
@@ -126,6 +128,10 @@ class productCategoryController extends AppBaseController
 
         $input=$request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
+        
+        if(!empty($slug = $this->setSlug($input["title"],(new productCategory())->getTable(),$productCategory->title))){
+            $input["slug"] = $slug;
+        }
         
         $productCategory = $this->productCategoryRepository->update($input, $id);
 
