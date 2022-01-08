@@ -93,17 +93,24 @@
         opacity: 1
     }
 
-    .content-details h3 {
-        color: #fff;
-        font-weight: 500;
-        letter-spacing: 0.15em;
-        margin-bottom: 0.5em;
-        text-transform: uppercase
+    .content-details p {
+        color: #D5AD6A;
+        font-size: 36px;
+        font-family: 'Playfair Display', serif;
+        font-weight:bold;
+        text-transform: uppercase;
     }
 
-    .content-details p {
-        color: #fff;
-        font-size: 36px;
+    .link-content-text{
+        color: #fff !important;
+        font-size: 13px;
+        cursor:pointer;
+        font-family: 'Playfair Display', serif;
+        font-weight:bold;
+    }
+
+    .link-content-text:hover{
+        text-decoration:none;
     }
 
     .fadeIn-bottom {
@@ -387,6 +394,8 @@
                                     src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}">
                                 <div class="content-details fadeIn-bottom">
                                 <p class="content-text"> {!! $newcol->title !!}</p>
+                                <br>
+                                <a class="link-content-text">View Product</a>
                                 </div>
                             </div>
                             @endforeach
