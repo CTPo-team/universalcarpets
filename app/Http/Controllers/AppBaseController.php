@@ -80,8 +80,8 @@ class AppBaseController extends Controller
                 $increment = "";
                 $text=Str::slug($text, '-');     
                 $slugs = DB::table($table)->where("slug","like","%".$text."%")->get();
-                $lastId = DB::table($table)->latest()->first()->id;
                 if(count($slugs)>0){
+                    $lastId = DB::table($table)->latest()->first()->id;
                     $increment = "-".$lastId+1;
                 }
                 $text=$text.$increment;

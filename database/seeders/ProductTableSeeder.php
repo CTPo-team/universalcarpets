@@ -23,6 +23,7 @@ class ProductTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'product_category_id' => 1,
+                'product_brand_id' => 1,
                 'title' => 'newcol1',
                 'desc' => NULL,
                 'status' => 1,
@@ -38,6 +39,7 @@ class ProductTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'product_category_id' => 1,
+                'product_brand_id' => 1,
                 'title' => 'newcol2',
                 'desc' => NULL,
                 'status' => 1,
@@ -53,6 +55,7 @@ class ProductTableSeeder extends Seeder
             array (
                 'id' => 3,
                 'product_category_id' => 1,
+                'product_brand_id' => 1,
                 'title' => 'newcol2',
                 'desc' => NULL,
                 'status' => 1,
@@ -68,6 +71,7 @@ class ProductTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'product_category_id' => 1,
+                'product_brand_id' => 1,
                 'title' => 'newcol4',
                 'desc' => NULL,
                 'status' => 1,

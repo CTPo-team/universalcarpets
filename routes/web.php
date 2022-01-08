@@ -20,6 +20,7 @@ Route::get('contacts', [App\Http\Controllers\HomeController::class,'contacts']);
 Route::get('blog', [App\Http\Controllers\HomeController::class,'blog']);
 Route::get('detail-blog/{slug}', [App\Http\Controllers\HomeController::class,'detailBlog']);
 Route::get('older-blog', [App\Http\Controllers\HomeController::class,'olderBlog']);
+Route::get('detail-product/{slug}', [App\Http\Controllers\HomeController::class,'detailProduct']);
 
 // Authentication Routes...
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
