@@ -86,7 +86,7 @@ class productCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function products()
+    public function subCategory()
     {
         return $this->hasMany(\App\Models\product::class, 'product_category_id');
     }
