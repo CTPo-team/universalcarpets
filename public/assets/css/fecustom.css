@@ -1,0 +1,249 @@
+/* style home  */
+    .carousel-caption {
+        right: auto !important;
+        bottom: auto !important;
+        top: 17%;
+        left: 7%;
+    }
+
+    .carousel-indicators {
+        right: auto !important;
+        margin-left: 7%;
+    }
+
+    .card-bgabout {
+        background: linear-gradient(to left, rgba(255, 0, 0, 0), #F1F3F5);
+        border: none;
+    }
+
+    .card-bgnewcol {
+        background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 50%, #F1F3F5 74%);
+        border: none;
+    }
+
+    .card-bgcontactus {
+        background: linear-gradient(to right, rgba(255, 0, 0, 0) 10%, #F1F3F5 84%);
+        border: none;
+    }
+
+    .inputcontactus {
+        border: none;
+        background: transparent;
+    }
+
+    .form-control:focus {
+        outline: none !important;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .nav-link{
+        color: white !important;
+    }
+
+    .sticky-top.scrolled {
+        background-color: #fff !important;
+        transition: background-color 200ms linear;
+    }
+
+    .sticky-top.scrolled .navbar-brand ,.sticky-top.scrolled .nav-link, .sticky-top.scrolled a.nav-link:active {
+        color:black !important;
+    }
+
+    .content .content-overlay {
+        background: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        height: 99%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s
+    }
+
+    .content:hover .content-overlay {
+        opacity: 1
+    }
+
+    .content-details {
+        position: absolute;
+        text-align: center;
+        padding-left: 1em;
+        padding-right: 1em;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        -moz-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s
+    }
+
+    .content:hover .content-details {
+        top: 50%;
+        left: 50%;
+        opacity: 1
+    }
+
+    .content-details p {
+        color: #D5AD6A;
+        font-size: 36px;
+        font-family: 'Playfair Display', serif;
+        font-weight:bold;
+        text-transform: uppercase;
+    }
+
+    .link-content-text{
+        color: #fff !important;
+        font-size: 13px;
+        cursor:pointer;
+        font-family: 'Playfair Display', serif;
+        font-weight:bold;
+    }
+
+    .link-content-text:hover{
+        text-decoration:none;
+    }
+
+    .fadeIn-bottom {
+        top: 80%
+    }
+
+    @media only screen and (max-width: 600px) {
+        .sectionAbout, .sectionCollection, .sectionContact{
+            padding-top: 0px !important;
+        }
+
+        .tulisancontact{
+            max-width:100% !important;
+            padding-bottom:30px;
+        }
+
+        .rowmobilecontact{
+            padding:10px !important;
+        }
+
+        .fontbanctgr{
+            font-size:14px !important;
+        }
+
+        .fontbantitle{
+            font-size:26px !important;
+        }
+
+        .nav-link{
+            color:black !important;
+        }
+
+        .bg-transparent{
+            background:white !important;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {    
+        .img1abouthome{
+            height:12vh;
+        }
+        .img2abouthome{
+            height:12vh;
+        }
+        .img3abouthome{
+            height:25vh;
+        }
+        .tabnewcol{
+            height:auto ;
+        }
+        .texttabblog p{
+            font-size:12.4px;
+        }
+        .linktabblog{
+            left:0px !important;
+        }
+        .imgtabverticalblog{
+            height:210px;
+        }
+        .tulisancontact{
+            max-width:100% !important;
+        }
+        .nav-link{
+            color:black !important;
+        }
+        .bg-transparent{
+            background:white !important;
+        }
+    }
+
+    @media only screen and (max-width: 769px) and (max-height: 1025px){    
+        .img1abouthome{
+            height:15vh;
+        }
+        .img2abouthome{
+            height:15vh;
+        }
+        .img3abouthome{
+            height:31.7vh;
+        }
+        .tabnewcol{
+            height:auto ;
+        }
+        .texttabblog p{
+            font-size:12.4px;
+        }
+        .linktabblog{
+            left:0px !important;
+        }
+        .imgtabverticalblog{
+            height:210px;
+        }
+        .tulisancontact{
+            max-width:100% !important;
+        }
+        .nav-link{
+            color:black !important;
+        }
+        .bg-transparent{
+            background:white !important;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) and (max-height: 700px) {    
+        .img1abouthome{
+            height:25vh;
+        }
+        .img2abouthome{
+            height:25vh;
+        }
+        .img3abouthome{
+            height:52vh;
+        }
+        .tabnewcol{
+            height:auto ;
+        }
+        .texttabblog p{
+            font-size:12.4px;
+        }
+        .linktabblog{
+            left:0px !important;
+        }
+        .imgtabverticalblog{
+            height:210px;
+        }
+        .tulisancontact{
+            max-width:100% !important;
+        }
+        .nav-link{
+            color:black !important;
+        }
+        .bg-transparent{
+            background:white !important;
+        }
+    }
+/* end style home  */

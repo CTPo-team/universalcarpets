@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/fecustom.css') }}" rel="stylesheet" type="text/css"/>
 
     @yield('page_css')
     <!-- Template CSS -->
@@ -27,6 +28,7 @@
     body{
         /* font-family: 'Playfair Display', serif; */
         font-family: 'Source Sans Pro', sans-serif;
+        overflow-x: hidden;
     }
     </style>
     @yield('page_css')
@@ -35,6 +37,7 @@
 <body>
 
 <div id="app">
+@include("frontend.navbar")
         @yield('content')    
 </div>
 
