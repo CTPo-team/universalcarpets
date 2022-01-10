@@ -107,4 +107,22 @@ class HomeController extends Controller
 
         return abort(404);
     }
+
+    public function detailProduct($slug)
+    {
+        if(empty(!$slug)){
+            $product = product::where([["slug","=",$slug],["status","=",1]]);
+            $this->data["product"] = $product->with(["productCategory","productBrand","imageProduct"])->first();
+
+            if(!$this->data["product"]){
+                return abort(404);
+            }
+
+            $this->data["settingWeb"] = settingWeb::first();
+            $this->data["relatedProduct"] = product::where([['product_category_id',"=",$this->data["product"]->product_category_id],['id','!=',$this->data["product"]->id]])->with(["productCategory","productBrand","imageProduct"])->orderByDesc("created_at")->limit(2)->get();
+            return view('frontend.detail_product',$this->data);
+        }
+
+        return abort(404);
+    }
 }
