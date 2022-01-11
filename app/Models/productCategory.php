@@ -88,6 +88,10 @@ class productCategory extends Model
      **/
     public function subCategory()
     {
-        return $this->hasMany(\App\Models\product::class, 'product_category_id');
+        return $this->hasMany(\App\Models\productCategory::class, 'product_category_id')->orderBy('title');
+    }
+    public function product()
+    {
+        return $this->hasMany(\App\Models\product::class, 'product_category_id')->orderBy('title');
     }
 }

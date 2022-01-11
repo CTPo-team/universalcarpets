@@ -11,6 +11,7 @@ use App\Models\settingWeb;
 use App\Models\contactUsPage;
 use Mail;
 use App\Mail\contactMail;
+use App\Models\productCategory;
 use Flash;
 use Response;
 
@@ -106,6 +107,13 @@ class HomeController extends Controller
         }
 
         return abort(404);
+    }
+
+    public function product()
+    {
+        $this->data["productCategory"] = productCategory::orderBy("title")->with(["product.productBrand","subCategory.product.productBrand"])->where("product_category_id",null)->get();
+        $this->data["settingWeb"] = settingWeb::first();
+        return view('frontend.product',$this->data);
     }
 
     public function detailProduct($slug)

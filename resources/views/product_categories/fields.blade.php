@@ -11,7 +11,7 @@
     {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
 </div>
 
-@if(!isset($productCategory->id) || (isset($productCategory->subCategory) && count($productCategory->subCategory) == 0))
+@if(!isset($productCategory->id) || ((isset($productCategory->subCategory) && count($productCategory->subCategory) == 0) && (isset($productCategory->product) && count($productCategory->product) == 0)))
     <div class="form-group col-sm-12">
         <label class="custom-switch">
             <input type="checkbox" name="subcategory" value="1" class="custom-switch-input option-subcategory" onchange="checkSub()" {{empty($productCategory->product_category_id) ? "" : "checked"}}>

@@ -48,7 +48,7 @@ class productController extends AppBaseController
      */
     public function create()
     {   
-        $this->data["productCategory"] = productCategory::pluck("title","id");
+        $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.create',$this->data);
     }
@@ -114,7 +114,7 @@ class productController extends AppBaseController
 
             return redirect(route('products.index'));
         }
-        $this->data["productCategory"] = productCategory::pluck("title","id");
+        $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.edit',$this->data);
     }

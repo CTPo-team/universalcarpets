@@ -51,6 +51,7 @@
 <script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+@yield('scripts')
 <script>
            $(document).scroll(function () {
             var $nav = $(".sticky-top");
