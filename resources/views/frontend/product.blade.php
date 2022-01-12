@@ -204,7 +204,7 @@
       if(product.length > 0){
         noDataProduct = false
         product.forEach(function(data) {
-          $(classProduct).append("<div class='col-4'>"+data.title+"</div>")
+          $(classProduct).append("<div class='col-12' style='height:700px'>"+data.title+"</div>")
         });
       }else{
         noDataProduct = true
@@ -218,6 +218,8 @@
 
     //Filter
     function submitFilter(){
+      noDataProduct = false;
+      page = 1;
       filterCategories=$(classCategories).val();
       filterSubCategories=$(classSubcategories).val();
       filterBrand=$(classBrand).val();

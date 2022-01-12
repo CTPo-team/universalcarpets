@@ -37,3 +37,24 @@
 
 @endsection   
 
+
+@section('scripts')
+  <script>
+    var page = 1
+    $.ajax({
+        url: "{!! url('older-blog') !!}",
+        type: "GET",
+        data:{
+          page:page
+        },
+        success: function(response) {
+          console.log(response)
+        },
+        error: function(xhr) {
+          //Do Something to handle error
+        }
+      });
+  </script>
+@endsection 
+
+
