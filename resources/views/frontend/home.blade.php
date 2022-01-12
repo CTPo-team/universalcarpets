@@ -404,7 +404,7 @@
                                     <div class="col tulisancontact" style="max-width:53%;">
                                         <p
                                             style="font-family: 'Playfair Display', serif;font-size: 40px !important;font-weight:bold;color:#C72C36">
-                                            CONTACTS</p>
+                                            CONTACT US</p>
                                         <p>
                                             Submit your question and be the first to be notified to our latest
                                             collections

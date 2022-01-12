@@ -1,39 +1,45 @@
 @extends('frontend.app')
 
 @section('content')
-  <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Categories</label>
-        <select class="form-control select-categories" name="filterCategories" id="exampleFormControlSelect1" onchange="setSubCategory()">
-        </select>
-      </div>
+<div class="container">
+    <div class="row ">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Categories</label>
+                <select class="form-control select-categories" name="filterCategories" id="exampleFormControlSelect1"
+                    onchange="setSubCategory()">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Sub Categories</label>
+                <select class="form-control select-subcategories" name="filterSubCategories"
+                    id="exampleFormControlSelect1" onchange="setBrand()">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Brands</label>
+                <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 align-self-center pt-3">
+                <button type="button" onclick="submitFilter()" class="btn btn-primary">Submit</button>
+        </div>
     </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Sub Categories</label>
-        <select class="form-control select-subcategories" name="filterSubCategories" id="exampleFormControlSelect1" onchange="setBrand()">
-        </select>
-      </div>
+    
+    <h1>Product</h1>
+    <div class="row data-product">
     </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Brands</label>
-        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
-        </select>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <button type="button" onclick="submitFilter()" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-  <h1>Product</h1>
-  <div class="row data-product">
-  </div>
-@endsection   
+</div>
+
+@endsection
 
 @section('scripts')
-  <script>
+<script>
     var productCategory = {!! json_encode($productCategory->toArray()) !!};
 
     //Init Value Filter
@@ -198,7 +204,7 @@
       if(product.length > 0){
         noDataProduct = false
         product.forEach(function(data) {
-          $(classProduct).append("<div class='col-4' style='height:700px'>"+data.title+"</div>")
+          $(classProduct).append("<div class='col-4'>"+data.title+"</div>")
         });
       }else{
         noDataProduct = true
