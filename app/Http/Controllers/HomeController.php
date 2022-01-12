@@ -109,11 +109,35 @@ class HomeController extends Controller
         return abort(404);
     }
 
-    public function product()
+    public function product(Request $request)
     {
+        $this->data["filter"] = $request->all();
         $this->data["productCategory"] = productCategory::orderBy("title")->with(["product.productBrand","subCategory.product.productBrand"])->where("product_category_id",null)->get();
         $this->data["settingWeb"] = settingWeb::first();
         return view('frontend.product',$this->data);
+    }
+
+    public function dataProduct(Request $request)
+    {
+
+        $product = product::orderBy("title")->with(["productBrand","productCategory","imageProductOne"])->where("status",1);
+
+        //Set Filter
+        if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (!isset($request->filterSubCategories) || empty(trim($request->filterSubCategories)))){
+            $product = $product->where("product_category_id",$request->filterCategories);
+        }
+
+        if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (isset($request->filterSubCategories) && !empty(trim($request->filterSubCategories)))){
+            $product = $product->where("product_category_id",$request->filterSubCategories);
+        }
+
+        if(isset($request->filterBrand) && !empty(trim($request->filterBrand))){
+            $product = $product->where("product_brand_id",$request->filterBrand);
+        }
+
+        $this->data["product"] = $product->paginate(9);
+
+        return Response::json($this->data["product"], 200);
     }
 
     public function detailProduct($slug)

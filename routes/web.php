@@ -22,6 +22,7 @@ Route::get('detail-blog/{slug}', [App\Http\Controllers\HomeController::class,'de
 Route::get('older-blog', [App\Http\Controllers\HomeController::class,'olderBlog']);
 Route::get('detail-product/{slug}', [App\Http\Controllers\HomeController::class,'detailProduct']);
 Route::get('product', [App\Http\Controllers\HomeController::class,'product']);
+Route::get('data-product', [App\Http\Controllers\HomeController::class,'dataProduct']);
 
 // Authentication Routes...
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');

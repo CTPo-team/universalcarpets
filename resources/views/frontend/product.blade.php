@@ -5,53 +5,70 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Categories</label>
-        <select class="form-control select-categories" id="exampleFormControlSelect1" onchange="setSubCategory()">
+        <select class="form-control select-categories" name="filterCategories" id="exampleFormControlSelect1" onchange="setSubCategory()">
         </select>
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Sub Categories</label>
-        <select class="form-control select-subcategories" id="exampleFormControlSelect1" onchange="setBrand()">
+        <select class="form-control select-subcategories" name="filterSubCategories" id="exampleFormControlSelect1" onchange="setBrand()">
         </select>
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Brands</label>
-        <select class="form-control select-brands" id="exampleFormControlSelect1">
+        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
         </select>
       </div>
     </div>
     <div class="col-md-3">
-      <button type="button" class="btn btn-primary">Submit</button>
+      <button type="button" onclick="submitFilter()" class="btn btn-primary">Submit</button>
     </div>
+  </div>
+  <h1>Product</h1>
+  <div class="row data-product">
   </div>
 @endsection   
 
 @section('scripts')
   <script>
     var productCategory = {!! json_encode($productCategory->toArray()) !!};
-    
+
+    //Init Value Filter
+    var filterCategories = {!! isset($filter["filterCategories"]) ? $filter["filterCategories"] : "\"\""  !!}
+    var filterSubCategories = {!! isset($filter["filterSubCategories"]) ? $filter["filterSubCategories"] : "\"\""  !!}
+    var filterBrand = {!! isset($filter["filterBrand"]) ? $filter["filterBrand"] : "\"\""  !!}
+    var page = 1
+    var noDataProduct = false
+
     //Class Select
     var classCategories = ".select-categories"
     var classSubcategories = ".select-subcategories"
     var classBrand = ".select-brands"
+    var classProduct = ".data-product"
 
     //Init Array
     var category=[];
     var subCategory=[];
     var brand=[];
+    var tempBrandTitle = [];
 
     //Base
     function addOptionSelect(classSelect,dataOption){
-      $(classSelect).empty()
+      clearOption(classSelect)
       dataOption.forEach(function(data) {
         $(classSelect).append($('<option>', {
             value: data.id,
             text: data.title
         }));
       })
+    }
+
+    function clearOption(classClear){
+      $(classClear).prop("selected", false)
+      $(classClear).empty()
     }
 
     //Category
@@ -86,6 +103,9 @@
     }
 
     function setSubCategory(){
+      clearOption(classSubcategories)
+      clearOption(classBrand)
+
       valCategory =  $(classCategories).find(":selected").val()
       getSubCategory(valCategory)
       addOptionSelect(classSubcategories,subCategory)
@@ -99,8 +119,13 @@
     function setBrandWithoutSubCategory(product){
         setDefaultBrand();
         product.forEach(function(data) {
-          brand.push({"id" : data.product_brand.id, "title" : data.product_brand.title});
+          if(!tempBrandTitle.includes(data.product_brand.title)){
+            brand.push({"id" : data.product_brand.id, "title" : data.product_brand.title});
+            tempBrandTitle.push(data.product_brand.title)
+          }
         });
+        setDefaultTempBrandTitle();
+        sortBrand()
         addOptionSelect(classBrand,brand)
     }
 
@@ -113,18 +138,24 @@
                 if(dataSub.id == idSubCategory){
                   if(dataSub.product.length > 0){
                     dataSub.product.forEach(function(dataProduct) {
-                      brand.push({"id" : dataProduct.id, "title" : dataProduct.title});
+                      if(!tempBrandTitle.includes(dataProduct.product_brand.title)){
+                        brand.push({"id" : dataProduct.product_brand.id, "title" : dataProduct.product_brand.title});
+                        tempBrandTitle.push(dataProduct.product_brand.title)
+                      }
                     });
                   }
                 }
               });
             }
+            setDefaultTempBrandTitle()
+            sortBrand()
             return;
           }
         });
     }
 
     function setBrand(){
+      clearOption(classBrand)
       valCategory =  $(classCategories).find(":selected").val()
       valSubCategory =  $(classSubcategories).find(":selected").val()
       getBrand(valSubCategory,valCategory)
@@ -133,6 +164,69 @@
 
     function setDefaultBrand(){
       brand=[{"id" : "", "title" : ""}];
+    }
+
+    function setDefaultTempBrandTitle(){
+      tempBrandTitle=[];
+    }
+
+    function sortBrand(){
+      brand.sort((a, b) => (a.title > b.title) ? 1 : -1)
+    }
+
+    //Product
+    function loadProduct(){
+      $.ajax({
+        url: "{!! url('data-product') !!}",
+        type: "GET",
+        data: { 
+          page:page,
+          filterBrand:filterBrand,
+          filterCategories:filterCategories,
+          filterSubCategories:filterSubCategories
+        },
+        success: function(response) {
+          appendProduct(response.data)
+        },
+        error: function(xhr) {
+          //Do Something to handle error
+        }
+      });
+    }
+
+    function appendProduct(product){
+      if(product.length > 0){
+        noDataProduct = false
+        product.forEach(function(data) {
+          $(classProduct).append("<div class='col-4' style='height:700px'>"+data.title+"</div>")
+        });
+      }else{
+        noDataProduct = true
+      } 
+    }
+
+    function clearProduct(){
+      $(classProduct).empty();
+    }
+    
+
+    //Filter
+    function submitFilter(){
+      filterCategories=$(classCategories).val();
+      filterSubCategories=$(classSubcategories).val();
+      filterBrand=$(classBrand).val();
+
+      const urlParams = new URL(document.URL);
+      urlParams.searchParams.delete('filterCategories');
+      urlParams.searchParams.delete('filterSubCategories');
+      urlParams.searchParams.delete('filterBrand');
+      urlParams.searchParams.append('filterCategories', filterCategories);
+      urlParams.searchParams.append('filterSubCategories', filterSubCategories);
+      urlParams.searchParams.append('filterBrand', filterBrand);
+
+      history.pushState({}, null, urlParams);
+      clearProduct()
+      loadProduct()
     }
 
   </script>
@@ -144,5 +238,33 @@
     getCategory();
     addOptionSelect(classCategories,category);
 
+    //Set Select From Data Filter
+    if(filterCategories != ""){
+      getSubCategory(filterCategories)
+      addOptionSelect(classSubcategories,subCategory)
+      $(classCategories).val(filterCategories).change();
+    }
+
+    if(filterCategories != "" && filterSubCategories != ""){
+      getBrand(filterSubCategories,filterCategories)
+      addOptionSelect(classBrand,brand)
+      $(classSubcategories).val(filterSubCategories).change();
+    }
+
+    if(filterBrand != ""){
+      $(classBrand).val(filterBrand).change();
+    }
+
+    loadProduct()
+
+    //Scroll Load More
+    $(window).scroll(function() {
+        if($(window).scrollTop() == $(document).height() - $(window).height()) {
+          if(!noDataProduct){
+            page = page + 1
+            loadProduct()
+          }
+        }
+    });
   </script>
 @endsection
