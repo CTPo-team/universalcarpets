@@ -39,6 +39,16 @@ class HomeController extends Controller
         $this->data["blog"] = blog::where("status",1)->with("blogCategory")->orderByDesc("created_at")->get();
         $this->data["AboutUs"] = aboutUsPage::where("title",'OUR STORY')->first();
         $this->data["settingWeb"] = settingWeb::first();
+
+        //SEO
+        $this->data["seo"] = [
+            "title" => "Universal Carpets",
+            "description" => "Market leaders as manufacturers of machine made “Wilton” synthetic carpet and rugs in polypropelene BCF, HEAT SET, HEAT SET SHRINK, and FRIEZE ",
+            "keywords" => "UNIVERSAL CARPETS,Universal Carpets, universal carpets, universal, carpets",
+            "article:published_time" => "",
+            "article:section" => "",
+        ];
+
         return view('frontend.home',$this->data);
     }
 
@@ -48,6 +58,16 @@ class HomeController extends Controller
         $this->data["network"] = aboutUsPage::where("title",'NETWORK')->first();
         $this->data["technologies"] = aboutUsPage::where("title",'TECHNOLOGIES')->with("aboutUsGallery")->first();
         $this->data["settingWeb"] = settingWeb::first();
+
+        //SEO
+        $this->data["seo"] = [
+            "title" => "About Us",
+            "description" => isset($this->data["ourStory"]["seo_desc"]) ? strip_tags($this->data["ourStory"]["seo_desc"]) : "",
+            "keywords" => "ABOUT UNIVERSAL CARPETS, About Universal Carpets, about universal carpets, ABOUT US UNIVERSAL CARPETS, About Us Universal Carpets, about us universal carpets, universal, carpets, about, about us",
+            "article:published_time" => "",
+            "article:section" => "",
+        ];
+
         return view('frontend.aboutus',$this->data);
     }
 
@@ -55,6 +75,16 @@ class HomeController extends Controller
     {
         $this->data["contacts"] = contactUsPage::orderBy("created_at")->get();
         $this->data["settingWeb"] = settingWeb::first();
+
+        //SEO
+        $this->data["seo"] = [
+            "title" => "Contact Us",
+            "description" => isset($this->data["contacts"][0]["desc"]) ? strip_tags($this->data["contacts"][0]["desc"]) : "",
+            "keywords" => "CONTACT US UNIVERSAL CARPETS, Contact Us Universal Carpets, contact us universal carpets, CONTACT UNIVERSAL CARPETS, Contact Universal Carpets, CONTACT universal carpets, universal, carpets, contact us, contact",
+            "article:published_time" => "",
+            "article:section" => "",
+        ];
+
         return view('frontend.contacts',$this->data);
     }
 
@@ -77,6 +107,16 @@ class HomeController extends Controller
         $this->data["new"] = blog::orderByDesc("created_at")->with("blogCategory")->first();
         $this->data["mostViewed"] = blog::orderByDesc("view_count")->with("blogCategory")->limit(3)->get();
         $this->data["settingWeb"] = settingWeb::first();
+
+        //SEO
+        $this->data["seo"] = [
+            "title" => "Blog",
+            "description" => "",
+            "keywords" => "BLOG UNIVERSAL CARPETS, Blogs Universal Carpets, blog universal carpets, universal, carpets, blog",
+            "article:published_time" => "",
+            "article:section" => "",
+        ];
+
         return view('frontend.blog',$this->data);
     }
 
@@ -103,6 +143,16 @@ class HomeController extends Controller
             $blog->increment("view_count",1);
             $this->data["settingWeb"] = settingWeb::first();
             $this->data["relatedBlog"] = blog::where([['blog_category_id',"=",$this->data["blog"]->blog_category_id],['id','!=',$this->data["blog"]->id]])->orderByDesc("created_at")->limit(3)->get();
+            
+            //SEO
+            $this->data["seo"] = [
+                "title" => isset($this->data["blog"]["title"]) ? strip_tags($this->data["blog"]["title"]) : "",
+                "description" => isset($this->data["blog"]["seo_desc"]) ? strip_tags($this->data["blog"]["seo_desc"]) : "",
+                "keywords" => isset($this->data["blog"]["seo_keyword"]) ? strip_tags($this->data["blog"]["seo_keyword"]) : "",
+                "article:published_time" => isset($this->data["blog"]["created_at"]) ? strip_tags($this->data["blog"]["created_at"]) : "",
+                "article:section" => isset($this->data["blog"]["seo_category"]) ? strip_tags($this->data["blog"]["seo_category"]) : "",
+            ];
+            
             return view('frontend.detail_blog',$this->data);
         }
 
@@ -114,6 +164,16 @@ class HomeController extends Controller
         $this->data["filter"] = $request->all();
         $this->data["productCategory"] = productCategory::orderBy("title")->with(["product.productBrand","subCategory.product.productBrand"])->where("product_category_id",null)->get();
         $this->data["settingWeb"] = settingWeb::first();
+
+        //SEO
+        $this->data["seo"] = [
+            "title" => "Product",
+            "description" => "Established since 2000 and traversing down an exciting and dynamic path with a youthful Universal, a fulfilling sense of a modest achievement permeates us.",
+            "keywords" => "PRODUCT UNIVERSAL CARPETS, Product Universal Carpets, product universal carpets, universal, carpets, product",
+            "article:published_time" => "",
+            "article:section" => "",
+        ];
+
         return view('frontend.product',$this->data);
     }
 
@@ -152,6 +212,16 @@ class HomeController extends Controller
 
             $this->data["settingWeb"] = settingWeb::first();
             $this->data["relatedProduct"] = product::where([['product_category_id',"=",$this->data["product"]->product_category_id],['id','!=',$this->data["product"]->id]])->with(["productCategory","productBrand","imageProduct"])->orderByDesc("created_at")->limit(2)->get();
+            
+            //SEO
+            $this->data["seo"] = [
+                "title" => isset($this->data["product"]["title"]) ? strip_tags($this->data["product"]["title"]) : "",
+                "description" => isset($this->data["product"]["seo_desc"]) ? strip_tags($this->data["product"]["seo_desc"]) : "",
+                "keywords" => isset($this->data["product"]["seo_keyword"]) ? strip_tags($this->data["product"]["seo_keyword"]) : "",
+                "article:published_time" => isset($this->data["product"]["created_at"]) ? strip_tags($this->data["product"]["created_at"]) : "",
+                "article:section" => isset($this->data["product"]["seo_category"]) ? strip_tags($this->data["product"]["seo_category"]) : "",
+            ];
+            
             return view('frontend.detail_product',$this->data);
         }
 

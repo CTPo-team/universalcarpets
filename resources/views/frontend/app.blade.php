@@ -4,7 +4,33 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>Universalcarpets</title>
+    <!-- Meta -->
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    @if(isset($seo))
+@if(isset($seo["description"]) && !empty($seo["description"]))
+    <meta name='description' itemprop='description' content="{!! $seo["description"] !!}" />
+    <meta property="og:description"content="{!! $seo["description"] !!}"" />
+@endif
+
+@if(isset($seo["title"]) && !empty($seo["title"]))
+    <meta property="og:title"content="{!! $seo["title"] !!}" />
+@endif
+
+@if(isset($seo["keywords"]) && !empty($seo["keywords"]))
+    <meta name='keywords' content="{!! $seo["keywords"] !!}" />
+@endif
+
+@if((isset($seo["article:published_time"]) && !empty($seo["article:published_time"])) && (isset($seo["article:section"]) && !empty($seo["article:section"])))
+    <meta property='article:published_time' content="{!! $seo["article:published_time"] !!}" />
+    <meta property='article:section' content="{!! $seo["article:section"] !!}" />
+@endif
+
+    <meta property="og:url"content="{!! URL::current() !!}" />
+    <meta property="og:locale"content="en-id" />
+
+    @endif
+    
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon"/>
     <!-- Bootstrap 4.1.1 -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
