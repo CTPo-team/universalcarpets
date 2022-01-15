@@ -64,7 +64,7 @@
             <div class="col-md-6">
                 <div class="container">
                     <div class="row pl-5 pr-5 pt-4">
-                        <div class="col">
+                        <div class="col pl-5">
                             {!! $ourStory->desc ?? '' !!}
                         </div>
                     </div>
@@ -100,12 +100,12 @@
         </div>
 
         <div class="row pt-4 mb-5"
-            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:500px;">
+            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:75vh;">
             <!-- <div class="container"> -->
-                <div class="row text-white align-items-center" style="height:500px;">
+                <div class="row text-white align-items-center" style="height:75vh;">
                     <div class="col-6">
                     </div>
-                    <div class="col-4 ">
+                    <div class="col-4" style="font-size:1.3vw">
                         {!! $ourStory->our_strategy_desc ?? '' !!}
                     </div>
                 </div>
