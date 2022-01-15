@@ -60,66 +60,106 @@
                 </div>
             </div>
         </div>
-        <div class="container" style="margin-top:100px">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        {!! $ourStory->desc ?? '' !!}
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-fluid" src="{{asset('images/serti.png')}}">
+        <div class="row pt-5">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="row pl-5 pr-5 pt-4">
+                        <div class="col">
+                            {!! $ourStory->desc ?? '' !!}
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
+            <div class="col-md-6">
+                <img class="img-fluid" src="{{asset('images/serti.png')}}">
+            </div>
         </div>
-        <div class="aboutyt text-right" style="position:absolute;right:0;z-index:98;padding-top:150px">
-                    <img class="img-fluid" src="{{asset('images/lineaboutus.png')}}" style="height:400px">
-                </div>
+
+
+        <!-- <div class="aboutyt text-right" style="position:absolute;right:0;z-index:98;padding-top:150px">
+            <img class="img-fluid" src="{{asset('images/lineaboutus.png')}}" style="height:400px">
+        </div> -->
         <div class="container">
-        <div class="row pt-5 pb-5">
-            <div class="col-12 text-center p-5">
-                <h2 style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A">OUR
-                    STRATEGY</h2>
-            </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-3" style="background:#0e0e0e;color:white">
-                <div class="aboutyt" style="position:absolute;left:-150px;top:60px;border:10px solid #0e0e0e">
-                    <img class="img-fluid" src="{{asset('images/OUR-STRATEGIES-IMAGE.jpg')}}">
+            <div class="row pt-5">
+                <div class="col-12 text-center p-5">
+                    <h2 style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A">OUR
+                        STRATEGY</h2>
                 </div>
-            </div>
-            <div class="col-md-7" style="padding:90px;background:#0e0e0e;color:white;height:380px">
-                <div class="text-startegy" style="padding-right:56px;position:absolute;z-index:99">
-                    {!! $ourStory->our_strategy_desc ?? '' !!}
+                <!-- <div class="col-md-2"></div>
+                <div class="col-md-3" style="background:#0e0e0e;color:white">
+                    <div class="aboutyt" style="position:absolute;left:-150px;top:60px;border:10px solid #0e0e0e">
+                        <img class="img-fluid" src="{{asset('images/OUR-STRATEGIES-IMAGE.jpg')}}">
+                    </div>
                 </div>
+                <div class="col-md-7" style="padding:90px;background:#0e0e0e;color:white;height:380px">
+                    <div class="text-startegy" style="padding-right:56px;position:absolute;z-index:99">
+                       
+                    </div>
+                </div> -->
             </div>
         </div>
+
+        <div class="row pt-4 mb-5"
+            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:500px;">
+            <!-- <div class="container"> -->
+                <div class="row text-white align-items-center" style="height:500px;">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-4 ">
+                        {!! $ourStory->our_strategy_desc ?? '' !!}
+                    </div>
+                </div>
+            <!-- </div> -->
+
         </div>
-   
+
 
     </div>
 
     <!-- NETWORK CONTENT -->
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <h1>NETWORK</h1>
-        <p>
-            {!! $network->desc ?? '' !!}
-        </p>
+        <div class="row" style="margin-left:-15px;margin-right:-15px;">
+            <div class="col-12" style="margin-top:90px">
+                <img class="img-fluid" src="{{asset('images/aboutnetwork.png')}}">
+            </div>
+        </div>
+        <div class="container pt-5">
+            <div class="row justify-content-md-center">
+                <div class="col-10">
+
+                    {!! $network->desc ?? '' !!}
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:-15px;margin-right:-15px;">
+            <div class="col-12">
+                <img class="img-fluid" src="{{asset('images/aboutnetworkline.png')}}">
+            </div>
+        </div>
     </div>
 
     <!-- TECHNOLOGIES -->
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <h1>TECHNOLOGIES</h1>
-        <p>
-            {!! $technologies->short_desc ?? '' !!}
-        </p>
-        <h2>GALLERY</h2>
-        @foreach($technologies->aboutUsGallery as $gallery)
-        <div class="col-6">
-            <img src="{{asset('img/about/'.$gallery->path_image)}}" alt="" style="max-width: 200px;">
+        <div style="background:#0e0e0e">
+        <div class="container pt-4 pb-4" style="margin-top:90px">
+            <div class="row text-center p-3" style="color:#D5AD6A;font-size:40px">
+                {!! $technologies->short_desc ?? '' !!}
+            </div>
+
         </div>
-        @endforeach
+        </div>
+     
+
+        <div class="container pt-5">
+            <div class="row justify-content-md-center">
+                @foreach($technologies->aboutUsGallery as $gallery)
+                <div class="col-5 mt-3">
+                    <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:325px !important">
+                </div>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 </div>
 
