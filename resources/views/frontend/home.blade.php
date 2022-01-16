@@ -194,10 +194,13 @@
 
 <!-- section nice words-->
 <div class="section" style="padding-top:90px;padding-bottom:90px;">
-    <div class="row" style="margin-right:0px;margin-left:0px">
+<div class="container">
+<div class="row" style="margin-right:0px;margin-left:0px">
         <div class="col-12" style="padding-left:0px;padding-right:0px"> <img width="100%"
                 src="{{asset('images/nicewords.png')}}"></div>
     </div>
+</div> 
+  
 </div>
 <!-- end nice words -->
 
@@ -224,6 +227,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="row">
+                                    @if(isset($blog[0]))
                                     <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
                                             <img src="{{asset('img/blog/'. $blog[0]->path_image )}}" height="210px"
@@ -248,6 +252,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if(isset($blog[1]))
                                     <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
                                             <img src="{{asset('img/blog/'. $blog[1]->path_image )}}" height="210px"
@@ -272,8 +278,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                                 <div class="row mt-3">
+                                    @if(isset($blog[2]))
                                     <div class="col-md-12" style="padding-right:3px;padding-left:3px">
                                         <div class="card"
                                             style="width: 100%;flex-direction:row !important;height:240px">
@@ -299,9 +307,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                @if(isset($blog[3]))
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card" style="width: 100%;height:655px">
@@ -328,6 +338,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
 
@@ -339,6 +350,7 @@
         <!-- section blog mobile view -->
 
         <div class="row mt-4  d-block d-sm-none" style="margin-right:0px;margin-left:0px">
+            @if(isset($blog))
             <div class="col-md-12 ">
                 <div class="card card-bgnewcol">
                     <div class="card-body">
@@ -383,6 +395,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
         <!-- section blog mobile view end-->
 

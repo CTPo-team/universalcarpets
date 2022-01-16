@@ -61,16 +61,16 @@
             </div>
         </div>
         <div class="row pt-5">
-            <div class="col-md-6">
+            <div class="col-md-6"  style="padding-right:0px">
                 <div class="container">
-                    <div class="row pl-5 pr-5 pt-4">
-                        <div class="col pl-5">
+                    <div class="row pt-4">
+                        <div class="col"  style="padding-left:7vw">
                             {!! $ourStory->desc ?? '' !!}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6"  style="padding-left:0px;padding-right:0px">
                 <img class="img-fluid" src="{{asset('images/serti.png')}}">
             </div>
         </div>
@@ -100,7 +100,7 @@
         </div>
 
         <div class="row pt-4 mb-5"
-            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:75vh;">
+            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:78vh;">
             <!-- <div class="container"> -->
                 <div class="row text-white align-items-center" style="height:75vh;">
                     <div class="col-6">
@@ -125,7 +125,7 @@
         </div>
         <div class="container pt-5">
             <div class="row justify-content-md-center">
-                <div class="col-10">
+                <div class="col-12" style="font-size:1.3vw">
 
                     {!! $network->desc ?? '' !!}
                 </div>
@@ -142,7 +142,7 @@
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <div style="background:#0e0e0e">
         <div class="container pt-4 pb-4" style="margin-top:90px">
-            <div class="row text-center p-3" style="color:#D5AD6A;font-size:40px">
+            <div class="row text-center p-3" style="color:#D5AD6A;font-size:2.7vw">
                 {!! $technologies->short_desc ?? '' !!}
             </div>
 
