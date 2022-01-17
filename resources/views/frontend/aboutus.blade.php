@@ -82,8 +82,7 @@
         <div class="container">
             <div class="row pt-5">
                 <div class="col-12 text-center p-5">
-                    <h2 style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A">OUR
-                        STRATEGY</h2>
+                    <h2 style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A">Our Strategy</h2>
                 </div>
                 <!-- <div class="col-md-2"></div>
                 <div class="col-md-3" style="background:#0e0e0e;color:white">
