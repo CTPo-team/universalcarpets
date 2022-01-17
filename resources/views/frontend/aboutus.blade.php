@@ -82,19 +82,8 @@
         <div class="container">
             <div class="row pt-5">
                 <div class="col-12 text-center p-5">
-                    <h2 style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A">Our Strategy</h2>
+                    <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:3vw">Our Strategy</p>
                 </div>
-                <!-- <div class="col-md-2"></div>
-                <div class="col-md-3" style="background:#0e0e0e;color:white">
-                    <div class="aboutyt" style="position:absolute;left:-150px;top:60px;border:10px solid #0e0e0e">
-                        <img class="img-fluid" src="{{asset('images/OUR-STRATEGIES-IMAGE.jpg')}}">
-                    </div>
-                </div>
-                <div class="col-md-7" style="padding:90px;background:#0e0e0e;color:white;height:380px">
-                    <div class="text-startegy" style="padding-right:56px;position:absolute;z-index:99">
-                       
-                    </div>
-                </div> -->
             </div>
         </div>
 
@@ -151,16 +140,16 @@
 
         <div class="container pt-5">
             <div class="row justify-content-md-center">
-                <div class="col-12 col-md-6 mt-3">
+                <div class="col-12 col-md-6 mt-3" style="padding-right:0px;padding-left:0px">
                     @foreach($aboutUsGalleryEven as $gallery)
-                    <div class="col-12 mt-3">
+                    <div class="col-12 mt-3" style="padding-right:0px;padding-left:0px">
                         <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:310px !important">
                     </div>
                     @endforeach
                 </div>
-                <div class="col-12 col-md-6 mt-5">
+                <div class="col-12 col-md-6 mt-5" style="padding-right:0px;padding-left:0px">
                     @foreach($aboutUsGalleryOdd as $gallery)
-                    <div class="col-12 mt-3">
+                    <div class="col-12 mt-3" style="padding-right:0px;padding-left:0px">
                         <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:310px !important">
                     </div>
                     @endforeach
