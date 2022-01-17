@@ -1,6 +1,6 @@
 
 <!-- Section Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-transparent">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-transparent">
 <img src="{{asset('img/logo.png')}}" class="img-fluid p-2" width="150px" alt="Responsive image">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
