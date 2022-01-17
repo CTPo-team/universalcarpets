@@ -247,4 +247,17 @@
             background:white !important;
         }
     }
+
+    @media only screen and (min-width: 1500px) {    
+        .aboutyt{
+            position:absolute;
+            right:100px;
+            margin-top:-25.4vw !important;
+        }
+
+        .vaboutus{
+            width:35vw !important;
+            height:27vw !important;
+        }
+    }
 /* end style home  */

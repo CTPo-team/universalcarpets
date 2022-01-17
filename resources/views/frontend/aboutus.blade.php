@@ -52,7 +52,7 @@
             <div class="col-12" style="margin-top:90px">
                 <img class="img-fluid" src="{{asset('images/aboutusimg.png')}}">
                 <div class="aboutyt" style="position:absolute;right:100px;margin-top:-350px">
-                    <iframe width="560" height="380" src="https://www.youtube.com/embed/NTSHN1BGd5c"
+                    <iframe width="560" class="vaboutus" height="380" src="https://www.youtube.com/embed/NTSHN1BGd5c"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
@@ -151,17 +151,17 @@
 
         <div class="container pt-5">
             <div class="row justify-content-md-center">
-                <div class="col-6 mt-3">
+                <div class="col-12 col-md-6 mt-3">
                     @foreach($aboutUsGalleryEven as $gallery)
                     <div class="col-12 mt-3">
-                        <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:325px !important">
+                        <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:310px !important">
                     </div>
                     @endforeach
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-12 col-md-6 mt-5">
                     @foreach($aboutUsGalleryOdd as $gallery)
                     <div class="col-12 mt-3">
-                        <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:325px !important">
+                        <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:310px !important">
                     </div>
                     @endforeach
                 </div>
