@@ -152,11 +152,21 @@
 
         <div class="container pt-5">
             <div class="row justify-content-md-center">
-                @foreach($technologies->aboutUsGallery as $gallery)
-                <div class="col-5 mt-3">
-                    <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:325px !important">
+                <div class="col-6 mt-3">
+                    @foreach($aboutUsGalleryEven as $gallery)
+                    <div class="col-12 mt-3">
+                        <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:325px !important">
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
+                <div class="col-6 mt-5">
+                    @foreach($aboutUsGalleryOdd as $gallery)
+                    <div class="col-12 mt-3">
+                        <img class="img-fluid" src="{{asset('img/about/'.$gallery->path_image)}}" style="height:325px !important">
+                    </div>
+                    @endforeach
+                </div>
+                
             </div>
         </div>
 

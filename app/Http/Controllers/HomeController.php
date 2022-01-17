@@ -60,6 +60,19 @@ class HomeController extends Controller
         $this->data["technologies"] = aboutUsPage::where("title",'TECHNOLOGIES')->with("aboutUsGallery")->first();
         $this->data["settingWeb"] = settingWeb::first();
 
+        $this->data["aboutUsGalleryOdd"] = array();
+        $this->data["aboutUsGalleryEven"] = array();
+        if(isset($this->data["technologies"]["aboutUsGallery"]) && !empty($this->data["technologies"]["aboutUsGallery"])){
+            foreach ($this->data["technologies"]["aboutUsGallery"] as $k => $v) {
+                if ($k % 2 == 0) {
+                    $this->data["aboutUsGalleryEven"][] = $v;
+                }
+                else {
+                    $this->data["aboutUsGalleryOdd"][] = $v;
+                }
+            }
+        }
+
         //SEO
         $this->data["seo"] = [
             "title" => "About Us",
