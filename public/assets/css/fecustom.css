@@ -102,15 +102,16 @@
     }
 
     .link-content-text{
-        color: #fff !important;
+        color: rgb(155, 154, 154) !important;
         font-size: 13px;
         cursor:pointer;
-        font-family: 'Playfair Display', serif;
+        /* font-family: 'Playfair Display', serif; */
         font-weight:bold;
     }
 
     .link-content-text:hover{
         text-decoration:none;
+        color:white !important;
     }
 
     .fadeIn-bottom {

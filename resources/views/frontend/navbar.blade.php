@@ -14,7 +14,7 @@
         <a class="nav-link" href="<?= url('aboutus'); ?>">About Us</a>
       </li>
       <li class="nav-item p-2">
-        <a class="nav-link" href="<?= url('products'); ?>">Products</a>
+        <a class="nav-link" href="<?= url('product'); ?>">Products</a>
       </li>
       <li class="nav-item p-2">
         <a class="nav-link" href="<?= url('contactus'); ?>">Contact us</a>
