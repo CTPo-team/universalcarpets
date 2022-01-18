@@ -2,12 +2,27 @@
 
 @section('content')
 <style>
+
+    .nav-tabs {
+        border-bottom:none;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link {
+        color: #B7B7B7 !important;
+        font-weight: bold;
+        border-bottom: 2px solid #B7B7B7;
+        border-bottom-width: medium;
+    }
+
     .nav-tabs .nav-item.show .nav-link,
     .nav-tabs .nav-link.active {
         border-left: none;
         border-right: none;
         border-top: none;
-        border-bottom: 2px solid black;
+        color: #C72C36 !important;
+        border-bottom: 2px solid #C72C36;
+        border-bottom-width: medium;
     }
 
 </style>
@@ -31,15 +46,15 @@
         <ul class="nav nav-tabs w-100" id="myTab" role="tablist">
             <li class="nav-item col-4 text-center">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                    aria-selected="true" style="color:black !important">OUR STORY</a>
+                    aria-selected="true">OUR STORY</a>
             </li>
             <li class="nav-item col-4 text-center">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                    aria-controls="profile" aria-selected="false" style="color:black !important">NETWORK</a>
+                    aria-controls="profile" aria-selected="false">NETWORK</a>
             </li>
             <li class="nav-item col-4 text-center">
                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                    aria-controls="contact" aria-selected="false" style="color:black !important">TECHNOLOGIES</a>
+                    aria-controls="contact" aria-selected="false">TECHNOLOGIES</a>
             </li>
         </ul>
     </div>
