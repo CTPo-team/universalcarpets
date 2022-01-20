@@ -197,7 +197,7 @@
 <div class="container">
 <div class="row" style="margin-right:0px;margin-left:0px">
         <div class="col-12" style="padding-left:0px;padding-right:0px"> <img width="100%"
-                src="{{asset('images/nicewords.png')}}"></div>
+                src="{{asset('images/nicewords.png')}}" alt="..."></div>
     </div>
 </div> 
   
