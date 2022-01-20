@@ -45,7 +45,8 @@ class productCategoryController extends AppBaseController
      */
     public function create()
     {
-        return view('product_categories.create');
+        $this->data["subCategory"] = productCategory::where("product_category_id","=",null)->pluck("title","id");
+        return view('product_categories.create',$this->data);
     }
 
     /**
@@ -58,7 +59,9 @@ class productCategoryController extends AppBaseController
     public function store(CreateproductCategoryRequest $request)
     {
         $input = $request->all();
-
+        if(!isset($input["subcategory"])){
+            $input["product_category_id"] = null;
+        }
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
         $input["slug"] = $this->setSlug($input["title"],(new productCategory())->getTable());
         $productCategory = $this->productCategoryRepository->create($input);
@@ -97,15 +100,15 @@ class productCategoryController extends AppBaseController
      */
     public function edit($id)
     {
-        $productCategory = $this->productCategoryRepository->find($id);
-
-        if (empty($productCategory)) {
+        $this->data["productCategory"] = productCategory::where("id",$id)->with("subCategory")->first();
+        if (empty($this->data["productCategory"])) {
             Flash::error('Product Category not found');
 
             return redirect(route('productCategories.index'));
         }
 
-        return view('product_categories.edit')->with('productCategory', $productCategory);
+        $this->data["subCategory"] = productCategory::where([["product_category_id","=",null],["id","!=",$id]])->pluck("title","id");
+        return view('product_categories.edit',$this->data);
     }
 
     /**
@@ -127,8 +130,15 @@ class productCategoryController extends AppBaseController
         }
 
         $input=$request->all();
+        if(!isset($input["subcategory"])){
+            $input["product_category_id"] = null;
+        }
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
-        $input["slug"] = $this->setSlug($input["title"],(new productCategory())->getTable(),$productCategory->title);
+        
+        if(!empty($slug = $this->setSlug($input["title"],(new productCategory())->getTable(),$productCategory->title))){
+            $input["slug"] = $slug;
+        }
+        
         $productCategory = $this->productCategoryRepository->update($input, $id);
 
         Flash::success('Product Category updated successfully.');

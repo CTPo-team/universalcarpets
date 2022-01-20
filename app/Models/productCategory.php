@@ -86,8 +86,12 @@ class productCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function products()
+    public function subCategory()
     {
-        return $this->hasMany(\App\Models\product::class, 'product_category_id');
+        return $this->hasMany(\App\Models\productCategory::class, 'product_category_id')->orderBy('title');
+    }
+    public function product()
+    {
+        return $this->hasMany(\App\Models\product::class, 'product_category_id')->orderBy('title');
     }
 }

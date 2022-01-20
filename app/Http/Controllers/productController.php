@@ -48,7 +48,7 @@ class productController extends AppBaseController
      */
     public function create()
     {   
-        $this->data["productCategory"] = productCategory::pluck("title","id");
+        $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.create',$this->data);
     }
@@ -114,7 +114,7 @@ class productController extends AppBaseController
 
             return redirect(route('products.index'));
         }
-        $this->data["productCategory"] = productCategory::pluck("title","id");
+        $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.edit',$this->data);
     }
@@ -139,7 +139,11 @@ class productController extends AppBaseController
         //Set SEO
         $input = $request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
-        $input["slug"] = $this->setSlug($input["title"],(new product())->getTable(),$product->title);
+        
+        if(!empty($slug = $this->setSlug($input["title"],(new product())->getTable(),$product->title))){
+            $input["slug"] = $slug; 
+        }
+        
         unset($input["path_image"]);
         $product = $this->productRepository->update($input, $id);
 

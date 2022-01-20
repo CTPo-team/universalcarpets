@@ -20,7 +20,7 @@
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('path_image', 'Image:') !!}
-    <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" required multiple>
+    <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}} multiple>
 </div>
 
 <!-- Desc Field -->
