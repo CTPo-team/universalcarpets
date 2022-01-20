@@ -1,31 +1,6 @@
 @extends('frontend.app')
 
 @section('content')
-<style>
-
-    .nav-tabs {
-        border-bottom:none;
-    }
-
-    .nav-tabs .nav-item.show .nav-link,
-    .nav-tabs .nav-link {
-        color: #B7B7B7 !important;
-        font-weight: bold;
-        border-bottom: 2px solid #B7B7B7;
-        border-bottom-width: medium;
-    }
-
-    .nav-tabs .nav-item.show .nav-link,
-    .nav-tabs .nav-link.active {
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        color: #C72C36 !important;
-        border-bottom: 2px solid #C72C36;
-        border-bottom-width: medium;
-    }
-
-</style>
 <div class="row" style="margin-top:-72px;margin-left:0px;margin-right:0px;height:680px;background: 
                                 linear-gradient(to bottom,  rgb(66 61 64 / 30%) 60%, white 95%),
                                 url({{asset('images/banneraboutus.png')}}); background-position:center;">
