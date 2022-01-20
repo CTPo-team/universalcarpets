@@ -79,7 +79,7 @@
                                     <div class="row pt-5" style="bottom:40px;">
                                         <div class="col text-right">
                                             <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
-                                                href="">ABOUT US</a>
+                                                href="{{url('aboutus')}}">ABOUT US</a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                 <div class="content-details fadeIn-bottom">
                                 <p class="content-text"> {!! $newcol->title !!}</p>
                                 <br>
-                                <a class="link-content-text">View Product</a>
+                                <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
                                 </div>
                             </div>
                             @endforeach
@@ -132,7 +132,7 @@
                             <div class="col-12 text-center pt-3 pb-3">
 
                                 <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
-                                    href="#">Browse All</a>
+                                    href="{{url('product')}}">Browse All</a>
                             </div>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class="linktabblog"
+                                                        <a href="{{ url('detail-blog/'.$blog[0]->slug) }}" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -270,7 +270,7 @@
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class="linktabblog"
+                                                        <a href="{{ url('detail-blog/'.$blog[1]->slug) }}" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -299,7 +299,7 @@
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class="linktabblog"
+                                                        <a href="{{ url('detail-blog/'.$blog[2]->slug) }}" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -329,7 +329,7 @@
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
-                                                        <a href="#" class="linktabblog"
+                                                        <a href="{{ url('detail-blog/'.$blog[3]->slug) }}" class="linktabblog"
                                                             style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:5px;width:fit-content">Read
                                                             more >></a>
                                                     </div>
@@ -373,7 +373,7 @@
                                                 </div>
                                                 <div class="col-12 col-md-3 text-center"
                                                     style="padding-left:0px;padding-right:0px">
-                                                    <a href="#" class=""
+                                                    <a href="{{ url('detail-blog/'.$blogs->slug) }}" class=""
                                                         style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                                         more >></a>
                                                 </div>
