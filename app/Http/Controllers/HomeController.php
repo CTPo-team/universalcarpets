@@ -140,7 +140,7 @@ class HomeController extends Controller
         if(empty($this->data["new"])){
             return Response::json([], 400);
         }
-        $data = blog::where("id","!=",$this->data["new"]->id)->orderByDesc("created_at")->paginate(3);    
+        $data = blog::where("id","!=",$this->data["new"]->id)->with("blogCategory")->orderByDesc("created_at")->paginate(3);    
         return Response::json($data, 200);
     }
     
