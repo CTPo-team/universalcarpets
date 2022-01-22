@@ -15,7 +15,7 @@
             @foreach ($banner as $key => $data)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="d-block w-100" style="height:680px;background: 
-                                linear-gradient(to bottom, transparent 60%, white 95%),
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url({{asset('img/banner/'.$data->path_image)}});">
                     <!-- <div class="overlay">
                     </div> -->
@@ -101,7 +101,7 @@
 
             <div class="col-md-12">
                 <hr style="border-top:1px solid black;margin-top:30px">
-                <div style="width:20%;margin-top:-27px;background:white;">
+                <div style="width:20%;margin-top:-27px;background:#F5F5F5;">
                     <p
                         style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
                         NEW COLLECTIONS</p>
@@ -145,7 +145,7 @@
 
             <div class="col-md-12">
                 <hr style="border-top:1px solid black;margin-top:30px">
-                <div style="width:20%;margin-top:-27px;background:white;">
+                <div style="width:20%;margin-top:-27px;background:#F5F5F5;">
                     <p
                         style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
                         NEW COLLECTIONS</p>
@@ -211,7 +211,7 @@
 
             <div class="col-md-12">
                 <hr style="border-top:1px solid black;margin-top:30px">
-                <div style="width:20%;margin-top:-27px;background:white;">
+                <div style="width:20%;margin-top:-27px;background:#F5F5F5;">
                     <p
                         style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
                         FROM OUR BLOG</p>

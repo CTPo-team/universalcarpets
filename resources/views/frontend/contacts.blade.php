@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row" style="margin-top:-72px;margin-left:0px;margin-right:0px;height:680px;background: 
-                                linear-gradient(to bottom,  rgb(18 18 18 / 47%) 60%, white 95%),
+                                linear-gradient(to bottom,  rgb(18 18 18 / 47%) 60%, #F5F5F5 95%),
                                 url({{asset('images/contactus.png')}}); background-position:center;">
     <div class="col-12" style="">
         <div class="carousel-caption text-left">
