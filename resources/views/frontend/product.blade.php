@@ -1,7 +1,14 @@
 @extends('frontend.app')
 
 @section('content')
-<div class="container">
+<style>
+    @media only screen and (min-width: 1800px) {
+        .cont-productpage{
+            max-width:1445px !important;
+        }
+    }
+</style>
+<div class="container cont-productpage">
     <div class="row" style="margin-top:0px;height:600px;background:
                                 url({{asset('images/bannerproduct.png')}});background-size:cover;">
         <div class="col-12" style="">
@@ -18,7 +25,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container cont-productpage">
     <div class="row pb-5">
         <div class="col-12 pt-5">
             <h4>FEATURED PRODUCT</h4>
@@ -96,20 +103,12 @@
 
     @section('scripts')
     <script>
-        var productCategory = {
-            !!json_encode($productCategory - > toArray()) !!
-        };
+        var productCategory = {!! json_encode($productCategory -> toArray()) !!};
 
         //Init Value Filter
-        var filterCategories = {
-            !!isset($filter["filterCategories"]) ? $filter["filterCategories"] : "\"\""!!
-        }
-        var filterSubCategories = {
-            !!isset($filter["filterSubCategories"]) ? $filter["filterSubCategories"] : "\"\""!!
-        }
-        var filterBrand = {
-            !!isset($filter["filterBrand"]) ? $filter["filterBrand"] : "\"\""!!
-        }
+        var filterCategories = {!! isset($filter["filterCategories"]) ? $filter["filterCategories"] : "\"\"" !!}
+        var filterSubCategories = {!! isset($filter["filterSubCategories"]) ? $filter["filterSubCategories"] : "\"\"" !!}
+        var filterBrand = {!! isset($filter["filterBrand"]) ? $filter["filterBrand"] : "\"\"" !!}
         var page = 1
         var noDataProduct = false
 
@@ -289,8 +288,10 @@
         function appendProduct(product) {
             if (product.length > 0) {
                 noDataProduct = false
+                
                 product.forEach(function (data) {
-                    $(classProduct).append("<div class='col-12' style='height:700px'>" + data.title + "</div>")
+                    console.log(data);
+                    $(classProduct).append("<div class='col-4'>" + data.title + "</div>")
                 });
             } else {
                 noDataProduct = true
@@ -323,11 +324,8 @@
             loadProduct()
         }
 
-    </script>
-
-    <script>
-        //Default
-        setDefaultCategory();
+            //Default
+            setDefaultCategory();
         //Set Data Category
         getCategory();
         addOptionSelect(classCategories, category);
@@ -360,6 +358,5 @@
                 }
             }
         });
-
     </script>
     @endsection
