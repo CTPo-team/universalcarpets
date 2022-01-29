@@ -56,6 +56,79 @@
             </div>
         </div>
     </div>
+<!-- section contact us-->
+<div class="sectionContact" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/linecontactus.png')}}); background-repeat: no-repeat;
+background-size: cover;">
+    <div class="container" style="padding-right:0px;padding-left:0px">
+        <div class="row mt-4" style="margin-right:0px;margin-left:0px">
+            <div class="col-md-12 ">
+                <div class="card card-bgcontactus">
+                    <div class="card-body">
+                        <div class="row rowmobilecontact p-5">
+                            <div class="col-12 col-md-6 align-self-center">
+                                <div class="row justify-content-center">
+                                    <div class="col tulisancontact" style="max-width:53%;">
+                                        <p
+                                            style="font-family: 'Playfair Display', serif;font-size: 40px !important;font-weight:bold;color:#C72C36">
+                                            CONTACT US</p>
+                                        <p>
+                                            Submit your question and be the first to be notified to our latest
+                                            collections
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                @include('flash::message')
+                                {!! Form::open(['url' => 'sendcontactus']) !!}
+                                <div class="form-group row border-bottom" style="width:100%">
+                                    <div class="col-sm-9">
+                                        <input type="text" name="name" class="inputcontactus form-control"
+                                            placeholder="Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom" style="width:100%">
+                                    <div class="col-sm-8">
+                                        <input type="text" name="email" class="inputcontactus form-control"
+                                            placeholder="Email Adress" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom" style="width:100%">
+                                    <div class="col-sm-9">
+                                        <input type="number" name="phone" class="inputcontactus form-control"
+                                            placeholder="Phone Number" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom" style="width:100%">
+                                    <div class="col-sm-9">
+                                        <input type="text" name="message" class="inputcontactus form-control"
+                                            placeholder="Message" required>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12 text-right pt-3">
+                                        <button type="submit" class="btn pl-5 pr-5 pt-2 pb-2"
+                                            style="background:#D5AD6A;color:white;">
+                                            SUBMIT
+                                        </button>
+                                    </div>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end contact us -->  
+
+    </div>
 </div>
 
 

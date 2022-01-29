@@ -1,5 +1,12 @@
 @extends('frontend.app')
 
+@section('css')
+<style>
+    .navbar-light .navbar-nav .nav-link {
+        color: #C62630 !important;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container">
     <div class="row" style="margin-top:0px;height:600px;background:
