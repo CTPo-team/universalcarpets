@@ -1,5 +1,12 @@
 @extends('frontend.app')
 
+@section('css')
+<style>
+    .navbar-light .navbar-nav .nav-link {
+        color: #C62630 !important;
+    }
+</style>
+@endsection
 @section('content')
 <style>
     @media only screen and (min-width: 1800px) {

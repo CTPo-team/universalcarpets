@@ -48,7 +48,7 @@
     }
 
     .sticky-top.scrolled .navbar-brand ,.sticky-top.scrolled .nav-link, .sticky-top.scrolled a.nav-link:active {
-        color:black !important;
+        color:#C62630 !important;
     }
 
     .content .content-overlay {
