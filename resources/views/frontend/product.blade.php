@@ -68,7 +68,7 @@
         <div class="col-12  pt-5">
             <h4>ALL PRODUCTS</h4>
         </div>
-        <div class="col-12">
+        <div class="col-12 pt-5 pb-5">
             <div class="row justify-content-center">
                 <div class="col-md-2">
                     <div class="form-group">
@@ -99,8 +99,6 @@
             </div>
         </div>
         <div class="col-12">
-          
-        <h1>Product</h1>
             <div class="row data-product">
             </div>
         </div>
@@ -298,7 +296,13 @@
                 
                 product.forEach(function (data) {
                     console.log(data);
-                    $(classProduct).append("<div class='col-4'>" + data.title + "</div>")
+                    $(classProduct).append("<div class='col-4 content' style='padding-left:0px;padding-right:0px'><div class='content-overlay'></div><img class='img-fluid' width='100%' src='http://127.0.0.1:8000/img/product/"+data.image_product_one.path_image+"'>\
+                    <div class='content-details fadeIn-bottom'>\
+                                <p class='content-text'>"+data.title+"</p>\
+                                <br>\
+                                <a class='link-content-text' href=''>View Product</a>\
+                                </div>\
+                    </div>")
                 });
             } else {
                 noDataProduct = true
