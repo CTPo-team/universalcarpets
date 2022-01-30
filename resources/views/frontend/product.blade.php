@@ -56,7 +56,7 @@
                             </div>
                             <div class="button text-right pt-3">
                                 <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
-                                    style="background:#D5AD6A;color:white;">asdasdasd</button>
+                                    style="background:#D5AD6A;color:white;">VISIT</button>
                             </div>
                         </div>
                     </div>
