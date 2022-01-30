@@ -50,6 +50,7 @@
         /* font-family: 'Playfair Display', serif; */
         font-family: 'Source Sans Pro', sans-serif;
         overflow-x: hidden;
+        background:#F5F5F5;
     }
     </style>
     @yield('page_css')

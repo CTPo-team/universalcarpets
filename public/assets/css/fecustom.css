@@ -48,7 +48,7 @@
     }
 
     .sticky-top.scrolled .navbar-brand ,.sticky-top.scrolled .nav-link, .sticky-top.scrolled a.nav-link:active {
-        color:black !important;
+        color:#C62630 !important;
     }
 
     .content .content-overlay {
@@ -118,6 +118,36 @@
         top: 80%
     }
 
+    /* style about us */
+    .nav-tabs {
+        border-bottom:none;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link {
+        color: #B7B7B7 !important;
+        font-weight: bold;
+        border-bottom: 2px solid #B7B7B7;
+        border-bottom-width: medium;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        color: #C72C36 !important;
+        border-bottom: 2px solid #C72C36;
+        border-bottom-width: medium;
+        background: transparent;
+    }
+
+    /* style contact */
+    .teks-desc p{
+        margin-bottom: 0.1rem;
+    }
+
+    /* style mobile */
     @media only screen and (max-width: 600px) {
         .sectionAbout, .sectionCollection, .sectionContact{
             padding-top: 0px !important;
