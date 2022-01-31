@@ -293,10 +293,10 @@
         function appendProduct(product) {
             if (product.length > 0) {
                 noDataProduct = false
-                
+                var flagsUrl = '{{ asset('/img/product') }}';
                 product.forEach(function (data) {
                     console.log(data);
-                    $(classProduct).append("<div class='col-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='http://127.0.0.1:8000/img/product/"+data.image_product_one.path_image+"'>\
+                    $(classProduct).append("<div class='col-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
                                 <p class='content-text' style='font-size:3vw'>"+data.title+"</p>\
                                 <br>\
