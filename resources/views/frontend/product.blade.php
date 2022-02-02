@@ -83,7 +83,6 @@
                         <label for="exampleFormControlSelect1">Sub Categories</label>
                         <select class="form-control select-subcategories" name="filterSubCategories"
                             id="exampleFormControlSelect1" onchange="setBrand()">
-                            <option value="">All</option>
                         </select>
                     </div>
                 </div>
@@ -91,7 +90,6 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Brands</label>
                         <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
-                        <option value="">All</option>
                         </select>
                     </div>
                 </div>
@@ -134,6 +132,10 @@
         //Base
         function addOptionSelect(classSelect, dataOption) {
             clearOption(classSelect)
+            $(classSelect).append($('<option>', {
+                    value: "",
+                    text: "All"
+            }));
             dataOption.forEach(function (data) {
                 $(classSelect).append($('<option>', {
                     value: data.id,
@@ -158,10 +160,7 @@
         }
 
         function setDefaultCategory() {
-            category = [{
-                "id": "",
-                "title": ""
-            }];
+            category = [];
         }
 
         //SubCategory
@@ -194,13 +193,11 @@
             valCategory = $(classCategories).find(":selected").val()
             getSubCategory(valCategory)
             addOptionSelect(classSubcategories, subCategory)
+            addOptionSelect(classBrand, brand)
         }
 
         function setDefaultSubCategory() {
-            subCategory = [{
-                "id": "",
-                "title": ""
-            }];
+            subCategory = [];
         }
 
         //Brand
@@ -258,10 +255,7 @@
         }
 
         function setDefaultBrand() {
-            brand = [{
-                "id": "",
-                "title": ""
-            }];
+            brand = [];
         }
 
         function setDefaultTempBrandTitle() {
@@ -337,8 +331,9 @@
             loadProduct()
         }
 
-            //Default
-            setDefaultCategory();
+        //Default
+        setDefaultCategory();
+
         //Set Data Category
         getCategory();
         addOptionSelect(classCategories, category);
