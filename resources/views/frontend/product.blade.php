@@ -57,8 +57,10 @@
                                 <p style="font-size:2.2vh;color:white;"> {!! strlen(strip_tags($productFeatured->desc)) > 200 ? substr(strip_tags($productFeatured->desc),0,200).'...' : strip_tags($productFeatured->desc) !!}</p>
                             </div>
                             <div class="button text-right pt-3">
-                                <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
-                                    style="background:#D5AD6A;color:white;">VISIT</button>
+                                <a href="{{ url('detail-product/'.$productFeatured->slug) }}">
+                                    <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
+                                        style="background:#D5AD6A;color:white;">VISIT</button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -83,7 +85,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Sub Categories</label>
+                        <label for="exampleFormControlSelect1">Sub-categories</label>
                         <select class="form-control select-subcategories" name="filterSubCategories"
                             id="exampleFormControlSelect1" onchange="setBrand()">
                         </select>
@@ -97,7 +99,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 align-self-center pt-3">
-                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none">Submit</button>
+                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none"><i class="fa fa-search"></i> Search</button>
                 </div>
             </div>
         </div>
@@ -293,13 +295,14 @@
             if (product.length > 0) {
                 noDataProduct = false
                 var flagsUrl = '{{ asset('/img/product') }}';
+                var baseUrl = '{{ url('detail-product') }}';
                 product.forEach(function (data) {
                     console.log(data);
                     $(classProduct).append("<div class='col-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
                                 <p class='content-text' style='font-size:3vw'>"+data.title+"</p>\
                                 <br>\
-                                <a class='link-content-text' style='font-size:1.5vw' href=''>View Product</a>\
+                                <a class='link-content-text' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
                                 </div>\
                     </div>")
                 });
@@ -336,10 +339,14 @@
 
         //Default
         setDefaultCategory();
+        setDefaultSubCategory();
+        setDefaultBrand();
 
         //Set Data Category
         getCategory();
         addOptionSelect(classCategories, category);
+        addOptionSelect(classSubcategories, subCategory)
+        addOptionSelect(classBrand, brand)
 
         //Set Select From Data Filter
         if (filterCategories != "") {
