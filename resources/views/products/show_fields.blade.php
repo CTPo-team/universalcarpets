@@ -33,6 +33,13 @@
     <p>{!! $product->desc !!}</p>
 </div>
 
+<!-- Featured Field -->
+<div class="form-group">
+    {!! Form::label('featured', 'Featured:') !!}
+    <p>{!! $product->featured == 1 ? "<div class='badge badge-success'>Yes</div>" : "<div class='badge badge-danger'>No</div>" !!}</p>
+</div>
+
+
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}

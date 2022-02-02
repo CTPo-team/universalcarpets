@@ -29,6 +29,12 @@
     {!! Form::textarea('desc', null, ['class' => 'form-control summernote']) !!}
 </div>
 
+<!-- Featured Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('featured', 'Featured:') !!}
+    {!! Form::select('featured', [1 => "Yes", 0 => "No"], null,['class' => 'form-control select2','maxlength' => 255,'maxlength' => 255]) !!}
+</div>
+
 <!-- Status Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('status', 'Status:') !!}

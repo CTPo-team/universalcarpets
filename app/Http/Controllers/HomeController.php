@@ -176,6 +176,7 @@ class HomeController extends Controller
     public function product(Request $request)
     {
         $this->data["filter"] = $request->all();
+        $this->data["productFeatured"] = product::where("featured",1)->with(["productBrand","productCategory","imageProductOne"])->first();
         $this->data["productCategory"] = productCategory::orderBy("title")->with(["product.productBrand","subCategory.product.productBrand"])->where("product_category_id",null)->get();
         $this->data["settingWeb"] = settingWeb::first();
 

@@ -5,6 +5,7 @@
                 <th>Product Category</th>
                 <th>Product Brand</th>
                 <th>Title</th>
+                <th>Featured</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -15,6 +16,7 @@
                        <td>{{ $product->productCategory->title ?? ""}}</td>
                        <td>{{ $product->productBrand->title ?? ""}}</td>
                         <td>{{ $product->title }}</td>
+                        <td>{!! $product->featured == 1 ? "<div class='badge badge-success'>Yes</div>" : "<div class='badge badge-danger'>No</div>" !!}</td>
                         <td>{!! $product->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
