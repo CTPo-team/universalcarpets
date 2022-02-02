@@ -15,13 +15,13 @@
         }
     }
 </style>
-<div class="container cont-productpage">
-    <div class="row" style="margin-top:0px;height:600px;background:
+<div class="container cont-productpage pt-4">
+    <div class="row" style="margin-top:0px;height:65vh;background:
                                 url({{asset('images/bannerproduct.png')}});background-size:cover;">
         <div class="col-12" style="">
             <div class="carousel-caption text-left">
                 <div class="row pt-5">
-                    <div class="col-md-8 pt-5">
+                    <div class="col-md-8 pt-3">
                         <p class="fontbantitle"
                             style="font-family: 'Playfair Display', serif;font-size: 12.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">
                             Products</p>
@@ -32,9 +32,9 @@
     </div>
 </div>
 
-<div class="container cont-productpage">
+<div class="container cont-productpage pt-5">
     <div class="row pb-5">
-        <div class="col-12 pt-5">
+        <div class="col-12 pt-5" style="padding-left:0px;padding-right:0px;">
             <h4>FEATURED PRODUCT</h4>
         </div>
         <div class="col-12">
@@ -43,10 +43,10 @@
                     <img class="img-fluid" src="{{asset('images/featprod.png')}}" style="height:100%">
                 </div>
                 <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px">
-                    <div class="row align-items-center" style="height:100%">
+                    <div class="row align-items-center" style="height:40vh">
                         <div class="col-12 p-5">
                             <div class="judul-featured">
-                                <p style="font-size:10.4vh;font-family: 'Playfair Display', serif;color:white;">Paris
+                                <p style="font-size:8vh;font-family: 'Playfair Display', serif;color:white;">Paris
                                     Prima</p>
                             </div>
                             <div class="text-featured" style="width:48vh">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="button text-right pt-3">
                                 <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
-                                    style="background:#D5AD6A;color:white;">asdasdasd</button>
+                                    style="background:#D5AD6A;color:white;">VISIT</button>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="row pb-5">
-        <div class="col-12  pt-5">
+        <div class="col-12  pt-5"  style="padding-left:0px;padding-right:0px;">
             <h4>ALL PRODUCTS</h4>
         </div>
         <div class="col-12 pt-5 pb-5">
@@ -293,14 +293,14 @@
         function appendProduct(product) {
             if (product.length > 0) {
                 noDataProduct = false
-                
+                var flagsUrl = '{{ asset('/img/product') }}';
                 product.forEach(function (data) {
                     console.log(data);
-                    $(classProduct).append("<div class='col-4 content' style='padding-left:0px;padding-right:0px'><div class='content-overlay'></div><img class='img-fluid' width='100%' src='http://127.0.0.1:8000/img/product/"+data.image_product_one.path_image+"'>\
+                    $(classProduct).append("<div class='col-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
-                                <p class='content-text'>"+data.title+"</p>\
+                                <p class='content-text' style='font-size:3vw'>"+data.title+"</p>\
                                 <br>\
-                                <a class='link-content-text' href=''>View Product</a>\
+                                <a class='link-content-text' style='font-size:1.5vw' href=''>View Product</a>\
                                 </div>\
                     </div>")
                 });
