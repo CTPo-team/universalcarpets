@@ -44,20 +44,17 @@
         </div>
         <div class="col-12">
             <div class="row">
-                <div class="col-7" style="padding-right:0px;padding-left:0px">
-                    <img class="img-fluid" src="{{asset('images/featprod.png')}}" style="height:100%">
+            @if(isset($productFeatured))
+                <div class="col-7" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne->path_image )}});background-size:cover;height:24vw !important">
                 </div>
                 <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px">
                     <div class="row align-items-center" style="height:40vh">
                         <div class="col-12 p-5">
                             <div class="judul-featured">
-                                <p style="font-size:8vh;font-family: 'Playfair Display', serif;color:white;">Paris
-                                    Prima</p>
+                                <p style="font-size:8vh;font-family: 'Playfair Display', serif;color:white;">{!!$productFeatured->title!!}</p>
                             </div>
                             <div class="text-featured" style="width:48vh">
-                                <p style="font-size:2.2vh;color:white;">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Sed fringilla pretium ullamcorper. Cras sed hendrerit tellus,
-                                    tempor auctor nulla. </p>
+                                <p style="font-size:2.2vh;color:white;"> {!! strlen(strip_tags($productFeatured->desc)) > 200 ? substr(strip_tags($productFeatured->desc),0,200).'...' : strip_tags($productFeatured->desc) !!}</p>
                             </div>
                             <div class="button text-right pt-3">
                                 <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
@@ -66,6 +63,7 @@
                         </div>
                     </div>
                 </div>
+            @endif
             </div>
         </div>
     </div>
@@ -99,7 +97,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 align-self-center pt-3">
-                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933">Submit</button>
+                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none">Submit</button>
                 </div>
             </div>
         </div>

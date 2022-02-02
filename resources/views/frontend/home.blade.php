@@ -162,7 +162,7 @@
                                 @foreach ($product as $key => $newcol)
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <img class="d-block w-100"
-                                        src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}"
+                                        src="{{asset('img/product/'.$newcol->image_product_one->path_image )}}"
                                         alt="First slide">
                                 </div>
                                 @endforeach
