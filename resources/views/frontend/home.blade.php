@@ -17,8 +17,6 @@
                 <div class="d-block w-100" style="height:680px;background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url({{asset('img/banner/'.$data->path_image)}});">
-                    <!-- <div class="overlay">
-                    </div> -->
                 </div>
                 <div class="carousel-caption text-left">
                     <div class="row pt-5">
