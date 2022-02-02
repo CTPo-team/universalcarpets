@@ -38,10 +38,13 @@
         background: transparent;
     }
 
+    .sticky-top.scrolled .navbar-nav .active>.nav-link, .sticky-top.scrolled .navbar-nav .nav-link.active, .sticky-top.scrolled .navbar-nav .nav-link.show, .sticky-top.scrolled .navbar-nav .show>.nav-link{
+        border-bottom: 2px solid #C72933 !important;
+    }
     
     .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
     {
-        border-bottom: 2px solid #fff
+        border-bottom: 2px solid #fff;
     }
 
     .nav-link{
