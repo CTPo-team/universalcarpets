@@ -83,6 +83,7 @@
                         <label for="exampleFormControlSelect1">Sub Categories</label>
                         <select class="form-control select-subcategories" name="filterSubCategories"
                             id="exampleFormControlSelect1" onchange="setBrand()">
+                            <option value="">All</option>
                         </select>
                     </div>
                 </div>
@@ -90,11 +91,12 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Brands</label>
                         <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
+                        <option value="">All</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-1 align-self-center pt-3">
-                    <button type="button" onclick="submitFilter()" class="btn btn-primary">Submit</button>
+                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933">Submit</button>
                 </div>
             </div>
         </div>

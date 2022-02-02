@@ -38,6 +38,12 @@
         background: transparent;
     }
 
+    
+    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
+    {
+        border-bottom: 2px solid #fff
+    }
+
     .nav-link{
         color: white !important;
     }
@@ -46,6 +52,7 @@
         background-color: #fff !important;
         transition: background-color 200ms linear;
     }
+
 
     .sticky-top.scrolled .navbar-brand ,.sticky-top.scrolled .nav-link, .sticky-top.scrolled a.nav-link:active {
         color:#C62630 !important;
