@@ -7,5 +7,11 @@
 <!-- Desc Field -->
 <div class="form-group">
     {!! Form::label('desc', 'Description:') !!}
-    <p>{!! $blogCategory->desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $blogCategory->desc !!}
+            </p>
+        </div>
+    </div>
 </div>

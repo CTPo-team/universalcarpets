@@ -68,6 +68,11 @@ class productController extends AppBaseController
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
         $input["slug"] = $this->setSlug($input["title"],(new product())->getTable());
         unset($input["path_image"]);
+        
+        if($input["featured"] == 1){
+            $this->removeFeatured();
+        }
+
         $product = $this->productRepository->create($input);
 
         //upload image
@@ -143,6 +148,10 @@ class productController extends AppBaseController
         if(!empty($slug = $this->setSlug($input["title"],(new product())->getTable(),$product->title))){
             $input["slug"] = $slug; 
         }
+
+        if($product["featured"] == 0 && $input["featured"] == 1){
+            $this->removeFeatured();
+        }
         
         unset($input["path_image"]);
         $product = $this->productRepository->update($input, $id);
@@ -214,5 +223,10 @@ class productController extends AppBaseController
             $this->deleteFile($value["path_image"],"img/product");
         }
         imageProduct::where("product_id",$productId)->delete();
+    }
+
+    public function removeFeatured()
+    {
+        product::where("featured",1)->update(["featured" => 0]);
     }
 }

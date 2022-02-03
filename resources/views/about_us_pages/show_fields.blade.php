@@ -8,14 +8,26 @@
 <!-- Desc Field -->
 <div class="form-group">
     {!! Form::label('desc', 'Description:') !!}
-    <p>{!! $aboutUsPage->desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $aboutUsPage->desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 @endif
 
 <!-- Short Desc Field -->
 <div class="form-group">
     {!! Form::label('short_desc', 'Short Description:') !!}
-    <p>{!! $aboutUsPage->short_desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $aboutUsPage->short_desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 
 @if($aboutUsPage->id == 3)

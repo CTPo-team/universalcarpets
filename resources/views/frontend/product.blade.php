@@ -5,6 +5,11 @@
     .navbar-light .navbar-nav .nav-link {
         color: #C62630 !important;
     }
+
+    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
+    {
+        border-bottom: 2px solid #C72933;
+    }
 </style>
 @endsection
 @section('content')
@@ -39,28 +44,28 @@
         </div>
         <div class="col-12">
             <div class="row">
-                <div class="col-7" style="padding-right:0px;padding-left:0px">
-                    <img class="img-fluid" src="{{asset('images/featprod.png')}}" style="height:100%">
+            @if(isset($productFeatured))
+                <div class="col-7" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne->path_image )}});background-size:cover;height:24vw !important">
                 </div>
                 <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px">
                     <div class="row align-items-center" style="height:40vh">
                         <div class="col-12 p-5">
                             <div class="judul-featured">
-                                <p style="font-size:8vh;font-family: 'Playfair Display', serif;color:white;">Paris
-                                    Prima</p>
+                                <p style="font-size:8vh;font-family: 'Playfair Display', serif;color:white;">{!!$productFeatured->title!!}</p>
                             </div>
                             <div class="text-featured" style="width:48vh">
-                                <p style="font-size:2.2vh;color:white;">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Sed fringilla pretium ullamcorper. Cras sed hendrerit tellus,
-                                    tempor auctor nulla. </p>
+                                <p style="font-size:2.2vh;color:white;"> {!! strlen(strip_tags($productFeatured->desc)) > 200 ? substr(strip_tags($productFeatured->desc),0,200).'...' : strip_tags($productFeatured->desc) !!}</p>
                             </div>
                             <div class="button text-right pt-3">
-                                <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
-                                    style="background:#D5AD6A;color:white;">VISIT</button>
+                                <a href="{{ url('detail-product/'.$productFeatured->slug) }}">
+                                    <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
+                                        style="background:#D5AD6A;color:white;">VISIT</button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+            @endif
             </div>
         </div>
     </div>
@@ -80,7 +85,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Sub Categories</label>
+                        <label for="exampleFormControlSelect1">Sub-categories</label>
                         <select class="form-control select-subcategories" name="filterSubCategories"
                             id="exampleFormControlSelect1" onchange="setBrand()">
                         </select>
@@ -94,7 +99,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 align-self-center pt-3">
-                    <button type="button" onclick="submitFilter()" class="btn btn-primary">Submit</button>
+                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none"><i class="fa fa-search"></i> Search</button>
                 </div>
             </div>
         </div>
@@ -132,6 +137,10 @@
         //Base
         function addOptionSelect(classSelect, dataOption) {
             clearOption(classSelect)
+            $(classSelect).append($('<option>', {
+                    value: "",
+                    text: "All"
+            }));
             dataOption.forEach(function (data) {
                 $(classSelect).append($('<option>', {
                     value: data.id,
@@ -156,10 +165,7 @@
         }
 
         function setDefaultCategory() {
-            category = [{
-                "id": "",
-                "title": ""
-            }];
+            category = [];
         }
 
         //SubCategory
@@ -192,13 +198,11 @@
             valCategory = $(classCategories).find(":selected").val()
             getSubCategory(valCategory)
             addOptionSelect(classSubcategories, subCategory)
+            addOptionSelect(classBrand, brand)
         }
 
         function setDefaultSubCategory() {
-            subCategory = [{
-                "id": "",
-                "title": ""
-            }];
+            subCategory = [];
         }
 
         //Brand
@@ -256,10 +260,7 @@
         }
 
         function setDefaultBrand() {
-            brand = [{
-                "id": "",
-                "title": ""
-            }];
+            brand = [];
         }
 
         function setDefaultTempBrandTitle() {
@@ -294,13 +295,14 @@
             if (product.length > 0) {
                 noDataProduct = false
                 var flagsUrl = '{{ asset('/img/product') }}';
+                var baseUrl = '{{ url('detail-product') }}';
                 product.forEach(function (data) {
                     console.log(data);
                     $(classProduct).append("<div class='col-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
                                 <p class='content-text' style='font-size:3vw'>"+data.title+"</p>\
                                 <br>\
-                                <a class='link-content-text' style='font-size:1.5vw' href=''>View Product</a>\
+                                <a class='link-content-text' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
                                 </div>\
                     </div>")
                 });
@@ -335,11 +337,16 @@
             loadProduct()
         }
 
-            //Default
-            setDefaultCategory();
+        //Default
+        setDefaultCategory();
+        setDefaultSubCategory();
+        setDefaultBrand();
+
         //Set Data Category
         getCategory();
         addOptionSelect(classCategories, category);
+        addOptionSelect(classSubcategories, subCategory)
+        addOptionSelect(classBrand, brand)
 
         //Set Select From Data Filter
         if (filterCategories != "") {

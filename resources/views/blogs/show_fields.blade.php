@@ -21,13 +21,25 @@
 <!-- Desc Field -->
 <div class="form-group">
     {!! Form::label('desc', 'Description:') !!}
-    <p>{!! $blog->desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $blog->desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Short Desc Field -->
 <div class="form-group">
     {!! Form::label('short_desc', 'Short Description:') !!}
-    <p>{!! $blog->short_desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $blog->short_desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Status Field -->

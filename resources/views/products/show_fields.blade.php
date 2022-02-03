@@ -29,9 +29,22 @@
 
 <!-- Desc Field -->
 <div class="form-group">
-    {!! Form::label('desc', 'Desc:') !!}
-    <p>{!! $product->desc !!}</p>
+    {!! Form::label('desc', 'Description:') !!}
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $product->desc !!}
+            </p>
+        </div>
+    </div>
 </div>
+
+<!-- Featured Field -->
+<div class="form-group">
+    {!! Form::label('featured', 'Featured:') !!}
+    <p>{!! $product->featured == 1 ? "<div class='badge badge-success'>Yes</div>" : "<div class='badge badge-danger'>No</div>" !!}</p>
+</div>
+
 
 <!-- Status Field -->
 <div class="form-group">

@@ -21,6 +21,7 @@ class CreateProductTable extends Migration
             $table->text("slug")->unique()->nullable();
             $table->longText("desc")->nullable();
             $table->boolean("status");
+            $table->boolean("featured")->default(0);
 
             //SEO
             $table->longText("seo_desc")->nullable();
