@@ -15,7 +15,13 @@
 <!-- Desc Field -->
 <div class="form-group">
     {!! Form::label('desc', 'Description:') !!}
-    <p>{!! $bannerHomepage->desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $bannerHomepage->desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Button Url Field -->

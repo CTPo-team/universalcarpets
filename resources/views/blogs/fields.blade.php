@@ -10,9 +10,23 @@
     {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
 </div>
 
+@if(isset($blog))
+    <!-- Path Image Field -->
+    <div class="form-group col-sm-12 col-lg-12">
+        {!! Form::label('path_image', 'Current Banner Image:') !!}
+        <div class="gallery gallery-md">
+            <div class="gallery-item" data-image="{{asset('img/blog/'.$blog->path_image)}}" data-title="Image 1" href="{{asset('img/blog/'.$blog->path_image)}}" title="Image 1" style="background-image: url({{asset('img/blog/'.$blog->path_image)}});"></div>
+        </div>
+    </div>
+@endif
+
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('path_image', 'Banner Image:') !!}
+    @if(isset($product))
+        {!! Form::label('path_image', 'Replace Banner Image:') !!}
+    @else
+        {!! Form::label('path_image', 'Banner Image:') !!}
+    @endif
     <input id="path_image" type="file" class="form-control fileinput-image"  name="path_image" data-preview-file-type="text" {{ !isset($blog->id) ? 'required' : ''}}>
 </div>
 
