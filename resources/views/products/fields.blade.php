@@ -17,9 +17,26 @@
     {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
 </div>
 
+@if(isset($product))
+    <!-- Path Image Field -->
+    <div class="form-group col-sm-12 col-lg-12">
+        {!! Form::label('path_image', 'Current Image:') !!}
+        <div class="gallery gallery-md">
+            @foreach ($product->imageProduct as $key => $img)
+                <div class="gallery-item" data-image="{{asset('img/product/'.$img->path_image)}}" data-title="Image {{$key}}" href="{{asset('img/product/'.$img->path_image)}}" title="Image {{$key}}" style="background-image: url({{asset('img/product/'.$img->path_image)}});"></div>
+            @endforeach
+        </div>
+    </div>
+@endif
+
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('path_image', 'Image:') !!}
+    @if(isset($product))
+        {!! Form::label('path_image', 'Replace Image:') !!}
+    @else
+        {!! Form::label('path_image', 'Image:') !!}
+    @endif
+   
     <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}} multiple>
 </div>
 

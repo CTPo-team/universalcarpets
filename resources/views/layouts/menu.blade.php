@@ -10,7 +10,7 @@
     <a class="nav-link" href="{{ route('bannerHomepages.index') }}"><i class="fas fa-images"></i><span>Banner Homepage</span></a>
 </li>
 
-<li class="dropdown {{ Request::is('products*') ||  Request::is('productCategories*') ? 'active' : '' }}">
+<li class="dropdown {{ Request::is('products*') ||  Request::is('productBrands*') ||  Request::is('productCategories*') ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-bag"></i> <span>Products</span></a>
     <ul class="dropdown-menu">
         <li class="side-menus {{ Request::is('productCategories*') ? 'active' : '' }}">

@@ -7,7 +7,13 @@
 <!-- Desc Field -->
 <div class="form-group">
     {!! Form::label('desc', 'Description:') !!}
-    <p>{!! $contactUsPage->desc !!}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $contactUsPage->desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Embed Maps Link Field -->

@@ -29,8 +29,14 @@
 
 <!-- Desc Field -->
 <div class="form-group">
-    {!! Form::label('desc', 'Desc:') !!}
-    <p>{!! $product->desc !!}</p>
+    {!! Form::label('desc', 'Description:') !!}
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {!! $product->desc !!}
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Featured Field -->
