@@ -50,7 +50,8 @@ class product extends Model
         'seo_keyword',
         'seo_url',
         'slug',
-        'featured'
+        'featured',
+        'path_image_thumbnail'
     ];
 
     /**

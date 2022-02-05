@@ -26,7 +26,7 @@
     <div class="row align-items-center justify-content-center"
         style="margin-top:0px;height:65vh;background: 
                                 linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
-                                url({{asset('img/product/'.$product->imageProduct[0]->path_image)}});background-size:cover;">
+                                url({{asset('img/product/'.$product->path_image_thumbnail)}});background-size:cover;">
         <div class="col-12 col-md-6 text-center text-white">
             <p class="fontbantitle"
                 style="text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 12.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">

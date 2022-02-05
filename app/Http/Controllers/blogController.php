@@ -171,6 +171,8 @@ class blogController extends AppBaseController
             return redirect(route('blogs.index'));
         }
 
+        $this->deleteFile($blog->path_image,"img/blog");
+        
         $this->blogRepository->delete($id);
 
         Flash::success('Blog deleted successfully.');
