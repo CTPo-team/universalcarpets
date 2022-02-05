@@ -34,7 +34,7 @@
         </div>
     </div>
     @endif
-    
+
     <div class="row justify-content-center mt-5">
         <div class="col-md-5">{!! $product->desc !!}</div>
         <div class="col-md-5">
@@ -65,25 +65,25 @@
         <div class="col-12 pt-5" style="padding-left:0px;padding-right:0px;">
             <h4>RELATED PRODUCT</h4>
         </div>
-        
-        @foreach($relatedProduct as $key => $data)
-        <div class="col-6">
-            <a href="{{ url('detail-product/'.$data->slug) }}">
-                <div class="card" style="width: 18rem;">
-                    @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
-                    <img class="card-img-top" src="{{asset('img/product/'.$data->imageProduct[0]->path_image)}}"
-                        alt="Card image cap">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{$data->title}}</h5>
-                        <p class="card-text">{!! strlen(strip_tags($data->desc)) > 200 ?
-                            substr(strip_tags($data->desc),0,200).'...' : strip_tags($data->desc) !!}</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        @endforeach
+    </div>
+    <div class="row" style="margin-top:0px;">
 
+        @foreach($relatedProduct as $key => $data)
+        @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
+        <div class="col-12 col-md-6 text-center text-white" style="padding-left:0px;padding-right:0px;">
+            <div class="card"
+                style="width: 98%;height:6vw;background: 
+                                linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
+                                url({{asset('img/product/'.$data->imageProduct[0]->path_image)}});background-size:cover;">
+                <div class="card-body">
+                    <p class="fontbantitle"
+                        style="text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 1.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">
+                        {{$data->title}}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 
