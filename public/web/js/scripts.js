@@ -370,6 +370,7 @@ $(function() {
     $(".summernote").summernote({
        dialogsInBody: true,
       minHeight: 250,
+      fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64',' 72', '82', '150'],
       toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'italic', 'underline', 'clear']],
