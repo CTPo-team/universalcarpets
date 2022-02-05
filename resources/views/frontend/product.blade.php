@@ -54,7 +54,7 @@
                                 <p style="font-size:8vh;font-family: 'Playfair Display', serif;color:white;">{!!$productFeatured->title!!}</p>
                             </div>
                             <div class="text-featured" style="width:48vh">
-                                <p style="font-size:2.2vh;color:white;"> {!! strlen(strip_tags($productFeatured->desc)) > 200 ? substr(strip_tags($productFeatured->desc),0,200).'...' : strip_tags($productFeatured->desc) !!}</p>
+                                <p style="font-size:2.2vh;color:white;"> {!! strlen(strip_tags($productFeatured->desc)) > 180 ? substr(strip_tags($productFeatured->desc),0,180).'...' : strip_tags($productFeatured->desc) !!}</p>
                             </div>
                             <div class="button text-right pt-3">
                                 <a href="{{ url('detail-product/'.$productFeatured->slug) }}">

@@ -36,14 +36,16 @@
     @endif
 
     <div class="row justify-content-center mt-5">
-        <div class="col-md-5">{!! $product->desc !!}</div>
-        <div class="col-md-5">
+        <div class="col-md-11">
             @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
             @foreach($product->imageProduct as $key => $data)
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <p>
+            <!-- <img src="{{asset('img/product/'.$data->path_image)}}"
+                            alt="First slide" style="height:30vw;float:right"> -->
+            <div id="carouselExampleSlidesOnly"  style="height:30vw;float: right;margin: 0px 0px 15px 20px;" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                        <img class="d-block w-100" style="height:30vw" src="{{asset('img/product/'.$data->path_image)}}"
+                        <img class="d-block w-100" src="{{asset('img/product/'.$data->path_image)}}"
                             alt="First slide">
                     </div>
                 </div>
@@ -56,12 +58,14 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            {!! $product->desc !!}
+            </p>
             @endforeach
             @endif
         </div>
     </div>
 
-    <div class="row mt-5">
+    <div class="row">
         <div class="col-12 pt-5" style="padding-left:0px;padding-right:0px;">
             <h4>RELATED PRODUCT</h4>
         </div>
@@ -72,12 +76,12 @@
         @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
         <div class="col-12 col-md-6 text-center text-white" style="padding-left:0px;padding-right:0px;">
             <div class="card"
-                style="width: 98%;height:6vw;background: 
+                style="width: 98%;height:6.7vw;background: 
                                 linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
                                 url({{asset('img/product/'.$data->imageProduct[0]->path_image)}});background-size:cover;">
                 <div class="card-body">
                     <p class="fontbantitle"
-                        style="text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 1.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">
+                        style="padding-top:1.5vh;text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 4vh;line-height:1;font-weight:bold;letter-spacing:10px;">
                         {{$data->title}}</p>
                 </div>
             </div>
