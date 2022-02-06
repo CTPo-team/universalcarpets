@@ -97,19 +97,6 @@
                             </div>
                         </div>
                     </a>
-                    <!-- <a href="{{ url('detail-blog/'.$data->slug) }}">
-                        <div class="card" style="width: 100%;">
-                            <img class="card-img-top" src="{{asset('img/blog/'.$data->path_image)}}"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$data->title}}</h5>
-                                <p class="card-text">{!! strlen(strip_tags($data->desc)) > 200 ?
-                                    substr(strip_tags($data->desc),0,200).'...'
-                                    : strip_tags($data->desc) !!}</p>
-                            </div>
-                        </div>
-                    </a> -->
-
                 </diV>
                 @endforeach
                 @else
