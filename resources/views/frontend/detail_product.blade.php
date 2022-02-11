@@ -23,8 +23,7 @@
 @section('content')
 <div class="container cont-productpage pt-4">
     @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
-    <div class="row align-items-center justify-content-center"
-        style="margin-top:0px;height:65vh;background: 
+    <div class="row align-items-center justify-content-center" style="margin-top:0px;height:65vh;background: 
                                 linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
                                 url({{asset('img/product/'.$product->path_image_thumbnail)}});background-size:cover;">
         <div class="col-12 col-md-6 text-center text-white">
@@ -38,29 +37,34 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-11">
             @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
-            @foreach($product->imageProduct as $key => $data)
+
             <p>
-            <!-- <img src="{{asset('img/product/'.$data->path_image)}}"
-                            alt="First slide" style="height:30vw;float:right"> -->
-            <div id="carouselExampleSlidesOnly"  style="height:30vw;float: right;margin: 0px 0px 15px 20px;" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                        <img class="d-block w-100" src="{{asset('img/product/'.$data->path_image)}}"
-                            alt="First slide">
+                <div id="carouselExampleSlidesOnly" style="float:right;width:25vw;margin: 0px 0px 15px 20px;"
+                    class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($product->imageProduct as $key => $data)
+                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                            <img class="d-block productpopup" style="width:25vw" data-toggle="modal"
+                                data-target="#productpopup" data-id="{{$data->path_image}}" src="{{asset('img/product/'.$data->path_image)}}"
+                                alt="First slide">
+                        </div>
+                        @endforeach
                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev"
+                        style="background:black;height:7vh;margin:auto">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next"
+                        style="background:black;height:7vh;margin:auto">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            {!! $product->desc !!}
+                {!! $product->desc !!}
             </p>
-            @endforeach
+
+
             @endif
         </div>
     </div>
@@ -91,5 +95,31 @@
     </div>
 </div>
 
+<!-- modal bootstrap -->
+<div class="modal fade" id="productpopup" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <img class="img-fluid" style="width:100%" src="{{asset('img/product/'.$data->path_image)}}"
+                alt="First slide"> -->
+        </div>
+    </div>
+</div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $(".modal").on("hidden.bs.modal", function(){
+            $(".modal-content").html("");
+        });
+        $('.productpopup').on('click', function () {
+            var id = $(this).attr("data-id");
+            // console.log(id);
+            var flagsUrl = '{{ asset('/img/product') }}';
+            $(".modal-content").append("<img class='img-fluid' style='width:100%' src='"+flagsUrl+'/'+id+"' >");             
+        });
+    })
+
+</script>
 @endsection

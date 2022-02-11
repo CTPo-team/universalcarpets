@@ -241,4 +241,5 @@ class HomeController extends Controller
 
         return abort(404);
     }
+
 }
