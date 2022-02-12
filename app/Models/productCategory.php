@@ -94,4 +94,8 @@ class productCategory extends Model
     {
         return $this->hasMany(\App\Models\product::class, 'product_category_id')->orderBy('title');
     }
+    public function parent()
+    {
+        return $this->hasOne(\App\Models\productCategory::class, 'id','product_category_id')->orderBy('title');
+    }
 }

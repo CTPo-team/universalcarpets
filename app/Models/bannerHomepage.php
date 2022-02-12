@@ -64,7 +64,6 @@ class bannerHomepage extends Model
         'title' => 'nullable|string|max:255',
         'desc' => 'nullable|string',
         'button_url' => 'nullable|string|max:255',
-        'status' => 'required|boolean',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable',
