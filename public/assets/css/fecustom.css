@@ -159,6 +159,14 @@
 
     /* style mobile */
     @media only screen and (max-width: 600px) {
+        .tababout-mob{
+            font-size:2.8vw;    
+        }
+
+        .abouttech{
+            padding-top: 0px !important;
+        }
+
         .sectionAbout, .sectionCollection, .sectionContact{
             padding-top: 0px !important;
         }

@@ -18,15 +18,15 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 text-right">
+        <div class="col-12 col-md-3 text-right">
             <p style="padding-top: 2.3vw;
     padding-right: 1.5vw;font-family: 'Playfair Display', serif;line-height:1;color:#D5AD6A;font-size:4.4vw;">Our Office</p>
         </div>
-        <div class="col-md-9">
+        <div class="col-12 col-md-9">
             <div class="row">
                 @foreach($contacts as $key => $data)
 
-                <div class="col-6 pr-4 pl-4 mt-5" style="border-left:4px solid #C72933">
+                <div class="col-12 col-md-6 pr-4 pl-4 mt-5" style="border-left:4px solid #C72933">
                     <h3>{{$data->title ?? ''}}</h3>
                     <div class="teks-desc">
                     {!!$data->desc ?? ''!!}
@@ -38,11 +38,11 @@
 
     </div>
     <div class="row" style="margin-top:90px">
-        <div class="col-md-3 text-right">
+        <div class="col-12 col-md-3 text-right">
             <p style="padding-top: 2.3vw;
     padding-right: 1.5vw;font-family: 'Playfair Display', serif;line-height:1;color:#D5AD6A;font-size:4.4vw;">Map</p>
         </div>
-        <div class="col-md-9" style="border-left: 4px solid #C72933">
+        <div class="col-12 col-md-9" style="border-left: 4px solid #C72933">
             <div class="row">
                 <div class="col-12 pr-4 pl-4">
                     @foreach($contacts as $key => $data)

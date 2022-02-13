@@ -20,15 +20,15 @@
     <div class="row">
         <ul class="nav nav-tabs w-100" id="myTab" role="tablist">
             <li class="nav-item col-4 text-center">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                <a class="nav-link tababout-mob active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                     aria-selected="true">OUR STORY</a>
             </li>
             <li class="nav-item col-4 text-center">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                <a class="nav-link tababout-mob" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                     aria-controls="profile" aria-selected="false">NETWORK</a>
             </li>
             <li class="nav-item col-4 text-center">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                <a class="nav-link tababout-mob" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                     aria-controls="contact" aria-selected="false">TECHNOLOGIES</a>
             </li>
         </ul>
@@ -38,7 +38,7 @@
 <div class="tab-content" id="myTabContent">
     <!-- OUR STORY CONTENT -->
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="row" style="margin-left:-15px;margin-right:-15px;">
+        <div class="row d-none d-sm-block" style="margin-left:-15px;margin-right:-15px;">
             <div class="col-12" style="margin-top:90px">
                 <img class="img-fluid" src="{{asset('images/aboutusimg.png')}}">
                 <div class="aboutyt" style="position:absolute;right:100px;margin-top:-350px">
@@ -50,8 +50,22 @@
                 </div>
             </div>
         </div>
+        <div class="row d-block d-sm-none" style="background:black">
+            <div class="col-12 text-center pt-4 pl-4 pr-4" style="margin-top:25px">
+            <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:9vw">Universal Carpet & Rugs Presents</p>
+            </div>
+            <div class="col-12">
+                <div>
+                    <iframe width="100%" height="340" src="https://www.youtube.com/embed/NTSHN1BGd5c"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                </div>
+            </div>
+        </div>
         <div class="row pt-5">
-            <div class="col-md-6"  style="padding-right:0px">
+            <div class="col-md-6 d-none d-sm-block"  style="padding-right:0px">
                 <div class="container">
                     <div class="row pt-4">
                         <div class="col"  style="padding-left:7vw">
@@ -60,50 +74,75 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12 d-block d-sm-none pl-5 pr-5"  style="padding-right:0px">
+                {!! $ourStory->desc ?? '' !!}
+            </div>
             <div class="col-md-6"  style="padding-left:0px;padding-right:0px">
                 <img class="img-fluid" src="{{asset('images/serti.png')}}">
             </div>
         </div>
 
-
-        <!-- <div class="aboutyt text-right" style="position:absolute;right:0;z-index:98;padding-top:150px">
-            <img class="img-fluid" src="{{asset('images/lineaboutus.png')}}" style="height:400px">
-        </div> -->
-        <div class="container">
+        <!-- <div class="container d-none d-sm-block">
             <div class="row pt-5">
                 <div class="col-12 text-center p-5">
                     <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:3vw">Our Strategy</p>
                 </div>
             </div>
+        </div> -->
+
+        <div class="container d-block d-sm-none">
+            <div class="row pt-5">
+                <div class="col-12 text-center pb-3">
+                    <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:9vw">Our Strategy</p>
+                </div>
+            </div>
         </div>
 
-        <div class="row pt-4 mb-5"
+        <div class="row mb-5 d-none d-sm-block mt-5"
             style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:78vh;">
-            <!-- <div class="container"> -->
-                <div class="row text-white align-items-center" style="height:75vh;">
+            <div class="row pb-4">
+                <div class="col-12 text-center pb-3">
+                    <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:3vw">Our Strategy</p>
+                </div>
+            </div>   
+            <div class="row text-white align-items-center" style="height:59vh;">
                     <div class="col-6">
                     </div>
                     <div class="col-4" style="font-size:1.3vw">
                         {!! $ourStory->our_strategy_desc ?? '' !!}
                     </div>
                 </div>
-            <!-- </div> -->
-
         </div>
-
-
+        <div class="row mb-5 d-block d-sm-none">
+                    <div class="col-12 pl-5 pr-5" style="font-size:4vw">
+                        {!! $ourStory->our_strategy_desc ?? '' !!}
+                    </div>
+        </div>
     </div>
 
     <!-- NETWORK CONTENT -->
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="row" style="margin-left:-15px;margin-right:-15px;">
+        <div class="row d-none d-sm-block" style="margin-left:-15px;margin-right:-15px;">
             <div class="col-12" style="margin-top:90px">
                 <img class="img-fluid" src="{{asset('images/aboutnetwork.png')}}">
             </div>
         </div>
-        <div class="container pt-5">
+        <div class="row d-block d-sm-none" style="background:black">
+            <div class="col-12 text-center pt-4 pl-4 pr-4 pb-4" style="margin-top:25px">
+            <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:9vw">Spreads all over the world</p>
+            </div>
+        </div>
+        <div class="container d-none d-sm-block pt-5">
             <div class="row justify-content-md-center">
                 <div class="col-12" style="font-size:1.3vw">
+
+                    {!! $network->desc ?? '' !!}
+                </div>
+            </div>
+        </div>
+        <div class="container d-block d-sm-none pt-5">
+            <div class="row justify-content-md-center">
+                <div class="col-12" style="font-size:4vw">
 
                     {!! $network->desc ?? '' !!}
                 </div>
@@ -118,17 +157,22 @@
 
     <!-- TECHNOLOGIES -->
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <div style="background:#0e0e0e">
+        <div class="d-none d-sm-block" style="background:#0e0e0e">
         <div class="container pt-4 pb-4" style="margin-top:90px">
             <div class="row text-center p-3" style="color:#D5AD6A;font-size:2.7vw">
                 {!! $technologies->short_desc ?? '' !!}
             </div>
-
         </div>
+        </div>
+        
+        <div class="row d-block d-sm-none" style="background:black">
+            <div class="col-12 text-center pt-4 pl-4 pr-4 pb-4" style="margin-top:25px">
+            <div style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:4vw">{!! $technologies->short_desc ?? '' !!}</div>
+            </div>
         </div>
      
 
-        <div class="container pt-5">
+        <div class="container abouttech pt-5">
             <div class="row justify-content-md-center">
                 <div class="col-12 col-md-6 mt-3" style="padding-right:0px;padding-left:0px">
                     @foreach($aboutUsGalleryEven as $gallery)
