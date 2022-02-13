@@ -29,19 +29,13 @@
 <!-- Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('desc', 'Description:') !!}
-    {!! Form::textarea('desc', null, ['class' => 'form-control summernote-simple']) !!}
+    {!! Form::text('desc', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 <!-- Button Url Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('button_url', 'Button URL:') !!}
     {!! Form::text('button_url', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Status Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', [1 => "Active", 0 => "Inactive"], null,['class' => 'form-control select2','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
 

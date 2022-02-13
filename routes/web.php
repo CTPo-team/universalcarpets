@@ -37,7 +37,9 @@ Route::group(['middleware' => ['role:superadmin']], function () {
 });
 
 Route::group(['middleware' => ['role:superadmin|admin']], function () {
-    Route::resource('bannerHomepages', App\Http\Controllers\bannerHomePageController::class);
+    Route::resource('bannerHomepages', App\Http\Controllers\bannerHomePageController::class,[
+        'only' => ['index', 'edit', 'update', 'show']
+    ]);
 
 
     Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class,[
