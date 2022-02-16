@@ -55,10 +55,8 @@
             {!! $blog->desc !!}
             <br>
             <div class="button text-left pt-3">
-                <a href="">
                     <button type="button" class="btn pl-4 pr-4 pt-2 pb-2"
-                        style="background:#D5AD6A;color:white;">SHARE</button>
-                </a>
+                        style="background:#D5AD6A;color:white;" onclick="copyToClipboard('{{url("detail-blog/".$blog->slug) }}')">SHARE</button>
             </div>
         </div>
     </div>
@@ -98,3 +96,17 @@
 
 
 @endsection
+
+@section("scripts")
+    <script>
+        function copyToClipboard(text) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", text);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+            alert("URL Copied.");
+        }
+    </script>
+@endsecion

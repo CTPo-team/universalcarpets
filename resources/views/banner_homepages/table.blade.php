@@ -5,6 +5,7 @@
                 <th>Image</th>
                 <th>Title</th>
                 <th>Button Url</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>

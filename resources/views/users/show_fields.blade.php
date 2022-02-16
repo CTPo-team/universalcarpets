@@ -16,4 +16,14 @@
     <p>{{ $users->roles_name }}</p>
 </div>
 
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{{ $users->created_at->format("d/m/Y h:i:s") }}</p>
+</div>
 
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{{ $users->updated_at->format("d/m/Y h:i:s") }}</p>
+</div>

@@ -44,8 +44,8 @@
                                 <h3 class="card-subtitle pt-2 pb-2" style="color:#C72C36;font-weight:600">
                                     {{$new->title}}</h3>
                                 <p class="card-text" style="font-size:1.3vw;color:black">{!!
-                                    strlen(strip_tags($new->desc)) > 200 ?
-                                    substr(strip_tags($new->desc),0,200).'...' : strip_tags($new->desc) !!}</p>
+                                    strlen(strip_tags($new->short_desc)) > 200 ?
+                                    substr(strip_tags($new->short_desc),0,200).'...' : strip_tags($new->short_desc) !!}</p>
                             </div>
                         </div>
                     </a>
@@ -88,9 +88,9 @@
                                         <h4 class="card-subtitle pt-2 pb-2" style="color:#C72C36;font-weight:600">
                                             {{$data->title}}</h4>
                                         <p class="card-text texttabblog" style="font-size:14px;color:black">
-                                            {!! strlen(strip_tags($data->desc)) > 200 ?
-                                            substr(strip_tags($data->desc),0,200).'...'
-                                            : strip_tags($data->desc) !!}
+                                            {!! strlen(strip_tags($data->short_desc)) > 200 ?
+                                            substr(strip_tags($data->short_desc),0,200).'...'
+                                            : strip_tags($data->short_desc) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -162,7 +162,7 @@
                 <div class='card' style='width: 100%;border:none;background:transparent'>\
                 <div class='card-body'><h6 class='card-subtitle' style='color:#D5AD6A;font-weight:600'>"+data.blog_category.title+"</h6>\
                 <h3 class='card-subtitle pt-2 pb-2' style='color:#C72C36;font-weight:600'>" + data.title + "</h3>\
-                <div class='card-text texttabblog' style='font-size:1.3vw;color:black'>"+data.desc+"</div>\
+                <div class='card-text texttabblog' style='font-size:1.3vw;color:black'>"+data.short_desc+"</div>\
                 </div>\
                 </div>\
                 </div></a>")
