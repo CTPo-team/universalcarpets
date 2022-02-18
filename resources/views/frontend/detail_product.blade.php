@@ -23,10 +23,9 @@
 @section('content')
 <div class="container cont-productpage pt-4">
     @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
-    <div class="row align-items-center justify-content-center"
-        style="margin-top:0px;height:65vh;background: 
+    <div class="row align-items-center justify-content-center" style="margin-top:0px;height:65vh;background: 
                                 linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
-                                url({{asset('img/product/'.$product->imageProduct[0]->path_image)}});background-size:cover;">
+                                url({{asset('img/product/'.$product->path_image_thumbnail)}});background-size:cover;">
         <div class="col-12 col-md-6 text-center text-white">
             <p class="fontbantitle"
                 style="text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 12.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">
@@ -34,58 +33,93 @@
         </div>
     </div>
     @endif
-    
+
     <div class="row justify-content-center mt-5">
-        <div class="col-md-5">{!! $product->desc !!}</div>
-        <div class="col-md-5">
+        <div class="col-md-11">
             @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
-            @foreach($product->imageProduct as $key => $data)
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                        <img class="d-block w-100" style="height:30vw" src="{{asset('img/product/'.$data->path_image)}}"
-                            alt="First slide">
+
+            <p>
+                <div id="carouselExampleSlidesOnly" style="float:right;width:25vw;margin: 0px 0px 15px 20px;"
+                    class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($product->imageProduct as $key => $data)
+                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                            <img class="d-block productpopup" style="width:25vw" data-toggle="modal"
+                                data-target="#productpopup" data-id="{{$data->path_image}}" src="{{asset('img/product/'.$data->path_image)}}"
+                                alt="First slide">
+                        </div>
+                        @endforeach
                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev"
+                        style="background:black;height:7vh;margin:auto">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next"
+                        style="background:black;height:7vh;margin:auto">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            @endforeach
+                {!! $product->desc !!}
+            </p>
+
+
             @endif
         </div>
     </div>
 
-    <div class="row mt-5">
+    <div class="row">
         <div class="col-12 pt-5" style="padding-left:0px;padding-right:0px;">
             <h4>RELATED PRODUCT</h4>
         </div>
-        
-        @foreach($relatedProduct as $key => $data)
-        <div class="col-6">
-            <a href="{{ url('detail-product/'.$data->slug) }}">
-                <div class="card" style="width: 18rem;">
-                    @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
-                    <img class="card-img-top" src="{{asset('img/product/'.$data->imageProduct[0]->path_image)}}"
-                        alt="Card image cap">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{$data->title}}</h5>
-                        <p class="card-text">{!! strlen(strip_tags($data->desc)) > 200 ?
-                            substr(strip_tags($data->desc),0,200).'...' : strip_tags($data->desc) !!}</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        @endforeach
+    </div>
+    <div class="row" style="margin-top:0px;">
 
+        @foreach($relatedProduct as $key => $data)
+        @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
+        <div class="col-12 col-md-6 text-center text-white" style="padding-left:0px;padding-right:0px;">
+            <div class="card"
+                style="width: 98%;height:6.7vw;background: 
+                                linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
+                                url({{asset('img/product/'.$data->imageProduct[0]->path_image)}});background-size:cover;">
+                <div class="card-body">
+                    <p class="fontbantitle"
+                        style="padding-top:1.5vh;text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 4vh;line-height:1;font-weight:bold;letter-spacing:10px;">
+                        {{$data->title}}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 
+<!-- modal bootstrap -->
+<div class="modal fade" id="productpopup" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <img class="img-fluid" style="width:100%" src="{{asset('img/product/'.$data->path_image)}}"
+                alt="First slide"> -->
+        </div>
+    </div>
+</div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $(".modal").on("hidden.bs.modal", function(){
+            $(".modal-content").html("");
+        });
+        $('.productpopup').on('click', function () {
+            var id = $(this).attr("data-id");
+            // console.log(id);
+            var flagsUrl = '{{ asset('/img/product') }}';
+            $(".modal-content").append("<img class='img-fluid' style='width:100%' src='"+flagsUrl+'/'+id+"' >");             
+        });
+    })
+
+</script>
 @endsection

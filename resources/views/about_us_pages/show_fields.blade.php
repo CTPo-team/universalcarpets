@@ -49,3 +49,15 @@
     <p>{!! $aboutUsPage->our_strategy_desc !!}</p>
 </div>
 @endif
+
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{{ $aboutUsPage->created_at->format("d/m/Y h:i:s") }}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{{ $aboutUsPage->updated_at->format("d/m/Y h:i:s") }}</p>
+</div>

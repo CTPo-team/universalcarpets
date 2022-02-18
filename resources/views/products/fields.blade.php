@@ -20,6 +20,30 @@
 @if(isset($product))
     <!-- Path Image Field -->
     <div class="form-group col-sm-12 col-lg-12">
+        {!! Form::label('path_image_thumbnail', 'Current Thumbnail Image:') !!}
+        <div class="gallery gallery-md">
+            <div class="gallery-item" data-image="{{asset('img/product/'.$product->path_image_thumbnail)}}" data-title="Image 1" href="{{asset('img/product/'.$product->path_image_thumbnail)}}" title="Image 1" style="background-image: url({{asset('img/product/'.$product->path_image_thumbnail)}});"></div>
+        </div>
+    </div>
+@endif
+
+
+<!-- Path Image Thumbnail Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    @if(isset($product))
+        {!! Form::label('path_image_thumbnail', 'Replace Thumbnail Image:') !!}
+    @else
+        {!! Form::label('path_image_thumbnail', 'Thumbnail Image:') !!}
+    @endif
+    <p>
+        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 2480 × 1753 px</small>
+    </p>
+    <input id="path_image_thumbnail" type="file" class="form-control fileinput-image"  name="path_image_thumbnail" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}}>
+</div>
+
+@if(isset($product))
+    <!-- Path Image Field -->
+    <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('path_image', 'Current Image:') !!}
         <div class="gallery gallery-md">
             @foreach ($product->imageProduct as $key => $img)
@@ -36,7 +60,9 @@
     @else
         {!! Form::label('path_image', 'Image:') !!}
     @endif
-   
+    <p>
+        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 364 × 404 px</small>
+    </p>
     <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}} multiple>
 </div>
 

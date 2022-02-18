@@ -22,3 +22,14 @@
     <p>{!! $contactUsPage->embed_maps_link !!}</p>
 </div>
 
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{{ $contactUsPage->created_at->format("d/m/Y h:i:s") }}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{{ $contactUsPage->updated_at->format("d/m/Y h:i:s") }}</p>
+</div>

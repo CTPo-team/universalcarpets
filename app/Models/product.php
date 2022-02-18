@@ -50,7 +50,8 @@ class product extends Model
         'seo_keyword',
         'seo_url',
         'slug',
-        'featured'
+        'featured',
+        'path_image_thumbnail'
     ];
 
     /**
@@ -112,6 +113,6 @@ class product extends Model
 
     public function imageProductOne()
     {
-        return $this->belongsTo(\App\Models\imageProduct::class, 'id')->oldest();
+        return $this->hasOne(\App\Models\imageProduct::class, 'product_id', 'id')->oldest();
     }
 }

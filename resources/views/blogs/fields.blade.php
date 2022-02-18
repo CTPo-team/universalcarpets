@@ -27,6 +27,9 @@
     @else
         {!! Form::label('path_image', 'Banner Image:') !!}
     @endif
+    <p>
+        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 532 × 383 px</small>
+    </p>
     <input id="path_image" type="file" class="form-control fileinput-image"  name="path_image" data-preview-file-type="text" {{ !isset($blog->id) ? 'required' : ''}}>
 </div>
 

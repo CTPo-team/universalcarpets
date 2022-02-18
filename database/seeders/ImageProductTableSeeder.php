@@ -37,19 +37,27 @@ class ImageProductTableSeeder extends Seeder
             ),
             2 => 
             array (
-                'id' => 3,
+                'id' => 5,
                 'product_id' => 3,
-                'path_image' => '1_1640455959.0583.png',
-                'created_at' => '2021-12-25 18:12:39',
-                'updated_at' => '2021-12-25 18:12:39',
+                'path_image' => '1_1644285502.208.jpg',
+                'created_at' => '2022-02-08 01:58:22',
+                'updated_at' => '2022-02-08 01:58:22',
             ),
             3 => 
             array (
-                'id' => 4,
-                'product_id' => 4,
-                'path_image' => '1_1640455974.8813.png',
-                'created_at' => '2021-12-25 18:12:54',
-                'updated_at' => '2021-12-25 18:12:54',
+                'id' => 6,
+                'product_id' => 3,
+                'path_image' => '1_1644285502.2249.jpg',
+                'created_at' => '2022-02-08 01:58:22',
+                'updated_at' => '2022-02-08 01:58:22',
+            ),
+            4 => 
+            array (
+                'id' => 7,
+                'product_id' => 3,
+                'path_image' => '1_1644285502.2469.jpg',
+                'created_at' => '2022-02-08 01:58:22',
+                'updated_at' => '2022-02-08 01:58:22',
             ),
         ));
         

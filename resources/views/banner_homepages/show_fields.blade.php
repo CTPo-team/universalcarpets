@@ -30,9 +30,14 @@
     <p><a href="{{ $bannerHomepage->button_url }}">{{ $bannerHomepage->button_url }}</a></p>
 </div>
 
-<!-- Status Field -->
+<!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
-    <p>{!! $bannerHomepage->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</p>
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{{ $bannerHomepage->created_at->format("d/m/Y h:i:s") }}</p>
 </div>
 
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{{ $bannerHomepage->updated_at->format("d/m/Y h:i:s") }}</p>
+</div>

@@ -32,8 +32,7 @@ class productCategoryController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $productCategories = $this->productCategoryRepository->all();
-
+        $productCategories = productCategory::with(["parent","subCategory","product"])->get();
         return view('product_categories.index')
             ->with('productCategories', $productCategories);
     }

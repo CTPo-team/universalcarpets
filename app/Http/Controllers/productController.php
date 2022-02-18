@@ -73,6 +73,9 @@ class productController extends AppBaseController
             $this->removeFeatured();
         }
 
+        //File Upload
+        $input["path_image_thumbnail"] = $this->uploadFile($request->path_image_thumbnail,'img/product');
+
         $product = $this->productRepository->create($input);
 
         //upload image
@@ -141,6 +144,7 @@ class productController extends AppBaseController
 
             return redirect(route('products.index'));
         }
+
         //Set SEO
         $input = $request->all();
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
@@ -154,6 +158,12 @@ class productController extends AppBaseController
         }
         
         unset($input["path_image"]);
+
+        if($request->hasFile('path_image_thumbnail')){ 
+            $this->deleteFile($product->path_image_thumbnail,"img/product");
+            $input["path_image_thumbnail"] = $this->uploadFile($request->path_image_thumbnail,'img/product');
+        }
+        
         $product = $this->productRepository->update($input, $id);
 
         //File Upload
@@ -191,6 +201,8 @@ class productController extends AppBaseController
 
         //delete image
         $this->deleteImageProduct($id);
+
+        $this->deleteFile($product->path_image_thumbnail,"img/product");
 
         $this->productRepository->delete($id);
 

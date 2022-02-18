@@ -22,6 +22,7 @@ class CreateProductTable extends Migration
             $table->longText("desc")->nullable();
             $table->boolean("status");
             $table->boolean("featured")->default(0);
+            $table->longText("path_image_thumbnail")->nullable();
 
             //SEO
             $table->longText("seo_desc")->nullable();
