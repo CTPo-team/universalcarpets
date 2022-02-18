@@ -1,7 +1,7 @@
 @extends('frontend.app')
 
 @section('content')
-<div class="row" style="margin-top:-72px;margin-left:0px;margin-right:0px;height:680px;background: 
+<div class="row" id="banner" style="margin-top:-72px;margin-left:0px;margin-right:0px;background: 
                                 linear-gradient(to bottom, rgb(18 18 18 / 47%) 69%, #F5F5F5 99%),
                                 url({{asset('images/bannerblog.png')}}); background-position:top;">
     <div class="col-12" style="">

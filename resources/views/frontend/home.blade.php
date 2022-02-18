@@ -8,7 +8,7 @@
         <div class="carousel-inner">
             @foreach ($banner as $key => $data)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                <div class="d-block w-100" style="height:680px;background: 
+                <div class="d-block w-100" id="banner" style="background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url({{asset('img/banner/'.$data->path_image)}});">
                 </div>
