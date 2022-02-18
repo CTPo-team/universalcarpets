@@ -19,7 +19,7 @@
                             class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
                                 {{$data->desc}}</p>
                             <p
-                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 129px;line-height:1;font-weight:bold;letter-spacing:10px;">
+                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
                                 {{$data->title}}</p>
                         </div>
                     </div>
