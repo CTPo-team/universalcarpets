@@ -57,7 +57,7 @@
 
         </div>
         <div class="col-md-1" style="padding-top:10vh;">
-            <div style="height:100%;width:1px;border: 2px solid #D5AD6A;margin:auto"></div>
+            <div style="height:100%;width:1px;border: 2px solid #D5AD6A;margin:auto;background-color: #D5AD6A;"></div>
         </div>
         <div class="col-md-5">
             <div class="row d-none d-sm-block" style="margin-right:0px;margin-left:0px">
@@ -106,6 +106,7 @@
 
         </div>
     </div>
+    <hr class="hr-blog">
     <div class="row mt-5 mb-2">
         <div class="col-12">
             <p

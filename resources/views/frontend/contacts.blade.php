@@ -27,7 +27,7 @@
                 @foreach($contacts as $key => $data)
 
                 <div class="col-12 col-md-6 pr-4 pl-4 mt-5" style="border-left:4px solid #C72933">
-                    <h3>{{$data->title ?? ''}}</h3>
+                    <h3 style="font-family: 'Playfair Display';font-weight:bold">{{$data->title ?? ''}}</h3>
                     <div class="teks-desc">
                     {!!$data->desc ?? ''!!}
                     </div>
@@ -49,7 +49,7 @@
 
                     {!!$data->embed_maps_link ?? ''!!}
 
-                    <h3 class="mb-4">{{$data->title ?? ''}}</h3>
+                    <h3 class="mb-4" style="font-family: 'Playfair Display';font-weight:bold">{{$data->title ?? ''}}</h3>
 
                     @endforeach
                 </div>
