@@ -1,3 +1,14 @@
+#banner{
+    height:680px;
+}
+#app{
+    width: 100%;
+}
+
+.margin-contact{
+    margin-top: 3rem!important;
+}
+
 /* style home  */
     .carousel-caption {
         right: auto !important;
@@ -168,6 +179,13 @@
 
     /* style mobile */
     @media only screen and (max-width: 600px) {
+        #banner{
+            height:450px;
+        }
+        .margin-contact{
+            margin-bottom: 2.5rem!important;
+            margin-top: 0px !important;
+        }
         .tababout-mob{
             font-size:2.8vw;    
         }
