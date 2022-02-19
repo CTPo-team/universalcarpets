@@ -1,7 +1,7 @@
 @extends('frontend.app')
 
 @section('content')
-<div class="row" style="margin-top:-72px;margin-left:0px;margin-right:0px;height:680px;background: 
+<div class="row" id="banner" style="margin-top:-72px;margin-left:0px;margin-right:0px;background: 
                                 linear-gradient(to bottom,  rgb(66 61 64 / 30%) 60%, #F5F5F5 95%),
                                 url({{asset('images/banneraboutus.png')}}); background-position:center;">
     <div class="col-12" style="">
@@ -9,7 +9,7 @@
             <div class="row pt-5">
                 <div class="col-md-8">
                     <p class="fontbantitle"
-                        style="font-family: 'Playfair Display', serif;font-size: 129px;line-height:1;font-weight:bold;letter-spacing:10px;">
+                        style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
                         ABOUT US</p>
                 </div>
             </div>

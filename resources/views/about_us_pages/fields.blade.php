@@ -37,6 +37,9 @@
         @else
             {!! Form::label('path_image', 'Image:') !!}
         @endif
+        <p>
+            <small>Max Size: 2MB | Max File: 10 | Recommended: Less than 500KB & Resolution 1024 × 576 px</small>
+        </p>
         <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" required multiple>
     </div>
 @endif

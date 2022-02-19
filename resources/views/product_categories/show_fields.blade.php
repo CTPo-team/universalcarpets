@@ -48,10 +48,22 @@
             <div class="card-body">
                 <ul class="list-group">
                     @foreach($productCategory->product as $data)
-                        <a href="{!! route('products.show', [$data->id]) !!}"><li class="list-group-item">{{$data->title}}</li>
+                        <a href="{!! route('products.show', [$data->id]) !!}"><li class="list-group-item">{{$data->title}}</li></a>
                     @endforeach
                 </ul>
             </div>
         </div>
     </div>
 @endif
+
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{{ $productCategory->created_at->format("d/m/Y h:i:s") }}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{{ $productCategory->updated_at->format("d/m/Y h:i:s") }}</p>
+</div>

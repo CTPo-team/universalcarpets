@@ -60,11 +60,11 @@ class BannerHomepageTableSeeder extends Seeder
                 'id' => 4,
                 'path_image' => '1_1639900016.jpg',
                 'title' => 'Madison',
-                'desc' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor ultrices odio, sed cursus nisl consectetur at. Vivamus dui tortor, commodo a posuere sed, maximus vel nisi.<br></p>',
+                'desc' => 'FEATURED COLLECTION',
                 'button_url' => 'google.com',
                 'status' => 1,
                 'created_at' => '2021-12-19 07:46:56',
-                'updated_at' => '2021-12-19 07:46:56',
+                'updated_at' => '2022-02-18 04:13:11',
                 'deleted_at' => NULL,
             ),
         ));
