@@ -179,6 +179,10 @@
 
     /* style mobile */
     @media only screen and (max-width: 600px) {
+        .mobilebanprod{
+            height:40vh !important;
+        }
+
         #banner{
             height:450px;
         }

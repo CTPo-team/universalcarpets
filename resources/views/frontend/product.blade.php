@@ -21,7 +21,7 @@
     }
 </style>
 <div class="container cont-productpage pt-4">
-    <div class="row" style="margin-top:0px;height:65vh;background:
+    <div class="row mobilebanprod" style="margin-top:0px;height:65vh;background:
                                 url({{asset('images/bannerproduct.png')}});background-size:cover;">
         <div class="col-12" style="">
             <div class="carousel-caption text-left">
@@ -38,7 +38,7 @@
 </div>
 
 <div class="container cont-productpage pt-5">
-    <div class="row pb-5">
+    <div class="row d-none d-sm-block pb-5">
         <div class="col-12 pt-5" style="padding-left:0px;padding-right:0px;">
             <h4>FEATURED PRODUCT</h4>
         </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="row pb-5">
+    <div class="row d-none d-sm-block pb-5">
         <div class="col-12  pt-5"  style="padding-left:0px;padding-right:0px;">
             <h4>ALL PRODUCTS</h4>
         </div>
@@ -98,7 +98,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-1 align-self-center pt-3">
+                <div class="col-md-2 align-self-center pt-3">
                     <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none"><i class="fa fa-search"></i> Search</button>
                 </div>
             </div>
@@ -109,6 +109,79 @@
         </div>
     </div>
 
+
+    <!-- mobile feat product section -->
+    <div class="row d-block d-sm-none pb-5">
+        <div class="col-12 " >
+            <h4>FEATURED PRODUCT</h4>
+        </div>
+        <div class="col-12">
+            <div class="row">
+            @if(isset($productFeatured))
+                <div class="col-12" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne->path_image )}});background-size:cover;height:44vw !important;background-position:center;">
+                </div>
+                <div class="col-12" style="background:#C72C36;padding-right:0px;padding-left:0px">
+                    <div class="row" style="height:15vh">
+                        <div class="col-12 pl-4 pr-4">
+                            <div class="judul-featured">
+                                <p style="font-size:4vh;font-family: 'Playfair Display', serif;color:white;">{!!$productFeatured->title!!}</p>
+                            </div>
+                            <div class="button text-right">
+                                <a href="{{ url('detail-product/'.$productFeatured->slug) }}">
+                                    <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
+                                        style="background:#D5AD6A;color:white;">VISIT</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            </div>
+        </div>
+    </div>
+    <div class="row d-block d-sm-none pt-2 pb-5">
+        <div class="col-12">
+            <h4>ALL PRODUCTS</h4>
+        </div>
+        <div class="col-12 pb-5">
+            <div class="row">
+                <div class="col-4 col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Categories</label>
+                        <select class="form-control select-categories" name="filterCategories"
+                            id="exampleFormControlSelect1" onchange="setSubCategory()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4 col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Sub-categories</label>
+                        <select class="form-control select-subcategories" name="filterSubCategories"
+                            id="exampleFormControlSelect1" onchange="setBrand()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4 col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Brands</label>
+                        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 align-self-center pt-1">
+                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none;width:100%"><i class="fa fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row data-product">
+            </div>
+        </div>
+    </div>
+
+    <!-- end section -->
+
+    
     @endsection
 
     @section('scripts')
@@ -298,7 +371,7 @@
                 var baseUrl = '{{ url('detail-product') }}';
                 product.forEach(function (data) {
                     console.log(data);
-                    $(classProduct).append("<div class='col-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
+                    $(classProduct).append("<div class='col-6 col-md-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
                                 <p class='content-text' style='font-size:3vw'>"+data.title+"</p>\
                                 <br>\
