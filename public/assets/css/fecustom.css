@@ -179,6 +179,16 @@
 
     /* style mobile */
     @media only screen and (max-width: 600px) {
+        .cont-card-prod-det{
+            padding-left:10px !important;
+            padding-right:10px !important;
+        }
+
+        .card-prod-det{
+            height: 9vh !important;
+            width: 100% !important;
+        }
+
         .mobilebanprod{
             height:40vh !important;
         }
@@ -217,6 +227,10 @@
 
         .fontbantitle{
             font-size:26px !important;
+        }
+
+        .fontdettitle{
+            font-size: 14px !important;
         }
 
         .nav-link{
