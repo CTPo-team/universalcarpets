@@ -29,7 +29,7 @@
 @section('content')
 <div class="container cont-productpage mt-5">
     <!-- judul -->
-    <div class="row">
+    <div class="row d-none d-sm-block">
         <div class="col-12">
             <h5 style="color:#D2A55A"><b>{{$blog->blogCategory->title ?? ""}}</b></h5>
         </div>
@@ -41,17 +41,41 @@
             <p style="font-size:1vw"><b>{{$blog->updated_at->format('d F Y')}} by UNIVERSAL CARPET</b></p>
         </div>
     </div>
+    <!-- judul mobile-->
+    <div class="row d-block d-sm-none">
+        <div class="col-12">
+            <h5 style="color:#D2A55A;font-size:6vw"><b>{{$blog->blogCategory->title ?? ""}}</b></h5>
+        </div>
+        <div class="col-12 col-md-11">
+            <p style="font-size:11vw;color:#C62630;line-height:1;font-family: 'Playfair Display', serif;">
+                <b>{{$blog->title}}</b></p>
+        </div>
+        <div class="col-12">
+            <p style="font-size:3vw"><b>{{$blog->updated_at->format('d F Y')}} by UNIVERSAL CARPET</b></p>
+        </div>
+    </div>
 
     <!-- gambar -->
     <div class="row mt-5">
-        <div class="col-12"
-            style="background:url({{asset('img/blog/'.$blog->path_image)}});background-size:cover;bacground-repeat:none;height:80vh;background-position:center">
+        <div class="col-12 imgblog-mobile"
+            style="background:url({{asset('img/blog/'.$blog->path_image)}});background-size:cover;background-repeat:none;height:80vh;background-position:center">
         </div>
     </div>
 
     <!-- deskripsi -->
-    <div class="row mt-5 mb-5">
+    <div class="row d-none d-sm-block mt-5 mb-5">
         <div class="col-12" style="padding-left:0px;padding-right:0px;">
+            {!! $blog->desc !!}
+            <br>
+            <div class="button text-left pt-3">
+                    <button type="button" class="btn pl-4 pr-4 pt-2 pb-2"
+                        style="background:#D5AD6A;color:white;" onclick="copyToClipboard('{{url("detail-blog/".$blog->slug) }}')">SHARE</button>
+            </div>
+        </div>
+    </div>
+     <!-- mobile deskripsi -->
+     <div class="row d-block d-sm-none mt-5 mb-5">
+        <div class="col-12">
             {!! $blog->desc !!}
             <br>
             <div class="button text-left pt-3">
@@ -64,7 +88,7 @@
     <h1>Related Articles</h1>
     <div class="row">
         @foreach($relatedBlog as $key => $data)
-            <div class="col-12 col-md-4" style="padding-right:3px;padding-left:3px">
+            <div class="col-6 col-md-4 pt-3" style="padding-right:3px;padding-left:3px">
                 <div class="card" style="width: 100%;height:400px;">
                     <img src="{{asset('img/blog/'. $data->path_image )}}" height="210px" class="card-img-top"
                         alt="...">
@@ -81,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-3 text-center" style="padding-left:0px;padding-right:0px">
-                                <a href="{{ url('detail-blog/'.$data->slug) }}" class="linktabblog"
+                                <a href="{{ url('detail-blog/'.$data->slug) }}" class="linktabblog-det"
                                     style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                     more >></a>
                             </div>

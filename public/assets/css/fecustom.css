@@ -253,6 +253,14 @@
         .bg-transparent{
             background:white !important;
         }
+
+        .imgblog-mobile{
+            height:40vh !important;
+        }
+
+        .linktabblog-det{
+            left:15px !important;
+        }
     }
 
     @media only screen and (max-width: 1024px) {    
