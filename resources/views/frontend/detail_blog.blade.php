@@ -109,4 +109,4 @@
             alert("URL Copied.");
         }
     </script>
-@endsecion
+@endsection

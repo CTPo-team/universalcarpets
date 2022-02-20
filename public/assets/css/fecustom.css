@@ -189,6 +189,10 @@
             width: 100% !important;
         }
 
+        .card-text-blog{
+            font-size: 2vh !important;
+        }
+
         .mobilebanprod{
             height:40vh !important;
         }
@@ -229,8 +233,17 @@
             font-size:26px !important;
         }
 
+        .fontbantitle-blog{
+            font-size:26px !important;
+            margin-top: 50px;
+        }
+
         .fontdettitle{
             font-size: 14px !important;
+        }
+
+        .fontolderart{
+            font-size:14px !important;
         }
 
         .nav-link{
