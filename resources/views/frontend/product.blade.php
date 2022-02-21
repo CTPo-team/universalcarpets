@@ -150,24 +150,24 @@
             <div class="row">
                 <div class="col-4 col-md-2">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Categories</label>
+                        <label for="exampleFormControlSelect1" style="font-size:14px">Categories</label>
                         <select class="form-control select-categories" name="filterCategories"
-                            id="exampleFormControlSelect1" onchange="setSubCategory()">
+                            id="exampleFormControlSelect1" onchange="setSubCategory()" style="font-size:14px">
                         </select>
                     </div>
                 </div>
                 <div class="col-4 col-md-2">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Sub-categories</label>
+                        <label for="exampleFormControlSelect1" style="font-size:14px">Sub-categories</label>
                         <select class="form-control select-subcategories" name="filterSubCategories"
-                            id="exampleFormControlSelect1" onchange="setBrand()">
+                            id="exampleFormControlSelect1" onchange="setBrand()" style="font-size:14px">
                         </select>
                     </div>
                 </div>
                 <div class="col-4 col-md-2">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Brands</label>
-                        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
+                        <label for="exampleFormControlSelect1" style="font-size:14px">Brands</label>
+                        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1" style="font-size:14px">
                         </select>
                     </div>
                 </div>
@@ -376,9 +376,8 @@
                     console.log(data);
                     $(classProduct).append("<div class='col-6 col-md-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
-                                <p class='content-text' style='font-size:3vw'>"+data.title+"</p>\
-                                <br>\
-                                <a class='link-content-text' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
+                                <p class='content-text fonttittle-overlay' style='font-size:3vw'>"+data.title+"</p>\
+                                <a class='link-content-text fontlink-overlay' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
                                 </div>\
                     </div>")
                 });
