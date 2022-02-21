@@ -78,7 +78,7 @@
 
         @foreach($relatedProduct as $key => $data)
         @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
-        <div class="col-6 col-md-6 text-center text-white cont-card-prod-det" style="padding-left:0px;padding-right:0px;">
+        <div class="col-12 col-md-6 text-center text-white cont-card-prod-det" style="padding-left:0px;padding-right:0px;margin-top:10px">
             <div class="card card-prod-det"
                 style="width: 98%;height:6.7vw;background: 
                                 linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),

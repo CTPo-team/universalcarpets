@@ -89,11 +89,11 @@
     <div class="row">
         @foreach($relatedBlog as $key => $data)
             <div class="col-6 col-md-4 pt-3" style="padding-right:3px;padding-left:3px">
-                <div class="card" style="width: 100%;height:400px;">
-                    <img src="{{asset('img/blog/'. $data->path_image )}}" height="210px" class="card-img-top"
+                <div class="card" style="width: 100%;">
+                    <img src="{{asset('img/blog/'. $data->path_image )}}" style="max-height:300px" class="card-img-top"
                         alt="...">
                     <div class="card-body">
-                        <div class="row" style="height:150px">
+                        <div class="row">
                             <div class="col-12 col-md-9">
                                 <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
                                     {!! $data->blogCategory->title !!}</h6>
@@ -104,7 +104,7 @@
                                     substr(strip_tags($data->desc),0,200).'...' : strip_tags($data->desc) !!}
                                 </div>
                             </div>
-                            <div class="col-12 col-md-3 text-center" style="padding-left:0px;padding-right:0px">
+                            <div class="col-12 col-md-3 text-center" style="padding-left:0px;padding-right:0px;padding-top:7vw">
                                 <a href="{{ url('detail-blog/'.$data->slug) }}" class="linktabblog-det"
                                     style="color:#C72C36;font-size:12px;position:absolute;bottom:0;left:10px;width:fit-content">Read
                                     more >></a>
