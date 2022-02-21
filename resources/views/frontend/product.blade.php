@@ -8,7 +8,7 @@
 
     .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
     {
-        border-bottom: 2px solid #C72933;
+        border-bottom: 3px solid #C72933;
     }
 </style>
 @endsection
