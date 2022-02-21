@@ -136,3 +136,9 @@ background-size: cover;">
 
 
 @endsection
+
+@section("scripts")
+    $(document).ready(function () {
+        $("iframe").width("50%");
+    });
+@endsection

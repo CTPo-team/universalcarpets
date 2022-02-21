@@ -82,14 +82,6 @@
             </div>
         </div>
 
-        <!-- <div class="container d-none d-sm-block">
-            <div class="row pt-5">
-                <div class="col-12 text-center p-5">
-                    <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:3vw">Our Strategy</p>
-                </div>
-            </div>
-        </div> -->
-
         <div class="container d-block d-sm-none">
             <div class="row pt-5">
                 <div class="col-12 text-center pb-3">
@@ -111,7 +103,7 @@
                     <div class="col-4" style="font-size:1.3vw">
                         {!! $ourStory->our_strategy_desc ?? '' !!}
                     </div>
-                </div>
+            </div>
         </div>
         <div class="row mb-5 d-block d-sm-none">
                     <div class="col-12 pl-5 pr-5" style="font-size:4vw">
