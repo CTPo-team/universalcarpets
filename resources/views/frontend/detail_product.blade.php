@@ -40,11 +40,33 @@
 
             <p>
                 <div id="carouselExampleSlidesOnly" style="float:right;width:25vw;margin: 0px 0px 15px 20px;"
-                    class="carousel slide" data-ride="carousel">
+                    class="carousel slide d-none d-sm-block" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($product->imageProduct as $key => $data)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                            <img class="d-block productpopup" style="width:25vw" data-toggle="modal"
+                            <img class="productpopup" style="width:25vw" data-toggle="modal"
+                                data-target="#productpopup" data-id="{{$data->path_image}}" src="{{asset('img/product/'.$data->path_image)}}"
+                                alt="First slide">
+                        </div>
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev"
+                        style="background:black;height:7vh;margin:auto">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next"
+                        style="background:black;height:7vh;margin:auto">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div id="carouselExampleSlidesOnly" style="width:100%;"
+                    class="carousel slide d-block d-sm-none pb-3" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($product->imageProduct as $key => $data)
+                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                            <img class="productpopup w-100" data-toggle="modal"
                                 data-target="#productpopup" data-id="{{$data->path_image}}" src="{{asset('img/product/'.$data->path_image)}}"
                                 alt="First slide">
                         </div>

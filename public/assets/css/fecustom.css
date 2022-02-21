@@ -251,6 +251,14 @@
             font-size:14px !important;
         }
 
+        .fonttittle-overlay{
+            font-size: 6vw !important;
+        }
+
+        .fontlink-overlay{
+            font-size: 3vw !important;
+        }
+
         .nav-link{
             color:black !important;
         }
@@ -265,6 +273,11 @@
 
         .linktabblog-det{
             left:15px !important;
+        }
+
+        .content-overlay{
+            width:92% !important;
+            height:92% !important;
         }
     }
 
