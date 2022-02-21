@@ -120,11 +120,14 @@
             @if(isset($productFeatured))
                 <div class="col-12" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne->path_image )}});background-size:cover;height:44vw !important;background-position:center;">
                 </div>
-                <div class="col-12" style="background:#C72C36;padding-right:0px;padding-left:0px">
-                    <div class="row" style="height:15vh">
+                <div class="col-12" style="background:#C72C36;padding-right:0px;padding-left:0px;padding-bottom:10px">
+                    <div class="row">
                         <div class="col-12 pl-4 pr-4">
                             <div class="judul-featured">
                                 <p style="font-size:4vh;font-family: 'Playfair Display', serif;color:white;">{!!$productFeatured->title!!}</p>
+                            </div>
+                            <div class="text-featured">
+                                <p style="font-size:1.5vh;color:white;"> {!! strlen(strip_tags($productFeatured->desc)) > 180 ? substr(strip_tags($productFeatured->desc),0,180).'...' : strip_tags($productFeatured->desc) !!}</p>
                             </div>
                             <div class="button text-right">
                                 <a href="{{ url('detail-product/'.$productFeatured->slug) }}">
