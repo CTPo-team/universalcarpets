@@ -213,9 +213,9 @@
 
         if (blog.length > 0) {
             noDataBlog = false;
-
+            var baseUrl = '{{ url('detail-blog') }}';
             blog.forEach(function (data) {
-                $(classBlog).append("<a href='{{ url('detail-blog/'.$new->slug) }}' style='text-decoration:none;'><div class='col-12' style='padding-left:0px;padding-right:0px'>\
+                $(classBlog).append("<a href='"+baseUrl+"/"+data.slug+"' style='text-decoration:none;'><div class='col-12' style='padding-left:0px;padding-right:0px'>\
                 <div class='card' style='width: 100%;border:none;background:transparent'>\
                 <div class='card-body'><h6 class='card-subtitle' style='color:#D5AD6A;font-weight:600'>"+data.blog_category.title+"</h6>\
                 <h3 class='card-subtitle pt-2 pb-2' style='color:#C72C36;font-weight:600'>" + data.title + "</h3>\

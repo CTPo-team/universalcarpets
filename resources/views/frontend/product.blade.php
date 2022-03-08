@@ -373,7 +373,6 @@
                 var flagsUrl = '{{ asset('/img/product') }}';
                 var baseUrl = '{{ url('detail-product') }}';
                 product.forEach(function (data) {
-                    console.log(data);
                     $(classProduct).append("<div class='col-6 col-md-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
                     <div class='content-details fadeIn-bottom'>\
                                 <p class='content-text fonttittle-overlay' style='font-size:3vw'>"+data.title+"</p>\
