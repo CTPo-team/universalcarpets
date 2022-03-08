@@ -61,7 +61,7 @@
         {!! Form::label('path_image', 'Image:') !!}
     @endif
     <p>
-        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 364 × 404 px</small>
+        <small>Max Size: 2MB | Max File: 10 | Recommended: Less than 500KB & Resolution 364 × 404 px</small>
     </p>
     <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}} multiple>
 </div>
