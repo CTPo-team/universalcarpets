@@ -53,5 +53,9 @@ class productBrand extends Model
         'updated_at' => 'nullable'
     ];
 
+    public function product()
+    {
+        return $this->hasMany(\App\Models\product::class, 'product_brand_id', 'id');
+    }
     
 }
