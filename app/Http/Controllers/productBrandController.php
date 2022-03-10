@@ -30,8 +30,7 @@ class productBrandController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $productBrands = $this->productBrandRepository->all();
-
+        $productBrands = productBrand::with("product")->get();
         return view('product_brands.index')
             ->with('productBrands', $productBrands);
     }
