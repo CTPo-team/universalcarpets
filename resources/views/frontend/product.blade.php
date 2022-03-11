@@ -443,7 +443,7 @@
 
         //Scroll Load More
         $(window).scroll(function () {
-            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            if ($(window).scrollTop() + 1 >= $(document).height() - $(window).height()) {
                 if (!noDataProduct) {
                     page = page + 1
                     loadProduct()
