@@ -184,12 +184,9 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function () {
-        loadBlog();
-    });
-
+    var noDataBlog = false;
+    var page = 1;
     function loadBlog() {
-        var page = 1;
         $.ajax({
             url: "{!! url('older-blog') !!}",
             type: "GET",
@@ -197,7 +194,6 @@
                 page: page
             },
             success: function (response) {
-                console.log(response)
                 appendBlog(response.data)
             },
             error: function (xhr) {
@@ -209,7 +205,6 @@
     function appendBlog(blog) {
 
         var classBlog = ".data-blog";
-        var noDataBlog = false;
 
         if (blog.length > 0) {
             noDataBlog = false;
@@ -228,6 +223,19 @@
             noDataBlog = true
         }
     }
+
+    $(document).ready(function () {
+        loadBlog();
+        //Scroll Load More
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + 1 >= $(document).height() - $(window).height()) {
+                if (!noDataBlog) {
+                    page = page + 1
+                    loadBlog();
+                }
+            }
+        });
+    });
 
 </script>
 @endsection
