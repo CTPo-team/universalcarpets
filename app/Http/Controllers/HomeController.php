@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function index()
     {
         $this->data["banner"] = bannerHomepage::where("status",1)->orderByDesc("created_at")->get();
-        $this->data["product"] = product::where("status",1)->with(["imageProductOne","productCategory"])->orderByDesc("created_at")->get();
+        $this->data["product"] = product::where("status",1)->with(["imageProductOne","productCategory"])->orderByDesc("created_at")->limit(4)->get();
         $this->data["blog"] = blog::where("status",1)->with("blogCategory")->orderByDesc("created_at")->get();
         $this->data["AboutUs"] = aboutUsPage::where("title",'OUR STORY')->first();
         $this->data["settingWeb"] = settingWeb::first();

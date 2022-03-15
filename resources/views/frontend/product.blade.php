@@ -107,6 +107,11 @@
             <div class="row data-product">
             </div>
         </div>
+        <div class="col-12">
+            <center>
+                <button type="button" class="btn mt-5 pl-5 pr-5 pt-2 pb-2 load-more" style="background:#D5AD6A;color:white;">LOAD MORE</button>
+            </center>
+        </div>
     </div>
 
 
@@ -179,6 +184,11 @@
         <div class="col-12">
             <div class="row data-product">
             </div>
+        </div>
+        <div class="col-12">
+            <center>
+                <button type="button" class="btn mt-5 pl-5 pr-5 pt-2 pb-2 load-more" style="background:#D5AD6A;color:white;">LOAD MORE</button>
+            </center>
         </div>
     </div>
 
@@ -359,6 +369,13 @@
                     filterSubCategories: filterSubCategories
                 },
                 success: function (response) {
+                    if(response.hasOwnProperty("current_page") && response.hasOwnProperty("last_page")){
+                        if(response.current_page == response.last_page){
+                            $(".load-more").hide()
+                        } 
+                    }else{
+                        $(".load-more").hide()
+                    }             
                     appendProduct(response.data)
                 },
                 error: function (xhr) {
@@ -441,13 +458,10 @@
 
         loadProduct()
 
-        //Scroll Load More
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + 1 >= $(document).height() - $(window).height()) {
-                if (!noDataProduct) {
-                    page = page + 1
-                    loadProduct()
-                }
+        $(".load-more").click(function () {
+            if (!noDataProduct) {
+                page = page + 1
+                loadProduct()
             }
         });
     </script>

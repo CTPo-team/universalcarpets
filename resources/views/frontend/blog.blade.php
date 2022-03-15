@@ -173,6 +173,11 @@
     <div class="row">
         <div class="data-blog"></div>
     </div>
+    <div class="col-12">
+        <center>
+            <button type="button" class="btn mt-5 pl-5 pr-5 pt-2 pb-2 load-more" style="background:#D5AD6A;color:white;">LOAD MORE</button>
+        </center>
+    </div>
 
 </div>
 
@@ -194,6 +199,13 @@
                 page: page
             },
             success: function (response) {
+                if(response.hasOwnProperty("current_page") && response.hasOwnProperty("last_page")){
+                    if(response.current_page == response.last_page){
+                        $(".load-more").hide()
+                    } 
+                }else{
+                    $(".load-more").hide()
+                }
                 appendBlog(response.data)
             },
             error: function (xhr) {
@@ -226,13 +238,11 @@
 
     $(document).ready(function () {
         loadBlog();
-        //Scroll Load More
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + 1 >= $(document).height() - $(window).height()) {
-                if (!noDataBlog) {
-                    page = page + 1
-                    loadBlog();
-                }
+
+        $(".load-more").click(function () {
+            if (!noDataBlog) {
+                page = page + 1
+                loadBlog();
             }
         });
     });
