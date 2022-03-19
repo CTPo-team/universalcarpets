@@ -81,7 +81,8 @@ class product extends Model
         'product_category_id' => 'required',
         'product_brand_id' => 'required',
         'title' => 'required|string|max:255',
-        'path_image.*' => 'nullable|max:2048',
+        'path_image_thumbnail' => 'required',
+        'path_image' => 'required',
         'desc' => 'nullable|string',
         'status' => 'required|boolean',
         'seo_desc' => 'nullable|string',
@@ -91,6 +92,11 @@ class product extends Model
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
+    ];
+
+    public static $messages = [
+        'path_image_thumbnail.required' => 'The Thumbnail Image field is required',
+        'path_image.required' => 'The Image field is required',
     ];
 
     /**

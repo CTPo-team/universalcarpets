@@ -37,14 +37,14 @@ class aboutUsPage extends Model
 
 
     public $fillable = [
-        'title',
         'desc',
         'our_strategy_desc',
         'short_desc',
         'seo_desc',
         'seo_category',
         'seo_keyword',
-        'seo_url'
+        'seo_url',
+        'path_image'
     ];
 
     /**
@@ -80,7 +80,12 @@ class aboutUsPage extends Model
         'seo_url' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
+        'deleted_at' => 'nullable',
+        'path_image' => "required_if:title,==,TECHNOLOGIES"
+    ];
+
+    public static $messages = [
+        'path_image.required_if' => 'The Image field is required',
     ];
 
     public function aboutUsGallery()

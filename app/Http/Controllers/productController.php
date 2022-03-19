@@ -67,19 +67,16 @@ class productController extends AppBaseController
         //Set SEO
         $input = $this->setSeo($input,$input["desc"],$input["title"],self::seo_category,null);
         $input["slug"] = $this->setSlug($input["title"],(new product())->getTable());
-        unset($input["path_image"]);
-        
+
         if($input["featured"] == 1){
             $this->removeFeatured();
         }
 
-        //File Upload
-        $input["path_image_thumbnail"] = $this->uploadFile($request->path_image_thumbnail,'img/product');
-
         $product = $this->productRepository->create($input);
 
-        //upload image
-        $this->uploadImageProduct($product->id,$request);
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image"]);
+        $this->setActiveGallery($input["path_image_thumbnail"]);
         
         Flash::success('Product saved successfully.');
 
@@ -102,6 +99,10 @@ class productController extends AppBaseController
 
             return redirect(route('products.index'));
         }
+
+        //Set View Image From Gallery
+        $product["path_image_thumbnail"] = $this->getGalleryForView($product["path_image_thumbnail"]);
+        $product["path_image"] = $this->getGalleryForView($product["path_image"]);
         
         return view('products.show')->with('product', $product);
     }
@@ -122,6 +123,11 @@ class productController extends AppBaseController
 
             return redirect(route('products.index'));
         }
+
+        //Set Preview Image on Input
+        $this->data["product"]["path_image"] = $this->getGallery($this->data["product"]["path_image"]);
+        $this->data["product"]["path_image_thumbnail"] = $this->getGallery($this->data["product"]["path_image_thumbnail"]);
+        
         $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.edit',$this->data);
@@ -156,24 +162,22 @@ class productController extends AppBaseController
         if($product["featured"] == 0 && $input["featured"] == 1){
             $this->removeFeatured();
         }
-        
-        unset($input["path_image"]);
 
         if($request->hasFile('path_image_thumbnail')){ 
             $this->deleteFile($product->path_image_thumbnail,"img/product");
             $input["path_image_thumbnail"] = $this->uploadFile($request->path_image_thumbnail,'img/product');
         }
         
+        //Set Compare Gallery old and new value
+        $this->compareGallery($product["path_image"],$input["path_image"]);
+        $this->compareGallery($product["path_image_thumbnail"],$input["path_image_thumbnail"]);
+
+
         $product = $this->productRepository->update($input, $id);
 
-        //File Upload
-        if($request->hasFile('path_image')){ 
-            //delete image
-            $this->deleteImageProduct($id);
-
-            //upload image
-            $this->uploadImageProduct($id,$request);
-        }
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image"]);
+        $this->setActiveGallery($input["path_image_thumbnail"]);
 
         Flash::success('Product updated successfully.');
 
@@ -200,41 +204,13 @@ class productController extends AppBaseController
         }
 
         //delete image
-        $this->deleteImageProduct($id);
-
-        $this->deleteFile($product->path_image_thumbnail,"img/product");
+        $this->deleteGallery($product->path_image);
 
         $this->productRepository->delete($id);
 
         Flash::success('Product deleted successfully.');
 
         return redirect(route('products.index'));
-    }
-
-    public function uploadImageProduct($productId,$request)
-    {
-        if($request->hasfile('path_image'))
-         {
-            foreach($request->file('path_image') as $file)
-            {
-                //File Upload
-                $filename = $this->uploadFile($file,'img/product');
-
-                imageProduct::create([
-                    "product_id" => $productId,
-                    "path_image" => $filename
-                ]);
-            }
-         }
-    }
-
-    public function deleteImageProduct($productId)
-    {
-        $image = imageProduct::where("product_id",$productId)->get();
-        foreach ($image as $key => $value) {
-            $this->deleteFile($value["path_image"],"img/product");
-        }
-        imageProduct::where("product_id",$productId)->delete();
     }
 
     public function removeFeatured()

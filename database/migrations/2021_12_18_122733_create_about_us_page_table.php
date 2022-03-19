@@ -19,6 +19,7 @@ class CreateAboutUsPageTable extends Migration
             $table->longText("desc")->nullable();
             $table->mediumText("short_desc")->nullable();
             $table->mediumText("our_strategy_desc")->nullable();
+            $table->longText("path_image")->nullable();
             //SEO
             $table->longText("seo_desc")->nullable();
             $table->mediumText("seo_category")->nullable();

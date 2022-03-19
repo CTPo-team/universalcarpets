@@ -27,4 +27,9 @@ class CreateaboutUsPageRequest extends FormRequest
     {
         return aboutUsPage::$rules;
     }
+
+    public function messages()
+    {
+        return aboutUsPage::$messages;
+    }
 }
