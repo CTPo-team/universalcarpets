@@ -39,7 +39,7 @@ class HomeController extends Controller
         $this->data["blog"] = blog::where("status",1)->with("blogCategory")->orderByDesc("created_at")->get();
         $this->data["AboutUs"] = aboutUsPage::where("title",'OUR STORY')->first();
         $this->data["settingWeb"] = settingWeb::first();
-        // echo json_encode($this->data["blog"]);
+        // echo json_encode($this->data["product"]);
         // die();
         //SEO
         $this->data["seo"] = [

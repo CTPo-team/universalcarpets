@@ -107,6 +107,7 @@
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
                             @foreach ($product as $newcol)
+                            @if(!empty($newcol->imageProductOne)) 
                             <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
                             <div class="content-overlay"></div>
 
@@ -118,6 +119,19 @@
                                 <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
                                 </div>
                             </div>
+                            @else
+                            <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
+                            <div class="content-overlay"></div>
+
+                                <img width="100%" height="305px" class="tabnewcol"
+                                    src="">
+                                <div class="content-details fadeIn-bottom">
+                                <p class="content-text"> {!! $newcol->title !!}</p>
+                                <br>
+                                <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                </div>
+                            </div>
+                            @endif
                             @endforeach
                         </div>
                         <div class="row mt-4">
@@ -152,11 +166,19 @@
                         <div id="productslider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($product as $key => $newcol)
+                                @if(!empty($newcol->imageProductOne)) 
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <img class="d-block w-100"
                                         src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}"
                                         alt="First slide">
                                 </div>
+                                @else
+                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                    <img class="d-block w-100"
+                                        src=""
+                                        alt="First slide">
+                                </div>
+                                @endif
                                 @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#productslider" role="button" data-slide="prev">
