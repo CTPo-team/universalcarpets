@@ -62,7 +62,6 @@ class blog extends Model
         'id' => 'integer',
         'blog_category_id' => 'integer',
         'title' => 'string',
-        'path_image' => 'string',
         'desc' => 'string',
         'short_desc' => 'string',
         'status' => 'boolean',
@@ -80,7 +79,7 @@ class blog extends Model
     public static $rules = [
         'blog_category_id' => 'required',
         'title' => 'required|string|max:255',
-        'path_image' => 'nullable|max:2048',
+        'path_image' => 'required',
         'desc' => 'nullable|string',
         'short_desc' => 'nullable|string',
         'status' => 'required|boolean',
@@ -91,6 +90,10 @@ class blog extends Model
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
+    ];
+
+    public static $messages = [
+        'path_image.required' => 'The Image field is required',
     ];
 
     /**

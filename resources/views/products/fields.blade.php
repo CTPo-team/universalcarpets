@@ -17,53 +17,22 @@
     {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
 </div>
 
-@if(isset($product))
-    <!-- Path Image Field -->
-    <div class="form-group col-sm-12 col-lg-12">
-        {!! Form::label('path_image_thumbnail', 'Current Thumbnail Image:') !!}
-        <div class="gallery gallery-md">
-            <div class="gallery-item" data-image="{{asset('img/product/'.$product->path_image_thumbnail)}}" data-title="Image 1" href="{{asset('img/product/'.$product->path_image_thumbnail)}}" title="Image 1" style="background-image: url({{asset('img/product/'.$product->path_image_thumbnail)}});"></div>
-        </div>
-    </div>
-@endif
-
-
 <!-- Path Image Thumbnail Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    @if(isset($product))
-        {!! Form::label('path_image_thumbnail', 'Replace Thumbnail Image:') !!}
-    @else
-        {!! Form::label('path_image_thumbnail', 'Thumbnail Image:') !!}
-    @endif
     <p>
         <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 2480 × 1753 px</small>
     </p>
-    <input id="path_image_thumbnail" type="file" class="form-control fileinput-image"  name="path_image_thumbnail" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}}>
+    <input id="single_image_upload" type="file" class="form-control"  name="single_image_upload" data-preview-file-type="text">
+    <input type="hidden" name="path_image_thumbnail" id="path_image_thumbnail">
 </div>
-
-@if(isset($product))
-    <!-- Path Image Field -->
-    <div class="form-group col-sm-12 col-lg-12">
-        {!! Form::label('path_image', 'Current Image:') !!}
-        <div class="gallery gallery-md">
-            @foreach ($product->imageProduct as $key => $img)
-                <div class="gallery-item" data-image="{{asset('img/product/'.$img->path_image)}}" data-title="Image {{$key}}" href="{{asset('img/product/'.$img->path_image)}}" title="Image {{$key}}" style="background-image: url({{asset('img/product/'.$img->path_image)}});"></div>
-            @endforeach
-        </div>
-    </div>
-@endif
 
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    @if(isset($product))
-        {!! Form::label('path_image', 'Replace Image:') !!}
-    @else
-        {!! Form::label('path_image', 'Image:') !!}
-    @endif
     <p>
         <small>Max Size: 2MB | Max File: 10 | Recommended: Less than 500KB & Resolution 364 × 404 px</small>
     </p>
-    <input id="path_image" type="file" class="form-control fileinput-image-multiple"  name="path_image[]" data-preview-file-type="text" {{ !isset($product->id) ? 'required' : ''}} multiple>
+    <input id="multiple_image_upload" type="file" class="form-control"  name="multiple_image_upload[]" data-preview-file-type="text" multiple>
+    <input type="hidden" name="path_image" id="path_image">
 </div>
 
 <!-- Desc Field -->
@@ -91,3 +60,10 @@
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('products.index') }}" class="btn btn-light">Cancel</a>
 </div>
+
+@section('scriptsfileinput')
+    <script>
+        setSingleFile("#single_image_upload","#path_image_thumbnail", <?php echo json_encode(isset($product->path_image_thumbnail) ? $product->path_image_thumbnail : []); ?>)
+        setMultipleFile("#multiple_image_upload","#path_image", <?php echo json_encode(isset($product->path_image) ? $product->path_image : []); ?>)
+    </script>
+@endsection

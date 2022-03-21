@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('add-gallery', 'App\Http\Controllers\galleryController@upload');
+Route::post('delete-gallery/{filename}', 'App\Http\Controllers\galleryController@delete');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('aboutus', [App\Http\Controllers\HomeController::class,'aboutUs']);
 Route::post('sendcontactus', [App\Http\Controllers\HomeController::class, 'sendContactUs']);
@@ -76,5 +79,3 @@ Route::group(['middleware' => ['role:superadmin|admin']], function () {
         'only' => ['index', 'update']
     ]);
 });
-
-

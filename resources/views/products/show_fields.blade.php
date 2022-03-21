@@ -21,7 +21,7 @@
 <div class="form-group">
     {!! Form::label('path_image_thumbnail', 'Thumbnail Image:') !!}
     <div class="gallery gallery-md">
-        <div class="gallery-item" data-image="{{asset('img/product/'.$product->path_image_thumbnail)}}" data-title="Image 1" href="{{asset('img/product/'.$product->path_image_thumbnail)}}" title="Image 1" style="background-image: url({{asset('img/product/'.$product->path_image_thumbnail)}});"></div>
+        <div class="gallery-item" data-image="{{$product->path_image_thumbnail}}" data-title="Image 1" href="{{$product->path_image_thumbnail}}" title="Image 1" style="background-image: url({{$product->path_image_thumbnail}});"></div>
     </div>
 </div>
 
@@ -29,8 +29,8 @@
 <div class="form-group">
     {!! Form::label('path_image', 'Image:') !!}
     <div class="gallery gallery-md">
-        @foreach ($product->imageProduct as $key => $img)
-            <div class="gallery-item" data-image="{{asset('img/product/'.$img->path_image)}}" data-title="Image {{$key}}" href="{{asset('img/product/'.$img->path_image)}}" title="Image {{$key}}" style="background-image: url({{asset('img/product/'.$img->path_image)}});"></div>
+        @foreach ($product->path_image as $key => $img)
+            <div class="gallery-item" data-image="{{$img}}" data-title="Image {{$key}}" href="{{$img}}" title="Image {{$key}}" style="background-image: url({{$img}});"></div>
         @endforeach
     </div>
 </div>

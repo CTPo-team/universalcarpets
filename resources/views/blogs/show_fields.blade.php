@@ -14,7 +14,7 @@
 <div class="form-group">
     {!! Form::label('path_image', 'Banner Image:') !!}
     <div class="gallery gallery-md">
-        <div class="gallery-item" data-image="{{asset('img/blog/'.$blog->path_image)}}" data-title="Image 1" href="{{asset('img/blog/'.$blog->path_image)}}" title="Image 1" style="background-image: url({{asset('img/blog/'.$blog->path_image)}});"></div>
+        <div class="gallery-item" data-image="{{$blog->path_image}}" data-title="Image 1" href="{{$blog->path_image}}" title="Image 1" style="background-image: url({{$blog->path_image}});"></div>
     </div>
 </div>
 

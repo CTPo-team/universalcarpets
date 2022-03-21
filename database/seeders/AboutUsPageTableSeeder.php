@@ -60,7 +60,7 @@ class AboutUsPageTableSeeder extends Seeder
                 'seo_category' => 'about_us',
                 'seo_keyword' => 'TECHNOLOGIES',
                 'seo_url' => 'http://localhost/universalcarpets/public',
-                'created_at' => NULL,
+                'created_at' => '2022-01-04 09:34:29',
                 'updated_at' => '2022-01-04 09:34:29',
                 'deleted_at' => NULL,
             ),

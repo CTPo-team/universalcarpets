@@ -3,11 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\aboutUsPage;
 
-class UpdateaboutUsPageRequest extends FormRequest
+class UpdategalleryRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -15,7 +13,7 @@ class UpdateaboutUsPageRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,11 +23,8 @@ class UpdateaboutUsPageRequest extends FormRequest
      */
     public function rules()
     {
-        return aboutUsPage::$rules;
-    }
-
-    public function messages()
-    {
-        return aboutUsPage::$messages;
+        return [
+            //
+        ];
     }
 }

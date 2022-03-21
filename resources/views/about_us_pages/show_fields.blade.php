@@ -35,8 +35,8 @@
 <div class="form-group">
     {!! Form::label('path_image', 'Image:') !!}
     <div class="gallery gallery-md">
-        @foreach ($aboutUsPage->aboutUsGallery as $key => $img)
-            <div class="gallery-item" data-image="{{asset('img/about/'.$img->path_image)}}" data-title="Image {{$key}}" href="{{asset('img/about/'.$img->path_image)}}" title="Image {{$key}}" style="background-image: url({{asset('img/about/'.$img->path_image)}});"></div>
+        @foreach ($aboutUsPage->path_image as $key => $img)
+            <div class="gallery-item" data-image="{{$img}}" data-title="Image {{$key}}" href="{{$img}}" title="Image {{$key}}" style="background-image: url({{$img}});"></div>
         @endforeach
     </div>
 </div>

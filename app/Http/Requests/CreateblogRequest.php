@@ -27,4 +27,9 @@ class CreateblogRequest extends FormRequest
     {
         return blog::$rules;
     }
+
+    public function messages()
+    {
+        return blog::$messages;
+    }
 }
