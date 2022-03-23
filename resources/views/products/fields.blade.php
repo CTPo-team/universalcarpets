@@ -19,6 +19,7 @@
 
 <!-- Path Image Thumbnail Field -->
 <div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('path_image_thumbnail', 'Thumbnail Image:') !!}
     <p>
         <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 2480 × 1753 px</small>
     </p>
@@ -28,6 +29,7 @@
 
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('path_image', 'Image:') !!}
     <p>
         <small>Max Size: 2MB | Max File: 10 | Recommended: Less than 500KB & Resolution 364 × 404 px</small>
     </p>

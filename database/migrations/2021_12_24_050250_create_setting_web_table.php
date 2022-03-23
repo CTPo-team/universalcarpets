@@ -24,6 +24,7 @@ class CreateSettingWebTable extends Migration
             $table->mediumText("twitter")->nullable();
             $table->mediumText("facebook")->nullable();
             $table->mediumText("youtube")->nullable();
+            $table->longText("path_image")->nullable();
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 <div class="form-group">
     {!! Form::label('path_image', 'Path Image:') !!}
     <div class="gallery gallery-md">
-        <div class="gallery-item" data-image="{{asset('img/banner/'.$bannerHomepage->path_image)}}" data-title="Image 1" href="{{asset('img/banner/'.$bannerHomepage->path_image)}}" title="Image 1" style="background-image: url({{asset('img/banner/'.$bannerHomepage->path_image)}});"></div>
+        <div class="gallery-item" data-image="{{$bannerHomepage->path_image}}" data-title="Image 1" href="{{$bannerHomepage->path_image}}" title="Image 1" style="background-image: url({{$bannerHomepage->path_image}});"></div>
     </div>
 </div>
 
@@ -12,16 +12,16 @@
     <p>{{ $bannerHomepage->title }}</p>
 </div>
 
-<!-- Desc Field -->
+<!-- Category Field -->
 <div class="form-group">
-    {!! Form::label('desc', 'Description:') !!}
-    <div class="card">
-        <div class="card-body">
-            <p class="card-text">
-                {!! $bannerHomepage->desc !!}
-            </p>
-        </div>
-    </div>
+    {!! Form::label('category', 'Category:') !!}
+    <p>{{ $bannerHomepage->category }}</p>
+</div>
+
+<!-- Button Title Field -->
+<div class="form-group">
+    {!! Form::label('button_title', 'Button Title:') !!}
+    <p>{{ $bannerHomepage->button_title }}</p>
 </div>
 
 <!-- Button Url Field -->

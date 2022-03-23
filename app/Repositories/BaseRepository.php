@@ -191,4 +191,11 @@ abstract class BaseRepository
 
         return $model->delete();
     }
+
+    public function one()
+    {
+        $query = $this->model->newQuery();
+
+        return $query->firstOrNew();
+    }
 }

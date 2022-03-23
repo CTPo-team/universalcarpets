@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ImageProductTable extends Migration
+class CreateBannerContactUsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class ImageProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('image_product', function (Blueprint $table) {
+        Schema::create('banner_contact_us', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->nullable()->constrained('product');
-            $table->longText("path_image")->nullable();
-
+            $table->longText("path_image");
+            $table->string("title")->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +29,6 @@ class ImageProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_product');
+        Schema::dropIfExists('banner_contact_us');
     }
 }

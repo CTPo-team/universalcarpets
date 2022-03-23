@@ -12,6 +12,7 @@
 
 <!-- Path Image Field -->
 <div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('path_image', 'Image:') !!}
     <p>
         <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 532 × 383 px</small>
     </p>

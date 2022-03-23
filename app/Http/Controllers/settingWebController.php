@@ -37,6 +37,9 @@ class settingWebController extends AppBaseController
 
             return redirect(route('settingWebs.index'));
         }
+        
+        //Set Preview Image on Input
+        $settingWeb->path_image = $this->getGallery($settingWeb->path_image);
 
         return view('setting_webs.edit')->with('settingWeb', $settingWeb);
     }
@@ -126,6 +129,9 @@ class settingWebController extends AppBaseController
 
             return redirect(route('settingWebs.index'));
         }
+
+        //Set Compare Gallery old and new value
+        $this->compareGallery($settingWeb["path_image"],$request->path_image);
 
         $settingWeb = $this->settingWebRepository->update($request->all(), $id);
 

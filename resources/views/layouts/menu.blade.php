@@ -1,18 +1,37 @@
-<li class="side-menus {{ Request::is('aboutUsPages*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('aboutUsPages.index') }}"><i class="fas fa-book"></i><span>About Us</span></a>
-</li>
-
-<li class="side-menus {{ Request::is('contactUsPages*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('contactUsPages.index') }}"><i class="fas fa-phone"></i><span>Contact Us</span></a>
-</li>
-
 <li class="side-menus {{ Request::is('bannerHomepages*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('bannerHomepages.index') }}"><i class="fas fa-images"></i><span>Banner Homepage</span></a>
 </li>
 
-<li class="dropdown {{ Request::is('products*') ||  Request::is('productBrands*') ||  Request::is('productCategories*') ? 'active' : '' }}">
+<li class="dropdown {{ Request::is('aboutUsPages*') || Request::is('bannerAboutus*') ? 'active' : '' }}">
+    <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i> <span>About Us</span></a>
+    <ul class="dropdown-menu">
+        <li class="side-menus {{ Request::is('bannerAboutus*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('bannerAboutus.index') }}"><i class="fas fa-bars"></i><span>Banner</span></a>
+        </li>
+        <li class="side-menus {{ Request::is('aboutUsPages*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('aboutUsPages.index') }}"><i class="fas fa-bars"></i><span>Data About Us</span></a>
+        </li>
+    </ul>
+</li>
+
+<li class="dropdown {{ Request::is('contactUsPages*') || Request::is('bannerContactus*') ? 'active' : '' }}">
+    <a href="#" class="nav-link has-dropdown"><i class="fas fa-phone"></i> <span>Contact Us</span></a>
+    <ul class="dropdown-menu">
+        <li class="side-menus {{ Request::is('bannerContactus*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('bannerContactus.index') }}"><i class="fas fa-bars"></i><span>Banner</span></a>
+        </li>
+        <li class="side-menus {{ Request::is('contactUsPages*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('contactUsPages.index') }}"><i class="fas fa-bars"></i><span> Data Contact Us</span></a>
+        </li>
+    </ul>
+</li>
+
+<li class="dropdown {{ Request::is('products*') ||  Request::is('productBrands*') ||  Request::is('productCategories*') || Request::is('bannerProducts*') ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-bag"></i> <span>Products</span></a>
     <ul class="dropdown-menu">
+        <li class="side-menus {{ Request::is('bannerProducts*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('bannerProducts.index') }}"><i class="fas fa-bars"></i><span>Banner</span></a>
+        </li>
         <li class="side-menus {{ Request::is('productCategories*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('productCategories.index') }}"><i class="fas fa-bars"></i><span>Product Category</span></a>
         </li>
@@ -20,19 +39,22 @@
             <a class="nav-link" href="{{ route('productBrands.index') }}"><i class="fas fa-bars"></i><span>Product Brand</span></a>
         </li>
         <li class="side-menus {{ Request::is('products*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('products.index') }}"><i class="fas fa-bars"></i><span>Product</span></a>
+            <a class="nav-link" href="{{ route('products.index') }}"><i class="fas fa-bars"></i><span>Data Product</span></a>
         </li>
     </ul>
 </li>
 
-<li class="dropdown {{ Request::is('blogs*') ||  Request::is('blogCategories*') ? 'active' : '' }}">
+<li class="dropdown {{ Request::is('blogs*') ||  Request::is('blogCategories*') || Request::is('bannerBlogs*') ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-blog"></i> <span>Blogs</span></a>
     <ul class="dropdown-menu">
+        <li class="side-menus {{ Request::is('bannerBlogs*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('bannerBlogs.index') }}"><i class="fas fa-bars"></i><span>Banner</span></a>
+        </li>
         <li class="side-menus {{ Request::is('blogCategories*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('blogCategories.index') }}"><i class="fas fa-bars"></i><span>Blog Category</span></a>
         </li>
         <li class="side-menus {{ Request::is('blogs*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('blogs.index') }}"><i class="fas fa-bars"></i><span>Blog</span></a>
+            <a class="nav-link" href="{{ route('blogs.index') }}"><i class="fas fa-bars"></i><span>Data Blog</span></a>
         </li>
     </ul>
 </li>
@@ -54,4 +76,3 @@
 <li class="side-menus {{ Request::is('settingWebs*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('settingWebs.index') }}"><i class="fas fa-cog"></i><span>Setting Web</span></a>
 </li>
-
