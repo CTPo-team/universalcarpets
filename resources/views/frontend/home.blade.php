@@ -4,7 +4,7 @@
 
 <!-- section banner -->
 <div class="sectionBanner" style="margin-top:-72px">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach ($banner as $key => $data)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
@@ -29,6 +29,79 @@
             </div>
             @endforeach
         </div>
+    </div> -->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-block w-100" id="banner" style="background: 
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                url({{asset('img/banner/1_1639900016.jpg')}});">
+                </div>
+                <div class="carousel-caption text-left">
+                    <div class="row pt-5">
+                        <div class="col-md-8 pt-2">
+                            <p
+                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                asdasdasd</p>
+                            <p
+                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                asdasdasd</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-block w-100" id="banner" style="background: 
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                url('https://www.tapi.co.uk/oimgnn/images_products/L_1622_49355b0ed02f3c9ade7f27b8fdd0d0eb-Houston-1622-pdp-large-635.jpg'); background-repeat: no-repeat;background-size:cover;">
+                </div>
+                <div class="carousel-caption text-left">
+                    <div class="row pt-5">
+                        <div class="col-md-8 pt-2">
+                            <p
+                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                asdasdasd</p>
+                            <p
+                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                asdasdasd</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-block w-100" id="banner" style="background: 
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                url('https://multancarpetindustries.com/wp-content/uploads/2021/01/banner_3_1200x700-scaled.jpg'); background-repeat: no-repeat;background-size:cover;">
+                </div>
+                <div class="carousel-caption text-left">
+                    <div class="row pt-5">
+                        <div class="col-md-8 pt-2">
+                            <p
+                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                asdasdasd</p>
+                            <p
+                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                asdasdasd</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
     </div>
 </div>
 <!-- end section banner -->
