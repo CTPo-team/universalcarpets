@@ -111,14 +111,4 @@ class product extends Model
     {
         return $this->belongsTo(\App\Models\productBrand::class, 'product_brand_id');
     }
-
-    public function imageProduct()
-    {
-        return $this->hasMany(\App\Models\imageProduct::class, 'product_id', 'id');
-    }
-
-    public function imageProductOne()
-    {
-        return $this->hasOne(\App\Models\imageProduct::class, 'product_id', 'id')->oldest();
-    }
 }

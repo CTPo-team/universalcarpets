@@ -80,7 +80,7 @@ class aboutUsPageController extends AppBaseController
      */
     public function show($id)
     {
-        $aboutUsPage = aboutUsPage::where("id",$id)->with("aboutUsGallery")->first();
+        $aboutUsPage = aboutUsPage::where("id",$id)->first();
 
         if (empty($aboutUsPage)) {
             Flash::error('About Us not found');
@@ -89,8 +89,11 @@ class aboutUsPageController extends AppBaseController
         }
 
          //Set View Image From Gallery
-         $aboutUsPage["path_image"] = $this->getGalleryForView($aboutUsPage["path_image"]);
-         
+         $aboutUsPage["path_image_technologies"] = $this->getGalleryForView($aboutUsPage["path_image_technologies"]?? null);
+         $aboutUsPage["path_image_strategy"] = $this->getGalleryForView($aboutUsPage["path_image_strategy"]?? null);
+         $aboutUsPage["path_image_home"] = $this->getGalleryForView($aboutUsPage["path_image_home"]?? null);
+         $aboutUsPage["path_image_network"] = $this->getGalleryForView($aboutUsPage["path_image_network"]?? null);
+         $aboutUsPage["path_image_certificate"] = $this->getGalleryForView($aboutUsPage["path_image_certificate"]?? null);
         return view('about_us_pages.show')->with('aboutUsPage', $aboutUsPage);
     }
 
@@ -112,8 +115,11 @@ class aboutUsPageController extends AppBaseController
         }
 
         //Set Preview Image on Input
-        $aboutUsPage["path_image"] = $this->getGallery($aboutUsPage["path_image"]);
-
+        $aboutUsPage["path_image_technologies"] = $this->getGallery($aboutUsPage["path_image_technologies"]?? null);
+        $aboutUsPage["path_image_strategy"] = $this->getGallery($aboutUsPage["path_image_strategy"]?? null);
+        $aboutUsPage["path_image_home"] = $this->getGallery($aboutUsPage["path_image_home"]?? null);
+        $aboutUsPage["path_image_network"] = $this->getGallery($aboutUsPage["path_image_network"]?? null);
+        $aboutUsPage["path_image_certificate"] = $this->getGallery($aboutUsPage["path_image_certificate"]?? null);
         return view('about_us_pages.edit')->with('aboutUsPage', $aboutUsPage);
     }
 
@@ -140,13 +146,19 @@ class aboutUsPageController extends AppBaseController
         $input = $this->setSeo($input,$input["short_desc"],$aboutUsPage->title,self::seo_category,null);
 
         //Set Compare Gallery old and new value
-        $this->compareGallery($aboutUsPage["path_image"],$input["path_image"]);
-
+        $this->compareGallery($aboutUsPage["path_image_technologies"],$input["path_image_technologies"] ?? null);
+        $this->compareGallery($aboutUsPage["path_image_strategy"],$input["path_image_strategy"]?? null);
+        $this->compareGallery($aboutUsPage["path_image_home"],$input["path_image_home"]?? null);
+        $this->compareGallery($aboutUsPage["path_image_network"],$input["path_image_network"]?? null);
+        $this->compareGallery($aboutUsPage["path_image_certificate"],$input["path_image_certificate"]?? null);
         $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
 
         //Set Active Gallery
-        $this->setActiveGallery($input["path_image"]);
-
+        $this->setActiveGallery($input["path_image_technologies"]?? null);
+        $this->setActiveGallery($input["path_image_strategy"]?? null);
+        $this->setActiveGallery($input["path_image_home"]?? null);
+        $this->setActiveGallery($input["path_image_network"]?? null);
+        $this->setActiveGallery($input["path_image_certificate"]?? null);
         Flash::success('About Us updated successfully.');
 
         return redirect(route('aboutUsPages.index'));

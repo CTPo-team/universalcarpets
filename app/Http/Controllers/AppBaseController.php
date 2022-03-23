@@ -52,7 +52,11 @@ class AppBaseController extends Controller
 
     public function deleteFile($filename, $dir){
         if (!empty($filename)){
-            unlink(public_path($dir."/".$filename));
+            try {
+                unlink(public_path($dir."/".$filename));
+            } catch (\Throwable $th) {
+                return true;
+            }
         }
     }
 
@@ -115,48 +119,57 @@ class AppBaseController extends Controller
     }
 
     public function getGalleryForView($value){
-        if(str_contains($value, ',')){
-            $data = [];
-            foreach(explode(",",$value) as $dt){
-                $data[] = asset('img/gallery/'.$dt);
+        if(!empty($value)){
+            if(str_contains($value, ',')){
+                $data = [];
+                foreach(explode(",",$value) as $dt){
+                    $data[] = asset('img/gallery/'.$dt);
+                }
+                return $data;
+            }else{
+                return asset('img/gallery/'.$value);
             }
-            return $data;
-        }else{
-            return asset('img/gallery/'.$value);
         }
     }
 
     public function setActiveGallery($value){
-        $value = explode(",",$value);
-        if(count($value) > 0){
-            foreach($value as $dt){
-                gallery::where("path_image",$dt)->update([
-                    "type" => "active",
-                ]);
+        if(!empty($value)){
+            $value = explode(",",$value);
+            if(count($value) > 0){
+                foreach($value as $dt){
+                    gallery::where("path_image",$dt)->update([
+                        "type" => "active",
+                    ]);
+                }
+                
+                //Clear Image Not Used
+                $dataUnsed = gallery::where([
+                    ["created_at","<=",Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()],
+                    ["type","=",""]
+                    ])->get();
+                foreach ($dataUnsed as $dt) {
+                    $this->deleteFile($dt["path_image"],"img/gallery");
+                }
+                $dataUnsed = gallery::where([
+                    ["created_at","<=",Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()],
+                    ["type","=",""]
+                    ])->delete();
             }
-            
-            //Clear Image Not Used
-            $dataUnsed = gallery::where([
-                ["created_at","<=",Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()],
-                ["type","=",""]
-                ])->get();
-            foreach ($dataUnsed as $dt) {
-                $this->deleteFile($dt["path_image"],"img/gallery");
-            }
-            $dataUnsed = gallery::where([
-                ["created_at","<=",Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()],
-                ["type","=",""]
-                ])->delete();
         }
-        
     }
 
     public function compareGallery($oldValue,$newValue){
         $newValue = explode(",",$newValue);
-        foreach(explode(",",$oldValue) as $dt){
-            if(array_search($dt,$newValue) === false){
-                gallery::where("path_image",$dt)->delete();
+        if(empty($newValue) && !empty($oldValue)){
+            foreach(explode(",",$oldValue) as $dt){
                 $this->deleteFile($dt,"img/gallery");
+            }
+        }else{
+            foreach(explode(",",$oldValue) as $dt){
+                if(array_search($dt,$newValue) === false){
+                    gallery::where("path_image",$dt)->delete();
+                    $this->deleteFile($dt,"img/gallery");
+                }
             }
         }
     }

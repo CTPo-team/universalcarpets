@@ -109,6 +109,7 @@
         },
         maxFileSize: 2000,
         maxFileCount: 10,
+        minFileCount: 0,
         allowedFileExtensions: ["jpg", "jpeg", "png", "gif"],
         uploadUrl: <?php echo json_encode(url("/add-gallery")); ?>,
         uploadAsync: true,
@@ -161,6 +162,28 @@
         }
         fileConfigSingle.maxFileCount = 1
         $(input).fileinput(fileConfigSingle).on('filebatchuploadcomplete', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on("filebatchselected", function(event, files) {
+            $(input).fileinput("upload");
+        }).on('filedeleted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on('filesorted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        });
+        setValue(value,$(input).fileinput('getPreview'))
+    }
+
+    function setMultipleFileWithMax(input,value,preview,max){
+        fileConfigMultipleMax = fileConfig
+        fileConfigMultipleMax.uploadExtraData={
+            fieldName:input
+        }
+        if(preview.hasOwnProperty('initialPreview') && preview.hasOwnProperty('initialPreviewConfig')){
+            fileConfigMultipleMax.initialPreview = preview.initialPreview
+            fileConfigMultipleMax.initialPreviewConfig = preview.initialPreviewConfig
+        }
+        fileConfigMultipleMax.maxFileCount = max
+        $(input).fileinput(fileConfigMultipleMax).on('filebatchuploadcomplete', function() {
             setValue(value,$(input).fileinput('getPreview'))
         }).on("filebatchselected", function(event, files) {
             $(input).fileinput("upload");

@@ -92,7 +92,7 @@ class productController extends AppBaseController
      */
     public function show($id)
     {
-        $product = product::where("id",$id)->with(["imageProduct","productCategory","productBrand"])->first();
+        $product = product::where("id",$id)->with(["productCategory","productBrand"])->first();
 
         if (empty($product)) {
             Flash::error('Product not found');
@@ -161,11 +161,6 @@ class productController extends AppBaseController
 
         if($product["featured"] == 0 && $input["featured"] == 1){
             $this->removeFeatured();
-        }
-
-        if($request->hasFile('path_image_thumbnail')){ 
-            $this->deleteFile($product->path_image_thumbnail,"img/product");
-            $input["path_image_thumbnail"] = $this->uploadFile($request->path_image_thumbnail,'img/product');
         }
         
         //Set Compare Gallery old and new value

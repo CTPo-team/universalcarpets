@@ -53,8 +53,24 @@
     {!! Form::text('youtube', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Path Image Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('path_image', 'Image TUV:') !!}
+    <p>
+        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 844 × 389 px</small>
+    </p>
+    <input id="single_image_upload" type="file" class="form-control"  name="single_image_upload" data-preview-file-type="text">
+    <input type="hidden" name="path_image" id="path_image">
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('settingWebs.index') }}" class="btn btn-light">Cancel</a>
 </div>
+
+@section('scriptsfileinput')
+    <script>
+        setSingleFile("#single_image_upload","#path_image", <?php echo json_encode(isset($settingWeb->path_image) ? $settingWeb->path_image : []); ?>)
+    </script>
+@endsection

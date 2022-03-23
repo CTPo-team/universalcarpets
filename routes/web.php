@@ -40,9 +40,7 @@ Route::group(['middleware' => ['role:superadmin']], function () {
 });
 
 Route::group(['middleware' => ['role:superadmin|admin']], function () {
-    Route::resource('bannerHomepages', App\Http\Controllers\bannerHomePageController::class,[
-        'only' => ['index', 'edit', 'update', 'show']
-    ]);
+    Route::resource('bannerHomepages', App\Http\Controllers\bannerHomePageController::class);
 
 
     Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class,[
@@ -66,10 +64,6 @@ Route::group(['middleware' => ['role:superadmin|admin']], function () {
 
     Route::resource('aboutUsPages', App\Http\Controllers\aboutUsPageController::class);
 
-
-    Route::resource('bannerHomepages', App\Http\Controllers\bannerHomepageController::class);
-
-
     Route::resource('blogCategories', App\Http\Controllers\blogCategoryController::class);
 
 
@@ -78,4 +72,27 @@ Route::group(['middleware' => ['role:superadmin|admin']], function () {
     Route::resource('settingWebs', App\Http\Controllers\settingWebController::class,[
         'only' => ['index', 'update']
     ]);
+
+    Route::resource('bannerAboutus', App\Http\Controllers\bannerAboutUsController::class,[
+        'only' => ['index', 'update', 'edit']
+     ]);
+     
+    Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class,[
+        'only' => ['index', 'update', 'edit']
+    ]);
+
+    // Route::resource('bannerContactus', App\Http\Controllers\bannerContactUsController::class,[
+    //     'only' => ['index', 'update']
+    // ]);
+
+    Route::resource('bannerProducts', App\Http\Controllers\bannerProductController::class);
+
+    Route::resource('bannerContactus', App\Http\Controllers\bannerContactUsController::class);
+
+    Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
+    Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
+
+    // Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
+
+    // Route::resource('bannerAboutus', App\Http\Controllers\bannerAboutUsController::class);
 });

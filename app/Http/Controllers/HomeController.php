@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function index()
     {
         $this->data["banner"] = bannerHomepage::where("status",1)->orderByDesc("created_at")->get();
-        $this->data["product"] = product::where("status",1)->with(["imageProductOne","productCategory"])->orderByDesc("created_at")->limit(4)->get();
+        $this->data["product"] = product::where("status",1)->with("productCategory")->orderByDesc("created_at")->limit(4)->get();
         $this->data["blog"] = blog::where("status",1)->with("blogCategory")->orderByDesc("created_at")->get();
         $this->data["AboutUs"] = aboutUsPage::where("title",'OUR STORY')->first();
         $this->data["settingWeb"] = settingWeb::first();
@@ -176,7 +176,7 @@ class HomeController extends Controller
     public function product(Request $request)
     {
         $this->data["filter"] = $request->all();
-        $this->data["productFeatured"] = product::where("featured",1)->with(["productBrand","productCategory","imageProductOne"])->first();
+        $this->data["productFeatured"] = product::where("featured",1)->with(["productBrand","productCategory"])->first();
         $this->data["productCategory"] = productCategory::orderBy("title")->with(["product.productBrand","subCategory.product.productBrand"])->where("product_category_id",null)->get();
         $this->data["settingWeb"] = settingWeb::first();
         //SEO
@@ -194,7 +194,7 @@ class HomeController extends Controller
     public function dataProduct(Request $request)
     {
 
-        $product = product::orderBy("title")->with(["productBrand","productCategory","imageProductOne"])->where("status",1);
+        $product = product::orderBy("title")->with(["productBrand","productCategory"])->where("status",1);
 
         //Set Filter
         if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (!isset($request->filterSubCategories) || empty(trim($request->filterSubCategories)))){
@@ -218,14 +218,14 @@ class HomeController extends Controller
     {
         if(empty(!$slug)){
             $product = product::where([["slug","=",$slug],["status","=",1]]);
-            $this->data["product"] = $product->with(["productCategory","productBrand","imageProduct"])->first();
+            $this->data["product"] = $product->with(["productCategory","productBrand"])->first();
 
             if(!$this->data["product"]){
                 return abort(404);
             }
 
             $this->data["settingWeb"] = settingWeb::first();
-            $this->data["relatedProduct"] = product::where([['product_category_id',"=",$this->data["product"]->product_category_id],['id','!=',$this->data["product"]->id]])->with(["productCategory","productBrand","imageProduct"])->orderByDesc("created_at")->limit(2)->get();
+            $this->data["relatedProduct"] = product::where([['product_category_id',"=",$this->data["product"]->product_category_id],['id','!=',$this->data["product"]->id]])->with(["productCategory","productBrand"])->orderByDesc("created_at")->limit(2)->get();
             
             //SEO
             $this->data["seo"] = [
