@@ -34,15 +34,15 @@
 <!-- end section banner -->
 
 <!-- section about -->
-<div class="sectionAbout" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}}); background-repeat: no-repeat;
+<div class="sectionAbout imgatashome" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}}); background-repeat: no-repeat;
   background-size: cover;">
-    <div class="" style="padding-right:0px;padding-left:0px">
+    <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row" style="margin-right:0px;margin-left:0px">
             <div class="col-md-12 ">
                 <div class="card card-bgabout">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-7 col-12 pt-4 pb-4 d-none d-sm-block">
+                            <div class="col-md-6 col-12 pt-4 pb-4 d-none d-sm-block">
                                 <div class="row">
                                     <div class="col-md-7 col-12 text-center">
                                         <p><img class="img1abouthome imgatashome" width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
@@ -50,12 +50,11 @@
                                         <p><img class="img2abouthome imgatashome" width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
                                     </div>
                                     <div class="col-md-5 col-12 text-center" style="padding-left:0px">
-                                        <img class="img3abouthome imgatashome" width="100%" height="630px" src="{{asset('images/abouthome.png')}}">
+                                        <img class="img3abouthome" width="100%" height="390px" src="{{asset('images/abouthome.png')}}">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5
-                             col-12 pt-3">
+                            <div class="col-md-6 col-12 pt-3">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12">
