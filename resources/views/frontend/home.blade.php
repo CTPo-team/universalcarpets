@@ -31,9 +31,9 @@
         </div>
     </div> -->
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-touch="true" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" data-interval="3000">
                 <div class="d-block w-100" id="banner" style="background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url({{asset('img/banner/1_1639900016.jpg')}});">
@@ -53,7 +53,7 @@
                     <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" data-interval="3000">
                 <div class="d-block w-100" id="banner" style="background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url('https://www.tapi.co.uk/oimgnn/images_products/L_1622_49355b0ed02f3c9ade7f27b8fdd0d0eb-Houston-1622-pdp-large-635.jpg'); background-repeat: no-repeat;background-size:cover;">
@@ -73,7 +73,7 @@
                     <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" data-interval="3000">
                 <div class="d-block w-100" id="banner" style="background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url('https://multancarpetindustries.com/wp-content/uploads/2021/01/banner_3_1200x700-scaled.jpg'); background-repeat: no-repeat;background-size:cover;">
@@ -94,11 +94,11 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:8% !important" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleIndicators" style="width:8% !important" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -107,27 +107,26 @@
 <!-- end section banner -->
 
 <!-- section about -->
-<div class="sectionAbout" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}}); background-repeat: no-repeat;
-  background-size: cover;">
-    <div class="" style="padding-right:0px;padding-left:0px">
+<div class="sectionAbout" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}});">
+    <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row" style="margin-right:0px;margin-left:0px">
             <div class="col-md-12 ">
                 <div class="card card-bgabout">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-7 col-12 pt-4 pb-4 d-none d-sm-block">
+                            <div class="col-md-6 col-12 pt-4 pb-4 d-none d-sm-block">
                                 <div class="row">
                                     <div class="col-md-7 col-12 text-center">
-                                        <p><img class="img1abouthome imgatashome" width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
+                                        <p><img class="img1abouthome" width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
 
-                                        <p><img class="img2abouthome imgatashome" width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
+                                        <p><img class="img2abouthome" width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
                                     </div>
                                     <div class="col-md-5 col-12 text-center" style="padding-left:0px">
-                                        <img class="img3abouthome imgatashome" width="100%" height="630px" src="{{asset('images/abouthome.png')}}">
+                                        <img class="img3abouthome" width="100%" height="390px" src="{{asset('images/abouthome.png')}}">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5
+                            <div class="col-md-6
                              col-12 pt-3">
                                 <div class="container">
                                     <div class="row">
@@ -151,6 +150,7 @@
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
             </div>
@@ -494,11 +494,14 @@
 @section("scripts")
     <script>
         $(document).ready(function () {
-            var image = document.getElementsByClassName('thumbnail');
-            new simpleParallax(image);
-
-            var image2 = document.getElementsByClassName('imgatashome');
-            new simpleParallax(image2);
+            var $el = $('.sectionAbout');
+            $(window).on('scroll', function () {
+                var scroll = $(document).scrollTop();
+                $el.css({
+                    'background-position':'50% '+(-.4*scroll)+'px'
+                });
+            });
         });
+      
     </script>
 @endsection
