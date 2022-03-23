@@ -100,7 +100,7 @@
             <div class="row text-white align-items-center" style="height:59vh;">
                     <div class="col-6">
                     </div>
-                    <div class="col-4" style="font-size:1.3vw">
+                    <div class="col-4" style="font-size:1.23vw">
                         {!! $ourStory->our_strategy_desc ?? '' !!}
                     </div>
             </div>
@@ -150,9 +150,9 @@
     <!-- TECHNOLOGIES -->
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <div class="d-none d-sm-block" style="background:#0e0e0e">
-        <div class="container pt-4 pb-4" style="margin-top:90px">
-            <div class="row text-center p-3" style="color:#D5AD6A;font-size:2.7vw">
-                {!! $technologies->short_desc ?? '' !!}
+        <div class="container pt-5 pb-5" style="margin-top:90px">
+            <div class="row text-center p-3" style="color:#D5AD6A;font-size:2.2vw">
+            ❝ {!! strip_tags($technologies->short_desc) ?? '' !!} ❝
             </div>
         </div>
         </div>
