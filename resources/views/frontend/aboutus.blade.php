@@ -91,7 +91,7 @@
         </div>
 
         <div class="row mb-5 d-none d-sm-block mt-5"
-            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;  background-size: 95%;background-repeat:no-repeat;height:78vh;">
+            style="background:url({{asset('images/ourstrategy.png')}});background-size: cover;background-position:right;background-size: 95%;background-repeat:no-repeat;height:78vh;">
             <div class="row pb-4">
                 <div class="col-12 text-center pb-3">
                     <p style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;color:#D5AD6A;font-size:3vw">Our Strategy</p>

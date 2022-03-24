@@ -10,17 +10,51 @@
     {
         border-bottom: 3px solid #C72933;
     }
-</style>
-@endsection
-@section('content')
-<style>
+
+    .owl-nav{
+        margin-top:-35px !important;
+        margin-bottom: -20px !important;
+    } 
+
+    .owl-dots{
+        display:none !important;
+    }
+
+    .owl-next , .owl-prev{
+        font-size: 4vw !important;
+    }
+
+    .owl-theme .owl-nav [class*=owl-]:hover {
+        background: transparent !important;
+        color: #666666;
+    }
+
     @media only screen and (min-width: 1800px) {
         .cont-productpage{
             max-width:1445px !important;
         }
     }
 </style>
-<div class="container cont-productpage pt-4">
+@endsection
+@section('content')
+<div class="sectionBanner" style="margin-top:-72px">
+<div class="owl-carousel owl-theme">
+ 
+        <div class="item" style="margin-top:0px;height:90vh;background: 
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                url({{asset('img/banner/1_1639900016.jpg')}});background-size:cover;width:100vw !important">
+                              
+        </div>
+        <div class="item" style="margin-top:0px;height:90vh;background: 
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                url({{asset('images/bannerproduct.png')}});background-size:cover;width:100vw !important">
+                              
+        </div>
+</div>
+</div>
+
+<!-- <div class="container cont-productpage pt-4">
+
     <div class="row mobilebanprod" style="margin-top:0px;height:65vh;background:
                                 url({{asset('images/bannerproduct.png')}});background-size:cover;">
         <div class="col-12" style="">
@@ -35,9 +69,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="container cont-productpage pt-5">
+<div class="container cont-productpage mt-5">
     <div class="row d-none d-sm-block pb-5">
         <div class="col-12 pt-5" style="padding-left:0px;padding-right:0px;">
             <h4>FEATURED PRODUCT</h4>
@@ -45,7 +79,7 @@
         <div class="col-12">
             <div class="row">
             @if(isset($productFeatured))
-                <div class="col-7" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne->path_image )}});background-size:cover;height:24vw !important">
+                <div class="col-7" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne )}});background-size:cover;height:24vw !important">
                 </div>
                 <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px">
                     <div class="row align-items-center" style="height:40vh">
@@ -69,51 +103,7 @@
             </div>
         </div>
     </div>
-    <div class="row d-none d-sm-block pb-5">
-        <div class="col-12  pt-5"  style="padding-left:0px;padding-right:0px;">
-            <h4>ALL PRODUCTS</h4>
-        </div>
-        <div class="col-12 pt-5 pb-5">
-            <div class="row justify-content-center">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Categories</label>
-                        <select class="form-control select-categories" name="filterCategories"
-                            id="exampleFormControlSelect1" onchange="setSubCategory()">
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Sub-categories</label>
-                        <select class="form-control select-subcategories" name="filterSubCategories"
-                            id="exampleFormControlSelect1" onchange="setBrand()">
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Brands</label>
-                        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2 align-self-center pt-3">
-                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none"><i class="fa fa-search"></i> Search</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="row data-product">
-            </div>
-        </div>
-        <div class="col-12">
-            <center>
-                <button type="button" class="btn mt-5 pl-5 pr-5 pt-2 pb-2 load-more" style="background:#D5AD6A;color:white;">LOAD MORE</button>
-            </center>
-        </div>
-    </div>
-
+    
 
     <!-- mobile feat product section -->
     <div class="row d-block d-sm-none pb-5">
@@ -123,7 +113,7 @@
         <div class="col-12">
             <div class="row">
             @if(isset($productFeatured))
-                <div class="col-12" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne->path_image )}});background-size:cover;height:44vw !important;background-position:center;">
+                <div class="col-12" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne )}});background-size:cover;height:44vw !important;background-position:center;">
                 </div>
                 <div class="col-12" style="background:#C72C36;padding-right:0px;padding-left:0px;padding-bottom:10px">
                     <div class="row">
@@ -191,6 +181,54 @@
             </center>
         </div>
     </div>
+</div>
+
+
+<div class="row d-none d-sm-block pb-5">
+        <div class="col-12  pt-5 ml-4 mr-4">
+            <h4>ALL PRODUCTS</h4>
+        </div>
+        <div class="col-12 pt-5 pb-5">
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Categories</label>
+                        <select class="form-control select-categories" name="filterCategories"
+                            id="exampleFormControlSelect1" onchange="setSubCategory()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Sub-categories</label>
+                        <select class="form-control select-subcategories" name="filterSubCategories"
+                            id="exampleFormControlSelect1" onchange="setBrand()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Brands</label>
+                        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2 align-self-center pt-3">
+                    <button type="button" onclick="submitFilter()" class="btn btn-primary" style="background:#C72933;border:none"><i class="fa fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row data-product">
+            </div>
+        </div>
+        <div class="col-12">
+            <center>
+                <button type="button" class="btn mt-5 pl-5 pr-5 pt-2 pb-2 load-more" style="background:#D5AD6A;color:white;">LOAD MORE</button>
+            </center>
+        </div>
+    </div>
+
 
     <!-- end section -->
 
@@ -390,7 +428,7 @@
                 var flagsUrl = '{{ asset('/img/product') }}';
                 var baseUrl = '{{ url('detail-product') }}';
                 product.forEach(function (data) {
-                    $(classProduct).append("<div class='col-6 col-md-4 content p-2' style='padding-left:0px;padding-right:0px'><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one.path_image + "'>\
+                    $(classProduct).append("<div class='col-6 col-md-4 content p-2' style=''><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one + "'>\
                     <div class='content-details fadeIn-bottom'>\
                                 <p class='content-text fonttittle-overlay' style='font-size:3vw'>"+data.title+"</p>\
                                 <a class='link-content-text fontlink-overlay' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
@@ -463,6 +501,17 @@
                 page = page + 1
                 loadProduct()
             }
+        });
+
+      
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                margin:10,
+                loop:true,
+                autoWidth:true,
+                items:1,
+                nav:true,
+            })
         });
     </script>
     @endsection

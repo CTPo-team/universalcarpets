@@ -44,6 +44,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/owlcarousel/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/owlcarousel/dist/assets/owl.theme.default.min.css') }}">
     <!-- <link rel="stylesheet" href="{{ asset('web/css/style.css') }}"> -->
     <style>   
     body{
@@ -68,13 +70,16 @@
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/owlcarousel/dist/owl.carousel.min.js') }}"></script>
+
 <!-- <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 @yield('scripts')
 <script>
            $(document).scroll(function () {
             var $nav = $(".sticky-top");
             $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+
             });
 </script>
 </html>
