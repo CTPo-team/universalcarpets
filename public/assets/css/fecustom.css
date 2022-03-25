@@ -167,6 +167,18 @@
     .teks-desc p{
         margin-bottom: 0.1rem;
     }
+    .background-certi{
+        background-repeat:no-repeat !important;
+        background-size:100% 70% !important;
+        background-position:center center !important;
+    }
+    .background-strategy{
+        background-size:contain !important;
+        background-position:right !important;
+        background-size:72% 100% !important;
+        background-repeat:no-repeat !important;
+        height:78vh !important;
+    }
 
     /* style blog */
     .hr-blog {
@@ -178,6 +190,37 @@
     }
 
     /* style mobile */
+    @media only screen and (max-width: 1200px) {
+        .background-certi{
+            background-repeat:no-repeat !important;
+            background-size:100% 50% !important;
+            background-position:left 10% !important;
+        }
+
+        .background-strategy{
+            background-size:contain !important;
+            background-position:right !important;
+            background-size:72% 80% !important;
+            background-repeat:no-repeat !important;
+            height:78vh !important;
+        }
+        
+    }
+    @media only screen and (max-width: 900px) {
+        .background-certi{
+            background-repeat:no-repeat !important;
+            background-size:100% 30% !important;
+            background-position:left 10% !important;
+        }
+
+        .background-strategy{
+            background-size:contain !important;
+            background-position:right !important;
+            background-size:72% 70% !important;
+            background-repeat:no-repeat !important;
+            height:78vh !important;
+        }
+    }
     @media only screen and (max-width: 600px) {
         .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
         {
@@ -278,6 +321,11 @@
         .content-overlay{
             width:92% !important;
             height:92% !important;
+        }
+        .background-certi{
+            background-repeat:no-repeat !important;
+            background-size:100% 80% !important;
+            background-position:center center !important;
         }
     }
 

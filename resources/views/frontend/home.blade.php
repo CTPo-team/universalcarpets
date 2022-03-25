@@ -32,68 +32,30 @@
     </div> -->
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="d-block w-100" id="banner" style="background: 
-                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                url({{asset('img/banner/1_1639900016.jpg')}});">
-                </div>
-                <div class="carousel-caption text-left">
-                    <div class="row pt-5">
-                        <div class="col-md-8 pt-2">
-                            <p
-                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
-                                asdasdasd</p>
-                            <p
-                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                                asdasdasd</p>
-                        </div>
+        @foreach($banner as $dt)
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-block w-100" id="banner" style="background: 
+                                    linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                    url({{$dt['path_image'] ?? ''}});">
                     </div>
-                    <br>
-                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
+                    <div class="carousel-caption text-left">
+                        <div class="row pt-5">
+                            <div class="col-md-8 pt-2">
+                                <p
+                                class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                    {{$dt['category'] ?? ''}}</p>
+                                <p
+                                class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                    {{$dt['title'] ?? ''}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">{{$dt['button_title'] ?? ''}}</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="d-block w-100" id="banner" style="background: 
-                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                url('https://www.tapi.co.uk/oimgnn/images_products/L_1622_49355b0ed02f3c9ade7f27b8fdd0d0eb-Houston-1622-pdp-large-635.jpg'); background-repeat: no-repeat;background-size:cover;">
-                </div>
-                <div class="carousel-caption text-left">
-                    <div class="row pt-5">
-                        <div class="col-md-8 pt-2">
-                            <p
-                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
-                                asdasdasd</p>
-                            <p
-                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                                asdasdasd</p>
-                        </div>
-                    </div>
-                    <br>
-                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="d-block w-100" id="banner" style="background: 
-                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                url('https://multancarpetindustries.com/wp-content/uploads/2021/01/banner_3_1200x700-scaled.jpg'); background-repeat: no-repeat;background-size:cover;">
-                </div>
-                <div class="carousel-caption text-left">
-                    <div class="row pt-5">
-                        <div class="col-md-8 pt-2">
-                            <p
-                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
-                                asdasdasd</p>
-                            <p
-                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                                asdasdasd</p>
-                        </div>
-                    </div>
-                    <br>
-                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">VIEW PRODUCT</a></p>
-                </div>
-            </div>
-        </div>
+        @endforeach
         <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -118,12 +80,17 @@
                             <div class="col-md-6 col-12 pt-4 pb-4 d-none d-sm-block">
                                 <div class="row">
                                     <div class="col-md-7 col-12 text-center">
-                                        <p><img class="img1abouthome imgatashome" width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
-
-                                        <p><img class="img2abouthome imgatashome" width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
-                                    </div>
+                                        @if(isset($aboutUs->path_image_home[0]))
+                                            <p><img class="img1abouthome imgatashome" width="100%" src="{{$aboutUs->path_image_home[0]}}"></p>
+                                        @endif
+                                        @if(isset($aboutUs->path_image_home[1]))
+                                            <p><img class="img2abouthome imgatashome" width="100%" src="{{asset($aboutUs->path_image_home[1])}}"></p>
+                                        @endif
+                                        </div>
                                     <div class="col-md-5 col-12 text-center" style="padding-left:0px">
-                                        <img class="img3abouthome" width="100%" height="390px" src="{{asset('images/abouthome.png')}}">
+                                        @if(isset($aboutUs->path_image_home[2]))
+                                            <img class="img3abouthome" width="100%" height="390px" src="{{asset($aboutUs->path_image_home[2])}}">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +104,7 @@
                                             </p>
                                         </diV>
                                         <div class="col-md-12">
-                                            {!! strip_tags($AboutUs->short_desc) !!}
+                                            {!! strip_tags($aboutUs->short_desc) !!}
                                         </div>
 
                                     </div>
@@ -180,12 +147,12 @@
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
                             @foreach ($product as $newcol)
-                            @if(!empty($newcol->imageProductOne)) 
+                            @if(!empty($newcol->path_image)) 
                             <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
                             <div class="content-overlay"></div>
 
                                 <img width="100%" height="305px" class="tabnewcol"
-                                    src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}">
+                                    src="{{$newcol->path_image}}">
                                 <div class="content-details fadeIn-bottom">
                                 <p class="content-text"> {!! $newcol->title !!}</p>
                                 <br>
@@ -351,7 +318,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[1]->title !!}</h5>
                                                         <div class="card-text texttabblog" style="font-size:14px">
-                                                            {!! strlen(strip_tags($blog[1]->desc)) > 200 ? substr(strip_tags($blog[1]->desc),0,200).'...' : strip_tags($blog[1]->desc) !!}</div>
+                                                            {!! strlen(strip_tags($blog[1]->desc)) > 170 ? substr(strip_tags($blog[1]->desc),0,170).'...' : strip_tags($blog[1]->desc) !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -444,7 +411,7 @@
                                 @foreach ($blog as $key => $blogs)
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <div class="card" style="width: 100%;height:400px;">
-                                        <img src="{{asset('img/blog/'. $blogs->path_image )}}" height="210px"
+                                        <img src="{{$blogs->path_image}}" height="210px"
                                             class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <div class="row" style="height:150px">
