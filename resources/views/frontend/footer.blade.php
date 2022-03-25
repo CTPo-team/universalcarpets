@@ -23,7 +23,7 @@
 
 <!-- section footer-->
 <div class="section" style="padding-top:50px;padding-bottom:10px;">
-    <div class="container">
+    <div class="container" style="max-width: 90% !important;">
         <div class="row">
             <div class="col">
                 <img src="{{$settingWeb['path_image']}}" class="float-right" height="60px" style="margin-bottom: 7px;" alt="...">

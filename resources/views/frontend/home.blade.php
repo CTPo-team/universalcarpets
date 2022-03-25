@@ -4,41 +4,16 @@
 
 <!-- section banner -->
 <div class="sectionBanner" style="margin-top:-72px">
-    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-touch="true" data-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($banner as $key => $data)
-            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                <div class="d-block w-100" id="banner" style="background: 
-                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                url({{asset('img/banner/'.$data->path_image)}});">
-                </div>
-                <div class="carousel-caption text-left">
-                    <div class="row pt-5">
-                        <div class="col-md-8">
-                            <p
-                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
-                                {{$data->desc}}</p>
-                            <p
-                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                                {{$data->title}}</p>
+            @foreach($banner as $key => $dt)
+                <div class="carousel-item {{$key == 0 ? 'active' : ''}}" data-interval="5000">
+                    <a href="{{$dt['button_url'] ?? ''}}">
+                        <div class="d-block w-100" id="banner" style="background: 
+                                        linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                        url('{{$dt['path_image'] ?? ''}}'); background-repeat: no-repeat;background-size:cover;">
                         </div>
-                    </div>
-                    <br>
-                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$data->button_url}}">VIEW PRODUCT</a></p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div> -->
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        @foreach($banner as $dt)
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="d-block w-100" id="banner" style="background: 
-                                    linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                    url({{$dt['path_image'] ?? ''}});">
-                    </div>
+                    </a>
                     <div class="carousel-caption text-left">
                         <div class="row pt-5">
                             <div class="col-md-8 pt-2">
@@ -51,16 +26,16 @@
                             </div>
                         </div>
                         <br>
-                        <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="">{{$dt['button_title'] ?? ''}}</a></p>
+                        <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                     </div>
                 </div>
-            </div>
-        @endforeach
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="prev">
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:8% !important" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" style="width:7% !important" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleIndicators" style="width:8% !important" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -69,8 +44,7 @@
 <!-- end section banner -->
 
 <!-- section about -->
-<div class="sectionAbout imgatashome" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}}); background-repeat: no-repeat;
-  background-size: cover;">
+<div class="sectionAbout" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}});">
     <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row" style="margin-right:0px;margin-left:0px">
             <div class="col-md-12 ">
@@ -117,6 +91,7 @@
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
             </div>
@@ -147,31 +122,31 @@
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
                             @foreach ($product as $newcol)
-                            @if(!empty($newcol->path_image)) 
-                            <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
-                            <div class="content-overlay"></div>
+                                @if(!empty($newcol->path_image[0])) 
+                                <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
+                                <div class="content-overlay"></div>
 
-                                <img width="100%" height="305px" class="tabnewcol"
-                                    src="{{$newcol->path_image}}">
-                                <div class="content-details fadeIn-bottom">
-                                <p class="content-text"> {!! $newcol->title !!}</p>
-                                <br>
-                                <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    <img width="100%" height="305px" class="tabnewcol"
+                                        src="{{$newcol->path_image[0]}}">
+                                    <div class="content-details fadeIn-bottom">
+                                    <p class="content-text"> {!! $newcol->title !!}</p>
+                                    <br>
+                                    <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    </div>
                                 </div>
-                            </div>
-                            @else
-                            <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
-                            <div class="content-overlay"></div>
+                                @else
+                                <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
+                                <div class="content-overlay"></div>
 
-                                <img width="100%" height="305px" class="tabnewcol"
-                                    src="">
-                                <div class="content-details fadeIn-bottom">
-                                <p class="content-text"> {!! $newcol->title !!}</p>
-                                <br>
-                                <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    <img width="100%" height="305px" class="tabnewcol"
+                                        src="">
+                                    <div class="content-details fadeIn-bottom">
+                                    <p class="content-text"> {!! $newcol->title !!}</p>
+                                    <br>
+                                    <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    </div>
                                 </div>
-                            </div>
-                            @endif
+                                @endif
                             @endforeach
                         </div>
                         <div class="row mt-4">
@@ -209,7 +184,7 @@
                                 @if(!empty($newcol->imageProductOne)) 
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <img class="d-block w-100"
-                                        src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}"
+                                        src="{{$newcol->path_image}}"
                                         alt="First slide">
                                 </div>
                                 @else
@@ -282,7 +257,7 @@
                                     @if(isset($blog[0]))
                                     <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
-                                            <img src="{{asset('img/blog/'. $blog[0]->path_image )}}" height="210px"
+                                            <img src="{{asset($blog[0]->path_image)}}" height="210px"
                                                 class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:150px">
@@ -308,7 +283,7 @@
                                     @if(isset($blog[1]))
                                     <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
-                                            <img src="{{asset('img/blog/'. $blog[1]->path_image )}}" height="210px"
+                                            <img src="{{asset($blog[1]->path_image)}}" height="210px"
                                                 class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:150px">
@@ -337,7 +312,7 @@
                                     <div class="col-md-12" style="padding-right:3px;padding-left:3px">
                                         <div class="card"
                                             style="width: 100%;flex-direction:row !important;height:240px">
-                                            <img src="{{asset('img/blog/'. $blog[2]->path_image )}}" class="card-img"
+                                            <img src="{{asset($blog[2]->path_image)}}" class="card-img"
                                                 style="width:46%" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:100%">
@@ -367,7 +342,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card" style="width: 100%;height:655px">
-                                            <img src="{{asset('img/blog/'. $blog[3]->path_image )}}"
+                                            <img src="{{asset($blog[3]->path_image)}}"
                                                 class="card-img-top imgtabverticalblog" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:100%">
@@ -460,11 +435,14 @@
 @section("scripts")
     <script>
         $(document).ready(function () {
-            var image = document.getElementsByClassName('thumbnail');
-            new simpleParallax(image);
-
-            var image2 = document.getElementsByClassName('imgatashome');
-            new simpleParallax(image2);
+            var $el = $('.sectionAbout');
+            $(window).on('scroll', function () {
+                var scroll = $(document).scrollTop();
+                $el.css({
+                    'background-position':'50% '+(-.4*scroll)+'px'
+                });
+            });
         });
+      
     </script>
 @endsection
