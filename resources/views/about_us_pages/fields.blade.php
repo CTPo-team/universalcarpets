@@ -4,11 +4,13 @@
     {!! Form::text('title', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'readonly' => 'readonly']) !!}
 </div>
 
-<!-- Header Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('header', 'Header:') !!}
-    {!! Form::text('header', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
-</div>
+@if($aboutUsPage->id == 1 || $aboutUsPage->id == 2)
+    <!-- Header Field -->
+    <div class="form-group col-sm-12 col-lg-12">
+        {!! Form::label('header', 'Header:') !!}
+        {!! Form::text('header', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required' => 'required']) !!}
+    </div>
+@endif
 
 @if($aboutUsPage->id == 1 || $aboutUsPage->id == 2)
 <!-- Desc Field -->
@@ -36,7 +38,7 @@
         <input type="hidden" name="path_image_technologies" id="path_image_technologies">
         @section('scriptsfileinput')
             <script>
-                setMultipleFile("#multiple_image_upload","#path_image_technologies", <?php echo json_encode(isset($aboutUsPage->path_image) ? $aboutUsPage->path_image : []); ?>)
+                setMultipleFile("#multiple_image_upload","#path_image_technologies", <?php echo json_encode(isset($aboutUsPage->path_image_technologies) ? $aboutUsPage->path_image_technologies : []); ?>)
             </script>
         @endsection
     </div>

@@ -58,7 +58,7 @@
     <!-- gambar -->
     <div class="row mt-5">
         <div class="col-12 imgblog-mobile"
-            style="background:url({{asset('img/blog/'.$blog->path_image)}});background-size:cover;background-repeat:none;height:80vh;background-position:center">
+            style="background:url({{$blog->path_image}});background-size:cover;background-repeat:none;height:80vh;background-position:center">
         </div>
     </div>
 
@@ -90,7 +90,7 @@
         @foreach($relatedBlog as $key => $data)
             <div class="col-6 col-md-4 pt-3" style="padding-right:3px;padding-left:3px">
                 <div class="card" style="width: 100%;">
-                    <img src="{{asset('img/blog/'. $data->path_image )}}" style="max-height:300px" class="card-img-top"
+                    <img src="{{$data->path_image}}" style="max-height:300px" class="card-img-top"
                         alt="...">
                     <div class="card-body">
                         <div class="row">

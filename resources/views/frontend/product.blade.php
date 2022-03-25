@@ -79,7 +79,7 @@
         <div class="col-12">
             <div class="row">
             @if(isset($productFeatured))
-                <div class="col-7" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne )}});background-size:cover;height:24vw !important">
+                <div class="col-7" style="padding-right:0px;padding-left:0px;background:url({{isset($productFeatured->path_image[0]) ? $productFeatured->path_image[0] : ''}});background-size:cover;height:24vw !important">
                 </div>
                 <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px">
                     <div class="row align-items-center" style="height:40vh">
@@ -113,7 +113,7 @@
         <div class="col-12">
             <div class="row">
             @if(isset($productFeatured))
-                <div class="col-12" style="padding-right:0px;padding-left:0px;background:url({{asset('img/product/'. $productFeatured->imageProductOne )}});background-size:cover;height:44vw !important;background-position:center;">
+                <div class="col-12" style="padding-right:0px;padding-left:0px;background:url({{isset($productFeatured->path_image[0]) ? $productFeatured->path_image[0] : ''}});background-size:cover;height:44vw !important;background-position:center;">
                 </div>
                 <div class="col-12" style="background:#C72C36;padding-right:0px;padding-left:0px;padding-bottom:10px">
                     <div class="row">
@@ -425,15 +425,16 @@
         function appendProduct(product) {
             if (product.length > 0) {
                 noDataProduct = false
-                var flagsUrl = '{{ asset('/img/product') }}';
                 var baseUrl = '{{ url('detail-product') }}';
                 product.forEach(function (data) {
-                    $(classProduct).append("<div class='col-6 col-md-4 content p-2' style=''><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ flagsUrl +'/'+ data.image_product_one + "'>\
-                    <div class='content-details fadeIn-bottom'>\
-                                <p class='content-text fonttittle-overlay' style='font-size:3vw'>"+data.title+"</p>\
-                                <a class='link-content-text fontlink-overlay' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
-                                </div>\
-                    </div>")
+                    if (typeof data.path_image[0] !== 'undefined') {
+                        $(classProduct).append("<div class='col-6 col-md-4 content p-2' style=''><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ data.path_image[0] + "'>\
+                            <div class='content-details fadeIn-bottom'>\
+                                        <p class='content-text fonttittle-overlay' style='font-size:3vw'>"+data.title+"</p>\
+                                        <a class='link-content-text fontlink-overlay' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
+                                        </div>\
+                            </div>")
+                    }
                 });
             } else {
                 noDataProduct = true

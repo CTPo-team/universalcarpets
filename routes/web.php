@@ -81,16 +81,16 @@ Route::group(['middleware' => ['role:superadmin|admin']], function () {
         'only' => ['index', 'update', 'edit']
     ]);
 
-    // Route::resource('bannerContactus', App\Http\Controllers\bannerContactUsController::class,[
-    //     'only' => ['index', 'update']
-    // ]);
+    Route::resource('bannerContactus', App\Http\Controllers\bannerContactUsController::class,[
+        'only' => ['index', 'update', 'edit']
+    ]);
 
     Route::resource('bannerProducts', App\Http\Controllers\bannerProductController::class);
 
-    Route::resource('bannerContactus', App\Http\Controllers\bannerContactUsController::class);
+    // Route::resource('bannerContactus', App\Http\Controllers\bannerContactUsController::class);
 
-    Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
-    Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
+    // Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
+    // Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
 
     // Route::resource('bannerBlogs', App\Http\Controllers\bannerBlogController::class);
 

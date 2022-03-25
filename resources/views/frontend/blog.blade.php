@@ -1,21 +1,23 @@
 @extends('frontend.app')
 
 @section('content')
-<div class="row" id="banner" style="margin-top:-72px;margin-left:0px;margin-right:0px;background: 
-                                linear-gradient(to bottom, rgb(18 18 18 / 47%) 69%, #F5F5F5 99%),
-                                url({{asset('images/bannerblog.png')}}); background-position:top;">
-    <div class="col-12" style="">
-        <div class="carousel-caption text-left">
-            <div class="row pt-5">
-                <div class="col-md-8">
-                    <p class="fontbantitle-blog"
-                        style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                        Blog & Articles</p>
+@if(isset($banner) && !empty($banner))
+    <div class="row" id="banner" style="margin-top:-72px;margin-left:0px;margin-right:0px;background: 
+                                    linear-gradient(to bottom, rgb(18 18 18 / 47%) 69%, #F5F5F5 99%),
+                                    url({{$banner->path_image ?? ''}}); background-position:top;">
+        <div class="col-12" style="">
+            <div class="carousel-caption text-left">
+                <div class="row pt-5">
+                    <div class="col-md-8">
+                        <p class="fontbantitle-blog"
+                            style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                            {{$banner->title ?? ''}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endif
 <div style="padding-left:5.5vw;padding-right:5.5vw">
     <div class="row">
         <div class="col-md-6">
@@ -48,7 +50,7 @@
                     @if(!empty($new))
                     <a href="{{ url('detail-blog/'.$new->slug) }}" style="text-decoration:none;">
                         <div class="card" style="width: 100%;background:#F1F3F5">
-                            <img class="card-img-top" src="{{asset('img/blog/'.$new->path_image)}}"
+                            <img class="card-img-top" src="{{$new->path_image}}"
                                 alt="Card image cap">
                             <div class="card-body">
                                 <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">
@@ -105,7 +107,7 @@
 
                     <a href="{{ url('detail-blog/'.$data->slug) }}" style="text-decoration:none;">
                         <div class="card" style="width: 100%;flex-direction:row !important;height:12vw;border:none">
-                            <img src="{{asset('img/blog/'.$data->path_image)}}" class="card-img" style="width:46%"
+                            <img src="{{$data->path_image}}" class="card-img" style="width:46%"
                                 alt="...">
                             <div class="card-body">
                                 <div class="row" style="height:100%">
@@ -138,7 +140,7 @@
 
                     <a href="{{ url('detail-blog/'.$data->slug) }}" style="text-decoration:none;">
                         <div class="card" style="width: 100%;border:none">
-                            <img src="{{asset('img/blog/'.$data->path_image)}}" class="card-img-top" style="width:100%"
+                            <img src="{{$data->path_image}}" class="card-img-top" style="width:100%"
                                 alt="...">
                             <div class="card-body">
                             <h6 class="card-subtitle" style="color:#D5AD6A;font-weight:600">

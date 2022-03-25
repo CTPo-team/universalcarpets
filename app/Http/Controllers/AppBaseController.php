@@ -87,8 +87,8 @@ class AppBaseController extends Controller
                 $slugs = DB::table($table)->where("slug","like","%".$text."%")->get();
                 if(count($slugs)>0){
                     $increment = substr(md5(time()), 0, 5);
+                    $text=$text."-".$increment;
                 }
-                $text=$text."-".$increment;
             }else{
                 $text = null;
             }
@@ -130,6 +130,24 @@ class AppBaseController extends Controller
                 return asset('img/gallery/'.$value);
             }
         }
+    }
+
+    public function getGalleryForViewArray($value,$field){
+        foreach ($value as $key => $dt) {
+            if(isset($dt[$field]) && !empty($dt[$field])){
+                if(str_contains($dt[$field], ',')){
+                    $dataField = [];
+                    foreach(explode(",",$dt[$field]) as $val){
+                        $dataField[] = asset('img/gallery/'.$val);
+                    }
+                    $value[$key][$field] = $dataField;
+                }else{
+                    $value[$key][$field] = asset('img/gallery/'.$dt[$field]);
+                }
+            }
+        }
+        
+        return $value;
     }
 
     public function setActiveGallery($value){

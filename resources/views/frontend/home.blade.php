@@ -181,10 +181,10 @@
                         <div id="productslider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($product as $key => $newcol)
-                                @if(!empty($newcol->imageProductOne)) 
+                                @if(isset($newcol->path_image[0])) 
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <img class="d-block w-100"
-                                        src="{{$newcol->path_image}}"
+                                        src="{{$newcol->path_image[0]}}"
                                         alt="First slide">
                                 </div>
                                 @else

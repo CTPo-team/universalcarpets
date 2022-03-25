@@ -1,21 +1,23 @@
 @extends('frontend.app')
 
 @section('content')
-<div class="row" id="banner" style="margin-top:-72px;margin-left:0px;margin-right:0px;background: 
-                                linear-gradient(to bottom,  rgb(18 18 18 / 47%) 60%, #F5F5F5 95%),
-                                url({{asset('images/contactus.png')}}); background-position:center;">
-    <div class="col-12" style="">
-        <div class="carousel-caption text-left">
-            <div class="row pt-5">
-                <div class="col-md-8 pt-5">
-                    <p class="fontbantitle"
-                        style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                        CONTACTS</p>
+@if(isset($banner) && !empty($banner))
+    <div class="row" id="banner" style="margin-top:-72px;margin-left:0px;margin-right:0px;background: 
+                                    linear-gradient(to bottom,  rgb(18 18 18 / 47%) 60%, #F5F5F5 95%),
+                                    url({{$banner->path_image ?? ''}}); background-position:center;">
+        <div class="col-12" style="">
+            <div class="carousel-caption text-left">
+                <div class="row pt-5">
+                    <div class="col-md-8 pt-5">
+                        <p class="fontbantitle"
+                            style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                            {{$banner->title ?? ''}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endif
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-3 text-right">
