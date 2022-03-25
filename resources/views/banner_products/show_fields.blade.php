@@ -1,6 +1,6 @@
 <!-- Path Image Field -->
 <div class="form-group">
-    {!! Form::label('path_image', 'Path Image:') !!}
+    {!! Form::label('path_image', 'Image:') !!}
     <div class="gallery gallery-md">
         <div class="gallery-item" data-image="{{$bannerProduct->path_image}}" data-title="Image 1" href="{{$bannerProduct->path_image}}" title="Image 1" style="background-image: url({{$bannerProduct->path_image}});"></div>
     </div>

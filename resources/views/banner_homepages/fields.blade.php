@@ -31,6 +31,9 @@
 <!-- Button Url Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('button_url', 'Button URL:') !!}
+    <p>
+        <small>Recommended: use <b> https:// </b></small>
+    </p>
     {!! Form::text('button_url', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 

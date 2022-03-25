@@ -56,13 +56,14 @@
     <!-- Frame Youtube Field -->
     <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('frame_youtube', 'Youtube:') !!}
+        <a href="https://support.google.com/youtube/answer/171780?hl=en" target="_blank"><small>How To Embed Youtube</small></a>
         {!! Form::text('frame_youtube', null, ['class' => 'form-control','required' => 'required']) !!}
     </div>
     <!-- Path Image Field -->
     <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('path_image_certificate', 'Image Certificate:') !!}
         <p>
-            <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 1024 × 576 px</small>
+            <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 1217 × 1714 px</small>
         </p>
         <input id="single_image_upload_certificate" type="file" class="form-control"  name="single_image_upload_certificate" data-preview-file-type="text">
         <input type="hidden" name="path_image_certificate" id="path_image_certificate">
@@ -72,7 +73,7 @@
     <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('path_image_strategy', 'Image Strategy:') !!}
         <p>
-            <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 1024 × 576 px</small>
+            <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 1959 × 1106 px</small>
         </p>
         <input id="single_image_upload" type="file" class="form-control"  name="single_image_upload" data-preview-file-type="text">
         <input type="hidden" name="path_image_strategy" id="path_image_strategy">
@@ -82,7 +83,7 @@
     <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('path_image_home', 'Image Homepage:') !!}
         <p>
-            <small>Max Size: 2MB | Max File: 3 | Recommended: Less than 500KB & Resolution 1024 × 576 px</small>
+            <small>Max Size: 2MB | Max File: 3 | Recommended: Less than 500KB & Resolution 1279 × 856 px, 279 x 449 px</small>
         </p>
         <input id="multiple_image_upload" type="file" class="form-control"  name="multiple_image_upload[]" data-preview-file-type="text" multiple>
         <input type="hidden" name="path_image_home" id="path_image_home">
@@ -101,7 +102,7 @@
     <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('path_image_network', 'Image:') !!}
         <p>
-            <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 1024 × 576 px</small>
+            <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 540 × 312 px</small>
         </p>
         <input id="single_image_upload_network" type="file" class="form-control"  name="single_image_upload_network" data-preview-file-type="text">
         <input type="hidden" name="path_image_network" id="path_image_network">

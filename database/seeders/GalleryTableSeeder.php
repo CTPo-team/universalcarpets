@@ -388,6 +388,15 @@ class GalleryTableSeeder extends Seeder
                 'created_at' => '2022-03-25 10:21:14',
                 'updated_at' => '2022-03-25 10:21:20',
             ),
+            41 => 
+            array (
+                'id' => 58,
+                'code' => '623db7bf0dd8c',
+                'path_image' => '623db7bf0dd8c.jpg',
+                'type' => 'active',
+                'created_at' => '2022-03-25 12:38:23',
+                'updated_at' => '2022-03-25 12:39:13',
+            ),
         ));
         
         

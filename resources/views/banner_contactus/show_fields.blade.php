@@ -1,6 +1,6 @@
 <!-- Path Image Field -->
 <div class="form-group">
-    {!! Form::label('path_image', 'Path Image:') !!}
+    {!! Form::label('path_image', 'Image:') !!}
     <p>{{ $bannerContactUs->path_image }}</p>
 </div>
 

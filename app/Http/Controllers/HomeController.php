@@ -218,6 +218,10 @@ class HomeController extends AppBaseController
     public function product(Request $request)
     {
         $this->data["filter"] = $request->all();
+
+        $this->data["banner"] = bannerProduct::where("status",1)->orderByDesc("created_at")->get();
+        $this->data["banner"] = $this->getGalleryForViewArray($this->data["banner"],"path_image");
+
         $this->data["productFeatured"] = product::where("featured",1)->with(["productBrand","productCategory"])->first();
         $this->data["productFeatured"]["path_image"] = $this->getGalleryForView($this->data["productFeatured"]["path_image"]);
 
