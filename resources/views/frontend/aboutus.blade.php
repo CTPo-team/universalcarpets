@@ -116,6 +116,11 @@
             </div>
         </div>
         <div class="row mb-5 d-block d-sm-none">
+                     <div class="col-12 pl-5 pr-5 mb-3">
+                        <center>
+                            <img class="img-fluid" src="{{$ourStory->path_image_strategy}}" style="border: 5px solid black;" width="100%">
+                        </center>
+                    </div>
                     <div class="col-12 pl-5 pr-5" style="font-size:4vw">
                         {!! $ourStory->our_strategy_desc ?? '' !!}
                     </div>
