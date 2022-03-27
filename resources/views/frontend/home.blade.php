@@ -4,41 +4,29 @@
 
 <!-- section banner -->
 <div class="sectionBanner" style="margin-top:-72px">
-    <div id="carouselExampleIndicators" class="carousel slide" data-touch="true" data-ride="carousel">
-        <div class="carousel-inner">
-            @foreach($banner as $key => $dt)
-                <div class="carousel-item {{$key == 0 ? 'active' : ''}}" data-interval="5000">
-                    <a href="{{$dt['button_url'] ?? ''}}">
-                        <div class="d-block w-100" id="banner" style="background: 
-                                        linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                        url('{{$dt['path_image'] ?? ''}}'); background-repeat: no-repeat;background-size:cover;">
-                        </div>
-                    </a>
-                    <div class="carousel-caption text-left">
-                        <div class="row pt-5">
-                            <div class="col-md-8 pt-2">
-                                <p
-                                class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
-                                    {{$dt['category'] ?? ''}}</p>
-                                <p
-                                class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                                    {{$dt['title'] ?? ''}}</p>
+    <div class="owl-carousel owl-theme owl-loaded">
+                @foreach($banner as $key => $dt)
+                <!-- <a  href="{{$dt['button_url'] ?? ''}}"> -->
+                    <div class="item" style="margin-top:0px;height:90vh;background: 
+                                linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
+                                url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
+                        <div class="carousel-caption text-left">
+                            <div class="row pt-5">
+                                <div class="col-md-8 pt-2">
+                                    <p
+                                    class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                        {{$dt['category'] ?? ''}}</p>
+                                    <p
+                                    class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                        {{$dt['title'] ?? ''}}</p>
+                                </div>
                             </div>
+                            <br>
+                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
-                        <br>
-                        <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                     </div>
-                </div>
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" style="width:8% !important" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" style="width:8% !important" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+                <!-- </a> -->
+                @endforeach
     </div>
 </div>
 <!-- end section banner -->
@@ -222,11 +210,13 @@
 <!-- end section collection -->
 
 <!-- section nice words-->
-<div class="section" style="padding-top:90px;padding-bottom:90px;">
+<div class="sectionWords" style="padding-top:90px;padding-bottom:90px;background:url({{asset('images/linebringing.png')}});">
 
-<div class="row" style="margin-right:0px;margin-left:0px">
-        <div class="col-12 text-center" style="padding-left:0px;padding-right:0px"> <img class="thumbnail" width="80%"
-                src="{{asset('images/nicewords.png')}}" alt="..."></div>
+    <div class="row" style="margin-right:0px;margin-left:0px">
+        <div class="col-12 text-center" style="padding-left:0px;padding-right:0px"> 
+            <img class="thumbnail" width="70%"
+                src="{{asset('images/nicewords.png')}}" alt="...">
+        </div>
     </div>
 </div>
 <!-- end nice words -->
@@ -436,12 +426,26 @@
     <script>
         $(document).ready(function () {
             var $el = $('.sectionAbout');
+            var $al = $('.sectionWords');
             $(window).on('scroll', function () {
                 var scroll = $(document).scrollTop();
                 $el.css({
                     'background-position':'50% '+(-.4*scroll)+'px'
                 });
+                $al.css({
+                    'background-position':'50% '+(.077*scroll)+'px'
+                });
             });
+
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin:1,
+                autoplay:true,
+                autoWidth:true,
+                nav:true,
+                items:1,
+                navText : ['<span class="carousel-control-prev-icon" aria-hidden="true"></span>','<span class="carousel-control-next-icon" aria-hidden="true"></span>']
+            })
         });
       
     </script>
