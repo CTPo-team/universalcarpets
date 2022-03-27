@@ -238,6 +238,20 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(213, 173, 106, 1), rgba(0, 0, 0, 0));
 }
 
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: rgb(213, 173, 106,0.9) !important;
+}
+
+.img-bringing{
+    width: 60%;
+}
+
+@media only screen and (max-width: 1500px) {
+    .img-bringing{
+        width: 70%;
+    }
+}
+
 /* style mobile */
 @media only screen and (max-width: 600px) {
     .sectionBanner {

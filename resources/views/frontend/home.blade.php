@@ -214,7 +214,7 @@
 
     <div class="row" style="margin-right:0px;margin-left:0px">
         <div class="col-12 text-center" style="padding-left:0px;padding-right:0px"> 
-            <img class="thumbnail" width="70%"
+            <img class="thumbnail img-bringing"
                 src="{{asset('images/nicewords.png')}}" alt="...">
         </div>
     </div>
