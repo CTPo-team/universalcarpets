@@ -4,7 +4,6 @@
             <tr>
                 <th>Blog Category</th>
                 <th>Title</th>
-                <th>Banner Image</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -14,7 +13,6 @@
             <tr>
                        <td>{{ $blog->blogCategory->title ?? "" }}</td>
             <td>{{ $blog->title }}</td>
-            <td><img src="{{asset('img/blog/'.$blog->path_image)}}" style="max-width:100px"></td>
             <td>{!! $blog->status == 1 ? "<div class='badge badge-success'>Active</div>" : "<div class='badge badge-danger'>Inactive</div>" !!}</td>
                        <td class=" text-center">
                            {!! Form::open(['route' => ['blogs.destroy', $blog->id], 'method' => 'delete']) !!}

@@ -36,7 +36,8 @@ class bannerHomepage extends Model
     public $fillable = [
         'path_image',
         'title',
-        'desc',
+        'category',
+        'button_title',
         'button_url',
         'status'
     ];
@@ -47,10 +48,10 @@ class bannerHomepage extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'path_image' => 'string',
+        'id' => 'integer',        
         'title' => 'string',
-        'desc' => 'string',
+        'category' => 'string',
+        'button_title' => 'string',
         'button_url' => 'string',
         'status' => 'boolean'
     ];
@@ -62,12 +63,17 @@ class bannerHomepage extends Model
      */
     public static $rules = [
         'title' => 'nullable|string|max:255',
-        'desc' => 'nullable|string',
+        'category' => 'nullable|string',
+        'button_title' => 'nullable|string',
         'button_url' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable',
-        'path_image' => 'nullable|max:2048',
+        'path_image' => 'required|max:2048',
+    ];
+
+    public static $messages = [
+        'path_image.required' => 'The Image field is required',
     ];
 
     

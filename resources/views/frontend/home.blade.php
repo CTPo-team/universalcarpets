@@ -4,38 +4,37 @@
 
 <!-- section banner -->
 <div class="sectionBanner" style="margin-top:-72px">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            @foreach ($banner as $key => $data)
-            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                <div class="d-block w-100" id="banner" style="background: 
+    <div class="owl-carousel owl-theme owl-loaded">
+                @foreach($banner as $key => $dt)
+               
+                    <div class="item itembanner" style="margin-top:0px;height:90vh;background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
-                                url({{asset('img/banner/'.$data->path_image)}});">
-                </div>
-                <div class="carousel-caption text-left">
-                    <div class="row pt-5">
-                        <div class="col-md-8">
-                            <p
-                            class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
-                                {{$data->desc}}</p>
-                            <p
-                            class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
-                                {{$data->title}}</p>
+                                url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
+                                 <a  href="{{$dt['button_url'] ?? ''}}" style="text-decoration:none">
+                        <div class="carousel-caption text-left">
+                            <div class="row pt-5">
+                                <div class="col-md-8 pt-2">
+                                    <p
+                                    class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                        {{$dt['category'] ?? ''}}</p>
+                                    <p
+                                    class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;color:white;">
+                                        {{$dt['title'] ?? ''}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <p class="d-none d-sm-block"><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
+                        </a>
                     </div>
-                    <br>
-                    <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$data->button_url}}">VIEW PRODUCT</a></p>
-                </div>
-            </div>
-            @endforeach
-        </div>
+                
+                @endforeach
     </div>
 </div>
 <!-- end section banner -->
 
 <!-- section about -->
-<div class="sectionAbout" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}}); background-repeat: no-repeat;
-  background-size: cover;">
+<div class="sectionAbout" style="padding-top:50px;padding-bottom:50px;background:url({{asset('images/lineabouthome.png')}});">
     <div class="container" style="padding-right:0px;padding-left:0px">
         <div class="row" style="margin-right:0px;margin-left:0px">
             <div class="col-md-12 ">
@@ -45,12 +44,17 @@
                             <div class="col-md-6 col-12 pt-4 pb-4 d-none d-sm-block">
                                 <div class="row">
                                     <div class="col-md-7 col-12 text-center">
-                                        <p><img class="img1abouthome" width="100%" src="{{asset('images/abouthome3.jpg')}}"></p>
-
-                                        <p><img class="img2abouthome" width="100%" src="{{asset('images/abouthome2.jpg')}}"></p>
-                                    </div>
+                                        @if(isset($aboutUs->path_image_home[0]))
+                                            <p><img class="img1abouthome imgatashome" width="100%" src="{{$aboutUs->path_image_home[0]}}"></p>
+                                        @endif
+                                        @if(isset($aboutUs->path_image_home[1]))
+                                            <p><img class="img2abouthome imgatashome" width="100%" src="{{asset($aboutUs->path_image_home[1])}}"></p>
+                                        @endif
+                                        </div>
                                     <div class="col-md-5 col-12 text-center" style="padding-left:0px">
-                                        <img class="img3abouthome" width="100%" height="390px" src="{{asset('images/abouthome.png')}}">
+                                        @if(isset($aboutUs->path_image_home[2]))
+                                            <img class="img3abouthome" width="100%" height="390px" src="{{asset($aboutUs->path_image_home[2])}}">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +68,7 @@
                                             </p>
                                         </diV>
                                         <div class="col-md-12">
-                                            {!! strip_tags($AboutUs->short_desc) !!}
+                                            {!! strip_tags($aboutUs->short_desc) !!}
                                         </div>
 
                                     </div>
@@ -77,6 +81,7 @@
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
             </div>
@@ -107,17 +112,31 @@
                     <div class="card-body">
                         <div class="row pl-4 pr-4">
                             @foreach ($product as $newcol)
-                            <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
-                            <div class="content-overlay"></div>
+                                @if(!empty($newcol->path_image[0])) 
+                                <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
+                                <div class="content-overlay"></div>
 
-                                <img width="100%" height="305px" class="tabnewcol"
-                                    src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}">
-                                <div class="content-details fadeIn-bottom">
-                                <p class="content-text"> {!! $newcol->title !!}</p>
-                                <br>
-                                <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    <img width="100%" height="305px" class="tabnewcol"
+                                        src="{{$newcol->path_image[0]}}">
+                                    <div class="content-details fadeIn-bottom">
+                                    <p class="content-text"> {!! $newcol->title !!}</p>
+                                    <br>
+                                    <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    </div>
                                 </div>
-                            </div>
+                                @else
+                                <div class="col-md-3 col-12 content" style="padding-right:3px;padding-left:3px">
+                                <div class="content-overlay"></div>
+
+                                    <img width="100%" height="305px" class="tabnewcol"
+                                        src="">
+                                    <div class="content-details fadeIn-bottom">
+                                    <p class="content-text"> {!! $newcol->title !!}</p>
+                                    <br>
+                                    <a class="link-content-text" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                    </div>
+                                </div>
+                                @endif
                             @endforeach
                         </div>
                         <div class="row mt-4">
@@ -152,11 +171,19 @@
                         <div id="productslider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($product as $key => $newcol)
+                                @if(isset($newcol->path_image[0])) 
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <img class="d-block w-100"
-                                        src="{{asset('img/product/'.$newcol->imageProductOne->path_image )}}"
+                                        src="{{$newcol->path_image[0]}}"
                                         alt="First slide">
                                 </div>
+                                @else
+                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                    <img class="d-block w-100"
+                                        src=""
+                                        alt="First slide">
+                                </div>
+                                @endif
                                 @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#productslider" role="button" data-slide="prev">
@@ -185,14 +212,14 @@
 <!-- end section collection -->
 
 <!-- section nice words-->
-<div class="section" style="padding-top:90px;padding-bottom:90px;">
-<div class="container">
-<div class="row" style="margin-right:0px;margin-left:0px">
-        <div class="col-12" style="padding-left:0px;padding-right:0px"> <img width="100%"
-                src="{{asset('images/nicewords.png')}}" alt="..."></div>
+<div class="sectionWords" style="padding-top:90px;padding-bottom:90px;background:url({{asset('images/linebringing.png')}});">
+
+    <div class="row" style="margin-right:0px;margin-left:0px">
+        <div class="col-12 text-center" style="padding-left:0px;padding-right:0px"> 
+            <img class="thumbnail img-bringing"
+                src="{{asset('images/nicewords.png')}}" alt="...">
+        </div>
     </div>
-</div> 
-  
 </div>
 <!-- end nice words -->
 
@@ -222,7 +249,7 @@
                                     @if(isset($blog[0]))
                                     <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
-                                            <img src="{{asset('img/blog/'. $blog[0]->path_image )}}" height="210px"
+                                            <img src="{{asset($blog[0]->path_image)}}" height="210px"
                                                 class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:150px">
@@ -232,7 +259,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[0]->title !!}</h5>
                                                         <div class="card-text texttabblog" style="font-size:14px">
-                                                        {!! strlen(strip_tags($blog[0]->desc)) > 200 ? substr(strip_tags($blog[0]->desc),0,200).'...' : strip_tags($blog[0]->desc) !!}</div>
+                                                        {!! strlen(strip_tags($blog[0]->desc)) > 100 ? substr(strip_tags($blog[0]->desc),0,100).'...' : strip_tags($blog[0]->desc) !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -248,7 +275,7 @@
                                     @if(isset($blog[1]))
                                     <div class="col-12 col-md-6" style="padding-right:3px;padding-left:3px">
                                         <div class="card" style="width: 100%;height:400px;">
-                                            <img src="{{asset('img/blog/'. $blog[1]->path_image )}}" height="210px"
+                                            <img src="{{asset($blog[1]->path_image)}}" height="210px"
                                                 class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:150px">
@@ -258,7 +285,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[1]->title !!}</h5>
                                                         <div class="card-text texttabblog" style="font-size:14px">
-                                                            {!! strlen(strip_tags($blog[1]->desc)) > 200 ? substr(strip_tags($blog[1]->desc),0,200).'...' : strip_tags($blog[1]->desc) !!}</div>
+                                                            {!! strlen(strip_tags($blog[1]->desc)) > 100 ? substr(strip_tags($blog[1]->desc),0,100).'...' : strip_tags($blog[1]->desc) !!}</div>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -277,7 +304,7 @@
                                     <div class="col-md-12" style="padding-right:3px;padding-left:3px">
                                         <div class="card"
                                             style="width: 100%;flex-direction:row !important;height:240px">
-                                            <img src="{{asset('img/blog/'. $blog[2]->path_image )}}" class="card-img"
+                                            <img src="{{asset($blog[2]->path_image)}}" class="card-img"
                                                 style="width:46%" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:100%">
@@ -287,7 +314,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[2]->title !!}</h5>
                                                         <p class="card-text texttabblog" style="font-size:14px">
-                                                            {!! strlen(strip_tags($blog[2]->desc)) > 200 ? substr(strip_tags($blog[2]->desc),0,200).'...' : strip_tags($blog[2]->desc) !!}</p>
+                                                            {!! strlen(strip_tags($blog[2]->desc)) > 100 ? substr(strip_tags($blog[2]->desc),0,100).'...' : strip_tags($blog[2]->desc) !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -307,7 +334,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card" style="width: 100%;height:655px">
-                                            <img src="{{asset('img/blog/'. $blog[3]->path_image )}}"
+                                            <img src="{{asset($blog[3]->path_image)}}"
                                                 class="card-img-top imgtabverticalblog" alt="...">
                                             <div class="card-body">
                                                 <div class="row" style="height:100%">
@@ -317,7 +344,7 @@
                                                         <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                             {!! $blog[3]->title !!}</h5>
                                                         <p class="card-text" style="font-size:15px">
-                                                            {!! strlen(strip_tags($blog[3]->desc)) > 200 ? substr(strip_tags($blog[3]->desc),0,200).'...' : strip_tags($blog[3]->desc) !!}</p>
+                                                            {!! strlen(strip_tags($blog[3]->desc)) > 300 ? substr(strip_tags($blog[3]->desc),0,300).'...' : strip_tags($blog[3]->desc) !!}</p>
                                                     </div>
                                                     <div class="col-12 col-md-3 text-center"
                                                         style="padding-left:0px;padding-right:0px">
@@ -351,7 +378,7 @@
                                 @foreach ($blog as $key => $blogs)
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                                     <div class="card" style="width: 100%;height:400px;">
-                                        <img src="{{asset('img/blog/'. $blogs->path_image )}}" height="210px"
+                                        <img src="{{$blogs->path_image}}" height="210px"
                                             class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <div class="row" style="height:150px">
@@ -361,7 +388,7 @@
                                                     <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                                         {!! $blogs->title !!}</h5>
                                                     <p class="card-text" style="font-size:14px">
-                                                        {!! $blogs->desc !!}</p>
+                                                    {!! strlen(strip_tags($blogs->desc)) > 100 ? substr(strip_tags($blogs->desc),0,100).'...' : strip_tags($blogs->desc) !!}</p>
                                                 </div>
                                                 <div class="col-12 col-md-3 text-center"
                                                     style="padding-left:0px;padding-right:0px">
@@ -395,4 +422,33 @@
 </div>
 <!-- end blog -->
  
+@endsection
+
+@section("scripts")
+    <script>
+        $(document).ready(function () {
+            var $el = $('.sectionAbout');
+            var $al = $('.sectionWords');
+            $(window).on('scroll', function () {
+                var scroll = $(document).scrollTop();
+                $el.css({
+                    'background-position':'50% '+(-.4*scroll)+'px'
+                });
+                $al.css({
+                    'background-position':'50% '+(.077*scroll)+'px'
+                });
+            });
+
+            $('.owl-carousel').owlCarousel({
+                loop: $('.owl-carousel .item').length > 1 ? true : false,
+                margin:1,
+                autoplay:true,
+                autoWidth:true,
+                nav:true,
+                items:1,
+                navText : ['<span class="carousel-control-prev-icon" aria-hidden="true"></span>','<span class="carousel-control-next-icon" aria-hidden="true"></span>']
+            })
+        });
+      
+    </script>
 @endsection

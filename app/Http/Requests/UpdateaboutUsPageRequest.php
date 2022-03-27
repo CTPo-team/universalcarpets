@@ -25,8 +25,11 @@ class UpdateaboutUsPageRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = aboutUsPage::$rules;
-        
-        return $rules;
+        return aboutUsPage::$rules;
+    }
+
+    public function messages()
+    {
+        return aboutUsPage::$messages;
     }
 }

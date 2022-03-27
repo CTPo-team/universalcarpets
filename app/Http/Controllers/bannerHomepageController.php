@@ -40,10 +40,10 @@ class bannerHomepageController extends AppBaseController
      *
      * @return Response
      */
-    // public function create()
-    // {
-    //     return view('banner_homepages.create');
-    // }
+    public function create()
+    {
+        return view('banner_homepages.create');
+    }
 
     /**
      * Store a newly created bannerHomepage in storage.
@@ -52,19 +52,19 @@ class bannerHomepageController extends AppBaseController
      *
      * @return Response
      */
-    // public function store(CreatebannerHomepageRequest $request)
-    // {
-    //     $input = $request->all();
+    public function store(CreatebannerHomepageRequest $request)
+    {
+        $input = $request->all();
 
-    //     //File Upload
-    //     $input["path_image"] = $this->uploadFile($request->path_image,'img/banner');
+        $bannerHomepage = $this->bannerHomepageRepository->create($input);
 
-    //     $bannerHomepage = $this->bannerHomepageRepository->create($input);
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image"]);
 
-    //     Flash::success('Banner Homepage saved successfully.');
+        Flash::success('Banner Homepage saved successfully.');
 
-    //     return redirect(route('bannerHomepages.index'));
-    // }
+        return redirect(route('bannerHomepages.index'));
+    }
 
     /**
      * Display the specified bannerHomepage.
@@ -83,6 +83,9 @@ class bannerHomepageController extends AppBaseController
             return redirect(route('bannerHomepages.index'));
         }
 
+        //Set View Image From Gallery
+        $bannerHomepage["path_image"] = $this->getGalleryForView($bannerHomepage["path_image"]);
+        
         return view('banner_homepages.show')->with('bannerHomepage', $bannerHomepage);
     }
 
@@ -103,6 +106,9 @@ class bannerHomepageController extends AppBaseController
             return redirect(route('bannerHomepages.index'));
         }
 
+        //Set Preview Image on Input
+        $bannerHomepage["path_image"] = $this->getGallery($bannerHomepage["path_image"]);
+        
         return view('banner_homepages.edit')->with('bannerHomepage', $bannerHomepage);
     }
 
@@ -132,8 +138,13 @@ class bannerHomepageController extends AppBaseController
             $input["path_image"] = $this->uploadFile($request->path_image,'img/banner');
         }
 
+        //Set Compare Gallery old and new value
+        $this->compareGallery($bannerHomepage["path_image"],$input["path_image"]);
 
         $bannerHomepage = $this->bannerHomepageRepository->update($input, $id);
+
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image"]);
 
         Flash::success('Banner Homepage updated successfully.');
 
@@ -149,24 +160,23 @@ class bannerHomepageController extends AppBaseController
      *
      * @return Response
      */
-    // public function destroy($id)
-    // {
-    //     $bannerHomepage = $this->bannerHomepageRepository->find($id);
+    public function destroy($id)
+    {
+        $bannerHomepage = $this->bannerHomepageRepository->find($id);
 
-    //     if (empty($bannerHomepage)) {
-    //         Flash::error('Banner Homepage not found');
+        if (empty($bannerHomepage)) {
+            Flash::error('Banner Homepage not found');
 
-    //         return redirect(route('bannerHomepages.index'));
-    //     }
+            return redirect(route('bannerHomepages.index'));
+        }
 
-    //     if(!empty($bannerHomepage->path_image)){
-    //         $this->deleteFile($bannerHomepage->path_image,"img/banner");
-    //     }
+        //delete image
+        $this->deleteGallery($bannerHomepage->path_image);
 
-    //     $this->bannerHomepageRepository->delete($id);
+        $this->bannerHomepageRepository->delete($id);
 
-    //     Flash::success('Banner Homepage deleted successfully.');
+        Flash::success('Banner Homepage deleted successfully.');
 
-    //     return redirect(route('bannerHomepages.index'));
-    // }
+        return redirect(route('bannerHomepages.index'));
+    }
 }

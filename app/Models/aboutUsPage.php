@@ -37,14 +37,20 @@ class aboutUsPage extends Model
 
 
     public $fillable = [
-        'title',
         'desc',
         'our_strategy_desc',
         'short_desc',
         'seo_desc',
         'seo_category',
         'seo_keyword',
-        'seo_url'
+        'seo_url',
+        'path_image_technologies',
+        'path_image_strategy',
+        'path_image_home',
+        'path_image_network',
+        'path_image_certificate',
+        'frame_youtube',
+        'header'
     ];
 
     /**
@@ -80,11 +86,20 @@ class aboutUsPage extends Model
         'seo_url' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
+        'deleted_at' => 'nullable',
+        'path_image_network' => "required_if:title,==,NETWORK",
+        'path_image_technologies' => "required_if:title,==,TECHNOLOGIES",
+        'path_image_strategy' => "required_if:title,==,OUR STORY",
+        'path_image_home' => "required_if:title,==,OUR STORY",
+        'path_image_certificate' => "required_if:title,==,OUR STORY",
     ];
 
-    public function aboutUsGallery()
-    {
-        return $this->hasMany(\App\Models\aboutUsGallery::class, 'about_us_id', 'id');
-    }
+    public static $messages = [
+        'path_image_technologies.required_if' => 'The Image field is required',
+        'path_image_certificate.required_if' => 'The Image Certificate field is required',
+        'path_image_strategy.required_if' => 'The Image Strategy field is required',
+        'path_image_home.required_if' => 'The Image Homepage field is required',
+        'path_image_network.required_if' => 'The Image field is required',
+    ];
+
 }

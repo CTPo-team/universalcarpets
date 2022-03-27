@@ -44,7 +44,8 @@ class settingWeb extends Model
         'instagram',
         'twitter',
         'facebook',
-        'youtube'
+        'youtube',
+        'path_image'
     ];
 
     /**

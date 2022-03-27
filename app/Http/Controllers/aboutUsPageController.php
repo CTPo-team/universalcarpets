@@ -80,7 +80,7 @@ class aboutUsPageController extends AppBaseController
      */
     public function show($id)
     {
-        $aboutUsPage = aboutUsPage::where("id",$id)->with("aboutUsGallery")->first();
+        $aboutUsPage = aboutUsPage::where("id",$id)->first();
 
         if (empty($aboutUsPage)) {
             Flash::error('About Us not found');
@@ -88,6 +88,12 @@ class aboutUsPageController extends AppBaseController
             return redirect(route('aboutUsPages.index'));
         }
 
+         //Set View Image From Gallery
+         $aboutUsPage["path_image_technologies"] = $this->getGalleryForView($aboutUsPage["path_image_technologies"]?? null);
+         $aboutUsPage["path_image_strategy"] = $this->getGalleryForView($aboutUsPage["path_image_strategy"]?? null);
+         $aboutUsPage["path_image_home"] = $this->getGalleryForView($aboutUsPage["path_image_home"]?? null);
+         $aboutUsPage["path_image_network"] = $this->getGalleryForView($aboutUsPage["path_image_network"]?? null);
+         $aboutUsPage["path_image_certificate"] = $this->getGalleryForView($aboutUsPage["path_image_certificate"]?? null);
         return view('about_us_pages.show')->with('aboutUsPage', $aboutUsPage);
     }
 
@@ -108,6 +114,12 @@ class aboutUsPageController extends AppBaseController
             return redirect(route('aboutUsPages.index'));
         }
 
+        //Set Preview Image on Input
+        $aboutUsPage["path_image_technologies"] = $this->getGallery($aboutUsPage["path_image_technologies"]?? null);
+        $aboutUsPage["path_image_strategy"] = $this->getGallery($aboutUsPage["path_image_strategy"]?? null);
+        $aboutUsPage["path_image_home"] = $this->getGallery($aboutUsPage["path_image_home"]?? null);
+        $aboutUsPage["path_image_network"] = $this->getGallery($aboutUsPage["path_image_network"]?? null);
+        $aboutUsPage["path_image_certificate"] = $this->getGallery($aboutUsPage["path_image_certificate"]?? null);
         return view('about_us_pages.edit')->with('aboutUsPage', $aboutUsPage);
     }
 
@@ -132,18 +144,21 @@ class aboutUsPageController extends AppBaseController
         //Set SEO
         $input = $request->all();
         $input = $this->setSeo($input,$input["short_desc"],$aboutUsPage->title,self::seo_category,null);
-        unset($input["path_image"]);
+
+        //Set Compare Gallery old and new value
+        $this->compareGallery($aboutUsPage["path_image_technologies"],$input["path_image_technologies"] ?? null);
+        $this->compareGallery($aboutUsPage["path_image_strategy"],$input["path_image_strategy"]?? null);
+        $this->compareGallery($aboutUsPage["path_image_home"],$input["path_image_home"]?? null);
+        $this->compareGallery($aboutUsPage["path_image_network"],$input["path_image_network"]?? null);
+        $this->compareGallery($aboutUsPage["path_image_certificate"],$input["path_image_certificate"]?? null);
         $aboutUsPage = $this->aboutUsPageRepository->update($input, $id);
 
-         //File Upload
-         if($request->hasFile('path_image')){ 
-            //delete image
-            $this->deleteImageAboutUs($id);
-
-            //upload image
-            $this->uploadImageAboutUs($id,$request);
-        }
-
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image_technologies"]?? null);
+        $this->setActiveGallery($input["path_image_strategy"]?? null);
+        $this->setActiveGallery($input["path_image_home"]?? null);
+        $this->setActiveGallery($input["path_image_network"]?? null);
+        $this->setActiveGallery($input["path_image_certificate"]?? null);
         Flash::success('About Us updated successfully.');
 
         return redirect(route('aboutUsPages.index'));
@@ -174,31 +189,5 @@ class aboutUsPageController extends AppBaseController
 
     //     return redirect(route('aboutUsPages.index'));
     // }
-
-    public function uploadImageAboutUs($aboutUsId,$request)
-    {
-        if($request->hasfile('path_image'))
-         {
-            foreach($request->file('path_image') as $file)
-            {
-                //File Upload
-                $filename = $this->uploadFile($file,'img/about');
-
-                aboutUsGallery::create([
-                    "about_us_id" => $aboutUsId,
-                    "path_image" => $filename
-                ]);
-            }
-         }
-    }
-
-    public function deleteImageAboutUs($aboutUsId)
-    {
-        $image = aboutUsGallery::where("about_us_id",$aboutUsId)->get();
-        foreach ($image as $key => $value) {
-            $this->deleteFile($value["path_image"],"img/about");
-        }
-        aboutUsGallery::where("about_us_id",$aboutUsId)->delete();
-    }
 
 }

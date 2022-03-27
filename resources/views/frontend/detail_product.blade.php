@@ -22,30 +22,28 @@
 @endsection
 @section('content')
 <div class="container cont-productpage pt-4">
-    @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
     <div class="row align-items-center justify-content-center" style="margin-top:0px;height:65vh;background: 
                                 linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
-                                url({{asset('img/product/'.$product->path_image_thumbnail)}});background-size:cover;">
+                                url({{$product->path_image_thumbnail}});background-size:cover;">
         <div class="col-12 col-md-6 text-center text-white">
             <p class="fontbantitle"
                 style="text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 12.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">
                 {{$product->title ?? ""}}</p>
         </div>
     </div>
-    @endif
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-11">
-            @if(isset($product->imageProduct) && count($product->imageProduct) > 0)
+            @if(isset($product->path_image) && count($product->path_image) > 0)
 
             <p>
                 <div id="carouselExampleSlidesOnly" style="float:right;width:25vw;margin: 0px 0px 15px 20px;"
                     class="carousel slide d-none d-sm-block" data-ride="carousel">
                     <div class="carousel-inner">
-                        @foreach($product->imageProduct as $key => $data)
+                        @foreach($product->path_image as $key => $data)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <img class="productpopup" style="width:25vw" data-toggle="modal"
-                                data-target="#productpopup" data-id="{{$data->path_image}}" src="{{asset('img/product/'.$data->path_image)}}"
+                                data-target="#productpopup" data-id="{{$key}}" src="{{$data}}"
                                 alt="First slide">
                         </div>
                         @endforeach
@@ -64,10 +62,10 @@
                 <div id="carouselExampleSlidesOnly" style="width:100%;"
                     class="carousel slide d-block d-sm-none pb-3" data-ride="carousel">
                     <div class="carousel-inner">
-                        @foreach($product->imageProduct as $key => $data)
+                        @foreach($product->path_image as $key => $data)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <img class="productpopup w-100" data-toggle="modal"
-                                data-target="#productpopup" data-id="{{$data->path_image}}" src="{{asset('img/product/'.$data->path_image)}}"
+                                data-target="#productpopup" data-id="{{$key}}" src="{{$data}}"
                                 alt="First slide">
                         </div>
                         @endforeach
@@ -99,19 +97,21 @@
     <div class="row" style="margin-top:0px;">
 
         @foreach($relatedProduct as $key => $data)
-        @if(isset($data->imageProduct) && count($data->imageProduct) > 0)
-        <div class="col-12 col-md-6 text-center text-white cont-card-prod-det" style="padding-left:0px;padding-right:0px;margin-top:10px">
-            <div class="card card-prod-det"
-                style="width: 98%;height:6.7vw;background: 
-                                linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
-                                url({{asset('img/product/'.$data->imageProduct[0]->path_image)}});background-size:cover;">
-                <div class="card-body">
-                    <p class="fontdettitle"
-                        style="padding-top:1.5vh;text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 4vh;line-height:1;font-weight:bold;letter-spacing:10px;">
-                        {!! strlen(strip_tags($data->title)) > 15 ? substr(strip_tags($data->title),0,15).'...' : strip_tags($data->title) !!}</p>
-                </div>
+        @if(isset($data->path_image) && count($data->path_image) > 0)
+            <div class="col-12 col-md-6 text-center text-white cont-card-prod-det" style="padding-left:0px;padding-right:0px;margin-top:10px">
+                <a href="{{ url('detail-product/'.$data->slug) }}" style="text-decoration:none;color:white">
+                    <div class="card card-prod-det"
+                        style="width: 98%;height:13vh;background: 
+                                        linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
+                                        url({{$data->path_image[0]}});background-size:cover;">
+                        <div class="card-body">
+                            <p class="fontdettitle"
+                                style="padding-top:1.5vh;text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 4vh;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                {!! strlen(strip_tags($data->title)) > 15 ? substr(strip_tags($data->title),0,15).'...' : strip_tags($data->title) !!}</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
         @endif
         @endforeach
     </div>
@@ -122,8 +122,7 @@
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- <img class="img-fluid" style="width:100%" src="{{asset('img/product/'.$data->path_image)}}"
-                alt="First slide"> -->
+           
         </div>
     </div>
 </div>

@@ -31,8 +31,9 @@ class SettingWebTableSeeder extends Seeder
                 'twitter' => 'https://twitter.com/unicarpetsid',
                 'facebook' => 'https://www.facebook.com/universalcarpetsid/',
                 'youtube' => 'https://www.youtube.com/channel/UCEEc95l98-PdXiDkFtEhQHw',
+                'path_image' => '623d7dc3bccb9.png',
                 'created_at' => '2021-12-24 16:06:56',
-                'updated_at' => NULL,
+                'updated_at' => '2022-03-25 08:31:02',
             ),
         ));
         

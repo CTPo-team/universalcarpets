@@ -101,4 +101,105 @@
         };
     }(jQuery));
 </script>
+<script>
+    fileConfig = {
+        theme: "fas",
+        ajaxSettings:{
+            'headers': {"X-CSRF-TOKEN": "{{ csrf_token() }}"},
+        },
+        maxFileSize: 2000,
+        maxFileCount: 10,
+        minFileCount: 0,
+        allowedFileExtensions: ["jpg", "jpeg", "png", "gif"],
+        uploadUrl: <?php echo json_encode(url("/add-gallery")); ?>,
+        uploadAsync: true,
+        deleteUrl: <?php echo json_encode(url("/delete-gallery")); ?>,
+        showUpload: false, 
+        showRemove: false,
+        validateInitialCount: true,
+        overwriteInitial: false,
+        browseOnZoneClick: true,
+        initialPreviewAsData: true,
+        ajaxDeleteSettings: {
+            'headers': {"X-CSRF-TOKEN": "{{ csrf_token() }}"},
+        },
+        initialPreview:[],
+        initialPreviewConfig:[],
+        uploadExtraData: []
+    }
+
+
+    function setMultipleFile(input,value,preview){
+        fileConfigMultiple = fileConfig
+        fileConfigMultiple.uploadExtraData={
+            fieldName:input
+        }
+        if(preview.hasOwnProperty('initialPreview') && preview.hasOwnProperty('initialPreviewConfig')){
+            fileConfigMultiple.initialPreview = preview.initialPreview
+            fileConfigMultiple.initialPreviewConfig = preview.initialPreviewConfig
+        }
+        fileConfigMultiple.maxFileCount = 10
+        $(input).fileinput(fileConfigMultiple).on('filebatchuploadcomplete', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on("filebatchselected", function(event, files) {
+            $(input).fileinput("upload");
+        }).on('filedeleted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on('filesorted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        });
+        setValue(value,$(input).fileinput('getPreview'))
+    }
+
+    function setSingleFile(input,value,preview){
+        fileConfigSingle = fileConfig
+        fileConfigSingle.uploadExtraData={
+            fieldName:input
+        }
+        if(preview.hasOwnProperty('initialPreview') && preview.hasOwnProperty('initialPreviewConfig')){
+            fileConfigSingle.initialPreview = preview.initialPreview
+            fileConfigSingle.initialPreviewConfig = preview.initialPreviewConfig
+        }
+        fileConfigSingle.maxFileCount = 1
+        $(input).fileinput(fileConfigSingle).on('filebatchuploadcomplete', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on("filebatchselected", function(event, files) {
+            $(input).fileinput("upload");
+        }).on('filedeleted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on('filesorted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        });
+        setValue(value,$(input).fileinput('getPreview'))
+    }
+
+    function setMultipleFileWithMax(input,value,preview,max){
+        fileConfigMultipleMax = fileConfig
+        fileConfigMultipleMax.uploadExtraData={
+            fieldName:input
+        }
+        if(preview.hasOwnProperty('initialPreview') && preview.hasOwnProperty('initialPreviewConfig')){
+            fileConfigMultipleMax.initialPreview = preview.initialPreview
+            fileConfigMultipleMax.initialPreviewConfig = preview.initialPreviewConfig
+        }
+        fileConfigMultipleMax.maxFileCount = max
+        $(input).fileinput(fileConfigMultipleMax).on('filebatchuploadcomplete', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on("filebatchselected", function(event, files) {
+            $(input).fileinput("upload");
+        }).on('filedeleted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        }).on('filesorted', function() {
+            setValue(value,$(input).fileinput('getPreview'))
+        });
+        setValue(value,$(input).fileinput('getPreview'))
+    }
+
+    function setValue(input,value){
+        let result = value.config.map(a => a.caption)
+        $(input).val(result.toString())
+    }
+    
+</script>
+@yield('scriptsfileinput')
 </html>

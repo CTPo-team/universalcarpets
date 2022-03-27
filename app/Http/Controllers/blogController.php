@@ -63,11 +63,11 @@ class blogController extends AppBaseController
 
         $input = $this->setSeo($input,$input["short_desc"],$input["title"],self::seo_category,null);
         $input["slug"] = $this->setSlug($input["title"],(new blog())->getTable());
-        
-        //File Upload
-        $input["path_image"] = $this->uploadFile($request->path_image,'img/blog');
 
         $blog = $this->blogRepository->create($input);
+
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image"]);
 
         Flash::success('Blog saved successfully.');
 
@@ -91,6 +91,9 @@ class blogController extends AppBaseController
             return redirect(route('blogs.index'));
         }
 
+        //Set View Image From Gallery
+        $blog["path_image"] = $this->getGalleryForView($blog["path_image"]);
+
         return view('blogs.show')->with('blog', $blog);
     }
 
@@ -110,6 +113,9 @@ class blogController extends AppBaseController
 
             return redirect(route('blogs.index'));
         }
+
+        //Set Preview Image on Input
+        $this->data["blog"]["path_image"] = $this->getGallery($this->data["blog"]["path_image"]);
         $this->data["blogCategory"] = blogCategory::pluck("title","id");
         return view('blogs.edit',$this->data);
     }
@@ -145,7 +151,13 @@ class blogController extends AppBaseController
             $input["path_image"] = $this->uploadFile($request->path_image,'img/blog');
         }
 
+         //Set Compare Gallery old and new value
+         $this->compareGallery($blog["path_image"],$input["path_image"]);
+
         $blog = $this->blogRepository->update($input, $id);
+
+        //Set Active Gallery
+        $this->setActiveGallery($input["path_image"]);
 
         Flash::success('Blog updated successfully.');
 
@@ -171,7 +183,7 @@ class blogController extends AppBaseController
             return redirect(route('blogs.index'));
         }
 
-        $this->deleteFile($blog->path_image,"img/blog");
+        $this->deleteGallery($blog->path_image);
         
         $this->blogRepository->delete($id);
 

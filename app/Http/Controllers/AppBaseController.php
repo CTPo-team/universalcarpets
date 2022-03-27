@@ -6,7 +6,8 @@ use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
+use App\Models\gallery;
+use Carbon\Carbon;
 /**
  * @SWG\Swagger(
  *   basePath="/api/v1",
@@ -51,7 +52,11 @@ class AppBaseController extends Controller
 
     public function deleteFile($filename, $dir){
         if (!empty($filename)){
-            unlink(public_path($dir."/".$filename));
+            try {
+                unlink(public_path($dir."/".$filename));
+            } catch (\Throwable $th) {
+                return true;
+            }
         }
     }
 
@@ -81,15 +86,116 @@ class AppBaseController extends Controller
                 $text=Str::slug($text, '-');     
                 $slugs = DB::table($table)->where("slug","like","%".$text."%")->get();
                 if(count($slugs)>0){
-                    $lastId = DB::table($table)->latest()->first()->id;
-                    $increment = "-".$lastId+1;
+                    $increment = substr(md5(time()), 0, 5);
+                    $text=$text."-".$increment;
                 }
-                $text=$text.$increment;
             }else{
                 $text = null;
             }
             
         }
         return $text;
+    }
+    public function getGallery($value){
+        $preview = [];
+        $config = [];
+        foreach(explode(",",$value) as $dt){
+            if(!empty($dt)){
+                $config[]=[
+                    'key' => $dt,
+                    'caption' => $dt,
+                    'size' => 0,
+                    'downloadUrl' => asset('img/gallery/'.$dt), // the url to download the file
+                    'url' => url("/delete-gallery/{$dt}"), // server api to delete the file based on key
+                ];
+                $preview[]=asset('img/gallery/'.$dt);
+            }
+        }
+
+        return [
+            'initialPreview' => $preview, 
+            'initialPreviewConfig' => $config
+        ];
+    }
+
+    public function getGalleryForView($value){
+        if(!empty($value)){
+            if(str_contains($value, ',')){
+                $data = [];
+                foreach(explode(",",$value) as $dt){
+                    $data[] = asset('img/gallery/'.$dt);
+                }
+                return $data;
+            }else{
+                return asset('img/gallery/'.$value);
+            }
+        }
+    }
+
+    public function getGalleryForViewArray($value,$field){
+        foreach ($value as $key => $dt) {
+            if(isset($dt[$field]) && !empty($dt[$field])){
+                if(str_contains($dt[$field], ',')){
+                    $dataField = [];
+                    foreach(explode(",",$dt[$field]) as $val){
+                        $dataField[] = asset('img/gallery/'.$val);
+                    }
+                    $value[$key][$field] = $dataField;
+                }else{
+                    $value[$key][$field] = asset('img/gallery/'.$dt[$field]);
+                }
+            }
+        }
+        
+        return $value;
+    }
+
+    public function setActiveGallery($value){
+        if(!empty($value)){
+            $value = explode(",",$value);
+            if(count($value) > 0){
+                foreach($value as $dt){
+                    gallery::where("path_image",$dt)->update([
+                        "type" => "active",
+                    ]);
+                }
+                
+                //Clear Image Not Used
+                $dataUnsed = gallery::where([
+                    ["created_at","<=",Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()],
+                    ["type","=",""]
+                    ])->get();
+                foreach ($dataUnsed as $dt) {
+                    $this->deleteFile($dt["path_image"],"img/gallery");
+                }
+                $dataUnsed = gallery::where([
+                    ["created_at","<=",Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()],
+                    ["type","=",""]
+                    ])->delete();
+            }
+        }
+    }
+
+    public function compareGallery($oldValue,$newValue){
+        $newValue = explode(",",$newValue);
+        if(empty($newValue) && !empty($oldValue)){
+            foreach(explode(",",$oldValue) as $dt){
+                $this->deleteFile($dt,"img/gallery");
+            }
+        }else{
+            foreach(explode(",",$oldValue) as $dt){
+                if(array_search($dt,$newValue) === false){
+                    gallery::where("path_image",$dt)->delete();
+                    $this->deleteFile($dt,"img/gallery");
+                }
+            }
+        }
+    }
+
+    public function deleteGallery($file){
+        foreach(explode(",",$file) as $dt){
+            gallery::where("path_image",$dt)->delete();
+            $this->deleteFile($dt,"img/gallery");
+        }
     }
 }
