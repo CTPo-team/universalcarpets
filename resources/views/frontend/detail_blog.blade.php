@@ -100,8 +100,8 @@
                                 <h5 class="card-title" style="color:#C72C36;font-weight:600">
                                     {!! $data->title !!}</h5>
                                 <div class="card-text texttabblog" style="font-size:14px">
-                                    {!! strlen(strip_tags($data->desc)) > 200 ?
-                                    substr(strip_tags($data->desc),0,200).'...' : strip_tags($data->desc) !!}
+                                    {!! strlen(strip_tags($data->desc)) > 100 ?
+                                    substr(strip_tags($data->desc),0,100).'...' : strip_tags($data->desc) !!}
                                 </div>
                             </div>
                             <div class="col-12 col-md-3 text-center" style="padding-left:0px;padding-right:0px;padding-top:7vw">
