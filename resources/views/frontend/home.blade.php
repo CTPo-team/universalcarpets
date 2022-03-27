@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <br>
-                            <p class="d-none d-sm-block"><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
                         </a>
                     </div>
@@ -172,10 +172,16 @@
                             <div class="carousel-inner">
                                 @foreach ($product as $key => $newcol)
                                 @if(isset($newcol->path_image[0])) 
-                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                <div class="carousel-item contenthome {{$key == 0 ? 'active' : '' }}">
+                                <div class="content-overlayhome"></div>
                                     <img class="d-block w-100"
                                         src="{{$newcol->path_image[0]}}"
                                         alt="First slide">
+
+                                        <div class="content-detailshome fadeIn-bottom">
+                                        <p class="content-texthome fonttittle-overlay" style="font-size:3vw">{!! $newcol->title !!}</p>
+                                        <a class="link-content-texthome fontlink-overlay" style="font-size:1.5vw" href="{{ url('detail-product/'.$newcol->slug) }}">View Product</a>
+                                        </div>
                                 </div>
                                 @else
                                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
