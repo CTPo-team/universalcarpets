@@ -244,6 +244,10 @@
         margin-top: 0px !important;
     }
 
+    .itembanner{
+        height: 70vh !important;
+    }
+
     .navbar-light .navbar-nav .active>.nav-link,
     .navbar-light .navbar-nav .nav-link.active,
     .navbar-light .navbar-nav .nav-link.show,

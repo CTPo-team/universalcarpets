@@ -6,10 +6,11 @@
 <div class="sectionBanner" style="margin-top:-72px">
     <div class="owl-carousel owl-theme owl-loaded">
                 @foreach($banner as $key => $dt)
-                <!-- <a  href="{{$dt['button_url'] ?? ''}}"> -->
-                    <div class="item" style="margin-top:0px;height:90vh;background: 
+               
+                    <div class="item itembanner" style="margin-top:0px;height:90vh;background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
+                                 <a  href="{{$dt['button_url'] ?? ''}}" style="text-decoration:none">
                         <div class="carousel-caption text-left">
                             <div class="row pt-5">
                                 <div class="col-md-8 pt-2">
@@ -17,15 +18,16 @@
                                     class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
                                         {{$dt['category'] ?? ''}}</p>
                                     <p
-                                    class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                                    class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;color:white;">
                                         {{$dt['title'] ?? ''}}</p>
                                 </div>
                             </div>
                             <br>
-                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p class="d-none d-sm-block"><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
+                        </a>
                     </div>
-                <!-- </a> -->
+                
                 @endforeach
     </div>
 </div>
