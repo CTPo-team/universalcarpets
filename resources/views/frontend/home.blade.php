@@ -438,7 +438,7 @@
             });
 
             $('.owl-carousel').owlCarousel({
-                loop:true,
+                loop: $('.owl-carousel .item').length > 1 ? true : false,
                 margin:1,
                 autoplay:true,
                 autoWidth:true,

@@ -19,7 +19,7 @@
 </style>
 @endsection
 @section('content')
-<div class="sectionBanner" style="margin-top:-72px">
+<div class="sectionBanner" style="margin-top:-72px;">
     <div class="owl-carousel owl-theme owl-loaded">
                 @foreach($banner as $key => $dt)
                 <!-- <a  href="{{$dt['button_url'] ?? ''}}"> -->
@@ -36,7 +36,7 @@
                                     class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
                                         {{$dt['title'] ?? ''}}</p>
                                     <p
-                                    class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:normal;letter-spacing:3px;color:black">
+                                    class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:normal;letter-spacing:3px;color:white">
                                     {!! strlen(strip_tags($dt['desc'])) > 200 ? substr(strip_tags($dt['desc']),0,200).'...' : strip_tags($dt['desc']) !!}    
                                     </p>
                                 </div>
@@ -515,7 +515,7 @@
       
         $(document).ready(function() {
             $('.owl-carousel').owlCarousel({
-                loop:true,
+                loop: $('.owl-carousel .item').length > 1 ? true : false,
                 margin:1,
                 autoWidth:true,
                 autoplay:true,
