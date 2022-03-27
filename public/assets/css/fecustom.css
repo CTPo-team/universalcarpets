@@ -255,7 +255,7 @@
 /* style mobile */
 @media only screen and (max-width: 600px) {
     .sectionBanner {
-        margin-top: 76px !important;
+        margin-top: 0px !important;
     }
 
     .navbar-light .navbar-nav .active>.nav-link,
