@@ -43,7 +43,7 @@
                         @foreach($product->path_image as $key => $data)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <img class="productpopup" style="width:25vw" data-toggle="modal"
-                                data-target="#productpopup" data-id="{{$key}}" src="{{$data}}"
+                                data-target="#productpopup" data-id="{{$data}}" src="{{$data}}"
                                 alt="First slide">
                         </div>
                         @endforeach
@@ -65,7 +65,7 @@
                         @foreach($product->path_image as $key => $data)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <img class="productpopup w-100" data-toggle="modal"
-                                data-target="#productpopup" data-id="{{$key}}" src="{{$data}}"
+                                data-target="#productpopup" data-id="{{$data}}" src="{{$data}}"
                                 alt="First slide">
                         </div>
                         @endforeach
@@ -137,8 +137,8 @@
         $('.productpopup').on('click', function () {
             var id = $(this).attr("data-id");
             // console.log(id);
-            var flagsUrl = '{{ asset('/img/product') }}';
-            $(".modal-content").append("<img class='img-fluid' style='width:100%' src='"+flagsUrl+'/'+id+"' >");             
+            var flagsUrl = '{{ asset('/img/gallery') }}';
+            $(".modal-content").append("<img class='img-fluid' style='width:100%' src='"+id+"' >");             
         });
     })
 
