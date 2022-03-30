@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class bannerHomepageController extends AppBaseController
+class bannerHomePageController extends AppBaseController
 {
     /** @var  bannerHomepageRepository */
     private $bannerHomepageRepository;
