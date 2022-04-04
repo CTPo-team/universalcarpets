@@ -92,7 +92,7 @@ class blogController extends AppBaseController
         }
 
         //Set View Image From Gallery
-        $blog["path_image"] = $this->getGalleryForView($blog["path_image"]);
+        $blog["path_image"] = $this->getGalleryForView($blog["path_image"],false);
 
         return view('blogs.show')->with('blog', $blog);
     }

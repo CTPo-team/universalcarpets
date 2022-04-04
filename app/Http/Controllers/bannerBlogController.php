@@ -33,7 +33,7 @@ class bannerBlogController extends AppBaseController
 
         if(!empty($bannerBlogs)){
             //Set View Image From Gallery
-            $bannerBlogs->path_image = $this->getGalleryForView($bannerBlogs->path_image);
+            $bannerBlogs->path_image = $this->getGalleryForView($bannerBlogs->path_image,false);
         }
 
         return view('banner_blogs.index')
@@ -89,7 +89,7 @@ class bannerBlogController extends AppBaseController
         }
 
         //Set View Image From Gallery
-        $bannerBlog->path_image = $this->getGalleryForView($bannerBlog->path_image);
+        $bannerBlog->path_image = $this->getGalleryForView($bannerBlog->path_image,false);
 
         return view('banner_blogs.show')->with('bannerBlog', $bannerBlog);
     }

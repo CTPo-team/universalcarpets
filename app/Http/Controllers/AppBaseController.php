@@ -118,21 +118,24 @@ class AppBaseController extends Controller
         ];
     }
 
-    public function getGalleryForView($value){
+    public function getGalleryForView($value,$multiple){
+        $data = [];
         if(!empty($value)){
             if(str_contains($value, ',')){
-                $data = [];
                 foreach(explode(",",$value) as $dt){
                     $data[] = asset('img/gallery/'.$dt);
                 }
                 return $data;
             }else{
+                if($multiple){
+                    return array(asset('img/gallery/'.$value));
+                }
                 return asset('img/gallery/'.$value);
             }
         }
     }
 
-    public function getGalleryForViewArray($value,$field){
+    public function getGalleryForViewArray($value,$field,$multiple){
         foreach ($value as $key => $dt) {
             if(isset($dt[$field]) && !empty($dt[$field])){
                 if(str_contains($dt[$field], ',')){
@@ -142,11 +145,14 @@ class AppBaseController extends Controller
                     }
                     $value[$key][$field] = $dataField;
                 }else{
-                    $value[$key][$field] = asset('img/gallery/'.$dt[$field]);
+                    if($multiple){
+                        $value[$key][$field] = array(asset('img/gallery/'.$dt[$field]));
+                    }else{
+                        $value[$key][$field] = asset('img/gallery/'.$dt[$field]);
+                    }
                 }
             }
         }
-        
         return $value;
     }
 

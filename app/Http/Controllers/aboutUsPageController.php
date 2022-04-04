@@ -89,11 +89,11 @@ class aboutUsPageController extends AppBaseController
         }
 
          //Set View Image From Gallery
-         $aboutUsPage["path_image_technologies"] = $this->getGalleryForView($aboutUsPage["path_image_technologies"]?? null);
-         $aboutUsPage["path_image_strategy"] = $this->getGalleryForView($aboutUsPage["path_image_strategy"]?? null);
-         $aboutUsPage["path_image_home"] = $this->getGalleryForView($aboutUsPage["path_image_home"]?? null);
-         $aboutUsPage["path_image_network"] = $this->getGalleryForView($aboutUsPage["path_image_network"]?? null);
-         $aboutUsPage["path_image_certificate"] = $this->getGalleryForView($aboutUsPage["path_image_certificate"]?? null);
+         $aboutUsPage["path_image_technologies"] = $this->getGalleryForView($aboutUsPage["path_image_technologies"]?? null,true);
+         $aboutUsPage["path_image_strategy"] = $this->getGalleryForView($aboutUsPage["path_image_strategy"]?? null,false);
+         $aboutUsPage["path_image_home"] = $this->getGalleryForView($aboutUsPage["path_image_home"]?? null,true);
+         $aboutUsPage["path_image_network"] = $this->getGalleryForView($aboutUsPage["path_image_network"]?? null,false);
+         $aboutUsPage["path_image_certificate"] = $this->getGalleryForView($aboutUsPage["path_image_certificate"]?? null,false);
         return view('about_us_pages.show')->with('aboutUsPage', $aboutUsPage);
     }
 

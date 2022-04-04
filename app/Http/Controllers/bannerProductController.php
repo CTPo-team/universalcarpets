@@ -84,7 +84,7 @@ class bannerProductController extends AppBaseController
         }
 
         //Set View Image From Gallery
-        $bannerProduct["path_image"] = $this->getGalleryForView($bannerProduct["path_image"]);
+        $bannerProduct["path_image"] = $this->getGalleryForView($bannerProduct["path_image"],false);
         
 
         return view('banner_products.show')->with('bannerProduct', $bannerProduct);

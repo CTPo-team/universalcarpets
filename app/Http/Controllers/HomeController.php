@@ -39,19 +39,19 @@ class HomeController extends AppBaseController
     public function index()
     {
         $this->data["banner"] = bannerHomepage::where("status",1)->orderByDesc("created_at")->get();
-        $this->data["banner"] = $this->getGalleryForViewArray($this->data["banner"],"path_image");
+        $this->data["banner"] = $this->getGalleryForViewArray($this->data["banner"],"path_image",false);
 
         $this->data["product"] = product::where("status",1)->with("productCategory")->orderByDesc("created_at")->limit(4)->get();
-        $this->data["product"] = $this->getGalleryForViewArray($this->data["product"],"path_image");
+        $this->data["product"] = $this->getGalleryForViewArray($this->data["product"],"path_image",true);
 
         $this->data["blog"] = blog::where("status",1)->with("blogCategory")->orderByDesc("created_at")->get();
-        $this->data["blog"] = $this->getGalleryForViewArray($this->data["blog"],"path_image");
+        $this->data["blog"] = $this->getGalleryForViewArray($this->data["blog"],"path_image",false);
         
         $this->data["aboutUs"] = aboutUsPage::where("title",'OUR STORY')->first();
-        $this->data["aboutUs"]["path_image_home"] = $this->getGalleryForView($this->data["aboutUs"]["path_image_home"]);
+        $this->data["aboutUs"]["path_image_home"] = $this->getGalleryForView($this->data["aboutUs"]["path_image_home"],true);
         
         $this->data["settingWeb"] = settingWeb::first();
-        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
 
         //SEO
         $this->data["seo"] = [
@@ -68,20 +68,20 @@ class HomeController extends AppBaseController
     public function aboutUs()
     {
         $this->data["banner"] = bannerAboutUs::first();
-        $this->data["banner"]["path_image"] = $this->getGalleryForView($this->data["banner"]["path_image"]);
+        $this->data["banner"]["path_image"] = $this->getGalleryForView($this->data["banner"]["path_image"],false);
 
         $this->data["ourStory"] = aboutUsPage::where("title",'OUR STORY')->first();
-        $this->data["ourStory"]["path_image_certificate"] = $this->getGalleryForView( $this->data["ourStory"]["path_image_certificate"]);
-        $this->data["ourStory"]["path_image_strategy"] = $this->getGalleryForView( $this->data["ourStory"]["path_image_strategy"]);
+        $this->data["ourStory"]["path_image_certificate"] = $this->getGalleryForView( $this->data["ourStory"]["path_image_certificate"],false);
+        $this->data["ourStory"]["path_image_strategy"] = $this->getGalleryForView( $this->data["ourStory"]["path_image_strategy"],false);
 
         $this->data["network"] = aboutUsPage::where("title",'NETWORK')->first();
-        $this->data["network"]["path_image_network"] = $this->getGalleryForView( $this->data["network"]["path_image_network"]);
+        $this->data["network"]["path_image_network"] = $this->getGalleryForView( $this->data["network"]["path_image_network"],false);
 
         $this->data["technologies"] = aboutUsPage::where("title",'TECHNOLOGIES')->first();
-        $this->data["technologies"]["path_image_technologies"] = $this->getGalleryForView( $this->data["technologies"]["path_image_technologies"]);
+        $this->data["technologies"]["path_image_technologies"] = $this->getGalleryForView( $this->data["technologies"]["path_image_technologies"],true);
 
         $this->data["settingWeb"] = settingWeb::first();
-        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
 
         $this->data["aboutUsGalleryOdd"] = array();
         $this->data["aboutUsGalleryEven"] = array();
@@ -111,11 +111,11 @@ class HomeController extends AppBaseController
     public function contacts()
     {
         $this->data["banner"] = bannerContactUs::first();
-        $this->data["banner"]["path_image"] = $this->getGalleryForView($this->data["banner"]["path_image"]);
+        $this->data["banner"]["path_image"] = $this->getGalleryForView($this->data["banner"]["path_image"],false);
 
         $this->data["contacts"] = contactUsPage::orderBy("created_at")->get();
         $this->data["settingWeb"] = settingWeb::first();
-        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
 
         //SEO
         $this->data["seo"] = [
@@ -133,7 +133,7 @@ class HomeController extends AppBaseController
     {   
         $input = $request->all();
         $this->data["settingWeb"] = settingWeb::first();
-        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
         Mail::to($this->data["settingWeb"]["email_contact_us"])->send(new contactMail($input));
  
         if (Mail::failures()) {
@@ -147,16 +147,16 @@ class HomeController extends AppBaseController
     public function blog()
     {
         $this->data["banner"] = bannerBlog::first();
-        $this->data["banner"]["path_image"] = $this->getGalleryForView($this->data["banner"]["path_image"]);
+        $this->data["banner"]["path_image"] = $this->getGalleryForView($this->data["banner"]["path_image"],false);
 
         $this->data["new"] = blog::orderByDesc("created_at")->with("blogCategory")->first();
-        $this->data["new"]["path_image"] = $this->getGalleryForView($this->data["new"]["path_image"]);
+        $this->data["new"]["path_image"] = $this->getGalleryForView($this->data["new"]["path_image"],false);
 
         $this->data["mostViewed"] = blog::orderByDesc("view_count")->with("blogCategory")->limit(3)->get();
-        $this->data["mostViewed"] = $this->getGalleryForViewArray($this->data["mostViewed"],"path_image");
+        $this->data["mostViewed"] = $this->getGalleryForViewArray($this->data["mostViewed"],"path_image",false);
 
         $this->data["settingWeb"] = settingWeb::first();
-        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
 
         //SEO
         $this->data["seo"] = [
@@ -177,7 +177,7 @@ class HomeController extends AppBaseController
             return Response::json([], 400);
         }
         $data = blog::where("id","!=",$this->data["new"]->id)->with("blogCategory")->orderByDesc("created_at")->paginate(3);
-        $data = $this->getGalleryForViewArray($data,"path_image");
+        $data = $this->getGalleryForViewArray($data,"path_image",false);
 
         return Response::json($data, 200);
     }
@@ -191,14 +191,14 @@ class HomeController extends AppBaseController
             if(!$this->data["blog"]){
                 return abort(404);
             }
-            $this->data["blog"]["path_image"] = $this->getGalleryForView($this->data["blog"]["path_image"]);
+            $this->data["blog"]["path_image"] = $this->getGalleryForView($this->data["blog"]["path_image"],false);
             
             $blog->increment("view_count",1);
             $this->data["settingWeb"] = settingWeb::first();
-            $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+            $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
 
             $this->data["relatedBlog"] = blog::where([['blog_category_id',"=",$this->data["blog"]->blog_category_id],['id','!=',$this->data["blog"]->id]])->orderByDesc("created_at")->limit(3)->get();
-            $this->data["relatedBlog"] = $this->getGalleryForViewArray($this->data["relatedBlog"],"path_image");
+            $this->data["relatedBlog"] = $this->getGalleryForViewArray($this->data["relatedBlog"],"path_image",false);
             
             //SEO
             $this->data["seo"] = [
@@ -220,15 +220,15 @@ class HomeController extends AppBaseController
         $this->data["filter"] = $request->all();
 
         $this->data["banner"] = bannerProduct::where("status",1)->orderByDesc("created_at")->get();
-        $this->data["banner"] = $this->getGalleryForViewArray($this->data["banner"],"path_image");
+        $this->data["banner"] = $this->getGalleryForViewArray($this->data["banner"],"path_image",false);
 
         $this->data["productFeatured"] = product::where("featured",1)->with(["productBrand","productCategory"])->first();
-        $this->data["productFeatured"]["path_image"] = $this->getGalleryForView($this->data["productFeatured"]["path_image"]);
+        $this->data["productFeatured"]["path_image"] = $this->getGalleryForView($this->data["productFeatured"]["path_image"],true);
 
         $this->data["productCategory"] = productCategory::orderBy("title")->with(["product.productBrand","subCategory.product.productBrand"])->where("product_category_id",null)->get();
         
         $this->data["settingWeb"] = settingWeb::first();
-        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+        $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
         //SEO
         $this->data["seo"] = [
             "title" => "Product",
@@ -260,8 +260,7 @@ class HomeController extends AppBaseController
         }
 
         $this->data["product"] = $product->paginate(9);
-        $this->data["product"] = $this->getGalleryForViewArray($this->data["product"],"path_image");
-
+        $this->data["product"] = $this->getGalleryForViewArray($this->data["product"],"path_image",true);
         return Response::json($this->data["product"], 200);
     }
 
@@ -274,15 +273,15 @@ class HomeController extends AppBaseController
             if(!$this->data["product"]){
                 return abort(404);
             }
-            $this->data["product"]["path_image"] = $this->getGalleryForView($this->data["product"]["path_image"]);
-            $this->data["product"]["path_image_thumbnail"] = $this->getGalleryForView($this->data["product"]["path_image_thumbnail"]);
+            $this->data["product"]["path_image"] = $this->getGalleryForView($this->data["product"]["path_image"],true);
+            $this->data["product"]["path_image_thumbnail"] = $this->getGalleryForView($this->data["product"]["path_image_thumbnail"],false);
 
             $this->data["settingWeb"] = settingWeb::first();
-            $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"]);
+            $this->data["settingWeb"]["path_image"] = $this->getGalleryForView($this->data["settingWeb"]["path_image"],false);
 
             $this->data["relatedProduct"] = product::where([['product_category_id',"=",$this->data["product"]->product_category_id],['id','!=',$this->data["product"]->id]])->with(["productCategory","productBrand"])->orderByDesc("created_at")->limit(2)->get();
-            $this->data["relatedProduct"] = $this->getGalleryForViewArray($this->data["relatedProduct"],"path_image");
-            $this->data["relatedProduct"] = $this->getGalleryForViewArray($this->data["relatedProduct"],"path_image_thumbnail");
+            $this->data["relatedProduct"] = $this->getGalleryForViewArray($this->data["relatedProduct"],"path_image",true);
+            $this->data["relatedProduct"] = $this->getGalleryForViewArray($this->data["relatedProduct"],"path_image_thumbnail",false);
 
             //SEO
             $this->data["seo"] = [
