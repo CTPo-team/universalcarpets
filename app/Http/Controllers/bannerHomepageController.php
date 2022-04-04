@@ -84,7 +84,7 @@ class bannerHomePageController extends AppBaseController
         }
 
         //Set View Image From Gallery
-        $bannerHomepage["path_image"] = $this->getGalleryForView($bannerHomepage["path_image"]);
+        $bannerHomepage["path_image"] = $this->getGalleryForView($bannerHomepage["path_image"],false);
         
         return view('banner_homepages.show')->with('bannerHomepage', $bannerHomepage);
     }

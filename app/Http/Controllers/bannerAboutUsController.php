@@ -33,7 +33,7 @@ class bannerAboutUsController extends AppBaseController
 
         if(!empty($bannerAboutus)){
             //Set View Image From Gallery
-            $bannerAboutus->path_image = $this->getGalleryForView($bannerAboutus->path_image);
+            $bannerAboutus->path_image = $this->getGalleryForView($bannerAboutus->path_image,false);
         }
 
         return view('banner_aboutus.index')
@@ -89,7 +89,7 @@ class bannerAboutUsController extends AppBaseController
         }
 
         //Set View Image From Gallery
-        $bannerAboutUs->path_image = $this->getGalleryForView($bannerAboutUs->path_image);
+        $bannerAboutUs->path_image = $this->getGalleryForView($bannerAboutUs->path_image,false);
 
         return view('banner_aboutus.show')->with('bannerAboutUs', $bannerAboutUs);
     }

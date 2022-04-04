@@ -101,8 +101,8 @@ class productController extends AppBaseController
         }
 
         //Set View Image From Gallery
-        $product["path_image_thumbnail"] = $this->getGalleryForView($product["path_image_thumbnail"]);
-        $product["path_image"] = $this->getGalleryForView($product["path_image"]);
+        $product["path_image_thumbnail"] = $this->getGalleryForView($product["path_image_thumbnail"],false);
+        $product["path_image"] = $this->getGalleryForView($product["path_image"],true);
         
         return view('products.show')->with('product', $product);
     }
