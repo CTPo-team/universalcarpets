@@ -144,64 +144,17 @@
             </div>
         </div>
     </div>
-    <div class="row d-block d-sm-none pt-2 pb-5">
-        <div class="col-12">
-            <h4>ALL PRODUCTS</h4>
-        </div>
-        <div class="col-12 pb-5">
-            <div class="row">
-                <div class="col-4 col-md-2">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" style="font-size:14px">Categories</label>
-                        <select class="form-control select-categories" name="filterCategories"
-                            id="exampleFormControlSelect1" onchange="setSubCategory()" style="font-size:14px">
-                        </select>
-                    </div>
-                </div>
-                <div class="col-4 col-md-2">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" style="font-size:14px">Sub-categories</label>
-                        <select class="form-control select-subcategories" name="filterSubCategories"
-                            id="exampleFormControlSelect1" onchange="setBrand()" style="font-size:14px">
-                        </select>
-                    </div>
-                </div>
-                <div class="col-4 col-md-2">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" style="font-size:14px">Brands</label>
-                        <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1"
-                            style="font-size:14px">
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12 align-self-center pt-1">
-                    <button type="button" onclick="submitFilter()" class="btn btn-primary"
-                        style="background:#C72933;border:none;width:100%"><i class="fa fa-search"></i> Search</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="row data-product">
-            </div>
-        </div>
-        <div class="col-12">
-            <center>
-                <button type="button" class="btn mt-5 pl-5 pr-5 pt-2 pb-2 load-more"
-                    style="background:#D5AD6A;color:white;">LOAD MORE</button>
-            </center>
-        </div>
-    </div>
 </div>
 
 
 <div class="container cont-productpage">
-    <div class="row d-none d-sm-block pb-5">
-            <div class="col-12  pt-5" style="padding-left:0px;padding-right:0px">
+    <div class="row pb-5">
+            <div class="col-12  pt-5 all-product-container">
                 <h4>ALL PRODUCTS</h4>
             </div>
-            <div class="col-12 pt-5 pb-5" style="padding-left:0px;padding-right:0px">
-                <div class="row justify-content-center">
-                    <div class="col-md-2">
+            <div class="col-12 pt-5 pb-5 all-product-container">
+                <div class="row justify-content-center filter-product">
+                    <div class="col-4 col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Categories</label>
                             <select class="form-control select-categories" name="filterCategories"
@@ -209,7 +162,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-4 col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Sub-categories</label>
                             <select class="form-control select-subcategories" name="filterSubCategories"
@@ -217,15 +170,15 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-4 col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Brands</label>
                             <select class="form-control select-brands" name="filterBrand" id="exampleFormControlSelect1">
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2 align-self-center pt-3">
-                        <button type="button" onclick="submitFilter()" class="btn btn-primary"
+                    <div class="col-12 col-md-2 align-self-center pt-3">
+                        <button type="button" onclick="submitFilter()" class="btn btn-primary btn-full-mobile"
                             style="background:#C72933;border:none"><i class="fa fa-search"></i> Search</button>
                     </div>
                 </div>
