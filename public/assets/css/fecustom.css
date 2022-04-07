@@ -7,7 +7,7 @@
 }
 
 .margin-contact {
-    margin-top: 3rem !important;
+    margin-top: 2.5rem !important;
 }
 
 /* style home  */
@@ -323,6 +323,10 @@
 
 /* style mobile */
 @media only screen and (max-width: 600px) {
+    iframe{
+        margin-top: 20px;
+    }
+
     .sectionBanner {
         margin-top: 0px !important;
     }

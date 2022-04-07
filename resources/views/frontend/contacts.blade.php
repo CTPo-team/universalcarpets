@@ -22,8 +22,11 @@
     <div class="row">
         <div class="col-12 col-md-3 text-right">
         <p style="padding-top: 2.3vw;
-    padding-right: 1.5vw;font-family: 'Playfair Display', serif;line-height:1;color:#D5AD6A;font-size:4.4vw;" class="d-none d-md-block">Our Office</p>
-     <p style="font-family: 'Playfair Display', serif;line-height:1;color:#D5AD6A;font-size:10vw;text-align:left" class="d-block d-md-none">Our Office</p>
+    padding-right: 1.5vw;font-family: 'Playfair Display', serif;line-height:1;color:#D5AD6A;font-size:4.4vw;" 
+    class="d-none d-md-block">Our Office</p>
+    
+     <p style="font-family: 'Playfair Display', serif;line-height:1;color:#D5AD6A;font-size:10vw;text-align:left" 
+     class="d-block d-md-none pt-4 pb-4">Our Office</p>
         </div>
         <div class="col-12 col-md-9">
             <div class="row">
@@ -130,6 +133,7 @@ background-size: cover;">
     <script>
         $(document).ready(function () {
             $("iframe").width("100%");
+            $("iframe").height("280px");
         });
     </script>
 @endsection
