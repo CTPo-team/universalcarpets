@@ -272,7 +272,7 @@
                     }
 
                     //If Just Have Product (Brand)
-                    if (data.product.length > 0) {
+                    if (data.sub_category.length == 0 && data.product.length > 0) {
                         setBrandWithoutSubCategory(data.product)
                     }
                     return;
@@ -285,6 +285,8 @@
             clearOption(classBrand)
 
             valCategory = $(classCategories).find(":selected").val()
+            setDefaultSubCategory()
+            setDefaultBrand()
             getSubCategory(valCategory)
             addOptionSelect(classSubcategories, subCategory)
             addOptionSelect(classBrand, brand)
@@ -344,6 +346,7 @@
             clearOption(classBrand)
             valCategory = $(classCategories).find(":selected").val()
             valSubCategory = $(classSubcategories).find(":selected").val()
+            setDefaultBrand()
             getBrand(valSubCategory, valCategory)
             addOptionSelect(classBrand, brand)
         }

@@ -244,15 +244,26 @@ class HomeController extends AppBaseController
     public function dataProduct(Request $request)
     {
 
+        //Get Sub Category
         $product = product::orderBy("title")->with(["productBrand","productCategory"])->where("status",1);
 
         //Set Filter
-        if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (!isset($request->filterSubCategories) || empty(trim($request->filterSubCategories)))){
-            $product = $product->where("product_category_id",$request->filterCategories);
+        $statusSub = false;
+        if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (isset($request->filterSubCategories) && !empty(trim($request->filterSubCategories)))){
+            $statusSub = true;
+            $product = $product->where("product_category_id",$request->filterSubCategories);
         }
 
-        if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (isset($request->filterSubCategories) && !empty(trim($request->filterSubCategories)))){
-            $product = $product->where("product_category_id",$request->filterSubCategories);
+        if((isset($request->filterCategories) && !empty(trim($request->filterCategories))) && (!isset($request->filterSubCategories) || empty(trim($request->filterSubCategories)))){
+            $idFilterCategories = [(int) $request->filterCategories];
+            if(!$statusSub){
+                //Get Category & Sub Category
+                $sub = productCategory::where("id",$request->filterCategories)->with("subCategory")->first();
+                if(isset($sub->subCategory) && !empty($sub->subCategory)){
+                    $idFilterCategories = array_merge($idFilterCategories,array_column($sub->subCategory->toArray(), 'id'));
+                }
+            }
+            $product = $product->whereIn("product_category_id",$idFilterCategories);
         }
 
         if(isset($request->filterBrand) && !empty(trim($request->filterBrand))){

@@ -44,7 +44,7 @@ class productCategoryController extends AppBaseController
      */
     public function create()
     {
-        $this->data["subCategory"] = productCategory::where("product_category_id","=",null)->pluck("title","id");
+        $this->data["subCategory"] = productCategory::where("product_category_id","=",null)->doesntHave('product')->pluck("title","id");
         return view('product_categories.create',$this->data);
     }
 
@@ -106,7 +106,7 @@ class productCategoryController extends AppBaseController
             return redirect(route('productCategories.index'));
         }
 
-        $this->data["subCategory"] = productCategory::where([["product_category_id","=",null],["id","!=",$id]])->pluck("title","id");
+        $this->data["subCategory"] = productCategory::where([["product_category_id","=",null],["id","!=",$id]])->doesntHave('product')->pluck("title","id");
         return view('product_categories.edit',$this->data);
     }
 
