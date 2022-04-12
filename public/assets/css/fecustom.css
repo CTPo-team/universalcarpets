@@ -10,6 +10,11 @@
     margin-top: 2.5rem !important;
 }
 
+.nav-link:hover{
+    color: #D5AD6A !important;
+    transition: 0.5s;
+}
+
 /* style home  */
 
 .owl-dots{
@@ -333,6 +338,7 @@
 
     .itembanner{
         height: 70vh !important;
+        background-size: auto !important;
     }
 
     .owl-prev {

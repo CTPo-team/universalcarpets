@@ -63,7 +63,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <p
-                                                style="font-size:44px;font-weight:bold;color:#C72C36;font-family: 'Playfair Display', serif;font-size:bold;">
+                                                style="font-size:3.5vh;font-weight:bold;color:#C72C36;font-family: 'Playfair Display', serif;font-size:bold;">
                                                 OUR STORY
                                             </p>
                                         </diV>
@@ -236,10 +236,15 @@
 
             <div class="col-md-12">
                 <hr style="border-top:1px solid black;margin-top:30px">
-                <div style="width:20%;margin-top:-27px;background:#F5F5F5;">
+                <div class="d-none d-sm-block" style="width:20%;margin-top:-27px;background:#F5F5F5;">
                     <p
                         style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
                         FROM OUR BLOG</p>
+                </div>
+                <div class="d-block d-sm-none" style="width:27%;margin-top:-27px;background:#F5F5F5;">
+                    <p
+                        style="font-family: 'Playfair Display', serif;font-size: 30 !important;line-height:1;font-weight:bold;color:#C72C36">
+                        FROM<br>OUR BLOG</p>
                 </div>
 
             </div>
