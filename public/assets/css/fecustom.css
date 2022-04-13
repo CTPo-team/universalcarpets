@@ -328,6 +328,14 @@
 
 /* style mobile */
 @media only screen and (max-width: 600px) {
+    .cap-carousel-blogcontact {
+        top: 0% !important;
+    }
+
+    .carousel-captionabout {
+        top: 13%;
+    }
+
     iframe{
         margin-top: 20px;
     }
@@ -336,9 +344,13 @@
         margin-top: 0px !important;
     }
 
+    .textbanner{
+        padding-top: 0rem !important;
+    }
+
     .itembanner{
-        height: 70vh !important;
-        background-size: auto !important;
+        height: 40vh !important;
+        background-repeat: no-repeat !important;
     }
 
     .owl-prev {
@@ -375,7 +387,8 @@
     }
 
     #banner {
-        height: 450px;
+        height: 40vh !important;
+        margin-top: 0px !important;
     }
 
     .margin-contact {

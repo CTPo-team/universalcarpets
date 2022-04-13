@@ -12,7 +12,7 @@
                                 url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
                                  <a  href="{{$dt['button_url'] ?? ''}}" style="text-decoration:none">
                         <div class="carousel-caption text-left">
-                            <div class="row pt-5">
+                            <div class="row textbanner pt-5">
                                 <div class="col-md-8 pt-2">
                                     <p
                                     class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <br>
-                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2 d-none d-sm-block" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
                         </a>
                     </div>

@@ -28,7 +28,7 @@
                                 url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
                                  <a  href="{{$dt['button_url'] ?? ''}}" style="text-decoration:none">
                         <div class="carousel-caption text-left">
-                            <div class="row pt-5">
+                            <div class="row textbanner pt-5">
                                 <div class="col-md-8 pt-2">
                                     <p
                                     class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <br>
-                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2 d-none d-sm-block" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
                         </a>
                     </div>
@@ -109,7 +109,7 @@
 
 
     <!-- mobile feat product section -->
-    <div class="row d-block d-sm-none pb-5">
+    <div class="row d-block d-sm-none pb-5 pl-3 pr-3">
         <div class="col-12 ">
             <h4>FEATURED PRODUCT</h4>
         </div>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="col-12" style="border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;background:#C72C36;padding-right:0px;padding-left:0px;padding-bottom:10px">
                     <div class="row">
-                        <div class="col-12 pl-4 pr-4">
+                        <div class="col-12 pl-5 pr-5">
                             <div class="judul-featured">
                                 <p style="font-size:4vh;font-family: 'Playfair Display', serif;color:white;">
                                     {!!$productFeatured->title!!}</p>
