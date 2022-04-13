@@ -73,6 +73,7 @@
     bottom: auto !important;
     top: 17%;
     left: 7%;
+    width: 100vw;
 }
 
 .carousel-indicators {
