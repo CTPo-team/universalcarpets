@@ -15,6 +15,10 @@
     transition: 0.5s;
 }
 
+.sticky-top.scrolled .nav-link:hover{
+    color: #D5AD6A !important;
+    transition: 0.5s;
+}
 /* style home  */
 
 .owl-dots{
