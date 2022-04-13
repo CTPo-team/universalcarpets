@@ -2,15 +2,6 @@
 
 @section('css')
 <style>
-    .navbar-light .navbar-nav .nav-link {
-        color: #C62630 !important;
-    }
-
-    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
-    {
-        border-bottom: 3px solid #C72933;
-    }
-
     @media only screen and (min-width: 1800px) {
         .cont-productpage{
             max-width:1445px !important;
@@ -43,7 +34,7 @@
                                 </div>
                             </div>
                             <br>
-                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2 d-none d-sm-block" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p class="d-none d-sm-block"><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
                         </a>
                     </div>

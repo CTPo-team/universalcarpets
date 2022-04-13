@@ -468,6 +468,9 @@
         width: 92% !important;
         height: 92% !important;
     }
+    .carousel-caption {
+        top: 5%;
+    }
 }
 
 @media only screen and (max-width: 1024px) {

@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <br>
-                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2 d-none d-sm-block" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
                         </a>
                     </div>
