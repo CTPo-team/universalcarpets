@@ -6,7 +6,7 @@
                                     linear-gradient(to bottom,  rgb(66 61 64 / 30%) 60%, #F5F5F5 95%),
                                     url({{$banner->path_image ?? ''}}); background-position:center;">
         <div class="col-12" style="">
-            <div class="carousel-caption text-left">
+            <div class="carousel-caption carousel-captionblog text-left ">
                 <div class="row pt-5">
                     <div class="col-md-8">
                         <p class="fontbantitle"

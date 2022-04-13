@@ -2,15 +2,6 @@
 
 @section('css')
 <style>
-    .navbar-light .navbar-nav .nav-link {
-        color: #C62630 !important;
-    }
-
-    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link
-    {
-        border-bottom: 3px solid #C72933;
-    }
-
     @media only screen and (min-width: 1800px) {
         .cont-productpage{
             max-width:1445px !important;
@@ -28,7 +19,7 @@
                                 url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
                                  <a  href="{{$dt['button_url'] ?? ''}}" style="text-decoration:none">
                         <div class="carousel-caption text-left">
-                            <div class="row pt-5">
+                            <div class="row textbanner pt-5">
                                 <div class="col-md-8 pt-2">
                                     <p
                                     class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
@@ -43,7 +34,7 @@
                                 </div>
                             </div>
                             <br>
-                            <p><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
+                            <p class="d-none d-sm-block"><a class="btn btn-danger pl-5 pr-5 pt-2 pb-2" href="{{$dt['button_url'] ?? ''}}">{{$dt['button_title'] ?? ''}}</a></p>
                         </div>
                         </a>
                     </div>
@@ -76,12 +67,12 @@
             <h4>FEATURED PRODUCT</h4>
         </div>
         <div class="col-12">
-            <div class="row">
+            <div class="row" style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;border-radius:20px">
                 @if(isset($productFeatured))
                 <div class="col-7"
-                    style="padding-right:0px;padding-left:0px;background:url({{isset($productFeatured->path_image[0]) ? $productFeatured->path_image[0] : ''}});background-size:cover;height:24vw !important">
+                    style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;padding-right:0px;padding-left:0px;background:url({{isset($productFeatured->path_image[0]) ? $productFeatured->path_image[0] : ''}});background-size:cover;height:24vw !important">
                 </div>
-                <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px">
+                <div class="col-5" style="background:#C72C36;padding-right:0px;padding-left:0px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
                     <div class="row align-items-center" style="height:40vh">
                         <div class="col-12 p-5">
                             <div class="judul-featured">
@@ -109,19 +100,19 @@
 
 
     <!-- mobile feat product section -->
-    <div class="row d-block d-sm-none pb-5">
+    <div class="row d-block d-sm-none pb-5 pl-3 pr-3">
         <div class="col-12 ">
             <h4>FEATURED PRODUCT</h4>
         </div>
         <div class="col-12">
-            <div class="row">
+            <div class="row" style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;border-radius:20px">
                 @if(isset($productFeatured))
                 <div class="col-12"
-                    style="padding-right:0px;padding-left:0px;background:url({{isset($productFeatured->path_image[0]) ? $productFeatured->path_image[0] : ''}});background-size:cover;height:44vw !important;background-position:center;">
+                    style="border-top-left-radius: 20px;border-top-right-radius: 20px;padding-right:0px;padding-left:0px;background:url({{isset($productFeatured->path_image[0]) ? $productFeatured->path_image[0] : ''}});background-size:cover;height:44vw !important;background-position:center;">
                 </div>
-                <div class="col-12" style="background:#C72C36;padding-right:0px;padding-left:0px;padding-bottom:10px">
+                <div class="col-12" style="border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;background:#C72C36;padding-right:0px;padding-left:0px;padding-bottom:10px">
                     <div class="row">
-                        <div class="col-12 pl-4 pr-4">
+                        <div class="col-12 pl-5 pr-5">
                             <div class="judul-featured">
                                 <p style="font-size:4vh;font-family: 'Playfair Display', serif;color:white;">
                                     {!!$productFeatured->title!!}</p>
@@ -133,8 +124,8 @@
                             </div>
                             <div class="button text-right">
                                 <a href="{{ url('detail-product/'.$productFeatured->slug) }}">
-                                    <button type="button" class="btn pl-5 pr-5 pt-2 pb-2"
-                                        style="background:#D5AD6A;color:white;">VISIT</button>
+                                    <button type="button" class="btn pl-5 pr-5 pt-1 pb-1 mr-2 mb-2"
+                                        style="background:#D5AD6A;color:white;font-size:14px">VISIT</button>
                                 </a>
                             </div>
                         </div>

@@ -10,6 +10,11 @@
     margin-top: 2.5rem !important;
 }
 
+.nav-link:hover{
+    color: #D5AD6A !important;
+    transition: 0.5s;
+}
+
 /* style home  */
 
 .owl-dots{
@@ -323,6 +328,14 @@
 
 /* style mobile */
 @media only screen and (max-width: 600px) {
+    .cap-carousel-blogcontact {
+        top: 0% !important;
+    }
+
+    .carousel-captionabout {
+        top: 13%;
+    }
+
     iframe{
         margin-top: 20px;
     }
@@ -331,8 +344,13 @@
         margin-top: 0px !important;
     }
 
+    .textbanner{
+        padding-top: 0rem !important;
+    }
+
     .itembanner{
-        height: 70vh !important;
+        height: 40vh !important;
+        background-repeat: no-repeat !important;
     }
 
     .owl-prev {
@@ -369,7 +387,8 @@
     }
 
     #banner {
-        height: 450px;
+        height: 40vh !important;
+        margin-top: 0px !important;
     }
 
     .margin-contact {
@@ -448,6 +467,9 @@
     .content-overlay {
         width: 92% !important;
         height: 92% !important;
+    }
+    .carousel-caption {
+        top: 5%;
     }
 }
 
