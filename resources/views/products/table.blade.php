@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Product Category</th>
+                <th>Product Sub-Category</th>
                 <th>Product Brand</th>
                 <th>Title</th>
                 <th>Featured</th>
@@ -13,7 +14,8 @@
         <tbody>
         @foreach($products as $product)
             <tr>
-                       <td>{{ $product->productCategory->title ?? ""}}</td>
+                       <td>{{ isset($product->productCategory->parent) && !empty($product->productCategory->parent) ? $product->productCategory->parent->title : $product->productCategory->title}}</td>
+                       <td>{{ isset($product->productCategory->parent) && !empty($product->productCategory->parent) ? $product->productCategory->title : "-" }}</td>
                        <td>{{ $product->productBrand->title ?? ""}}</td>
                         <td>{{ $product->title }}</td>
                         <td>{!! $product->featured == 1 ? "<div class='badge badge-success'>Yes</div>" : "<div class='badge badge-danger'>No</div>" !!}</td>

@@ -1,7 +1,12 @@
 <!-- Product Category Id Field -->
 <div class="form-group">
     {!! Form::label('product_category_id', 'Product Category:') !!}
-    <p>{{ $product->productCategory->title }}</p>
+    <p>{{ isset($product->productCategory->parent) && !empty($product->productCategory->parent) ? $product->productCategory->parent->title : $product->productCategory->title }}</p>
+</div>
+
+<div class="form-group">
+    {!! Form::label('product_sub_category', 'Product Sub-Category:') !!}
+    <p>{{ isset($product->productCategory->parent) && !empty($product->productCategory->parent) ? $product->productCategory->title : "-" }}</p>
 </div>
 
 <!-- Product Brand Id Field -->
