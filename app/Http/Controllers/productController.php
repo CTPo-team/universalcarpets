@@ -48,7 +48,7 @@ class productController extends AppBaseController
      */
     public function create()
     {   
-        $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
+        $this->data["productCategory"] = $this->replaceProductCategoryName(productCategory::doesntHave('subCategory')->orderByDesc("title")->get());
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.create',$this->data);
     }
@@ -128,7 +128,7 @@ class productController extends AppBaseController
         $this->data["product"]["path_image"] = $this->getGallery($this->data["product"]["path_image"]);
         $this->data["product"]["path_image_thumbnail"] = $this->getGallery($this->data["product"]["path_image_thumbnail"]);
         
-        $this->data["productCategory"] = productCategory::doesntHave('subCategory')->pluck("title","id");
+        $this->data["productCategory"] = $this->replaceProductCategoryName(productCategory::doesntHave('subCategory')->orderByDesc("title")->get());
         $this->data["productBrand"] = productBrand::pluck("title","id");
         return view('products.edit',$this->data);
     }
@@ -206,6 +206,20 @@ class productController extends AppBaseController
         Flash::success('Product deleted successfully.');
 
         return redirect(route('products.index'));
+    }
+
+    public function replaceProductCategoryName($productCategory)
+    {
+        $data = [];
+        foreach ($productCategory as $key => $value) {
+            if(isset($value->parent) && !empty($value->parent)){
+                $data[$value->id] = $value->title." -> ".$value->parent->title;
+            }else{
+                $data[$value->id] = $value->title;
+            }
+        }
+
+        return $data;
     }
 
     public function removeFeatured()
