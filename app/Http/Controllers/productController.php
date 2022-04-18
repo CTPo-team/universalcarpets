@@ -213,7 +213,7 @@ class productController extends AppBaseController
         $data = [];
         foreach ($productCategory as $key => $value) {
             if(isset($value->parent) && !empty($value->parent)){
-                $data[$value->id] = $value->title." -> ".$value->parent->title;
+                $data[$value->id] = $value->parent->title." -> ".$value->title;
             }else{
                 $data[$value->id] = $value->title;
             }
