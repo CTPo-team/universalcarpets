@@ -7,9 +7,9 @@
                                     url({{$banner->path_image ?? ''}}); background-position:center;">
         <div class="col-12" style="">
             <div class="carousel-caption cap-carousel-blogcontact text-left">
-                <div class="row pt-5">
-                    <div class="col-md-8 pt-5">
-                        <p class="fontbantitle"
+                <div class="row pt-5 blogcontacttitlerow">
+                    <div class="col-md-8">
+                        <p class="fontbantitle-blog"
                             style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
                             {{$banner->title ?? ''}}</p>
                     </div>
