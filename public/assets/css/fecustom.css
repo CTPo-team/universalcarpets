@@ -353,9 +353,19 @@
         padding-top: 0rem !important;
     }
 
-    .itembanner{
-        height: 40vh !important;
+    .itembannerhome{
+        height: 35vh !important;
         background-repeat: no-repeat !important;
+    }
+
+    .itembannerproduct{
+        height: 32vh !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+    }
+
+    .blogcontacttitlerow{
+        padding-top: 0px !important;
     }
 
     .owl-prev {
@@ -392,8 +402,10 @@
     }
 
     #banner {
-        height: 40vh !important;
+        height: 32vh !important;
         margin-top: 0px !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
     }
 
     .margin-contact {

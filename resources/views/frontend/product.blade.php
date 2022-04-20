@@ -14,7 +14,7 @@
     <div class="owl-carousel owl-theme owl-loaded">
                 @foreach($banner as $key => $dt)
                
-                    <div class="item itembanner" style="margin-top:0px;height:90vh;background: 
+                    <div class="item itembannerproduct" style="margin-top:0px;height:90vh;background: 
                                 linear-gradient(to bottom, transparent 60%, #F5F5F5 95%),
                                 url('{{$dt['path_image'] ?? ''}}');background-size:cover;width:100vw !important">
                                  <a  href="{{$dt['button_url'] ?? ''}}" style="text-decoration:none">
