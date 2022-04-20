@@ -135,6 +135,9 @@ class settingWebController extends AppBaseController
 
         $settingWeb = $this->settingWebRepository->update($request->all(), $id);
 
+        //Set Active Gallery
+        $this->setActiveGallery($settingWeb["path_image"]);
+
         Flash::success('Setting Web updated successfully.');
 
         return redirect(route('settingWebs.index'));
