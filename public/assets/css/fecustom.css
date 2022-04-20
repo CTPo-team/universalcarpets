@@ -359,9 +359,9 @@
     }
 
     .itembannerproduct{
-        height: 32vh !important;
+        height: 35vh !important;
         background-repeat: no-repeat !important;
-        background-size: contain !important;
+        background-size: 100% 100% !important;
     }
 
     .blogcontacttitlerow{
@@ -404,7 +404,7 @@
     #banner {
         height: 32vh !important;
         margin-top: 0px !important;
-        background-size: contain !important;
+        background-size: 100% 100% !important;
         background-repeat: no-repeat !important;
     }
 
