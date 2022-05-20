@@ -205,7 +205,7 @@
                             <div class="col-12 text-center pt-3 pb-3">
 
                                 <a class="btn pl-5 pr-5 pt-2 pb-2" style="background:#D5AD6A;color:white;"
-                                    href="#">Browse All</a>
+                                    href="{{url('product')}}">Browse All</a>
                             </div>
                         </div>
                     </div>
