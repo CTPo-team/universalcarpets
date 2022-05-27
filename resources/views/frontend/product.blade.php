@@ -22,10 +22,10 @@
                             <div class="row textbanner pt-5">
                                 <div class="col-md-8 pt-2">
                                     <p
-                                    class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:#D5AD6A">
+                                    class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:bold;letter-spacing:5px;color:white">
                                         {{$dt['category'] ?? ''}}</p>
                                     <p
-                                    class="fontbantitle" style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;color:white">
+                                    class="fontbantitle" style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;letter-spacing:10px;color:#D5AD6A">
                                         {{$dt['title'] ?? ''}}</p>
                                     <p
                                     class="fontbanctgr" style="font-family: 'Playfair Display', serif;font-size: 16px;line-height:1;font-weight:normal;letter-spacing:3px;color:white">
@@ -389,7 +389,7 @@
                     if (typeof data.path_image[0] !== 'undefined') {
                         $(classProduct).append("<div class='col-6 col-md-4 content p-2' style=''><div class='content-overlay' style='height:96%;width:96%;top:9px;left:8px;'></div><img class='img-fluid' width='100%' src='"+ data.path_image[0] + "'>\
                             <div class='content-details fadeIn-bottom'>\
-                                        <p class='content-text fonttittle-overlay' style='font-size:3vw'>"+data.title+"</p>\
+                                        <p class='content-text fonttittle-overlay' style='font-size:2vw'>"+data.title+"</p>\
                                         <a class='link-content-text fontlink-overlay' style='font-size:1.5vw' href='"+baseUrl+"/"+data.slug+"'>View Product</a>\
                                         </div>\
                             </div>")

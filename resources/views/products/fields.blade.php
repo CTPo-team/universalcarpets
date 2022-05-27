@@ -21,7 +21,7 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('path_image_thumbnail', 'Thumbnail Image:') !!}
     <p>
-        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 2480 × 1753 px</small>
+        <small>Max Size: 2MB | Max File: 1 | Recommended: Less than 500KB & Resolution 3840 × 2160 px</small>
     </p>
     <input id="single_image_upload" type="file" class="form-control"  name="single_image_upload" data-preview-file-type="text">
     <input type="hidden" name="path_image_thumbnail" id="path_image_thumbnail">

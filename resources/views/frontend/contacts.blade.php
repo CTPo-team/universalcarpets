@@ -10,7 +10,7 @@
                 <div class="row pt-5 blogcontacttitlerow">
                     <div class="col-md-8">
                         <p class="fontbantitle-blog"
-                            style="font-family: 'Playfair Display', serif;font-size: 6vw;line-height:1;font-weight:bold;letter-spacing:10px;">
+                            style="font-family: 'Playfair Display', serif;line-height:1;font-weight:bold;letter-spacing:10px;color:#D5AD6A;">
                             {{$banner->title ?? ''}}</p>
                     </div>
                 </div>
