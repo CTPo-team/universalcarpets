@@ -22,14 +22,7 @@
 @endsection
 @section('content')
 <div class="container cont-productpage pt-4">
-    <div class="row align-items-center justify-content-center" style="margin-top:0px;height:65vh;background: 
-                                linear-gradient(to bottom, rgb(52 52 52 / 35%) 100%, #F5F5F5 100%),
-                                url({{$product->path_image_thumbnail}});background-size:cover;">
-        <div class="col-12 col-md-6 text-center text-white">
-            <p class="fontbantitle"
-                style="text-transform: uppercase;font-family: 'Playfair Display', serif;font-size: 12.6vh;line-height:1;font-weight:bold;letter-spacing:10px;">
-                {{$product->title ?? ""}}</p>
-        </div>
+    <div class="row align-items-center justify-content-center banner-detail-product" style="margin-top:0px;background:url({{$product->path_image_thumbnail}});background-size:100% 100%;">
     </div>
 
     <div class="row justify-content-center mt-5">

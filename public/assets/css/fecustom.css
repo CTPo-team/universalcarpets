@@ -6,6 +6,18 @@
     width: 100%;
 }
 
+.fontbantitle{
+    font-size: 3.5vw;
+}
+
+.fontbantitle-blog{
+    font-size: 3.5vw;
+}
+
+.banner-detail-product{
+    height: 65vh;
+}
+
 .margin-contact {
     margin-top: 2.5rem !important;
 }
@@ -333,6 +345,10 @@
 
 /* style mobile */
 @media only screen and (max-width: 600px) {
+    .banner-detail-product{
+        height: 30vh;
+    }
+
     .cap-carousel-blogcontact {
         top: 0% !important;
     }
