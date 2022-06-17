@@ -34,7 +34,7 @@
             <h5 style="color:#D2A55A"><b>{{$blog->blogCategory->title ?? ""}}</b></h5>
         </div>
         <div class="col-12 col-md-11">
-            <p style="font-size:7.1vw;color:#C62630;line-height:1;font-family: 'Playfair Display', serif;">
+            <p style="font-size:5vw;color:#C62630;line-height:1;font-family: 'Playfair Display', serif;">
                 <b>{{$blog->title}}</b></p>
         </div>
         <div class="col-12">
