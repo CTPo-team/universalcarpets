@@ -329,7 +329,7 @@
 }
 
 .img-bringing{
-    width: 60%;
+    width: 50%;
 }
 
 .all-product-container{
@@ -339,12 +339,16 @@
 
 @media only screen and (max-width: 1500px) {
     .img-bringing{
-        width: 70%;
+        width: 50%;
     }
 }
 
 /* style mobile */
 @media only screen and (max-width: 600px) {
+    .img-bringing{
+        width: 70%;
+    }
+
     .banner-detail-product{
         height: 30vh;
     }
