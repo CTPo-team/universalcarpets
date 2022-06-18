@@ -44,10 +44,10 @@
     <!-- judul mobile-->
     <div class="row d-block d-sm-none">
         <div class="col-12">
-            <h5 style="color:#D2A55A;font-size:6vw"><b>{{$blog->blogCategory->title ?? ""}}</b></h5>
+            <h5 style="color:#D2A55A;font-size:5vw"><b>{{$blog->blogCategory->title ?? ""}}</b></h5>
         </div>
         <div class="col-12 col-md-11">
-            <p style="font-size:11vw;color:#C62630;line-height:1;font-family: 'Playfair Display', serif;">
+            <p style="font-size:8vw;color:#C62630;line-height:1;font-family: 'Playfair Display', serif;">
                 <b>{{$blog->title}}</b></p>
         </div>
         <div class="col-12">
